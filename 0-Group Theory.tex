@@ -1,0 +1,66 @@
+\documentclass{book}
+
+\title{Group Theory Notes}
+\author{Leandro Caniglia}
+\date{December 2022}
+
+\input preamble
+
+\begin{document}
+
+\frontmatter
+\thispagestyle{empty} % Removes page number from the title page
+\maketitle
+
+\thispagestyle{empty} % Removes page number from the table of contents page
+\tableofcontents
+
+\mainmatter
+
+
+\setlength{\parindent}{0pt}
+\include{1-preliminaries}
+\include{2-sylow}
+\include{3-free-groups}
+\include{4-subnormality}
+\include{5-extensions}
+\include{6-left-braces}
+\appendix
+\include{7-vector-spaces}
+
+
+\bibliographystyle{natbib/plainnat}  % Choose a bibliography style
+\bibliography{bibliography}     % Specify your .bib file without the extension
+
+\end{document}
+
+
+\section*{Theorem 1a}
+Let $G$ be a finite group, $B \normal G$ an abelian subgroup, $B \normal A \normal G$, $A$ a soluble subgroup, $A \normal H \leq G$, $(|A|,[G:H])=1$, $H = A \cdot K$, $A \cap K = E$, $K \leq H$. Furthermore, suppose $[K,A] \leq B$ and $(KB)^g \cap H \leq KB$ for all $g \in G$. Then there exists $L \leq G$ such that $L\cdot A = G$ and $L \cap A = E$.
+
+
+\section*{Theorem Ib}
+Assumptions as in Theorem Ia. Additionally: For any two complements of $A$ in $H$ that are conjugate under $H$, they are already conjugate under $B$. Then the following holds:
+
+
+If $G$ is a finite group, $S \leq G$, and $A < G$, then there are two crucial "complementary" questions:
+
+1. Is there a normal subgroup $N$ of $G$ such that $N \cdot S = G$, $N \cap S = \emptyset$, or more precisely: Determine the smallest normal subgroup $N$ of $G$ with $N \cdot S = G$.
+2. For $A < G$, determine the smallest subgroup $H$ of $G$ with $AH = G$. Or equivalently: Is there a subgroup $H$ of $G$ such that $AH = G$ and $A \cap H = \emptyset$.
+
+A typical example of a theorem for question 1 is a theorem by Burnside: If $S$ is a $p$-Sylow subgroup of $G$ lying in the center of its normalizer, then there exists $N \leq G$, $N \cdot S = G$, $N \cap S = \emptyset$.
+
+A typical example of a theorem for question 2 is a theorem by Zassenhaus: If $(|A|, [G:A]) = 1$, then there exists $H \leq G$ with $AH = G$ and $A \cap H = \emptyset$.
+
+An important tool for answering questions of type 1 is the Transfer Theory: Let $H \leq G$, $H < o < H$, $H/H_0$ abelian, $\Phi$ a representative system of $G/H$, then the mapping
+
+
+
+
+
+
+
+Problemas a revisar:
+-------------------
+2.8.15
+3.4.4

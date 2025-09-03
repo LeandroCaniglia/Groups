@@ -1,0 +1,3398 @@
+\chapter{Split Extensions}
+
+\section{Perfect \& Semisimple Groups}
+
+\needspace{2\baselineskip}
+\begin{defns}${}$
+
+    \begin{enumerate}[-]
+    \item A group\/ $G$ is \textsl{perfect} when\/ $G=G'$.
+
+    \item A group is \textsl{semisimple} if it is the direct product of nonabelian simple groups.
+
+    \end{enumerate}
+
+\end{defns}
+
+\begin{rem}
+    Every simple group is abelian or perfect. It follows that every semisimple group is perfect.
+\end{rem}
+
+\begin{lem}\label{center-characterization}
+    Let\/ $G$ be a group and\/ $N\normal G$. Then\/ $G/N$ is abelian if, and only if, $G'\subseteq N$.
+\end{lem}
+    
+\begin{proof} $G/N \text{ abelian} \iff (G/N)'=\gen1 \iff G'\subseteq N$.
+ \end{proof}
+
+\begin{prop}\label{G/abelian-perfect}
+    Let\/ $A$ be an abelian normal subgroup of\/ $G$. If\/ $G/A$ is perfect, then also\/ $G'$ is perfect.
+\end{prop}
+
+\begin{proof} By hypothesis,
+$$
+    G/A = (G/A)' = G'A/A
+$$
+and so $G=G'A$. On the other hand, $G'/(G'\cap A)$ is also perfect, because it is isomorphic to $(G/A)' = G/A$. Since $G'\cap A$ is abelian, we can use what we just showed to deduce that $G'=G''(G'\cap A)$. Therefore,
+$$
+    G = G'A = G''(G'\cap A)A = G''A.
+$$
+Then,
+$$
+    G/G'' \cong G''A/G'' \cong A/(A\cap G''),
+$$
+which implies that $G/G''$ is abelian and therefore, by Lemma~\ref{center-characterization}, $G'\subseteq G''$. Since $G''\subseteq G'$, the conclusion is clear.  \end{proof}
+
+\section{Central Products}
+
+\begin{defn}
+    Let\/ $G=G_1\cdots G_n$ be a (non necessarily direct) product of groups. We say that\/ $G$ is the \textsl{cental product} of\/ $G_1,\dots,G_n$ if
+    $$
+        [G_i,G_j]=1;\quad\text{\rm for } i\ne j\in\set{1,\dots, n}.
+    $$
+\end{defn}
+
+\begin{thm}
+    If\/ $G=G_1\cdots G_n$ is a central product, then for\/ $i=1,\dots,n$,
+    \begin{enumerate}[\rm a)]
+    \item $G_i\normal G$.
+    \item It holds that
+    $$
+        G_iZ(G)\cap\prod_{j\ne i} G_jZ(G) = Z(G).
+    $$
+    \item Put\/ $\bar G = G/Z(G)$. Then\/ $\bar G$ is a direct product of the groups\/ $\bar G_1, \dots,\bar G_n$, with\/ $\bar G_i\cong G_i/Z(G_i)$ for\/ $i= 1,\dots,n$.
+    \end{enumerate}
+\end{thm}
+
+\needspace{2\baselineskip}
+\begin{proof}${}$
+
+\begin{enumerate}[\rm a)]
+    \item Trivial because $G_i\leftrightarrow G_j$ for $i\ne j$.
+
+    \item It suffices to show that the LHS is included in the RHS. For $k=1,\dots,n$ take $x_k\in G_k$ and $z_k\in Z(G)$. Assume that
+    $$
+        x_iz_i=\prod_{j\ne i}x_jz_j.
+    $$
+    Given $y\in G_k$, if $k\ne i$, $y\leftrightarrow x_iz_i$ and if $k=i$, $y\leftrightarrow x_jz_j$ for $j\ne i$. Therefore, $x_iz_i\in Z(G)$, as desired.
+    
+    \item Given that $G_i\leftrightarrow G_j$ for $i\ne j$, we deduce that $Z(G_i)\subseteq Z(G)$. Moreover, $G_i\cap Z(G)\subseteq Z(G_i)$. It follows that $Z(G_i)=G_i\cap Z(G)$. In consequence
+    $$
+        1\to \bar G_i\stackrel{\varphi_i}\to \bar G,
+    $$
+    where $\varphi_i$ is induced by the restriction of the quotient projection $\varphi\colon G\to\bar G$, is exact. This means that
+    $$
+        \bar G_i = G_i/Z(G_i) = G_i/(G_i\cap Z(G)) = G_iZ(G)/Z(G).
+    $$
+    Thus, $\bar G=\bar G_1\cdots\bar G_n$. Moreover,
+    $$
+        [\bar G_i,\bar G_j] = [G_iZ(G)/Z(G),G_jZ(G)/Z(G)]
+            = [G_i,G_j]Z(G)/Z(G) = \gen1.
+    $$
+\end{enumerate}
+\end{proof}
+
+\section{Semidirect Product}
+
+\begin{defns} Let\/ $G$ be a group.
+    \begin{enumerate}[\rm i)]
+        \item If\/ $N\normal G$ a subgroup\/ $H\subseteq G$ is a \textsl{complement} for\/ $N$ in\/ $G$ if\/ $N\cap H=\gen1$ and\/ $G=NH$.
+
+        \item If\/ $N\normal G$ and\/ $H$ is a complement for\/ $N$ in\/ $G$, we say that\/ $G$ \textsl{splits} over\/~$N$.
+
+        \item Given two groups\/ $H$ and\/ $N$, a group\/ $G_0$ is an \textsl{extension} of\/ $H$ by\/ $N$ if there exists\/ $N_0\normal G_0$ such that\/ $N\cong N_0$ and $G_0/N_0\cong H$.
+
+        \item Given two groups\/ $H$ and\/ $N$, a group\/ $G_0$ is a \textsl{split extension of\/ $H$ by\/ $N$ with respect to $N_0\normal G_0$} if\/ $N\cong N_0$, $H\cong H_0$ and\/ $N_0$ is complemented by\/~$H_0$.
+    \end{enumerate}
+\end{defns}
+
+\begin{rem}
+    If\/ $H$ complements\/ $N$ in\/ $G$, then $H\cong G/N$.
+\end{rem}
+
+\begin{xmpl}
+    The group $\Z_4$ has a unique subgroup of order\/ $2$, namely $\gen2$. This (normal) subgroup has no complement because such a complement would have order\/ $2$ and therefore would equal itself, which is impossible. In other words, $\Z_4$ doesn't split over $\gen2$.
+\end{xmpl}
+
+\begin{rem}
+    The external product\/ $N\times H$ is a split extension of\/ $H$ by\/ $N$.
+\end{rem}
+
+\begin{prop}\label{normal-complement}
+    Let\/ $G$ be a split extension of\/ $H$ by\/ $N$. Then $H\normal G$ if, and only if, $G\cong N\times H$.
+\end{prop}
+
+\begin{proof} The \textit{if\/} part is trivial. The \textit{only if\/} is nothing but a direct consequence of Theorem~\ref{direct-product}.  \end{proof}
+
+\begin{prop}\label{split-element}
+    Let\/ $H$ be a complement for $N\normal G$. Then, every element\/ $x\in G$ admits unique factorizations\/ {\rm (1)}~$x=y_1z_1$, with\/ $y_1\in N$ and\/ $z_1\in H$, and {\rm (2)}~$x=z_2y_2$ with\/ $z_2\in H$ and\/ $y_2\in N$. As a consequence, $H$ is a traversal for\/ $N$ in\/~$G$. 
+\end{prop}
+
+\begin{proof} The existence of a such factorizations is clear because $G=NH=HN$. Moreover, if $y_1z_1=z_2y_2$ then
+$$
+    y_2=y_1^{z_2^{-1}}(z_2^{-1}z_1)=y_1^{z_2^{-1}}
+$$
+because $z_2^{-1}z_1\in N\cap H=\gen1$. Thus, to complete the proof, it is enough to show the uniqueness in factorization~(1). Suppose $y_1z_1=yz$ for $y\in N$ and $z\in H$. Then
+$$
+    y^{z^{-1}} = y_1^{z^{-1}}(z^{-1}z_1)= y_1^{z^{-1}}
+$$
+because $z^{-1}z\in N\cap H$. It follows that $y=y_1$ and consequently $z_1=z$.
+
+Finally, $H$ is a traversal for $N$ because
+$$
+    z\in xN\cap H \iff \exists\, y\in N \text{ with }z=xy
+        \text{ or } x=zy^{-1},
+$$
+which happens for a single pair $(z,y)$, as shown above.  \end{proof}
+
+\begin{rem}
+    Every conjugate of a complement for $N\normal G$ is also a complement.
+\end{rem}
+
+\begin{xmpl}
+    Not all complements of\/ $N\normal G$ are conjugate. For instance, in the Klein group\/ $G=\Z_2\oplus\Z_2$, if $H_1$, $H_2$ and $H_3$ are the three subgroups of order $2$ then any two of them complements the third. However, they are not conjugate because, in an abelian group, they should have been identical, which they aren't. 
+\end{xmpl}
+
+\subsection*{Internal Semidirect Product} Let $G$ be a group, $N\normal G$ and $H$ a complement for $N$ in $G$. Even though we have the bijective map
+\begin{align*}
+    \mu\colon N\times H&\to G\\
+    (y,z)&\mapsto yz,
+\end{align*}
+it is not a morphism of groups, unless $H\leftrightarrow N$, because $(y_1z_1)(y_2z_2)$, in general, differs from $(y_1y_2)(z_1z_2)$. However, the equation that does hold true for all $y_1,y_2\in N$, $z_1,z_2\in H$ is
+\begin{equation}\label{eq4}
+    (y_1z_1)(y_2z_2) = (y_1y_2^{z_1})(z_1z_2).
+\end{equation}
+This suggest the introduction of the operation in $H\times N$ given by
+\begin{equation}\label{eq4.1}
+    (y_1,z_1)\cdot(y_2,z_2) = (y_1y_2^{z_1},z_1z_2),
+\end{equation}
+which leads to the following
+\begin{thm}\label{internal-semidirect-product}
+    The operation defined in\/ $(\ref{eq4.1})$ grants\/ $N\times H$ a group structure denoted by $N\rtimes H$. Moreover, $N\rtimes H$ is isomorphic to\/ $G$ via the morphism $\mu$, which renders the commutativity of
+    $$
+    \begin{tikzcd}
+        N\arrow[rd]\arrow[d]\\
+        N\rtimes H\arrow[r, "\hspace{-0.3cm}\mu"]&G\\
+        H\arrow[ru]\arrow[u]
+    \end{tikzcd};\quad\mu(y,z)=yz.
+    $$
+    The group $N\rtimes H$ matches the external product $N\times H$ if, and only if, $H\normal G$.
+\end{thm}
+
+\begin{proof} First note that $(1,1)$ is neutral for the operation
+$$
+    (y,z)\cdot(1,1) = (y1^z,z1) = (y,z).
+$$
+Second, the right-inverse of $(y,z)$ is $((y^{-1})^{z^{-1}},z^{-1})$
+$$
+    (y,z)\cdot((y^{-1})^{z^{-1}},z^{-1})
+        = (y\big((y^{-1})^{z^{-1}}\big)^z,zz^{-1})
+        = (1,1).
+$$
+Since every element in $N\times H$ can be written as the right-inverse of some $(y,z)$, such an element has also a left-inverse, namely $(y,z)$. The existence of inverse follows from the existence of both right- and left-inverse.
+
+Third, the operation is associative
+\begin{align*}
+    ((y_1,z_1)\cdot(y_2,z_2))\cdot(y_3,z_3)
+        &= (y_1y_2^{z_1},z_1z_2)\cdot(y_3,z_3)\\
+        &= (y_1y_2^{z_1}y_3^{z_1z_2},z_1z_2z_3,)
+    \intertext{and}
+    (y_1,z_1)\cdot((y_2,z_2)\cdot(y_3,z_3))
+        &= (y_1,z_1)\cdot(y_2y_3^{z_2},z_2z_3)\\
+        &= (y_1(y_2y_3^{z_2})^{z_1},z_1z_2z_3).
+\end{align*}
+By Proposition~\ref{normal-complement} $H\normal G\iff G=N\times H$. The bijective map [cf.~Proposition~\ref{split-element}]
+\begin{align*}
+    \mu\colon N\times H&\to G\\
+    (y,z)&\mapsto yz
+\end{align*}
+is an isomorphism because
+\begin{align*}
+    \mu((y_1,z_1)\cdot(y_2,z_2)) &= \mu(y_1y_2^{z_1},z_1z_2)\\
+        &= y_1y_2^{z_1}z_1z_2\\
+        &= (y_1z_1)(y_2z_2)  &&;\ (\ref{eq4})\\
+        &= \mu(y_1,z_1)\mu(y_2,z_2).
+\end{align*}
+Implicit in the diagram is the fact that $N\to N\rtimes H$ and $H\to N\rtimes H$ are group morphisms, but this is a direct consequence of the fact that $\mu$ and the inclusions $N\to G$ and $H\to G$ are morphisms. Note, in particular, that $N\normal N\rtimes H$.
+
+Finally, by Theorem~\ref{direct-product}, both structures on $N\times H$ are equivalent if, and only if, $H\normal G$.  \end{proof}
+
+\begin{defn}
+    The group\/ $N\rtimes H$ defined in the theorem is called the \textsl{internal semidirect product} of\/ $N$ and\/~$H$.
+\end{defn}
+
+\begin{thm}\label{dihedral-equivalence}
+    Let\/ $D$ be a finite group of order\/ $2n$, with $n>1$. The following statements are equivalent:
+    \begin{enumerate}[\rm a)]
+        \item $D$ is generated by two involutions.
+        \item $D$ is the semidirect product\/ $C\rtimes X$ of two cyclic subgroups\/ $C = \gen c$ and\/ $X = \gen t$ such that
+        $$
+        (*) \quad \begin{cases}\label{eqD}
+            \ord(t) = 2,\\
+            \ord(c) = n,\\
+            c^t = c^{-1}.
+        \end{cases}
+        $$
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}${}$
+\begin{enumerate}[\rm a)]
+    \item $\Rightarrow$~b) Put $D=\gen{t,s}$ where $t$ and $s$ are involutions, $s\ne t$. Put $c=ts$, $C=\gen c$ and $X=\gen t$. Clearly $D=CX$. Moreover,
+    $$
+        c^t = tct = ttst = st = c^{-1}. 
+    $$
+    We claim that $D\ne C$. Otherwise $D$ is abelian, which implies $c=c^t=c^{-1}$, i.e., $c$ is an involution and so $D=\set{1,c}$, hence $s=c=t$; contradiction. In consequence,
+    $$
+        \ord(c)=|C|<|D|=2n.
+    $$
+    To see that $C\cap X=\gen1$ observe that
+    \begin{align*}
+        2n = |CX| = \frac{\ord(c)2}{|C\cap X|} &\implies n\mid \ord(c)<2n\\
+            &\implies \ord(c)=n\\
+            &\implies |C\cap X|=1.
+    \end{align*}
+    It remains to be seen that $C\normal D$, i.e., that $C$ is $X$-invariant. Suppose otherwise. Then $c^t=c^it$. Thus, $tc=c^i$ or $t=c^{i-1}$, which is impossible because $C\cap X=\gen1$ and $t\ne 1$. It follows that $C\normal D$.
+    
+    \item $\Rightarrow$~a) Put $s=tc$. Then $D=CX=\gen{c,t}=\gen{s,t}$, with $s\ne t$ because $c\ne 1$. Moreover, $s^2=tctc=c^tc=1$ with $s\ne1$, otherwise $c=t$, which is impossible because $C\cap X=\gen1$.
+\end{enumerate}
+\end{proof}
+
+\subsection*{External Semidirect Product} In what follows the notion of semidirect product is taken to a more abstract setting, where the only connection between two groups $N$ and $H$ is a morphism $\sigma\colon H\to\Aut(N)$, which induces an action of $H$ on $N$, namely
+$$
+    z\cdot_\sigma y = \sigma(z)(y)\qquad z\in H,\; y\in N.
+$$
+The idea is to construct a group $G$ such that $N$ and $H$ can be seen as subgroups with $N\normal G$ and $H$ a complement for $N$ in $G$.
+
+Of course, we might proceed here as we did in the internal case, by equipping the set $N\times H$ with the appropriate group structure. However, that approach would lead to a construction-dependent definition, rather than to a conceptual one, and that's why we will explore a different pathway.
+
+\begin{ntn}
+    Let\/ $G$ and $G_0$ be isomorphic groups. Then every isomorphism\/ $\varphi\colon G\to G_0$ induces another
+    \begin{align*}
+        \hat\varphi\colon\Aut(G)&\to\Aut(G_0)\\
+        s&\mapsto \varphi\circ s\circ\varphi^{-1}
+    \end{align*}
+    such that, for $s\in\Aut(G)$, the diagram
+    $$
+        \begin{tikzcd}
+            G\arrow[r,"s"]\arrow[d, "\varphi"']
+            &G\arrow[d,"\varphi"]
+                \\
+            G_0\arrow[r,"\hat\varphi(s)"']
+            &G_0
+        \end{tikzcd}
+    $$    
+    is commutative. Note that\/ $\hat\varphi(s)=s^\varphi$, the conjugate of\/ $s$ by\/ $\varphi$ in the group\/ $\Aut(G)$.
+\end{ntn}
+
+\begin{rem}\label{functorial-hat}
+    The assignment $\varphi\mapsto\hat\varphi$ of the previous notation enjoys the following properties
+    $$
+        \widehat{\psi\circ\varphi}=\hat\psi\circ\hat\varphi
+        \quad{\rm and}\quad
+        \widehat{\varphi^{-1}}=\hat\varphi^{-1}.
+    $$
+\end{rem}
+    {\small Indeed, the first equation follows from
+    \begin{align*}
+        \widehat{\psi\circ\varphi}(s)=s^{\psi\circ\varphi}=(s^\varphi)^\psi
+            =\hat\psi\circ\hat\varphi(s).
+    \end{align*}
+    The second is a direct consequence of the first applied to $\psi=\varphi^{-1}$ and the fact that
+    $$
+        \widehat{\id_G}=\id_{\Aut(G)}.
+    $$
+    }
+
+\medskip Given $H\subgroup G$ and $N\normal G$, recall that the canonical conjugation morphism $\sigma\colon H\to\Aut(N)$ is defined by $z\mapsto\sigma_z$, where $\sigma_z(y)=y^z$. Where there is no risk of confusion we will use the same letter $\sigma$ for different instances of this morphism.
+
+\begin{lem}\label{semidirect-product-uniqueness}
+    Let\/ $G$ and\/ $G_0$ be groups, and suppose that\/ $N\normal G$ is complemented by\ $H$, and\/ $N_0\normal G_0$ is complemented by\/ $H_0$. Assume that\/ $\varphi_N\colon N\cong N_0$ and\/ $\varphi_H\colon H\cong H_0$ are such that the diagram
+    $$
+        \begin{tikzcd}
+            H\arrow[r,"\sigma"]\arrow[d,"\varphi_H"']
+                &\Aut(N)\arrow[d,"\hat\varphi_N"]
+                \\
+            H_0\arrow[r,"\sigma"']
+                &\Aut(N_0)
+        \end{tikzcd}
+    $$
+    commutes. Then there is a unique isomorphism\/ $\varphi\colon G\to G_0$ that extends the given isomorphisms\/ $\varphi_N\colon N\to N_0$ and\/ $\varphi_H\colon H\to H_0$.
+\end{lem}
+
+\begin{proof} Firstly note that the commutativity of the above diagram translates into
+\begin{align}
+    \varphi_N(y)^{\varphi_H(z)}
+        &= \sigma_{\varphi_H(z)}(\varphi_N(y))\nonumber\\
+        &= \hat\varphi_N(\sigma_z)(\varphi_N(y))\nonumber\\
+        &= \varphi_N\circ\sigma_z\circ\varphi_N^{-1}(\varphi_N(y))\nonumber\\
+        &= \varphi_N\big(y^z\big)\label{eq6}
+\end{align}
+for $z\in H$ and $y\in N$.
+
+Let's now see the uniqueness of $\varphi\colon G\to G_0$. Given $x\in G$, according to Proposition~\ref{split-element}, we can write $x=yz$ for appropriate $y\in N$ and $z\in H$. Then we must have $\varphi(x)=\varphi_N(y)\varphi_H(z)$, which leaves no room for any other~$\varphi$.
+
+For the existence, we are forced to define
+\begin{align*}
+    \varphi\colon G&\to G_0\\
+    yz&\mapsto\varphi_N(y)\varphi_H(z),
+\end{align*}
+and then verify that $\varphi$ is a morphism (equations $\varphi|_N=\varphi_N$ and $\varphi|_H=\varphi_H$ are clear). The fact that $\varphi$ is well-defined is a direct consequence of Proposition~\ref{split-element}. For the verification recall equation~$(\ref{eq4})$, namely
+\begin{align*}
+    y_1z_1y_2z_2 &= y_1y_2^{z_2}z_1z_2,
+\end{align*}
+which implies
+\begin{align*}
+    \varphi(y_1z_1y_2z_2)
+        &= \varphi_N(y_1)\varphi_N(y_2^{z_1})
+            \varphi_H(z_1)\varphi_H(z_2)\\
+        &= \varphi_N(y_1)\varphi_N(y_2)^{\varphi_H(z_1)}
+            \varphi_H(z_1)\varphi_H(z_2)
+                &&\textrm{; by $(\ref{eq6})$}\\
+        &= \varphi_N(y_1)\varphi_H(z_1)\varphi_N(y_2)\varphi_H(z_2)\\
+        &= \varphi(y_1z_1)\varphi(y_2z_2),
+\end{align*}
+as required.  \end{proof}
+
+\begin{defn}
+    Given two groups\/ $H$ and\/ $N$, we say that\/ $H$ \textsl{acts via automorphisms} on\/ $N$ if\/ $H$ acts on\/ $N$ and, in addition, $x\cdot(zy) = (x\cdot z)(x\cdot y)$ for all\/ $y,z\in N$ and\/ $x\in H$.
+\end{defn}
+
+\begin{rem}\label{actions-and-automorphisms}
+    In the same way that there is a correspondence between actions from\/ $H$ on\/ $N$ and morphisms from\/ $H$ to\/ $\Sym(N)$ {\rm [cf.~Remark~\ref{actions-are-group-morphisms}]}, actions via automorphisms correspond with morphisms from\/ $H$ to\/ $\Aut(N)$. 
+\end{rem}
+
+\needspace{2\baselineskip}
+\begin{xmpls}\label{examples-action-via-automorphisms}${}$
+    \begin{enumerate}[\rm i)]
+        \item The conjugation\/ $H\times N\to N$, $z\cdot y=y^z$, where\/ $G$ is a group and\/ $H$ and\/ $N$ subgroups with $H\subseteq N_G(N)$,  is an action of\/ $H$ on\/ $N$ via automorphisms.
+
+        \item The evaluation\/ $H\times N\to N$, $\sigma\cdot y=\sigma(y)$, where\/ $N$ is a group and\/ $H\subgroup\Aut(N)$, is an action of\/ $H$ on\/ $N$ via automorphisms.
+
+        \item The group operation $H\times H\to H$ is an action of\/ $H$ on itself but not an action via automorphisms.
+    \end{enumerate}
+\end{xmpls}
+
+\begin{thm}\label{semidirect-product-thm}
+    Let\/\/ $H$ and\/ $N$ be groups, and suppose that\/ $H$ acts on\/ $N$ via automorphisms. Then there exists a group\/ $G_0$ containing a normal subgroup\/ $N_0$, complemented by a subgroup\/ $H_0$, and isomorphisms $\varphi_H\colon H\to H_0$ and $\varphi_N\colon N\to N_0$, such that for all\/ $\omega \in N$ and\/ $\zeta \in H$ we have
+    \begin{equation}\label{eq7}
+        \varphi_N(\zeta\cdot\omega) = \varphi_N(\omega)^{\varphi_H(\zeta)},
+    \end{equation}
+    i.e., the following diagram commutes
+    $$
+        \begin{tikzcd}
+            H \arrow[r, "\sigma"] \arrow[d, "\varphi_H"']
+                & \Aut(N) \arrow[d, "\hat{\varphi}_N"] \\
+            H_0 \arrow[r, "\sigma"']
+                & \Aut(N_0),
+        \end{tikzcd}
+    $$
+    where\/ $H\to\Aut(N)$ is given by the action of\/ $H$ on\/ $N$ and\/ $H_0\to\Aut(N_0)$ is the usual conjugation morphism.
+\end{thm}
+
+\begin{proof} Put $X=N\times H$. The maps
+\begin{align*}
+    H\times X &\to X\\
+    (\zeta, (y,z))&\mapsto(\zeta\cdot y,\zeta z)
+\intertext{and}
+    N\times X &\to X\\
+    (\omega, (y,z))&\mapsto(\omega y,z)
+\end{align*}
+define actions of $H$ and $N$ on $X$, because their compositions with the projections onto $H$ and $N$ are actions themselves.
+
+Let $\sigma_N\colon N\to\Sym(X)$ be the morphism associated with the second action. Then $N_0=\im(\sigma_N)$ is a subgroup of $\Sym(X)$ and the coastriction $\varphi_N\colon N\to N_0$ is an epimorphism.
+
+It is also a monomorphism: if $\varphi_N(\omega)=\id_X$ , then
+$$
+    (\omega y,z)=\varphi_N(\omega)(y,z)=(y,z)
+$$
+for all $(y,z)\in X$. In particular, $(\omega 1,1)=(1,1)$, i.e., $\omega=1$. In other words, $\varphi_N\colon N\to N_0$ is an isomorphism.
+
+Similarly, let $\sigma_H\colon H\to\Sym(X)$ be the morphism associated with the action of $H$ on $X$. If $\sigma_H(\zeta)=\id_X$, then
+$$
+    (\zeta\cdot y,\zeta z)=\sigma_H(\zeta)(y,z)=(y,z)
+$$
+for all $(y,z)\in X$. In particular, $(\zeta\cdot1,\zeta)=(1,1)$, which implies $\zeta=1$. Thus, $\sigma_H$ is mono and its coastriction $\varphi_H$ to $H_0=\im(\sigma_H)$ an isomorphism.
+
+Let's now verify equation $(\ref{eq7})$
+\begin{align*}
+    \varphi_N(\omega)^{\varphi_H(\zeta)}(y,z)
+        &= \varphi_H(\zeta)\circ\varphi_N(\omega)\circ\varphi_H(\zeta^{-1})(y,z)\\
+        &= \varphi_H(\zeta)\circ\varphi_N(\omega)(\zeta^{-1}\cdot y,\zeta^{-1}z)\\
+        &= \varphi_H(\zeta)(\omega(\zeta^{-1}\cdot y,\zeta^{-1}z))\\
+        &= (\zeta\cdot\omega(\zeta^{-1}\cdot y),z)\\
+        &= ((\zeta\cdot\omega)y,z)\\
+        &= \varphi_N(\zeta\cdot\omega)(y,z).
+\end{align*}
+Let's now define $G_0=N_0H_0$, which is indeed a subgroup of $\Sym(X)$ because, according to equation~$(\ref{eq7})$, $H_0\subseteq N_{\Sym(X)}(N_0)$. Thus, $G_0=N_0H_0\subgroup N_{\Sym(X)}(N_0)$ and $N_0\normal G_0$.
+
+It remains to be seen that $N_0\cap H_0=\gen1$. An element $\rho$ in the intersection must satisfy $\rho=\varphi_N(\omega)=\varphi_H(\zeta)$. Then, for every $(y,z)\in N\times H$, we would have
+$$
+    (\omega y,z) = \varphi_N(\omega)(y,z) = \varphi_H(\zeta)(y,z)
+        =(\zeta\cdot y,\zeta z).
+$$
+In particular, for $(y,z)=(1,1)$, we get
+$$
+    (\omega,1)=(\zeta\cdot1,\zeta),
+$$
+which implies $\zeta=1$. Then $\rho=\varphi_H(\zeta)=\varphi_H(1)=1$, as desired. 
+
+Finally, to verify the commutativity of the diagram observe that, given $\zeta\in H$ and $\omega\in N$, we have
+\begin{align*}
+    \hat\varphi_N\circ\sigma(\zeta)(\varphi_N(\omega))
+        &= \hat\varphi_N(\sigma_\zeta)(\varphi_N(\omega))\\
+        &= \varphi_N\circ\sigma_\zeta\circ\varphi_N^{-1}(\varphi_N(\omega))\\
+        &= \varphi_N(\sigma_\zeta(\omega))\\
+        &= \varphi_N(\zeta\cdot\omega)\\
+        &= \varphi_N(\omega)^{\varphi_H(\zeta)}
+            &&\text{; by $(\ref{eq7})$}\\
+        &= \sigma_{\varphi_H(\zeta)}(\varphi_N(\omega))
+            &&\text{; $\sigma$ is conjugation}\\
+        &= \sigma\circ\varphi_H(\zeta)(\varphi_N(\omega)).
+\end{align*}
+The conclusion follows because $\varphi_N$ is an isomorphism, hence onto.  \end{proof}
+
+\begin{cor}
+    Given $H$ and $N$ as in {\rm Theorem~\ref{semidirect-product-thm}}, any other group $\tilde G_0$ with subgroups $\tilde H_0$ and $\tilde N_0$ in the same conditions as $G_0$, $H_0$ and $N_0$, induces isomorphisms $\tilde\varphi_H\colon H_0\to\tilde H_0$ and $\tilde\varphi_N\colon N_0\to\tilde N_0$ that make commutative the diagram
+    $$
+        \begin{tikzcd}
+            H_0\arrow[r,"\sigma"]\arrow[d,"\tilde\varphi_H"']
+                &\Aut(N_0)\arrow[d,"\hat{\tilde\varphi}_N"]
+                \\
+            \tilde H_0\arrow[r,"\sigma"']
+                &\Aut(\tilde N_0),
+        \end{tikzcd}
+    $$
+    where both morphism named\/ $\sigma$ are defined by conjugation. In particular, $\tilde\varphi_H$ and $\tilde\varphi_N$ can be extended to a unique isomorphism $\varphi\colon G_0\to\tilde G_0$.
+\end{cor}
+
+\begin{proof} The commutativity of the diagram is consequence of Remark~\ref{functorial-hat} and the commutativity of
+$$
+    \begin{tikzcd}
+        \tilde H_0\arrow[r,"\sigma"]
+            &\Aut(\tilde N_0)
+            &\tilde N_0 \\
+        H\arrow[d,"\varphi_H"']\arrow[r,"\sigma"]\arrow[u,"\varphi_{\tilde{H}}"]
+            &\Aut(N)\arrow[d,"\hat{\varphi}_N"]\arrow[u,"\hat{\varphi}_{\tilde{N}}"']
+            &N\arrow[u,"\varphi_{\tilde{N}}"']\arrow[d,"\varphi_N"] \\
+        H_0\arrow[r,"\sigma"']\arrow[uu,"\tilde{\varphi}_H",bend left=49]
+            &\Aut(N_0)\arrow[uu,"{\hat{\tilde{\varphi}}}_N"',bend right=49]
+        &N_0\arrow[uu,"\varphi_{\tilde{N}}\circ\varphi_N^{-1}"',bend right=49]
+    \end{tikzcd}
+$$
+The last conclusion follows from Lemma~\ref{semidirect-product-uniqueness}.  \end{proof}
+
+\begin{defn}
+    The previous corollary allows us to identify, up to isomorphism, a unique group $G_0$ that fulfills the conclusions of\/ {\rm Theorem~\ref{semidirect-product-thm}}. In fact, given any other group $\tilde G_0$ with subgroups $\tilde H_0$ and $\tilde N_0$, satisfying the same conditions, defines a unique isomorphism $\varphi\colon G_0\to\tilde G_0$ for which the diagram
+    $$
+        \begin{tikzcd}
+            H_0\arrow[r]\arrow[d,"\varphi"']
+                &\Aut(N_0)\arrow[d,"\hat\varphi"]
+                \\
+            \tilde H_0\arrow[r]
+                &\Aut(\tilde N_0),
+        \end{tikzcd}
+    $$
+    where the horizontal arrows are the conjugation maps, commutes. This group is called \textsl{semidirect product} of\/ $H$ by\/ $N$ and is denoted by\/ $N\rtimes H$.
+
+    The monomorphisms $\iota_N\colon N\to N\rtimes H$ and $\iota_H\colon H\to N\rtimes H$ are called \textsl{natural embeddings}.
+
+    Even though the notation doesn't make it explicit, the semidirect product depends on the action of\/ $H$ on\/ $N$.
+\end{defn}
+
+\begin{rem}
+Let\/ $G$ be a group and\/ $A$ an abelian normal subgroup of\/ $G$. Consider the conjugation action of\/ $G/A$ on\/$A$. It is well defined because, given\/ $x\in G$ and\/ $a\in A$, we have
+$$
+a^{xb}=(a^b)^x=a^x
+$$
+for all\/ $b\in A$.
+\end{rem}
+
+\begin{prop}\label{normal-abelian-to-semidirect}
+    Let\/ $A$ be an abelian normal\/ $p$-subgroup of a group\/ $G$ and let\/ $G_0=A\rtimes G/A$ be the semidirect product with respect to the conjugation action of\/ $G/A$ on\/ $A$. Let\/ $A_0$ and\/ $H_0$ denote the images of\/ $A$ and\/ $G/A$ in\/ $G_0$. Then the map
+    \begin{align*}
+        \Syl_p(G)&\to \Syl_p(G_0)\\
+        P&\mapsto A_0P_0,
+    \end{align*}
+    where\/ $P_0$ denotes the image of\/ $P/A$ in\/ $H_0$, is well defined and bijective. Moreover, $P_0\in\Syl_p(H_0)$.
+\end{prop}
+
+\begin{proof} Take $P\in\Syl_p(G)$. We know that $A\subseteq P$ because $A\normal G$. Moreover, given that $|G/A:P/A|=|G:P|\perp p$, we deduce that $P/A\in\Syl_p(G/A)$ and so, $P_0\in\Syl_p(H_0)$. Since
+$$
+    |A_0P_0|=|A_0||P_0|=|A||P:A|=|P|
+$$
+and $|G_0|=|A_0||H_0|=|A||G/A|=|G|$, we see that $A_0P_0\in\Syl_p(G_0)$, i.e., the map is well-defined.
+
+To verify that the injectivity suppose that $Q\in\Syl_p(G)$ satisfies $A_0P_0=A_0Q_0$, where $Q_0$ is the image of $Q/A$ in~$G_0$. Then $Q_0\subseteq A_0P_0$ with both $Q_0$ and $P_0$ subgroups of $H_0$. By the Dedekind Identity~(\ref{dedekind}),
+$$
+    P_0=(A_0\cap H_0)P_0=A_0P_0\cap H_0=A_0Q_0\cap H_0=(A_0\cap H_0)Q_0=Q_0.
+$$
+Now take $R\in\Syl_p(G_0)$. Since $A_0$ is a normal $p$-subgroup of $G_0$, we know that $A_0\subseteq R$. Clearly, $H_0\cap R$ is a $p$-subgroup of $H_0$. Moreover,
+$$
+    |H_0\cap R|=|H_0||R|/|H_0R| = |H_0||R|/|G_0| = |R/A_0|
+$$
+and so $H_0\cap R\in\Syl_p(H_0)$ with $A_0(H_0\cap R)=R$ by the sake of cardinality. It follows that $H_0\cap R$ is the image of a Sylow $p$-subgroup of $G/A$, hence of the form $Q/A$ for some $Q\in\Syl_p(G)$.  \end{proof}
+
+\begin{rem}\label{semidirect-is-direct}
+    Given that\/ $N\rtimes H$ is the product of two subgroups\/ $N_0$ and\/ $H_0$, isomorphic to\/ $N$ and\/ $H$, with\/ $N_0\normal N\rtimes H$ and\/ $N_0\cap H_0=\gen1$, we have
+    $$
+        N\rtimes H=N\times H \iff H \text{\rm\ acts trivially on }N
+    $$
+    because both conditions are equivalent to $H_0\normal N\rtimes H$.
+\end{rem}
+
+\begin{rem}
+    In the permutation group $S_n$ the product of cycles of coprime length has an order that is the product of those lengths. For instance, in $S_5$ the element $(12)(345)$ has order $6$. If $G$ is a nontrivial finite group or order $n$, the elements of the subgroup $\Aut(G)$ of $\Sym(G)\cong S_n$ have smaller orders, as shown in the following
+\end{rem}
+
+\begin{cor}\label{horosevskii}
+    {\rm[Horosevskii]} Let\/ $\omega$ be an element of\/ $\Aut(G)$, where\/ $G$ is a nontrivial finite group. Then the order of\/ $\omega$ is less than\/ $|G|$.
+\end{cor}
+
+\begin{proof} The cyclic group $\gen\omega$ acts on $G$ via automorphisms [cf.~Examples~\ref{examples-action-via-automorphisms}]. Let $\Gamma=G\rtimes\gen\omega$ be the semidirect product with respect to this action. Let $N$ and $H$ respectively denote the natural embeddings of $G$ and $\gen\omega$ in~$\Gamma$. Then $N\normal\Gamma$ and the action translates into the conjugation $\sigma\colon H\times N\to N$.
+
+We claim that $H\cap C_\Gamma(N)=\gen1$. To see this take $z\in H$ with $z\leftrightarrow N$. Firstly, $z=\iota_{\gen\omega}(\omega^r)$. Secondly, the condition $y^z=y$ for all $y\in N$ translates into $\omega^r(x)=x$ for all $x\in G$. Therefore, $\omega^r=\id$, which implies $z=1$.
+
+We can now invoke Lucchini Theorem~\ref{lucchini-thm} to conclude that $$
+    |H:\Core_\Gamma(H)|<|\Gamma:H|.
+$$
+But $\Core_\Gamma(H)\cap N\subseteq H\cap N=\gen1$ and since both groups are normal in $\Gamma$, we have $\Core_\Gamma(H)\leftrightarrow N$. Thus $\Core_\Gamma(H)\subseteq H\cap C_\Gamma(N)=\gen1$ and so $|H|<|\Gamma: H|$, i.e.,
+$$
+    \ord(\omega) = |H| < |N| = |G|,
+$$
+as desired.  \end{proof}
+
+\begin{defn}
+    Given a group\/ $G$ acting on a set\/ $X$, an orbit\/ ${\cal O}_x$ is \textsl{regular} when\/ $|{\cal O}_x|=|G|$, i.e., when\/ $G_x=\gen1$.
+\end{defn}
+
+\begin{cor}\label{regular-aut-orbit}
+    Let\/ $P$ be an abelian\/ $p$-subgroup of\/ $\Aut(G)$, where\/ $G$ is a finite group of order not divisible by the prime\/ $p$. Then\/ $P$ has a regular orbit on\/ $G$. In particular, if\/ $G$ is nontrivial, then\/ $|P| < |G|$.
+\end{cor}
+
+\begin{proof} Let $\Gamma=G\rtimes P$ be the semidirect product with respect to the evaluation action of $P$ on $G$. Let $\iota_P$ and $\iota_G$ be the natural embeddings and $H$ and $N$ their images in $\Gamma$. Given that $\id_G$ is the only automorphism that acts trivially on $G$ and $H$ acts by conjugation on $N$, we deduce that $H\cap C_\Gamma(N)=\gen1$.
+
+Given that $H$ is a $p$-group and $p$ doesn't divide $|G|=|N|=|\Gamma:H|$, we deduce that $H\in\Syl_p(\Gamma)$. Hence, $O_p(\Gamma)\subseteq H$ and so $O_p(\Gamma)\cap N\subseteq H\cap N=\gen1$. Then $O_p(\Gamma)\leftrightarrow N$ [cf.~Problem~\ref{problem-1.F.1}] and we get $O_p(\Gamma)\subseteq H\cap C_\Gamma(N)=\gen1$.
+
+According Brodkey's Theorem~\ref{brodkey-thm}, $H^x\cap H^w=\gen1$ for appropriate $x,w\in\Gamma$. It follows that $H\cap H^y=\gen1$ for $y=x^{-1}w$. Given that $\Gamma=HN$, we may further assume that $y\in N$.
+
+We claim that the $H$-orbit ${\cal O}_y$ is regular. To see it is enough to show that the stabilizer
+$$
+    H_y=\set{z\in H\mid y^z=y}=C_H(y)
+$$
+is trivial. But this holds because $C_H(y)=C_H(y)^y\subseteq H\cap H^y=\gen1$. The conclusion now follows.
+
+For the last statement there are two cases: $1\notin{\cal O}_y$ and $1\in{\cal O}_y$. In the former ${\cal O}_y\subseteq N\setminus\set1$ and so $|P|=|{\cal O}_y|<|N|=|G|$. In the latter $y^z=1$ for some $z\in H$, which implies $y=1$ and, consequently, $|P|=|H|=|\gen1|=1<|G|$.  \end{proof}
+
+\medskip
+
+\textbf{Wreath Product.} Let $G$ and $H$ be two groups and $S$ a set provided with an action $G\times S\to S$. The set $H^S=\set{f\colon S\to H}=\prod_{s\in S}\set s\times H$ is a product with the pointwise operation 
+$$
+    fg(s)=f(s)g(s).
+$$
+The action of $G$ on $S$ induces an action of $G$ on $H^S$ given by
+\begin{align*}
+    G\times H^S&\to H^S\\
+    (x,f)&\mapsto x\cdot f\colon s\mapsto f(x\cdot s).
+\end{align*}
+Note also that this is an action via automorphisms:
+$$
+    (x\cdot fg)(s) = fg(x\cdot s) = f(x\cdot s)g(x\cdot s)
+        = (x\cdot f)(s)(x\cdot g)(s)=(x\cdot f)(x\cdot g)(s).
+$$
+In other words, if $\sigma\colon G\to\Sym(S)$ is the morphism induced by the action of $G$ on $S$ then the induced $\sigma_H\colon G\to\Sym\big(H^S\big)$ makes it commutative the following triangle
+$$
+    \begin{tikzcd}
+        G \arrow[r, "\sigma"] \arrow[rd, "\sigma_H"']
+            & \Sym(S) \arrow[d]
+            & \zeta \arrow[d, maps to]
+            & S \arrow[r, "\zeta"] \arrow[rd, "f\circ\zeta"']
+            & S \arrow[d, "f"]
+        \\& \Sym\big(H^S\big) & f\mapsto f\circ\zeta & & H.
+    \end{tikzcd}
+$$
+After these preliminaries we can introduce the following
+
+\begin{defn}
+    The \textsl{wreath product} of\/ $H$ and\/ $G$ with respect to the action of\/ $G$ on\/ $S$ is the semidirect product\/ $H^S\rtimes G$ with respect to the induced action of\/ $G$ on\/ $H^S$. The group $H^S$ is the \textsl{base} of the wreath product.
+
+    When\/ $S=G$ and the action is the left multiplication, the wreath product is called \textsl{natural} and denoted\/ $H\wr G$.
+\end{defn}
+
+\begin{xmpl}
+    Let $D_{2n}$ be a dihedral group with $2n$ elements.
+    \begin{enumerate}[\rm a)]
+        \item $D_{2n}=\Z_n\rtimes\Z_2$. 
+        
+        Consider the map
+        \begin{align*}
+            \phi\colon\Z_2&\to\Aut(\Z_n)\\
+            t&\mapsto(c\mapsto(-2t+1)c).
+        \end{align*}
+        Then $\phi$ is a morphism:
+        \begin{align*}
+            \phi(t_1)\circ\phi(t_2)(c) &= \phi(t_1)((-2t_2+1)c)\\
+                &= (-2t_1+1)(-2t_2+1)c\\
+                &= (4t_1t_2-2(t_1+t_2)+1)c\\
+                &=\begin{cases}
+                    \phi(t_1+t_2)(c)    &t_1\ne t_2,\\
+                    (4(t^2-t)+1)(c)   &t_1=t_2=t
+                \end{cases}\\
+                &= \begin{cases}
+                    \phi(t_1+t_2)(c)    &t_1\ne t_2,\\
+                    \phi(0)(c)   &t_1=t_2
+                \end{cases}\\
+                &= \begin{cases}
+                    \phi(t_1+t_2)(c)    &t_1\ne t_2,\\
+                    \phi(t_1+t_2)(c)    &t_1=t_2
+                \end{cases}\\
+                &=\phi(t_1+t_2)(c)
+        \end{align*}
+        The action derived from $\phi$ is
+        \begin{align*}
+            \Z_2\times\Z_n&\to\Z_n\\
+            (t,c)&\mapsto (-2t+1)c.
+        \end{align*}
+        The product in $\Z_n\rtimes\Z_2$ is then
+        $$
+            (c_1,t_1)(c_2,t_2) = (c_1+(-2t_1+1)c_2, t_1+t_2).
+        $$
+        In particular,
+        $$
+            (0,t)^2 = (0,0),
+        $$
+        i.e., the identity. Therefore, $(0,1)$ is an involution and
+        \begin{align*}
+            (c,0)^{(0,1)} &= (0,1)(c,0)(0,1)\\
+                &= ((-2+1)c,1)(0,1)\\
+                &= (-c,0)\\
+                &= (c,0)^{-1}
+        \end{align*}
+        because $(c,0)(-c,0)=(c-c,0)=(0,0)$.
+
+        The other involutions are
+        $$
+            (c,0)(0,1) = (c,1),
+        $$
+        which are exactly the elements of $\Z_n\rtimes\Z_2\setminus D$, where $D=\im(\iota_{\Z_n})$ is the image of $\Z_n$ in $\Z_n\rtimes\Z_2$.
+        
+        \item $D_{2n}=\gen{t,s\mid t^2=s^2= (ts)^n = 1}$, for $n\ge2$ [cf.~\ref{sec:presentations}~\nameref{sec:presentations}].
+
+        Let $F$ be the free group on $\set{t,s}$ and $D=\gen{t,s\mid t^2=s^2= (ts)^n = 1}$. We have a presentation
+        $$
+            \begin{tikzcd}
+                \set{t,s}
+                        \arrow[d]
+                        \arrow[r,hook]
+                    &F
+                        \arrow[ld,"\pi"]\\
+                D
+            \end{tikzcd}
+        $$
+        Let $c$ be a generator of the cyclic subgroup of order $n$ and $\tau$ an involution no in such a subgroup. Define
+        \begin{align*}
+            \nu\colon\set{t,s}&\to D_{2n}\\
+            t&\mapsto\tau\\
+            s&\mapsto\tau c.
+        \end{align*}
+        Since $\tau$ and $c$ satisfy the relations that define $D$ and, besides, generate $D_{2n}$, by the von~Dyck~Theorem~\ref{von-dyck-thm}, we get an epimorphism $\phi$ such that the following diagram commutes:
+        $$
+            \begin{tikzcd}
+                {\set{t,s}}
+                        \arrow[r,hook]
+                        \arrow[d,"\nu"']
+                    &F
+                        \arrow[d,"\pi"]
+                        \arrow[ld,"\nu^*"']\\
+                D_{2n}
+                    &D
+                        \arrow[l,"\phi",dashed]
+            \end{tikzcd}
+        $$
+        It remains to be seen that $\phi$ is a monomorphism.
+
+        Let $\bar t=\pi(t)$ and $\bar c=\pi(ts)$. The commutativity of the last diagram implies that $\phi(\bar t)=\tau$ and $\phi(\bar c)=c$.
+        
+        Moreover, $\bar t$ is an involution and $\bar c^n=1$, as encoded in the relations. Take $x\in D$. Since $\bar c\bar s=\bar t$, $D=\gen{\bar t,\bar c}$, we can write $x=\bar t^{\,j}\bar c^{\,i}$, where $j\in\set{0,1}$ and $0\le i<n$. Thus, taking into account that $\gen c\cap\gen t=\gen1$ in $D_{2n}$, we have
+        $$
+            \phi(x)=1 \iff \tau^j c^i=1
+                \iff j=i=0 \implies x=1.
+        $$
+    \end{enumerate}
+\end{xmpl}
+
+\subsection*{Categorical Identification} The semidirect product can be succinctly characterized through a straightforward universal property [Theorem~\ref{thm:elementwise-semidirect-universal-property}]. However, this characterization is \textit{computational\/} as it is formulated using elements rather than entirely expressed through categorical commutative diagrams. A more \textit{conceptual\/} approach involves recognizing that, when viewed as a functor, the semidirect product serves as the left-adjoint of a functor that transforms morphisms of groups into actions defined via automorphisms~[Corollary~\ref{cor:semidirect-as-left-adjoint-functor}].
+
+\begin{thm}\label{thm:elementwise-semidirect-universal-property}
+    Let $N$ and $H$ be groups $\sigma\colon H\to\Aut(N)$ a morphism. Then the associated semidirect product $N\rtimes H$ satisfies the following universal property:
+
+    Given morphisms $\phi\colon H\to G$ and $\psi\colon N\to G$ such that
+    \begin{equation}\label{eq:elementwise-semidirect-universal-property}
+        \phi(z)\psi(y)\phi(z)^{-1}=\psi(\sigma_z(y))
+    \end{equation}
+    for all $z\in H$ and $y\in N$, there exists a unique morphism
+    $$
+        \theta\colon N\rtimes H\to G
+    $$
+    such that $\theta|_H=\phi$ and $\theta|_N=\psi$. In a diagram
+    $$
+        \begin{tikzcd}[column sep=large]
+            H
+                    \arrow[d,hook]
+                    \arrow[rd,"\phi"]\\
+            N\rtimes H
+                    \arrow[r,"\exists!\,\theta",dashed]
+                &G.\\
+            N
+                    \arrow[u,hook]
+                    \arrow[ru,"\psi"']
+        \end{tikzcd}
+    $$
+\end{thm}
+
+\begin{proof}
+    Define
+    \begin{align*}
+        \theta\colon N\rtimes H&\to G\\
+        (y,z)&\mapsto\psi(y)\phi(z),
+    \end{align*}
+    which is a morphism because
+    \begin{align*}
+        \theta((y_1,z_1)(y_2,z_2)) &= \theta(y_1\sigma_{z_1}(y_2),z_1z_2)\\
+            &= \psi(y_1)\psi(\sigma_{z_1}(y_2))\phi(z_1)\phi(z_2)\\
+            &= \psi(y_1)\phi(z_1)\psi(y_2)\phi(z_1)^{-1}\phi(z_1)
+                \phi(z_2)\\
+            &= \psi(y_1)\phi(z_1)\psi(y_2)\phi(z_2)\\
+            &= \theta(y_1,z_1)\theta(y_2,z_2).
+    \end{align*}
+    Clearly $\theta|_H=\phi$ and $\theta|_N=\psi$. Moreover, any other morphism $\xi\colon N\rtimes H\to G$ with the same properties would equal $\theta$ because
+    $$
+        \xi(y,z)=\xi((y,1)(1,z))=\xi(y,1)\xi(1,z)=\theta(y,1)\theta(1,z)
+            = \theta(y,z).
+    $$
+\end{proof}
+
+\begin{defn}
+    Given morphisms $H_1\to\Aut(N_1)$ and $H_2\to\Aut(N_2)$ representing group actions, a pair of morphisms $\phi\colon H_1\to H_2$ and $\psi\colon N_1\to N_2$ is \textsl{equivariant} if the following diagram commutes:
+    $$
+        \begin{tikzcd}
+            H_1\times N_1
+                    \arrow[r,"\phi\times \psi"]
+                    \arrow[d]
+                &H_2\times N_2
+                    \arrow[d]
+                &{(z,y)}
+                    \arrow[r,mapsto]
+                    \arrow[d,mapsto]
+                &(\phi(z),\psi(y))
+                    \arrow[d,mapsto]\\
+            N_1
+                    \arrow[r,"\psi"]
+            &N_2
+            &z\cdot_\phi y
+                    \arrow[r,mapsto]
+                &\substack{\psi(z\cdot_\phi y)\\
+                    =\\
+                    \phi(z)\cdot_\psi\psi(y)}
+        \end{tikzcd}
+    $$
+\end{defn}
+
+\begin{thm}
+    There exists a category\/ $\cat{Mor(Gp)}$ in which objects are morphisms between groups and arrows are represented by commutative diagrams. A second category, denoted as\/ $\cat{Act}$, consists of objects that are morphisms\/ $H \to\Aut(N)$, with arrows corresponding to equivariant morphisms. Furthermore, there exists a functor\/ $T: \cat{Mor(Gp)} \to \cat{Act}$ that associates each morphism object\/ $H \to N$ with the composition action\/ $H \to N \to \Aut(N)$.
+\end{thm}
+
+\begin{proof}
+    The definition of both categories $\cat{Mor(Gp)}$ and $\cat{Act}$ is clear.
+    
+    To verify that $T$ is a functor, first note that $T(H\stackrel\alpha\to N)=\sigma\alpha$, where $\sigma$ is the conjugation morphism $\sigma\colon N\to\Aut(N)$. Second, take 
+    $$
+        (\phi,\psi)\in\Hom_{\cat{Mor(Gp)}}
+            (H_1\stackrel{\alpha_1}\to N_1, H_2\stackrel{\alpha_2}\to N_2).
+    $$
+    which corresponds to the commutative the square:
+    $$
+        \begin{tikzcd}
+            H_1
+                    \arrow[r,"\phi"]
+                    \arrow[d,"\alpha_1"']
+                &H_2
+                    \arrow[d,"\alpha_2"]\\
+            N_1
+                    \arrow[r,"\psi"]
+                &N_2.
+        \end{tikzcd}
+    $$
+    We have to verify that $T(\phi,\psi)=(\phi,\psi)$ is a morphism from $T(\alpha_1)=\sigma_1\alpha_1$ to $T(\alpha_2)=\sigma_2\alpha_2$:
+    $$
+        \begin{tikzcd}
+            H_1
+                    \arrow[r,dotted]
+                    \arrow[d,"\phi"]
+                    \arrow[rr,"\sigma_1\alpha_1",bend left]
+                &N_1
+                    \arrow[r,dotted]
+                    \arrow[d,"\psi"]
+                &\Aut(N_1)\\
+            H_2
+                    \arrow[r,dotted]
+                    \arrow[rr,"\sigma_2\alpha_2"',bend right]
+                &N_2
+                    \arrow[r,dotted]
+                &\Aut(N_2),
+        \end{tikzcd}
+    $$
+    i.e., that $(\phi,\psi)$ meets the equivariant condition. But this results from the commutativity of
+    $$
+        \begin{tikzcd}
+            H_1\times N_1
+                    \arrow[r,"\phi\times\psi"]
+                    \arrow[d,"\cdot_1"']
+                &H_2\times N_2
+                    \arrow[d,"\cdot_2"]
+                &{(z_1,y_1)}
+                    \arrow[r,mapsto]
+                    \arrow[d,mapsto]
+                &{(\phi(z_1),\psi(y_1))}\arrow[d,mapsto]\\
+            N_1
+                    \arrow[r,"\psi"]
+                &N_2
+                &y_1^{\alpha_1(z_1)}
+                    \arrow[r,mapsto]
+                &\substack{\psi(y_1)^{\alpha_2(\phi(z_1))}\\
+                    =\\
+                    \psi(y_1)^{\psi(\alpha_1(z_1))}}
+        \end{tikzcd}
+    $$
+    where `$\,\cdot_1$' and `$\,\cdot_2$' are the actions derived from $\sigma_1\alpha_1$ and $\sigma_2\alpha_2$. Lastly
+    \begin{align*}
+        T(\id_{H\to N}) &= (\id_H,\id_N)\\
+            &= \id_{H\to\Aut(N)}.
+        \intertext{and}
+        T((\phi_1,\psi_1)\circ(\phi_2,\psi_2))
+            &= T(\phi_1\circ\phi_2,\psi_1\circ\psi_2)\\
+            &= (\phi_1\circ\phi_2,\psi_1\circ\psi_2)\\
+            &= T(\phi_1\circ\psi_1)\circ T(\phi_2\circ\psi_2)
+    \end{align*}
+\end{proof}
+
+\begin{cor}\label{cor:semidirect-as-left-adjoint-functor}{\rm [cf.~\href{https://mathoverflow.net/a/96256}{MO post}]}
+    The semidirect product can be seen as a functor that maps an action\/ $H\to\Aut(N)$ to the inclusion\/ $H\to N\rtimes H$. More precisely,
+    \begin{align*}
+        \rtimes\colon\cat{Act}&\to\cat{Mor(Gp)}\\
+        H\stackrel\alpha\to\Aut(N)&\mapsto H\to N\rtimes_\alpha H\\
+        (H_1\stackrel\phi\to H_2,N_1\stackrel\psi\to N_2)
+            &\mapsto (H_1\to N_1\rtimes H_1)
+                \stackrel{\psi\rtimes\phi}\to
+                (H_2\to N_2\rtimes H_2),
+    \end{align*}
+    is well defined and functorial. Moreover, this functor is the left-adjoint of the functor\/~$T$ defined in the theorem.
+\end{cor}
+
+\begin{proof}
+    Firstly note that $\psi\rtimes\phi$ is indeed a morphism of groups:
+    \begin{align*}
+        \psi\rtimes\phi((y_1,z_1)(y_2,z_2))
+            &= \psi\rtimes\phi(y_1y_2^{\alpha_1(z_1)},z_1z_2)\\
+            &= (\psi(y_1)\psi(y_2)^{\psi(\alpha_1(z_1))},\phi(z_1)\phi(z_2))\\
+            &= (\psi(y_1)\psi(y_2)^{\alpha_2(\phi(z_1))},\phi(z_1)\phi(z_2))\\
+            &= (\psi(y_1),\phi(z_1))(\psi(y_2)\phi(z_2))\\
+            &=  \psi\rtimes\phi(y_1,z_1)\psi\rtimes\phi(y_2,z_2),
+    \end{align*}
+    where the notation is the one used in the theorem.
+
+    The functorial character of the mapping is clear because the required properties for arrows can be verified in $\cat{Set}$ after applying the forgetful functor $U$ that takes groups into their underlying sets.
+
+    It remains to be seen that the semidirect product functor is the left-adjoint of~$T$. For this define
+    \begin{align*}
+        \Hom\big(H_1\stackrel{\alpha_1}
+            \to \Aut(N_1),H_2\stackrel{T(\alpha_2)}\to\Aut(N_2)\big)
+        &\stackrel{\mbf\eta}\to
+            \Hom\big(H_1\to N_1\rtimes H_1,H_2\stackrel{\alpha_2}
+            \to N_2\big)\\
+        (H_1\stackrel\phi\to H_2,N_1\stackrel\psi\to N_2)
+            &\mapsto(\phi,\theta),
+    \end{align*}
+    where $\theta(y,z)=\psi(y)\alpha_2(\phi(z))$ is the morphism $\theta$ of Theorem~\ref{thm:elementwise-semidirect-universal-property} applied to the diagram
+    \begin{equation}\label{diag:semidirect-left-adjoint-1}
+        \begin{tikzcd}[row sep=large]
+            H_1
+                    \arrow[d,hook]
+                    \arrow[rd,"\alpha_2\circ\phi"]
+                    \arrow[r,"\phi",dotted]
+                &H_2
+                    \arrow[d,"\alpha_2",dotted]\\
+            N_1\rtimes H_1
+                    \arrow[r,"\theta"]
+                &N_2\\
+            N_1
+                \arrow[u,hook]
+                \arrow[ru,"\psi"']&
+        \end{tikzcd}
+    \end{equation}
+    Note that we can apply said theorem because equation~\eqref{eq:elementwise-semidirect-universal-property} does hold:
+    \begin{align*}
+        (\alpha_2\circ\phi)(z)\psi(y) &=(\psi\circ\alpha_1(z))\psi(y)\\
+            &= \psi(\alpha_1(z)y)\\
+        \psi(\alpha_1(z)(y))(\alpha_2\circ\phi)(z)
+            &= \psi(y^{\alpha_1(z)})(\alpha_2\circ\phi)(z)\\
+            &= \psi(y^{\alpha_1(z)})(\psi\circ\alpha_1)(z))\\
+            &= \psi(y^{\alpha_1(z)}\alpha_1(z))\\
+            &= \psi(\alpha_1(z)y).
+    \end{align*}
+    Thus, the morphism $\theta$ is well defined and the square of diagram \eqref{diag:semidirect-left-adjoint-1} show that $(\phi,\theta)$ is a morphism in $\cat{Mor(Gp)}$. In consequence, $\mbf\eta$ is well-defined.
+
+    To verify that $\mbf\eta$ is a bijection, observe that the semidirect product $N_1\rtimes H_1$ defines a morphism
+    \begin{align*}
+        \alpha_1\colon H_1&\to\Aut(N_1)\\
+        z&\mapsto\big(y\mapsto \jmath_1(y)^{\iota_1(z)}\big),
+    \end{align*}
+    where $\iota_1\colon H_1\to N_1\rtimes H_1$ and $\jmath_1\colon N_1\rtimes H_1$ are the natural inclusions. So, if $(\phi,\theta)$ is a morphism from $H_1\stackrel{\jmath_1}\to N_1\rtimes H_1$ to $H_2\stackrel{\alpha_2}\to N_2$, the map
+    $$
+        (\phi,\theta)\mapsto(\alpha_1,T(\alpha_2))
+    $$
+    is the inverse of $\mbf\eta$.
+
+    The naturality of $\eta$ is a direct consequence of the definitions.
+\end{proof}
+
+\begin{rem}
+    Recall that in any given category $\cat C$ the \textsl{colimit} of a collection of objects $(A_i)_{i\in I}$ is a family of morphisms $(A_i\stackrel{\phi_i}\to A)_{i\in I}$ satisfying the following universal property: 
+    \begin{quote}\it
+        Given a collection of morphisms\/ $(A_i\stackrel{\alpha_i}\to X)_{i\in I}$ there exists a unique\/ $\alpha\colon A\to X$ such that the diagram
+        $$
+            \begin{tikzcd}
+                    &X\\
+                A_i
+                        \arrow[ru,"\phi_i"]
+                        \arrow[r,"\alpha_i"']
+                    &A
+                        \arrow[u,"{\exists!\,\alpha}"',dashed]
+            \end{tikzcd}
+        $$
+        commutes for all\/ $i\in I$.
+    \end{quote}
+    Similarly, the \textsl{limit} of a collection is its colimit in the opposite category. Since $\Hom(\,\cdot\,,Y)$ is a contravariant functor,
+    $$
+        \Hom(\op{colim}(A_i)_{i\in I},Y)\cong\lim(\Hom(A_i,Y))_{i\in I}.
+    $$
+    As a consequence, if $F\dashv G$, then $F$ preserves colimits because
+    \begin{align*}
+        \Hom(F(A), \,\cdot) &\cong \Hom(\op{colim}(A_i)_{i\in I}, G(\,\cdot\,))\\
+            &\cong\lim(\Hom(A_i, G(\,\cdot\,)))_{i\in I}\\
+            &\cong\lim(\Hom(F(A_i), \,\cdot\,))_{i\in I}\\
+            &\cong\Hom(\op{colim}F(A_i)_{i\in I},\,\cdot\,),
+    \end{align*}
+    which implies that
+    $$
+        F(\op{colim}(A_i)_{i\in I})=\op{colim}(F(A_i))_{i\in I}.
+    $$
+    In particular, the semidirect product functor preserves colimits.
+\end{rem}
+
+\section{Infinite Dihedral Group}
+
+\begin{defn}
+    Let $X=\set{x,c}$, $F$ the free group generated by $X$. The \textsl{infinite dihedral group} is defined as
+    $$
+        D_\infty=\gen{x,c\mid x^2=1, xcx=c^{-1}}.
+    $$
+    Note that by induction on $n$ we have $xc^nx=c^{-n}$.
+\end{defn}
+
+
+\paragraph{First realization}${}$
+
+Consider the semidirect product $\Z\rtimes C_2$, where $C_2=\set{1,-1}$ is $\Z_2$ with multiplicative notation. The action of $C_2$ on $\Z$ is given by $r\cdot m=rm$. Note that the group operation is given by
+$$
+    (m_1,r_1)(m_2,r_2) = (m_1+r_1m_2, r_1r_2).
+$$
+For instance, $(1,-1)(0,-1)=(1+(-1)0,(-1)(-1))=(1,1)$. The identity of this group is $(0,1)$ and so $(0,-1)$ and $(1,-1)$ are involutions:
+\begin{align*}
+    (0,-1)(0,-1)&=(0+(-1)0,(-1)(-1))=(0,1)
+    \intertext{and}
+    (1,-1)(1,-1)&=(1+(-1)1,(-1)(-1))=(0,1).
+\end{align*}
+Induction on $n$ shows that $(1,1)^n=(n,1)$:
+$$
+    (1,1)^{n+1}=(1,1)^n(1,1)=(n,1)(1,1)=(n+1,1).
+$$
+Additionally, $\Z\rtimes C_2=\gen{(0,-1),(1,1)}$ because $(n,-1)=(1,1)^n(0,-1)$.
+
+\paragraph{Isomorphism}${}$
+
+Consider the map
+\begin{align*}
+    \jmath\colon X&\to\Z\rtimes C_2\\
+    x&\mapsto (1,-1),\\
+    c&\mapsto (1,1).
+\end{align*}
+By the universal property of $F$ there is an epimorphism $\jmath^*\colon F\to\Z\rtimes C_2$, compatible with the previous map. Since $(1,-1)^2=(0,1)$ and
+$$
+    (1,-1)(1,1)(1,-1)=(0,-1)(1,-1)=(-1,1)=(1,1)^{-1},
+$$
+we see that the map
+\begin{align*}
+    \alpha\colon\Z\rtimes C_2&\to D_\infty\\
+    (n,r)&\mapsto c^nx^{(1-r)/2}
+\end{align*}
+is a well-defined function (the underlying set of $\Z\rtimes C_2$ is $\Z\times C_2$) is a morphism of groups:
+\begin{enumerate}[\rm-]
+    \item $(0,1)\mapsto c^0x^0=1$,
+    \item $(n,r)(m,s)=(n+rm,rs)\mapsto c^{n+rm}x^{(1-rs)/2}$. On the other hand,
+    $$
+        c^nx^{(1-r)/2}c^mx^{(1-s)/2}
+            = \begin{cases}
+                c^{n+m}     &\text{if }r=s=1,\\
+                c^{n+m}x  &\text{if }r=1,\ s=-1,\\
+                c^nxc^m     &\text{if }r=-1,\ s=1,\\
+                c^nxc^mx    &\text{if }r=-1,\ s=-1.
+            \end{cases}
+    $$
+    which equals the expression above in the four cases because $xc^m=c^{-m}x$.
+\end{enumerate}
+We claim that $\jmath^*\colon F\to\Z\rtimes C_2$ induces the morphism
+\begin{align*}
+    \beta\colon D_\infty&\to\Z\rtimes C_2\\
+    x&\mapsto(0,-1)\\
+    c&\mapsto(1,0).
+\end{align*}
+To verify this we need to show that $\jmath^*$ satisfies the relations that define $D_\infty$ and the apply von Dyck's Theorem~\ref{von-dyck-thm}. But,
+\begin{gather*}
+    \jmath^*(x^2) = \jmath^*(x)^2=j(x)^2=(0,-1)^2=(0,1)\\
+    \jmath^*(xcxc) = \jmath(x)\jmath(c)\jmath(x)\jmath(c)
+        =(0,-1)(1,0)(0,-1)(1,0)=(0,1).
+\end{gather*}
+Consider the following commutative diagram
+$$
+\begin{tikzcd}
+    {\set{x,c}}
+            \arrow[r,"\iota"]
+            \arrow[d,"\jmath"']
+        &F
+            \arrow[d,"\pi"]
+            \arrow[ld,"\jmath^*"]
+            \arrow[rd,"\jmath^*"]\\
+    \Z\rtimes C_2
+            \arrow[r,"\alpha"']
+            \arrow[rr,"\id"',bend right]
+        &D_\infty
+            \arrow[r,"\beta"']
+        &\Z\rtimes C_2.
+\end{tikzcd}
+$$
+The universal property implies that $\beta\circ\alpha=\id$. In particular, $\alpha$ is mono. Since it is epi (because $\pi$ is epi), it's an isomorphism.
+
+\paragraph{Second realization}${}$
+
+Introduce
+$$
+    G=\set{f\colon\Z\to\Z\mid(\exists\,a\in\Z,\,r\in\set{1,-1})\, f(m)=a+rm}.
+$$
+Then $G$ is a group with the composition:
+\begin{enumerate}[-]
+    \item $f_{(a,r)}\circ f_{(b,s)}(m)=f_{(a,r)}(b+sm)=a+r(b+sm)= f_{(a+rb,rs)}(m)$.
+    \item $f_{(0,1)}=\id_\Z$.
+\end{enumerate}
+Clearly, $G\cong\Z\rtimes C_2$.
+
+\subsection{Problems A}
+
+\begin{probl}
+    Let\/ $C$ be a cyclic group of order\/ $n$ divisible by\/ $8$, and let\/ $z$ be the unique involution in\/ $C$.
+    \begin{enumerate}[\rm a)]
+    \item Show that\/ $C$ has a unique automorphism\/ $\sigma$ such that\/ $c^\sigma = c^{-1}z$ for every generator\/ $c$ of\/ $C$, and show that\/ $\sigma$ has order\/ $2$.
+    
+    \item Let\/ $S = C\rtimes\gen\sigma$, so that\/ $|S| = 2|C|$. Show that half of the elements in\/ $S\setminus C$ have order\/ $2$ and that the other half have order\/ $4$.
+    
+    \item Show that the elements of order\/ $2$ in\/ $S\setminus C$ form a single conjugacy class of\/ $S$, and similarly for the elements of order\/ $4$.
+    \end{enumerate}
+    
+    \textrm{\rm\textbf{Note:} The group $S$ is the semidihedral group $SD_{2n}$, although in the literature, the word "semidihedral" is usually reserved for the case where $n$ is a power of $2$, and there seems to be no standard name for other members of this family of groups.}
+\end{probl}
+
+\begin{solution} Caution: this solution only uses that $4\mid n$.
+\begin{enumerate}[\rm a)]
+    \item Put $r = n/2 - 1$. Note that $r\perp n$. To see this take $m\mid r$ and $m\mid n$. Since $r$ is odd, $m$ must be odd too. On the other hand, $4\mid n$ and so $n=4mq$. Then, $r=2mq-1$ which implies $m\mid1$.
+
+    Pick a generator $c$ of $C$ and define $\sigma(c^k)=c^{rk}$, which is an automorphism because $r\perp n$. In particular,
+    $$
+        \sigma(c)=c^r = c^{-1}c^{n/2} = c^{-1}z,
+    $$
+    where the last equality follows from the fact that $\ord(c^{n/2})=2$.
+
+    Note also that
+    $$
+        \sigma(z)=\sigma(c^{n/2})=\sigma(c)^{n/2}=(c^{-1}z)^{n/2}=zz^{n/2}=z
+    $$
+    because $c^{-n/2}=z$ and $n/2$ is even.
+
+    If $d$ is another generator of $C$, then $d=c^j$ for some $j\perp n$ and so
+    $$
+        \sigma(d) = \sigma(c^j)=\sigma(c)^j=(c^j)^{-1}z^j=(c^j)^{-1}z=d^{-1}z
+    $$
+    because $j$ must be odd.
+    
+    The morphism is unique because it is determined by its value at any generator of $C$.
+
+    Finally,
+    $$
+        \sigma^2(c) = \sigma(c^{-1})\sigma(z) = czz = c,
+    $$
+    which implies that $\ord(\sigma)=2$.
+    
+    \item Here we will identify $C$ with $\im(\iota_C)$ and $\gen\sigma$ with $\im(\iota_{\gen\sigma})$. In particular, $S=C\gen\sigma$ with $C\normal S$, $C\cap\gen\sigma=\gen1$ and $\gen\sigma$ acting on $C$ by conjugation. In particular, if $C=\gen c$, we have $c^\sigma=c^{-1}z$, where $z\in C$ has order $2$. Take $s\in S\setminus C$. We can write $s=c^j\sigma$. Then
+    $$
+        s^2 = c^j\sigma c^j\sigma = c^j(c^\sigma)^j= c^jc^{-j}z^j
+            = \begin{cases}
+                z &\text{if }j\text{ is odd},\\
+                1  &\rm otherwise.
+            \end{cases}
+    $$
+    Since there are exactly $n$ elements of the form $s=c^j\sigma$ and $n$ is even, the conclusion follows.
+
+    \item First observe that $z\leftrightarrow\sigma$ because, as an automorphism, $\sigma(z)=z$, i.e., $z^\sigma=z$ in $S$. Secondly,  equation $c^\sigma=c^{-1}z$ implies
+    $$
+        \sigma c^k=c^{-k}\sigma z^k.
+    $$
+    Take $\zeta\in S\setminus C$ and introduce $s=\zeta z$. Then $s\in S\setminus C$ and therefore we must have $s=c^j\sigma$. Given that $z$ is central and $\ord(\zeta)\in\set{2,4}$, we deduce that $\ord(s)=\ord(\zeta)$. Put $t=c^{j+2}\sigma$ and let's see that $\zeta$ and $t$ are conjugates.
+
+    We have
+    $$
+        \sigma^c = \sigma c^\sigma c^{-1}
+            = \sigma c^{-1}zc^{-1}
+            = \sigma c^{-2}z = c^2\sigma z.
+    $$
+    Then,
+    $$
+        s^c = c^j\sigma^c
+            = c^{j+2}\sigma z
+            = tz.
+    $$
+    Finally,
+    $$
+        \zeta^c=(sz)^c=s^c z^c=s^cz=t,
+    $$
+    as claimed. By part b), $\ord(\zeta)=2\iff j$ is even. And since $j+2$ runs over all powers of $c$ with the parity of $j$, the orbit of $\zeta$ equals the set of elements in $S\setminus C$ whose order is~$\ord(\zeta)$.
+\end{enumerate}
+\end{solution}
+
+\begin{probl}
+    Let\/ $S$ and\/ $C$ be as in the previous problem, and let\/ $B$ be the subgroup of index\/ $2$ in\/ $C$. Show that the elements of order\/ $4$ in\/ $S\setminus C$ form a coset of\/ $B$, and let\/ $Q$ be the union of this coset and\/ $B$. Show that\/ $Q$ is a subgroup of order\/ $n$.
+    
+    \textrm{\rm\textbf{Note}. Since all elements of\/ $Q\setminus B$ have order $4$, the involution in\/ $B$ is the unique involution in\/ $Q$. The group\/ $Q$ is the \textsl{generalized quaternion} group\/ $Q_n$. (The phrase \textit{generalized quaternion\/} is often restricted to the case where the order\/ $n$ is a power of 2. The undecorated word \textit{quaternion\/} is usually reserved for\/~$Q_8$.)}
+\end{probl}
+
+\begin{solution} First observe that $C$ is the only subgroup of index $2$ in $S$. To see this suppose otherwise and let $\tilde C\ne C$ be another subgroup with index $2$. According to the previous problem, all elements in $\tilde C\setminus C$ belong in two conjugacy classes. But $\tilde C$ is normal [cf.~Lemma~\ref{index-2-is-normal}] and so these conjugacy classes are entirely included in $\tilde C$. Since these conjugacy classes combined contain $n$ elements, we have $|\tilde C\setminus C|=n=|\tilde C|$ and so $|\tilde C\cap C|=\emptyset$, which is impossible.
+
+By definition $B=\gen{c^2}$. According to the previous problem,
+$$
+    s=c^j\sigma\text{ has order }4 \iff j \text{ odd.}\iff s=c^j\sigma\in B(c\sigma).
+$$
+Let $Q=B\cup B(c\sigma)$. Note that $B\cap B(c\sigma)=\empty$ because $\sigma\notin C$. Then $Q$ is a subgroup. Indeed,
+\begin{enumerate}[-]
+    \item $z\in B$: $z=(c^2)^{n/4}\in B$.
+    \item $B(c\sigma)B(c\sigma)\subseteq B$:
+    $$
+        c^{2j+1}\sigma c^{2k+1}\sigma = c^{2(j-k)}\sigma^2z^{2k+1}
+            = (c^2)^{j-k}z \in B
+    $$
+    \item $QQ\subseteq Q$: $BB\subseteq B$ and $BB(c\sigma)\subseteq B(c\sigma)$.
+    \item $(B(c\sigma))^{-1}\subseteq B(c\sigma)$:
+    $$
+        (c^{2j+1}\sigma)^{-1}=\sigma c^{-(2j+1)}=c^{2j+1}\sigma z
+        = c^{2(j+n/4)}c\sigma\in B(c\sigma).
+    $$
+\end{enumerate}
+Finally, $|Q|=2|B|=2n/2=n$.  \end{solution}
+
+\begin{probl}\label{problem-3.A.3}
+    Let\/ $p$ be a prime, and suppose that\/ $m$ is a divisor of\/ $p-1$ with\/ $m>1$. Show that there exists a group\/ $G$ of order\/ $pm$ with a normal subgroup\/ $P$ of order\/ $p$, and such that\/ $G/P$ is cyclic and\/ $Z(G) = 1$.
+\end{probl}
+
+\begin{solution} Let's take this opportunity to review some basic facts.
+
+Given $n\in\N$, let $\Z_n^*=\set{a\in\Z_n\mid a\perp n}$ denote the group induced by multiplication in $\Z_n$. The evaluation map
+\begin{align*}
+    \ev1\colon\Aut(\Z_n)&\to\Z_n^*\\
+    \alpha&\mapsto\alpha(1),
+\end{align*}
+is with inverse
+\begin{align*}
+    \eta\colon\Z_n^*&\to\Aut(\Z_n)\\
+    a&\mapsto \eta_a\colon r\mapsto ra,
+\end{align*}
+where $\eta_a$ is the \textsl{homotecy with ratio} $a$.
+These arrows are morphisms because
+$$
+    \ev1(\alpha\circ\beta)
+        = \alpha\circ\beta(1)
+        =\alpha(\beta(1))
+        =\beta(1)\alpha(1)
+        = \alpha(1)\beta(1)
+        = \ev1(\alpha)\ev1(\beta).
+$$
+Let's introduce the subgroup of roots of unity
+$$
+    \rho_m(\Z_n^*)=\set{a\in\Z_n^*\mid a^m=1}.
+$$
+We also have
+\begin{align*}
+    \Hom(\Z_m,\Z_n^*)&\to\rho(\Z_n^*)\\
+    f&\mapsto f(1),
+\end{align*}
+which is well-defined because
+$$
+    f(r) = f(\overbrace{1+\cdots+1}^{r\rm\ times})
+        = \overbrace{f(1)\cdots f(1)}^{r\rm\ times}
+        = f(1)^r\quad\textrm{and}\quad f(1)^m=f(m)=1.
+$$
+Since the evaluation is a morphism and this one is a bijection, it turns out to be an isomorphism with inverse
+\begin{align*}
+    \rho_m(\Z_n^*)&\to\Hom(\Z_m,\Z_n^*)\\
+    a&\mapsto (\hat a\colon r\mapsto a^r).
+\end{align*}
+By composition we obtain the isomorphism
+\begin{align*}
+    \Hom(\Z_m,\Aut(\Z_n))&\to\rho_m(\Z_n^*)\\
+    f&\mapsto f(1)(1),
+\end{align*}
+whose inverse is
+\begin{align*}
+    \rho_m(\Z_n^*)&\to\Hom(\Z_m,\Aut(\Z_n))\\
+    a&\mapsto \eta\circ\hat a\colon r\mapsto\eta_{a^r},
+\end{align*}
+where, as we defined above, $\eta_{a^r}(j)=ja^r$ is the homotecy of ratio~$a^r$.
+
+For every $a\in\rho_m(\Z_p)$ we can define
+\begin{align*}
+    \sigma_a\colon\Z_m&\to\Aut(\Z_p)\\
+        r&\mapsto\eta_{a^r}\colon j\mapsto ja^r.
+\end{align*}
+In consequence, for any $a\in\rho_m(\Z_p^*)$, we can form $G=\Z_p\rtimes_a\Z_m$ with respect to $\sigma_a$. Let $H$ and $P$ denote the natural images of $\Z_m$ and $\Z_p$ into $G$. This group has order $mp$ and satisfies $G/P=H$, which is cyclic.
+
+It remains to be shown that, for some $a\in\rho_m(Z_p^*)$, the center $Z(G)$ is trivial. Suppose it is not and take a central element $z\in G$. We can write $z=b_0s_0$ with $b_0\in P$ and $s_0\in H$. In $G$ the action defined by $\sigma_a$ becomes the usual conjugation morphism~$\sigma$. In particular, given $c\in P$ and $t\in H$, since $P$ and $H$ are abelian, we have
+$$
+    b_0cs_0 = cb_0s_0 = cz = zc = b_0s_0c
+        \quad\text{and}\quad b_0ts_0 = b_0s_0t = zt = tz = tb_0s_0
+$$
+which imply $s_0\leftrightarrow c$ and $b_0\leftrightarrow t$. Thus $s_0\leftrightarrow P$ and $b_0\leftrightarrow H$, i.e., $b_0,s_0\in Z(G)$.
+
+Thus, given $\iota_{\Z_m}\colon r\mapsto s$ and $\iota_{\Z_p}\colon j\mapsto b$, the equation above translates into
+\begin{equation}\label{eq8}
+    \iota_{\Z_p}(ja^r) = \sigma_a(r)(j) = b^s.
+\end{equation}
+In particular,
+$$
+    \iota_{\Z_p}(ja^{r_0}) = b^{s_0} = b = \iota_{\Z_p}(j),
+        \quad\text{for }\iota_{\Z_m}(r_0)=s_0\text{ and all }j\in\Z_p 
+$$
+which implies $a^{r_0}=1$ in $\Z_p$.
+
+It follows that $\ord(a)\mid r_0$, where $\ord(a)$ is the order of $a$ in $\Z_p^*$. Therefore, if $a$ is a primitive root of $1$ in $\Z_p^*$, then $p-1\mid r_0$. And since $m\mid p-1$, we obtain $m\mid r_0$, i.e., $r_0=0$ in $\Z_m$, which translates into $s_0=1$ in $G$. Therefore, $z=b_0$.
+
+Using equation $(\ref{eq8})$ for $j_0$, where $\iota_{\Z_p}(j_0)=b_0$, we get
+$$
+    \iota_{\Z_p}(j_0a^r)=b_0^s=b_0 = \iota_{\Z_p}(j_0),
+        \quad\text{for all }r\in\Z_m
+$$
+which implies $a^r=1$ for $r\in\Z_m$, which only happens if $a=1$, or $j_0=0$, i.e., if $b_0=1$.
+
+In order to account for completeness, it only remains to show that primitive roots of~$1$ actually exist, i.e., that $\Z_p^*$ is cyclic.
+
+\medskip
+
+
+\begin{probl}
+    Let\/ $q$ be a power of a prime\/ $p$. Show that there exists a group\/ $G$ of order\/ $q(q-1)$ with a normal elementary abelian subgroup of order\/ $q$, and such that all elements of order\/ $p$ in\/ $G$ are conjugate.
+
+    \textrm{\rm\textbf{Hint:} Let $F$ be a field of order $q$ and observe that the multiplicative group of $F$ acts via automorphisms on the additive group of $F$.}
+\end{probl}
+
+\begin{proof} Let's seize the opportunity to delve into field extensions.
+
+\medskip
+
+\textbf{Lemma.} [Kronecker] \textit{Let\/ $F$ be a field and\/ $f(x)$ be a nonconstant polynomial in\/ $F[x]$. Then there is an extension field\/ $E$ of\/ $F$ in which\/ $f(x)$ has a root.}
+
+\begin{proof} After replacing $f$ with one of its irreducible factors we may assume that $f$ is irreducible in $F[x]$. Then $F\to F[x]/\gen{f}$ is a field extension and $f(\bar x)=0$ for the image $\bar x$ of $x$ in the quotient.  \end{proof}
+
+\medskip
+
+\textbf{Theorem.} Let $p$ be a prime and $n$ a natural number. Then, there exists a $\Z_p$-extension field with $p^n$ elements. Moreover, any two such extensions are isomorphic.
+
+\begin{proof} Put $q=p^n$. Using the lemma a finite number of times we can construct a tower of field extensions $\Z_p\subseteq E_1\subseteq\cdots\subseteq E_r=E$, where all the roots of $f(x)=x^q-x$ are realized. Since $f'=-1$ we know that there are exactly $q$ of such roots. Let $F$ be the subset of $E$ consisting in these $q$ roots. As it is easily verified, $F$ is a field for the operations of $E$, namely, $0,1\in F$, $F+F\subseteq F$, $FF\subseteq F$ and $F^{-1}\subseteq F$. The only part that, despite being well-known, may require an explicit proof is the fact that
+$$
+    \binom{p^n}{i}\equiv0\pmod p\quad\text{for all }0<i<q,
+$$
+which is useful to see that $F+F\subseteq F$, and proceeds as follows. Consider the polynomial equation
+$$
+    (1 + g(x))^p\equiv a + g(x)^p\pmod p
+$$
+and now use induction on $e$ to show that
+$$
+    (1+x)^{p^e} = ((1+x)^{p^{e-1}})^p = (1+x^{p^{e-1}})^p=1 + x^{p^e} \pmod p.
+$$
+Regarding the uniqueness observe that if $K$ is any other field of order $q$, then every element $\alpha$ in the multiplicative group $K^*$ would satisfy $\alpha^{q-1}=1$ because $\ord(\alpha)\mid|K^*|=q-1$. In consequence, the elements of $K$ would exactly match the $q$ roots of $f(x)=x^q-x$, rendering the definition of an isomorphism of $\Z_p$-extensions to a biunivocal map between two expressions of the roots that preserves the operations and their neutral elements.  \end{proof}
+
+
+\medskip
+
+Back to the problem, let $\Fp$ denote the field of $q$ elements. In order to introduce $G=\Fp\rtimes(\Fp)^*$, where the normal component $\Fp$ refers to the underlying additive structure of the field, we need to fix a morphism of groups
+\begin{align*}
+    \sigma\colon\Fp^*&\to\Aut(\Fp,+).
+\intertext{For instance,}
+    \alpha&\mapsto\eta_\alpha\colon\zeta\mapsto\alpha\zeta.
+\end{align*}
+Since $p$ acts trivially in the $\Z_p$-vector space structure of $\Fp$, it is clear that each of the nontrivial elements of its embedding in the semidirect product has order~$p$. In other words, $\im(\iota_{\Fp})$ is elementary abelian.
+
+It remains to be shown that all elements of order $p$ are conjugate. Take an element $az$ where $a$ belongs in $N=\im(\im_{\Fp})$ and $z$ in $H=\im(\iota_{\Fp^*})$. Then $a^z\in N$, and so $a\leftrightarrow a^z$. We claim that
+$$
+    (az)^k = \Big(\prod_{i=0}^{k-1}a^{z^i}\Big)z^k.
+$$
+For $k=0$ the equation is clear. Moreover, since $za^{z^i}=a^{z^{i+1}}z$, we have
+$$
+    (az)^{k+1}=az\Big(\prod_{i=0}^{k-1}a^{z^i}\Big)z^k
+        =a\Big(\prod_{i=0}^{k-1}a^{z^{i+1}}\Big)z^{k+1}
+        =\Big(\prod_{i=0}^ka^{z^i}\Big)z^{k+1}.
+$$
+Therefore, if $\ord(az)=p$, we get
+$$
+    1 = \Big(\prod_{i=0}^{p-1}a^{z^i}\Big)z^p,
+$$
+which implies that $z^p\in N$. And given that $z\in H$, we obtain $z^p=1$. Using that $\Fp^*$ is cyclic, we can write $z=u^i$ for some generator $u$ of $\im(\iota_{\Fp^*})$. Therefore, 
+$$
+    z^p=1\iff u^{ip}=1\iff p^n-1=\ord(u)\mid ip\iff p^n-1\mid i\iff z=1,
+$$
+where the last two equivalences hold because $p\perp p^n-1$ and $\ord(u)=p^n-1$. In conclusion, only the elements of $N$ may have order $p$. Thus, according to our definition of the action morphism $\sigma$, the question reduces to showing that two elements $\zeta$ and $\xi$ in $(\Fp,+)$ with order $p$ satisfy $\xi=\alpha\zeta$, for some $\alpha\ne0$. But this is trivial because $\zeta$ and $\xi$ cannot be $0$ and so they are invertible, which allows us to take $\alpha=\xi\zeta^{-1}$.  \end{proof}
+
+\medskip
+\needspace{2\lineskip}
+\textbf{Note:} \textit{Computing\/ $\Aut(\Fp,+)$}
+
+Given that $\Aut(\Fp,+)$ has no additive structure, there is no way to see it as a $\Z_p$-vector space. However, it is a well defined subset of $\End(\Fp,+)$, where the addition is pointwise and has a natural structure of $\Z_p$-vector space. Since the action of this vector structure is determined by the sum, and the same happens with $\Fp$, we have
+$$
+    \End(\Fp,+) = (\End_{\Z_p}(\Fp),+).
+$$
+Now we can recall that $\End_{\Z_p}(\Fp)\cong M_n(\Z_p)$, which allows us to write
+$$
+    (\Aut(\Fp,+),\,\circ\,)\cong\text{GL}_n(\Z_p).
+$$
+Note, for the sake of completeness, that $\dim\Fp=n$ because $\Fp\cong\Z_p^m$ for some $m$, which cannot be other than $n$ since $|\Fp|=p^n$.
+
+\medskip
+
+
+\needspace{2\lineskip}
+\textbf{Note:} \textit{Computing\/ $\Aut(\Fp^*)$}
+
+Given a primitive root $\omega$ of~$1$ in $\Fp$ (i.e., a generator of $\Fp^*$), the evaluation
+\begin{align*}
+    \ev\omega\colon\Aut(\Fp^*)&\to\Fp^*\\
+    \lambda&\mapsto \lambda(\omega)
+\end{align*}
+is a group morphism because
+$$
+    \lambda\circ\mu(\omega)=\omega^{i+j},
+$$
+where $i$ and $j$ are defined by the equations $\lambda(\omega)=\omega^i$ and $\mu(\omega)=\omega^j$. Moreover, since $\lambda(\omega^k)=\lambda(\omega)^k$, $\ev\omega$ is actually a monomorphism. Given that automorphisms map generators to generators, $\lambda(\omega)=\omega^i$ holds true if, and only if, $i$ is a unit in $\Z_{p^n-1}$, for which there are exactly $\varphi(p^n-1)$ many options, where $\varphi$ is the Euler totient function. As a result, $\Aut(\Fp^*)=U(\Z_{p^n-1})$, the group of units in $\Z_{p^n-1}$.
+
+\begin{probl}
+    Let\/ $G$ be an arbitrary finite group. Show that\/ $G \rtimes G \cong G \times G$, where the semidirect product is constructed using the natural action of\/ $G$ on itself by conjugation.
+\end{probl}
+
+\begin{solution} Take $\iota_1\colon G\to G\times G$ as the inclusion into the first component and $\iota_2$ into the second. Then
+$$
+    \begin{tikzcd}
+        G \arrow[d,"\iota_2"']\arrow[r,"\sigma"]
+            &\Aut(G)\arrow[d, "\hat\iota_1"]
+            &x \arrow[d, maps to] \arrow[r, maps to]
+            &\sigma_x\colon y\mapsto y^x \arrow[d, maps to] \\
+        G\times G\arrow[r,"\sigma"']
+            &\Aut(G\times 1)
+            &{(1,x)}\arrow[rd, maps to]
+            &{(y,1)\mapsto(y,1)^{(1,x)}}\\
+        &&&(\sigma_x)^{\iota_1}=\id_{G\times1}\arrow[u,equal]
+    \end{tikzcd}
+$$
+commutes, which shows by definition [cf.~Theorem~\ref{semidirect-product-thm}] that $G\times G$ is the semidirect product.  \end{solution}
+
+\begin{probl}
+    Recall that a group action is faithful if the only group element that fixes all points is the identity. Let\/ $P$ be a\/ $p$-group acting faithfully via automorphisms on a group\/ $G$ with order not divisible by\/ $p$. Show that\/ $P$ acts faithfully on some\/ $P$-orbit in\/ $G$.
+
+    \textrm{\rm Hint. Use Theorem \ref{brodkey-general}, the generalized Brodkey theorem.}
+\end{probl}
+
+\begin{solution} Consider the semidirect product $\Gamma=G\rtimes P$ and let's identify $P$ and $G$ with their embeddings in $\Gamma$ so that the action becomes the conjugation by elements of $P$. Given that $|\Gamma|=|G||P|$, we deduce that $P$ is a Sylow $p$-subgroup of $\Gamma$. Since $G\normal\Gamma$ and $G\cap P=\gen1$, this is no other than Problem~\ref{problem-1.F.3}.
+
+This time, however, we will solve it using Brodkey theorem. This theorem proves the existence of $x\in\Gamma$ for which $O_p(\Gamma)$ is the largest subgroup of $P\cap P^x$ that is normal in $P$ and $P^x$. Since $\Gamma=GP$, we may further assume that $x\in G$.
+
+The orbit of such an $x$ is ${\cal O}_x=\set{x^y\mid y\in P}$. Therefore, $P$ acts faithfully on ${\cal O}_x$ if, and only if, given $z\in P$ we have
+$$
+    (x^y)^z=x^y,\text{ for all }y\in P\implies z=1,
+$$
+i.e.,
+$$
+    x^y\leftrightarrow z,\text{ for all }y\in P\implies z=1.
+$$
+In other words, $P$ acts faithfully on ${\cal O}_x$ if, and only if,
+$$
+    \bigcap_{y\in P}C_P(x^y)=\gen1.
+$$
+Let $N$ denote the intersection. Clearly $N\subseteq P$. Moreover, if $z\in N$ and $w\in P$ then $z^w\in N$ because, for $\bar y=wy$, we have
+$$
+    z^wx^{\bar y} = z^w(x^y)^w = (zx^y)^w=(x^yz)^w = x^{\bar y}z^w.
+$$
+Hence, $N\normal P$. In addition, since $z\leftrightarrow x$, $z^{x^{-1}}=z\in N\subseteq P$, which implies that $z\in P^x$. Thus, $N\subseteq P^x$. Finally, $N\normal P^x$ because
+\begin{align*}
+    z^{w^x} &= xwx^{-1}zxw^{-1}x^{-1}\\
+        &= xwzw^{-1}x^{-1}  &&;\ z\leftrightarrow x\\
+        &= wx^{w^{-1}}zw^{-1}x^{-1}\\
+        &= wzw^{-1}xww^{-1}x^{-1}   &&;\ z\leftrightarrow x^{w^{-1}}\\
+        &= z^w \in N.
+\end{align*}
+It follows that $N\subseteq O_p(\Gamma)$. Since $O_p(\Gamma)\cap G\subseteq P\cap G=\gen1$ and both subgroups are normal, we deduce that $O_p(\Gamma)\leftrightarrow G$, which implies that $N\leftrightarrow G$.
+
+On the other hand, the fact that $P$ acts faithfully on $G$ translates into
+$$
+    G_P(G)=\gen1.
+$$
+But $N\leftrightarrow G$ and and $N\subseteq P$. Thus, $N\subseteq G_P(G)=\gen1$, as desired.  \end{solution}
+
+\begin{probl}
+    Let\/ $\zeta\in\Aut(G)$, and suppose that at most two prime numbers divide\/ $\ord(\zeta)$. Show that\/ $\gen\zeta$ has a regular orbit on\/ $G$.
+
+    \textrm{\rm Hint [l.c.]: If $p\in\spec\ord(\zeta)$ consider the subgroup $\set{x\in G\mid \zeta^{\ord(\zeta)/p}(x)=x}$.}
+\end{probl}
+
+\begin{solution} {[See this \href{https://math.stackexchange.com/a/2596610/269050}{MSE} answer]}
+
+Put $n=\ord(\zeta)$. Note that $n=|\gen\zeta|$. Then $\zeta^n=\id_G$ and $\zeta^{n-1}\ne\id_G$, i.e., there exists $x\in G$ such that $\zeta^{n-1}(x)\ne x$. Of course, $\zeta^n(x)=x$. There are two possibilities for the orbit ${\cal O}_x=\set{x,\zeta(x),\dots,\zeta^{n-1}(x)}$. It has $n$ elements, i.e., it is a regular orbit, or $\zeta^i(x)=x$ for some $1<i\le n-1$. In the first case, we are done. In the second, the fundamental counting principle tells us that the smallest such $i$ equals $n/|\gen{\zeta}_x|$, where $\gen{\zeta}_x=\set{\zeta^j\mid\zeta^j(x)=x}$ is nontrivial. In what follows we will suppose this to be the case.
+
+Consider the semidirect product $G\rtimes\gen\zeta$ and let $N$ and $H$ be the respective embeddings of $G$ and $\gen\zeta$. Given that the action of $H$ on $N$ is the conjugation, our supposition becomes
+\begin{align*}
+    &\qquad\gen1\ne H_x = \set{y\in H\mid x^y=x}=C_H(x)&&\text{; for any }x\in N.
+\end{align*}
+Let $z$ be the image of $\zeta$ in $H$. Put $\ord(z)=n=p^eq^d$ with $e>0$ and $q=p$ if $d=0$. Introduce $z_p=z^{n/p}$ and $N_p=C_N(z_p)$. Since $\zeta$ acts faithfully on $G$, $N_p$ is a proper subgroup. Similarly, $N_q=C_N(z_q)\varsubsetneq N$ for $z_q=z^{n/q}$. Note that $N_p\cup N_q\varsubsetneq N$ because $N_p=N_q$ or $(N_p\setminus N_q)(N_q\setminus N_p)\varsubsetneq N_p\cup N_q$. Pick $x\in N\setminus(N_p\cup N_q)$. Then $H_x=\gen{z^r}$ for some $r\mid n$. If $r\ne n$, there exists $s$ such that $rs=n/p$ or $rs=n/q$, i.e., $z_p=(z^r)^s\in H_x$ or $z_q=(z^r)^s\in H_x$, i.e., $x\in N_p$ or $x\in N_q$, which isn't. Then $r=n$ and $H_x=\gen1$. Contradiction.  \end{solution}
+
+\begin{probl}
+    Let\/ $C$ be cyclic of order\/ $pqr$, where\/ $p$,\/ $q$, and\/ $r$ are distinct odd primes.
+    \begin{enumerate}[\rm a)]
+        \item Let\/ $s \in \set{p, q, r}$. Show that\/ $\Aut(G)$ contains a unique involution\/ $\alpha$ fixing elements of\/ $G$ of order\/ $s$ and inverting elements of prime orders different from\/~$s$.
+        \item Applying\/ {\rm(a)} three times, with\/ $s = p$,\/ $s = q$, and\/ $s = r$, we get three involutions in\/ $\Aut(C)$. Show that these, together with the identity, form a subgroup\/ $K \subgroup \Aut(C)$ of order\/~$4$.
+        \item Let\/ $G = C\rtimes K$ with the natural action, and let\/ $\sigma$ be the inner automorphism of\/ $G$ induced by a generator of\/ $C$. Show that\/ $\gen\sigma$ has no regular orbit on~$G$.
+    \end{enumerate}
+\end{probl} 
+
+\begin{solution} Put $n=pqr$. In what follows we will replace $C$ with $(\Z_n,+)$ and $\Aut(\Z_n,+)$ with $\Z_n^*=\set{u\in\Z_n\mid u\perp n}$, via the evaluation $\ev1\colon\phi\mapsto\phi(1)$ and its inverse $u\mapsto\eta_u$, where $\eta_u$ denotes the homothecy of ratio~$u$.
+
+\begin{enumerate}[\rm a)]
+    \item Assume that $s=p$. Then $\alpha$ fixes elements of order $p$ iff $\alpha qr=qr$ in~$\Z_n$, i.e., $p\mid\alpha-1$. In addition, $\alpha$ inverts elements of order $q$ and $r$ iff $\alpha pr+pr=0$ and $\alpha pq+pq=0$ in $\Z_n$, i.e., $qr\mid\alpha+1$. In other words, $\alpha$ satisfies both conditions iff it is a solution of the system of congruences
+    $$
+        \begin{cases}
+            x\equiv\hphantom-1&{}\pmod p\\
+            x\equiv-1&{}\pmod q\\
+            x\equiv-1&{}\pmod r,
+        \end{cases}
+    $$
+    of which there is one, and only one, by virtue of the Chinese Remainder Theorem that, in this case, reduces to $\alpha=aqr-bpr-cpq$, where $a$, $b$ and $c$ are the inverses of $qr$, $pr$ and $pq$ modulo~$p$, $q$ and $r$. Note that $\alpha$ is indeed an involution because $\alpha^2$ is the solution of the system.
+    $$
+        \begin{cases}
+            x\equiv1&{}\pmod p\\
+            x\equiv1&{}\pmod q\\
+            x\equiv1&{}\pmod r.
+        \end{cases}
+    $$
+    
+    \item Let $\alpha$, $\beta$ and $\gamma$ the the involutions of part (a) for $s=p$, $q$ and $r$. In order to verify that $K=\set{1,\alpha,\beta,\gamma}$ is a subgroup of $Z_n^*$, it is enough to show that $\alpha\beta\gamma=1$. But this follows from the uniqueness of the Chinese Remainder Theorem because, after multiplying the equations of the three systems one gets
+        $$
+        \begin{cases}
+            \alpha\beta\gamma\equiv1(-1)(-1)&{}\pmod p\\
+            \alpha\beta\gamma\equiv(-1)1(-1)&{}\pmod q\\
+            \alpha\beta\gamma\equiv(-1)(-1)1&{}\pmod r.
+        \end{cases}
+    $$
+    Note that $|K|=4$ because the \textsl{signatures\/} derived from the RHS of the systems associated to its elements are
+    $$
+        \set{(1,1,1), (1,-1,-1), (-1,1,-1), (-1,-1,1)},
+    $$
+    which form a set of cardinality $4$, even if one of the primes, say $r$, is $2$. 
+
+    \item Let's first establish that the natural action of $K$ on $C$ is given by the evaluation, since $K\subgroup\Aut(G)$. Under the identifications we are using, this action corresponds to $\nu\cdot k=k\nu$ in $\Z_n$. Let $N$ and $H$ be the embeddings of $C$ and $K$ in $G=C\rtimes K$. In particular, $N=\gen\sigma$ is cyclic and acts on $G$ by conjugation. Suppose that this action has a regular orbit ${\cal O}_x$ for some $x\in G$. The fundamental counting principle implies that
+    $$
+        \gen1=N_x=\set{y\in N\mid x^y=x}.
+    $$
+    Write $x=w\nu$ with $w\in N$ and $\nu\in H$. Given $y\in N$ we have
+    $$
+        (w\nu)^y = w^y\nu^y=w\nu^y.
+    $$
+    Thus, $y\in N_x\iff y\in N_\nu$, i.e., after replacing $x$ with $\nu$, we may assume that $x\in H$. By symmetry, this is equivalent to $x=a$, where $a$ is the image of $\alpha$ in $H$, which is the same as saying that no element of $N\setminus\set1$, commutes with $a$. In other words, for $k\in\Z_n$,
+    $$
+        \sigma^ka=a\sigma^k\implies k=0
+    $$
+    or
+    $$
+        \sigma^k=(\sigma^k)^a\implies k=0.
+    $$
+    Since conjugation by $a$ in $G$ corresponds to multiplication by $\alpha$ in $\Z_n$, we get
+    $$
+        ku=ku\alpha\text{ in }\Z_n,
+    $$
+    where $u$ is a unit in $\Z_n$. Thus
+    $$
+        k=k\alpha\text{ in }\Z_n\implies k=0\text{ in }\Z_n.
+    $$
+    However, for $k=qr$, since $p\mid\alpha-1$, we have $k(\alpha-1)=0$ in $\Z_n$ even though $k=qr\ne0$ in $\Z_n$.
+\end{enumerate}
+\end{solution}
+
+\begin{probl}
+    Let\/ $W = H \wr G$ be a wreath product constructed with respect to a transitive action of\/ $G$ on some set\/ $S$. Let\/ $B$ be the corresponding base group.
+
+    \begin{enumerate}[\rm a)]
+        \item Show that\/ $C_B(G)$ is the set of constant functions from\/ $S$ into\/ $H$.
+        \item Now assume that\/ $W$ is the regular wreath product, so that\/ $S = G$. Let\/ $C \subseteq G$ be an arbitrary subgroup. Show that there exists\/ $b \in B$ such that\/ $C_G(b) = C$.
+    \end{enumerate}
+\end{probl}
+
+\begin{solution}
+\begin{enumerate}[\rm a)]
+    \item Take $f\in B=H^S$. Then
+    \begin{align*}
+        f\in C_B(G) &\iff f^x=f\text{ in $W$, for all }x\in G\\
+            &\iff x\cdot f= f\text{ in $B$, for all }x\in G\\
+            &\iff f(x\cdot s)=f(s)\text{ for all }x\in G,\;s\in S\\
+            &\iff f(t)=f(s)\text{ for all }s,t\in S&&\text{; transitivity}\\
+            &\iff f\text{ is constant}
+    \end{align*}
+
+    \item Take $b\in B=H^G$. Then
+    \begin{align*}
+        C_G(b) = C &\iff b^y=b\text{ in $W$, iff }y\in C\\
+            &\iff y\cdot b= b\text{ in $B$, iff }y\in C\\
+            &\iff y\cdot b(x)=b(x)\text{ for all $x\in G$, iff }y\in C\\
+            &\iff b(yx) = b(x)\text{ for all $x\in G$, iff }y\in C,
+    \end{align*}
+    which is fulfilled by $b=\chi_C$, the characteristic function of $C$ defined as $\chi_C(x)=1$ if $x\notin C$ and $\chi_C(x)=z$ otherwise, where $z\in H$ is any fixed nontrivial element. Note that this requires $H\ne\gen1$. The case $H=\gen1$ cannot be solved because $C_G(1)=G$.
+\end{enumerate}
+\end{solution}
+
+\begin{probl}
+    Given a finite group\/ $H$ and a prime\/ $p$, show that there exists a group\/ $G$ having a normal abelian\/ $p$-subgroup\/ $A$ such that\/ $G$ splits over\/ $A$, where\/ $G/A \cong H$ and\/ $A = C_G(A)$.
+\end{probl}
+
+\begin{solution} Consider the natural wreath product $G=\Z_p\wr H=\Z_p^H\rtimes H$. Define $A$ to be the embedding of $\Z_p^H$ in $G$. Then $A$ is abelian and normal in $G$ and $G$ splits over $A$. In particular $G/A\cong H$. Since $A$ is abelian, $A\subseteq C_G(A)$. Finally, if $x\in G$ satisfies $x\leftrightarrow A$, put $x=ay$ with $a\in A$ and $y\in\im(\iota_H)$. Then $y=xa^{-1}\leftrightarrow A$, i.e., $y\in C_H(b)$ for all $b\in A$. Since the action of $H$ on $H$ is the left multiplication, it is transitive and we are in the conditions of the previous problem which, according to part~b) applied to $C=\gen1$, implies that $y\in C_H(b)=\gen1$. Thus, $x=a\in A$ as desired.  \end{solution}
+
+\subsection{Exercises - Kurzweil \& Stellmacher - \S 1.6}
+
+\begin{exr}Let\/ $A$ and $B$ be groups. Then
+    \begin{enumerate}[\rm a)]
+    \item Every normal subgroup of\/ $A$ is a normal subgroup of\/ $A \times B$.
+    \item $N \subgroup A \times B$ does not imply\/ $N = (A \cap N) \times (B \cap N)$.
+    \item If\/ $A$ and\/ $B$ are finite and\/ $\gcd(|A|, |B|) = 1$, then\/ $A$ and\/ $B$ are characteristic subgroups of\/ $A \times B$.
+    \item $\Aut(A \times B)$ contains a subgroup isomorphic to\/ $\Aut(A) \times \Aut(B)$.
+    \end{enumerate}
+\end{exr}
+
+\begin{solution}
+
+\begin{enumerate}[\rm a)]
+    \item Let $N\normal A$. Given $(x,y)\in A\times B$, we have
+    $$
+        (N\times\gen1)^{(x,y)}=N^x\times\gen1^y = N\times\gen1,
+    $$
+    which implies that $N\times\gen1\normal A\times B$.
+
+    \item Take $N=\gen{(1,1)}$ and $A=B=\Z_2$. Then note that $N\cap (A\oplus\gen0)=\gen0$.
+
+    \item Take $\phi\in\Aut(A\times B)$. Consider the diagram
+    $$
+        \begin{tikzcd}
+            A\times\gen1\arrow[r,"\phi|_{A\times\gen1}"]
+                    \arrow[rd,"\varphi_B\circ\phi|_{A\times\gen1}"']
+                &A\times B\arrow[d,"\varphi_B"]
+                &(x,y)\arrow[d,mapsto]\\
+                &B
+                &y
+        \end{tikzcd}
+    $$
+    We have that $\im(\varphi_B\circ\phi|_{A\times\gen1})$ divides both $|B|$ and $|A\times1|=|A|$. Hence, it must be trivial, i.e.,
+    $$
+        \varphi_B(\phi(A\times\gen1))=\gen1,
+    $$
+    which means that $\phi(A\times\gen1)\subseteq A\times\gen1$.
+
+    \item Define
+    \begin{align*}
+        \Phi\colon\Aut(A)\times\Aut(B)&\to\Aut(A\times B)\\
+        (\alpha,\beta)&\mapsto((x,y)\mapsto(\alpha(x),\beta(y)),
+    \end{align*}
+    which is a morphism because
+    $$
+        \Phi(\alpha_1\circ\alpha_2,\beta_1\circ\beta_2)(x,y)
+            = \Phi(\alpha_1,\beta_1)\circ\Phi(\alpha_2,\beta_2)(x,y)
+    $$
+    for all $x\in A$, $y\in B$. Moreover, if $(\alpha,\beta)\in\ker\Phi$, we have
+    $$
+        (\alpha(x),\beta(y))=(1,1)
+    $$
+    for all $x\in A$, $y\in B$, which means $x=1$ and $y=1$.
+\end{enumerate}
+\end{solution}
+
+\begin{exr}\label{exercise-1.6.2}
+    Let\/ $G=A\times B$. Then\/ $A\cong B$ if, and only if, there exists a subgroup\/ $D$ in\/ $G$ such that\/ $G=AD=BD$ and\/ $\gen1=A\cap D=B\cap D$.
+\end{exr}
+
+\begin{solution}
+Let $\theta\colon A\to B$ be an isomorphism. The graph of $\theta$
+$$
+    D = \set{(x,\theta(x))\mid x\in A}
+$$
+is clearly a subgroup of $A\times B$. Moreover,
+$$
+    (A\times\gen1)\cap D=\gen{(1,1)}=D\cap(\gen1\times B).
+$$
+Given $(x,y)\in A\times B$, we can write
+$$
+    (x,y) = (x,\theta(x))(1,\theta(x)^{-1}y),
+$$
+which shows that $A\times B=D(\gen1\times B)$. The other equation follows from this one by interchanging $A$ with $B$ and replacing $\theta$ with $\theta^{-1}$.
+
+For the converse, assume the existence of such a $D$. Consider the relation `$\sim$' in $A\times B$ given by
+$$
+    x\sim y \iff (x,y)\in D
+$$
+Given $a\in A$, there exists $z\in D$ and $b\in B$ such that
+$$
+    (a,1)=z(1,b).
+$$
+It follows that $a\sim b^{-1}$, i.e., $\dom(\sim)=A$. Also, if $a\sim b$ and $a\sim c$, then
+$$
+    (1,bc^{-1})=(a,b)(a,c)^{-1}\in D,
+$$
+which implies $b=c$. As a result $\sim$ is a function. Now assume $a_1\sim b_1$ and $a_2\sim b_2$. We have
+$$
+    (a_1,b_1),\,(a_2,b_2)\in D\implies (a_1a_2,b_1b_2)\in D,
+$$
+i.e., $a_1a_2\sim b_1b_2$. Since $1\sim1$, we conclude that $\sim$ is a morphism of groups. It is mono because
+$$
+    a\sim 1\implies (a,1)\in D\implies a=1
+$$
+and epi because, given $b\in B$, we can write
+$$
+    (1,b) = (a,1)z
+$$
+for some $z\in D$, which means that $a^{-1}\sim b$.  \end{solution}
+
+\begin{exr}
+    Let\/ $G$ be finite. Suppose that every maximal subgroup of\/ $G$ is simple and normal in\/ $G$. Then\/ $G$ is an abelian group, and\/ $|G| \in \{1, p, p^2, pq\}$, where\/ $p$ and\/ $q$ are primes.
+\end{exr}
+
+\begin{solution} Suppose that $G$ isn't trivial and $|G|$ is not prime. Let $M$ be a maximal subgroup. Given any other maximal subgroup $L$, their intersection $M\cap L$ must be trivial or $M$.
+
+In the former case, $G=ML$ is a direct product. Take $x\in M\setminus\set1$. Replacing $x$ with a power of $x$, we may assume that $\ord(x)=p$. Since $x\notin L$, we have $G=\gen xL$. Therefore, $|\gen x|=|M|$, i.e., $M=\gen x$. For this same reason $L=\gen y$, with $\ord(y)$ prime. Thus $|G|$ is $p^2$ or $pq$. Moreover, $G$ is abelian because $M$ and $L$ are abelian and $M\leftrightarrow L$.
+
+In case that $M$ is the only one maximal subgroup, $G$ must be cyclic generated by any $x\in G\setminus M$. Since $|G|$ is not prime, Let $p\mid\ord(x)$. Then $\ord(x)=pm$ for some $m>1$. If $q\in\spec m$, then $y=x^{pm/q}$ has order $q$. If $q\ne m$, we have
+$$
+    \gen1\varsubsetneq\gen y\varsubsetneq\gen{x^p},
+$$
+and the simplicity of $M$ implies that $\gen{x^p}=G$, which contradicts the fact that $\gen x=G$. Then $q=m$ and $|G|=\ord(x)=pq$.  \end{solution}
+
+
+\begin{exr}
+    A group is \textsl{semisimple} if it is a direct product of nonabelian simple groups. Let\/ $G$ be a group, and\/ $M$ and\/ $N$ normal subgroups of\/ $G$. If\/ $G/M$ and\/ $G/N$ are semisimple, then\/ $G/(M \cap N)$ is also semisimple.
+\end{exr}
+
+\begin{solution} {[Brought from \href{https://math.stackexchange.com/a/1217299/269050}{MSE}]} After replacing $G$, $M$ and $N$ with $G/(M\cap N)$, $M/(M\cap N)$ and $N/(M\cap N)$, we may assume that $M\cap N=1$.
+
+Since $NM\normal G$, we have $NM/M\normal G/M$. By Theorem~\ref{semisimple-normal}, we deduce that $NM/M$ is semisimple. Furthermore, $NM/M$ can be decomposed as a direct product of a subfamily of nonabelian simple groups whose direct product is $G/M$. In particular, $G/M=NM/M\times S/M$ where $S/M$ is semisimple. In addition, $N\cong NM/M$ is semisimple too.
+
+It follows that $G=NS$. Moreover, $N\leftrightarrow S$ because $[N,S]\subseteq N\cap S\subseteq N$ and from $NM/M\leftrightarrow S/M$ we get $[NM/M,S/M]=\gen1$, i.e., $[N,S]\subseteq M$. In consequence, $[N,S]\subseteq M\cap N=\gen1$ and so $G=N\times S$, with $N$ semisimple. But $S\cong G/N$, which is semisimple, which shows the semisimplicity of~$G$.  \end{solution}
+
+\begin{exr}
+    Consider the following operation table
+    {\small
+    $$
+        \begin{array}{r|ccccccc}
+                & 1 & d & d^2 & t & td & td^2 \\
+            \hline
+            \vphantom{{1^{1{^1}}}}
+            1\phantom{{}^2} & 1 & d & d^2 & t & td & td^2 \\
+            d\phantom{{}^2} & d & d^2 & 1 & td^2 & t & td \\
+            d^2 & d^2 & 1 & d & td & td^2 & t \\
+            t\phantom{{}^2} & t & td & td^2 & 1 & d & d^2 \\
+            td\phantom{{}^2} & td & td^2 & t & d^2 & 1 & d \\
+            td^2 & td^2 & t & td & d & d^2 & 1 \\
+    \end{array}
+    $$
+    }
+    Show that the group it defines is $D_6$, the dihedral group of order\/~$6$.
+\end{exr}
+
+\begin{solution}
+    In fact, the table defines a group on the set\/ $G=\set{1, d, d^2, t, td, td^2}$. Properties of this group include:
+    \begin{enumerate}[\rm i)]
+        \item $|G|=6$.
+        \item $\ord(t)=2$, $\ord(td)=2$.
+        \item $\ord(d)=3$.
+        \item $d^t=d^2=d^{-1}$.
+        \item $\gen d\cap\gen t=\gen1$ (coprime orders).
+    \end{enumerate}
+    The conclusion follows from Theorem~\ref{dihedral-equivalence} because
+        \begin{align*}
+            |\gen{t,td}|&\ge|\gen t\gen d|  &&;\ d=ttd,\,d^2=tdt\\
+                &=|\gen t||\gen d| &&;\ \rm v)\\
+                &= \ord(t)\ord(d)\\
+                &= |G|  &&;\ \rm i),\ \rm ii)\ \&\ iii).
+        \end{align*}
+      \end{solution}    
+
+\begin{exr}\label{exercise-1.6.6}
+    Let\/ $n \geq 2$. Then\/ $Z(D_{2n}) \ne\gen1$ if, and only if, $n$ is even.
+
+    \textrm{\rm\textbf{Note:} $D_{2n}$ denotes the group of $2n$ elements generated by two involutions.}
+\end{exr}
+
+\begin{solution} Let $D_{2n}=\gen{s,t}$ with $s^2=t^2=1$. According to Theorem~\ref{dihedral-equivalence}, $D_{2n}=\gen c\rtimes\gen t$, with $\ord(c)=n$ and $c^t=c^{-1}$.
+
+If $n$ is even, put $v=c^{n/2}$. Then $v$ is an involution that commutes with $c$. But it also commutes with $t$ because
+$$
+    v^t = (c^t)^{n/2} = c^{-n/2} = v^{-1} = v,
+$$
+i.e., $v\leftrightarrow t$. Since $D_{2n}=\gen{c,t}$, we deduce that $v\in Z(D_{2n})$.
+
+Conversely, if $v\in Z(D_{2n})\setminus\set1$, then $v\notin\gen t\cup\gen c$ because $t\nleftrightarrow c$. It follows that $v=tc^i$ for some $i\in\Z$. Therefore,
+$$
+    v^2 = tc^itc^i=(c^t)^ic^i=(c^{-1}c)^i = 1,
+$$
+i.e., $\ord(v)=2$. In addition, given that $v\leftrightarrow t$, we have $\ord(tv)=2$. But $tv=ttc^i=c^i$ and so $\ord(c^i)=2$. Then $c^{2i}=1$ or
+$$
+    n=\ord(c)\mid 2i.
+$$
+Thus, $2i=qn$ for some integer $q$. If $2\perp q$, then $2\mid n$ and we are done. Otherwise, $i=(q/2)n$ with $q/2\in\Z$. But this implies that $c^i=1$, which is impossible because $v\ne t$.  \end{solution}
+
+\begin{exr}
+    Let\/ $G_1$ and\/ $G_2$ be finite perfect groups such that
+    $$
+        G_1/Z(G_1)\cong G_2/Z(G_2).
+    $$
+    Then there exists a finite perfect group\/ $G$ and subgroups\/ $Z_1, Z_2 \subseteq Z(G)$ with
+    $$
+        G/Z(G) \cong G_i/Z(G_i)\quad\text{\rm and}\quad G/Z_i \cong G_i,\; i=1,2.
+    $$
+\end{exr}
+
+\begin{solution} {[Brought from \href{https://math.stackexchange.com/a/3419168/269050}{MSE}]}
+
+{\small Note that the exercise shows the existence of a perfect group $G$ which produces the following commutative diagram
+$$
+    \begin{tikzcd}
+        &&&1\arrow[d]\\
+        &1\arrow[d]&&Z(G_i)\arrow[d]\\
+        1\arrow[r]
+            &Z_i\arrow[r]\arrow[d]
+            &G\arrow[r]\arrow[d,no head, equal]
+            &G_i\arrow[r]\arrow[d]&1\\
+        1\arrow[r]
+            &Z(G)\arrow[r]
+            &G\arrow[r]
+            &\bar G_i\arrow[r]\arrow[d]
+            &1\\
+        &&&1
+\end{tikzcd}
+$$
+which can be rephrased in terms of inner automorphisms as: 
+\begin{quote}
+    \textit{Let\/ $G_1$ and\/ $G_2$ be perfect groups. If\/ $\Inn(G_1)\cong\Inn(G_2)$, then there exists\/ $G$ perfect with\/ $\Inn(G)\cong\Inn(G_i)$ and such that\/ $G_1$ and\/ $G_2$ are quotients of\/ $G$ by subgroups of\/ $Z(G)$.}
+\end{quote}}
+
+For $i=1,2$ put $\bar G_i=G_i/Z(G_i)$. Let $\theta\colon\bar G_1\to\bar G_2$ be an isomorphism. Consider the following commutative diagram
+$$
+    \begin{tikzcd}
+        G_1\times G_2\arrow[d,"\rho_1"]\arrow[r,"\rho_1"]
+            &G_1\arrow[rd,"\varphi_1"]\arrow[d,"\phi_1"]\\
+        G_2\arrow[r,"\varphi_2"]
+            &\bar G_2
+            &\bar G_1\arrow[l,"\theta"]
+    \end{tikzcd}
+$$
+and define
+$$
+    D = \set{\phi_1\circ\rho_1=\varphi_2\circ\rho_2}\subgroup G_1\times G_2.
+$$
+Write $Z=Z(G_1)\times Z(G_2)\normal G_1\times G_2$ and note that $Z\subseteq D$. We claim that $D/Z$ is perfect. To see this observe that
+\begin{align*}
+    D &= \set{(x_1,x_2)\mid \phi_1(x_1)=\varphi_2(x_2)}\\
+        &= \set{(x_1,x_2)\mid \theta(\bar x_1)=\bar x_2}
+\end{align*}
+and so
+\begin{align}\label{eq1.6.7}
+    D/Z &= \set{(\bar x,\theta(\bar x))\mid\bar x\in\bar G_1},
+\end{align}
+the graph of $\theta$. Given $\bar x,\bar y\in\bar G_1$, the equation
+$$
+    [(\bar x,\theta(x)),(\bar y,\theta(\bar y))]
+        = ([\bar x,\bar y],\theta([\bar x,\bar y]))
+$$
+implies that $(D/Z)'=D/Z$ because $\bar G_1$ is perfect and, consequently, the RHS represents a typical generator of graph$(\theta)$. By Proposition~\ref{G/abelian-perfect} we deduce that $D'$ is perfect, which allows us to propose $G=D'$.
+
+Since, according to $(\ref{eq1.6.7})$, the projections $D/Z\to\bar G_i$ to the first and second coordinates are isomorphisms, we get
+$$
+    G/(G\cap Z) \cong GZ/Z = D'Z/Z = (D/Z)' = D/Z \cong \bar G_i.
+$$
+Take $(u,v)\in G$. Then, $(u,v)\in Z(G)$ if, and only if, for all $(x_1,x_2),(y_1,y_2)\in D$,
+$$
+    (u,v)\leftrightarrow[(x_1,x_2),(y_1,y_2)],
+$$
+i.e.,
+$$
+    u\leftrightarrow[x_1,y_1]\quad\text{and}\quad
+        v\leftrightarrow[x_2,y_2].
+$$
+Given that $G_1$ and $G_2$ are perfect, we see that the conditions above hold if, and only if, $u\in Z(G_1)$ and $v\in Z(G_2)$, i.e., $(u,v)\in Z$. In conclusion, $G\cap Z=Z(G)$.
+
+Now consider the projections $G\to G_i$ to the first and second coordinates. These are epimorphisms because they are the restriction of the projections $D\to G_i$ with $G_i$ perfect. Let $Z_i=\ker(G\to G_i)=G\cap\ker(D\to G_i)$. Then, given $(u,v)\in G$, we have
+\begin{align*}
+    (u,v)\in Z_1 &\iff (u,v)\in G\text{ with }
+            u=1\text{ and }\bar v=\theta(1)\\
+        &\iff (u,v)\in G\text{ with } u=1\text{ and }v\in Z(G_2)\\
+        &\implies (u,v)\in G\cap Z=Z(G)
+\intertext{and}
+    (u,v)\in Z_2 &\iff (u,v)\in G\text{ with }
+            v=1\text{ and }\bar u=\theta^{-1}(1)\\
+        &\iff (u,v)\in G\text{ with }
+            v=1 \text{ and } u\in Z(G_1)\\
+        &\implies (u,v)\in G\cap Z=Z(G).
+\end{align*}
+All conditions have bee fulfilled.  \end{solution}
+
+\newpage
+
+
+Let $X=G_1\times G_2$. Note that $X$ is perfect. Write $Z=Z(G_1)\times Z(G_2)$ and $\bar G_i=G_i/Z(G_i)$ for $i=1,2$.
+$$
+    \bar X=X/Z=\bar G_1\times\bar G_2.
+$$
+In particular, $\bar G_i\normal\bar X$ when identified with its image in $\bar G_1\times\bar G_2$. Given that $G_i$ is perfect, so it is $\bar G_i$. Therefore, $\bar X$ is perfect too.
+
+By Exercise~\ref{exercise-1.6.2}, There exists $Z\subgroup D\subgroup X$, with $\bar D=D/Z$ such that
+$$
+    \bar X=\bar D\bar G_1=\bar D\bar G_2
+        \quad{\rm and}\quad
+    \bar D\cap\bar G_1=\bar D\cap\bar G_2=\gen1.
+$$
+In particular,
+$$
+    D/Z = \bar D\cong \bar X/\bar G_1 \cong (\bar G_1\times\bar G_2)/\bar G_1\cong\bar G_2
+$$
+is perfect. By Proposition~\ref{G/abelian-perfect}, $D'$ is perfect. Moreover, since the projection $D\to D/Z$ is an epimorphism, it induces an epimorphism $D'\to (D/Z)'$, which is actually an epimorphism from $D'$ onto $D/Z$ because $D/Z$ is perfect. 
+$$
+    \begin{tikzcd}
+        D'\arrow[r]\arrow[d]\arrow[rrr,bend left]
+            &D\arrow[d]\arrow[r,hook]
+            &X\arrow[r]
+            &G_2\arrow[ld]\\
+        \bar D'\arrow[r,no head,equal]\arrow[d]
+            &\bar D\arrow[r,"\cong"']\arrow[d]
+            &\bar G_2\\
+        1&1
+    \end{tikzcd}
+$$
+$\to\leftarrow$
+
+\newpage
+
+\begin{exr}
+    Let\/ $D$ be a dihedral group with\/ $4<|D|<\infty$. Describe all the subgroups of\/ $D$.
+\end{exr}
+
+\begin{solution} We know that $D=\gen{t,s}$, where $t$ and $s$ are involutions, and that $D=\gen{c}\rtimes\gen t$, where $c$ has order $n=|D|/2>2$. Since $\gen c\cap\gen t=\gen1$, the only nontrivial subgroups that remain are the proper subgroups of $\gen c$ which are characterized by the proper divisors of~$n$.  \end{solution}
+
+\begin{exr}\label{exercise-1.6.9}
+    Let\/ $D$ be a dihedral group with\/ $4<|D|<\infty$. 
+    \begin{enumerate}[\rm a)]
+    \item $|Z(D)| \leq 2$.
+    \item $\gen uZ(D) = \set{x \in D \mid x^u = x}$ for every involution\/ $u \in D \setminus Z(D)$.
+    \item $|D:D'| = 2|Z(D)|$.
+    \item For every involution\/ $u\in D\setminus Z(D)$, there exists an involution\/ $w$ such that\/ $D = \gen{u,w}$.
+    \end{enumerate}
+\end{exr}
+
+\begin{solution} Write $D=\gen{t,c}$, where $t$ is an involution and $c^t=c^{-1}$, $|D|=2n$ and $n=\ord(c)$. Since $u\notin Z(D)$, $u\notin\gen c$ (otherwise, $n$ is even and $u=c^{n/2}\in Z(D)$), i.e., $u=tc^i$.
+\begin{enumerate}[\rm a)]
+    \item If $n$ is odd we know by Exercise~\ref{exercise-1.6.6} that $|Z(D)|=1$. If $n$ is even, the same exercise shows that $c^{n/2}$ is an involution in $Z(D)$. If $z\in Z(D)$, then $z\notin\gen c\cup\gen t$. Therefore, $z=tc^j$ for some $j$ and the same exercise shows that $z=v$.
+    \item If $z\in Z(D)$, we clearly have $(uz)^u=uz$.
+    
+    For the converse, take $x\in D$ satisfying $x^u=x$. There are two cases
+
+    \begin{description}
+        \item[\rm\underline{\vphantom|$x=c^j$}:] Here we have
+    $$
+        c^jtc^i=xu=ux=tc^ic^j=tc^{i+j}
+    $$
+    and so,
+    $$
+        c^{j-i}=c^jtc^it = tc^{i+j}t=c^{-(i+j)},
+    $$
+    which implies $c^{2j}=1$, i.e., $n\mid 2j$. Then $n$ is even and $j=n/2$. Hence, $x=c^{n/2}\in Z(D)\subseteq\gen uZ(D)$.
+
+    \item[\rm\underline{\vphantom|$x=tc^j$}:] In this case, it is
+    $$
+        c^{i-j}= tc^jtc^i = xu=ux=tc^itc^j = c^{j-i}
+    $$
+    and so $n\mid2(i-j)$. If $n\mid i-j$, $c^i=c^j$, i.e., $x=u\in\gen uZ(D)$. Otherwise, $n$ is even and $v=c^{i-j}$ is an involution included in $Z(D)$. Thus,
+    $$
+        x=tc^j=tc^iv=uv\in\gen uZ(D).
+    $$
+    \end{description}
+
+    \item Consider the following identities
+    \begin{align*}
+        [tc^i,tc^j] &= tc^itc^jc^{-i}tc^{-j}t = c^{2(j-i)}\\
+        [tc^i,t] &= tc^itc^{-i}tt = c^{-2i}\\
+        [tc^i,c^j] &= tc^ic^jc^{-i}tc^{-j} = c^{-2j}.
+    \end{align*}
+    These show that $D'=\gen{c^2}$. If $n$ is odd, then $D'=\gen c$ and so $D/D'=\gen t$. In particular, $|D:D'|=2|Z(D)|$. If $n$ is even, $Z(D)=\gen v$, where $v=c^{n/2}$ and $D/D'=\set{1,\bar t,\bar c, \bar v}$.
+
+    \item Fix $u\in D\setminus Z(D)$. If $u=tc^i$, take $w=tc^{i+1}$. First note that $\ord(w)=2$. Second, $uw=c$ and so $\gen{u,w}=\gen{u,c}$, which implies that $|\gen{u,w}|=|D|$.
+\end{enumerate}
+\end{solution}
+
+\begin{exr} Let\/ $D$ be a dihedral group with\/ $4<|D|<\infty$. 
+    Let\/ $Z(D)\ne\gen1$ and\/ $t$ an involution of\/ $G \setminus Z(G)$. The elements in\/ $tZ(D)$ are conjugate in\/ $D$ if, and only if, $8$ is a divisor of\/ $|D|$.
+\end{exr}
+
+\begin{solution} By the previous exercise $D=\gen{t,c}$, where $\ord(c)=n$. Moreover, $n$ is even and $Z(D)=\gen v$, where $v=c^{n/2}$.
+
+Given that $Z(D)\ne\gen1$, $n$ is. Assume that the elements in $tZ(D)$ are conjugate in $D$. In particular,
+$$
+    tv=t^x,
+$$
+for some $x\in D$. Put $|D|=2n$. If $x=tc^i$ with $0\le i<n$, we have
+$$
+    tc^{n/2} = tv = t^{tc^i} = tc^itc^{-i}t = tc^ittc^i = tc^{2i},
+$$
+which implies that $n$ divides $2i-n/2$, i.e., $nq=2i-n/2$. Since $0\le2i<2n$, it follows that $q\in\set{0,1}$. In any case, $4\mid n$, i.e., $8\mid2n=|D|$.
+
+Conversely, if $2n=8k$, we have $n/2=2k$ and
+$$
+    t^{tc^k} = tc^ktc^{-k}t = tc^kttc^k = tc^{2k} = tc^{n/2}=tv.
+$$
+Thus, $t$ and $tv$ are conjugate, as desired.  \end{solution}
+
+\begin{exr} Let\/ $D$ be a dihedral group with\/ $4<|D|<\infty$. 
+    The following statements are equivalent:
+    \begin{enumerate}[\rm a)]
+    \item All involutions are conjugate in\/ $D$.
+    \item $Z(D) = \gen1$.
+    \item There exists an involution\/ $u \in D$ such that\/ $|C_D(u)| = 2$.
+    \item $4 \nmid |D|$.
+    \item $D$ contains a maximal subgroup of odd order.
+    \end{enumerate}
+\end{exr}
+
+\begin{solution} Let $D=\gen{t,s}$ and $c=ts$. If $|D|=2n$ then $\ord(c)=n$.
+
+\begin{enumerate}[\rm a)]
+    \item $\Rightarrow$ b) Otherwise, $n$ is even and $Z(D)=\gen v$ with $v=c^{n/2}$. Since $v$ is an involution we would have $t=v$, which is impossible because $t\notin\gen c$.
+
+    \item $\Rightarrow$ c) Suppose that $c^i\leftrightarrow t$. Then
+    $$
+        c^it=tc^i=c^{-i}t,
+    $$
+    i.e., $c^{2i}=1$, which implies that $nq=2i$ for some $q\in\Z$. Since $2\perp n$, $2\mid q$. Therefore, $n\mid i$ and so $c^i=1$.
+
+    \item $\Rightarrow$ d) If $4\mid|D|$ then $2\mid n$ and so $Z(D)=\gen v$, where $v=c^{n/2}$. By Problem~\ref{exercise-1.6.9}, $v\ne u$ and $\set{1,u,v}\subseteq C_D(u)$.
+
+    \item $\Rightarrow$ e) The cyclic subgroup $\gen c$ has order $n$, which, according to (d), is odd. If $\gen c\subseteq M\subseteq D$ then
+    $$
+        2 := |D:\gen c| = |D:M||M:\gen c|,
+    $$
+    which implies that $M=D$ or $M=\gen c$.
+
+    \item $\Rightarrow$ a) Let $M$ be a maximal subgroup of odd order. In particular, $M$ doesn't contain any involution. Since $D=\gen c\cup t\gen c$ and every element in $t\gen c$ is an involution, we deduce that $M\subseteq\gen c$. Therefore, $M=\gen c$ and $t\gen c$ is the set of all involutions. Thus, the equation
+    $$
+        t^{c^{-i}} = tc^{2i}
+    $$
+    shows that conjugates of $t$ runs on all involutions because $2\perp|M|=\ord(c)$.
+\end{enumerate}
+\end{solution}
+
+\section{Schur-Zassenhaus Theorem}\label{schur-zassenhaus}
+
+Given a group $G$, recall that the commutator of $x,y\in G$ is $[x,y]=xyx^{-1}y^{-1}$. The map $(x,y)\mapsto[x,y]$ satisfies two properties:
+\begin{enumerate}[\rm i)]
+    \item $[\zeta,1]=1$ and
+    \item $[\zeta,xy]=[\zeta,x][\zeta,y]^x$
+\end{enumerate}
+Property i) is trivial. For Property ii) see Proposition~\ref{commutator-props}.
+
+It follows that the map $\varphi(x)=[\zeta,x]$ satisfies
+$$
+    \varphi(xy) = \varphi(x)\varphi(y)^x.
+$$
+This motivates the following
+
+\begin{defn}\label{def:crossed-morphism}
+    Let\/ $G$ be a group and\/ $N\normal G$. A map\/ $\varphi\colon G\to N$ is a \textsl{crossed morphism} if it satisfies
+    $$
+        \varphi(xy)=\varphi(x)\varphi(y)^x
+    $$
+    or more generally, if\/ $G$ and\/ $N$ are arbitrary groups and\/ $G$ acts via automorphisms on\/ $N$ and $\sigma\colon G\to\Aut(N)$ realizes the action,
+    $$
+        \varphi(xy)=\varphi(x)\sigma(x)(\varphi(y)).
+    $$
+    for all\/ $x,y\in G$.
+    The \textsl{kernel} of\/ $\varphi$ is
+    $$
+        \ker(\varphi)=\set{x\in G\mid\varphi(x)=1}.
+    $$
+\end{defn}
+
+\begin{rem}
+    Any morphism\/ $G\to N$ is a crossed morphism for the trivial action of\/ $G$ on\/ $N$, i.e., the action given by\/ $x\cdot y=y$ for all\/ $x\in G$, $y\in N$.
+\end{rem}
+
+\if{false}
+\begin{prop}
+    Any group action of\/ $G$ on\/ $N$ by automorphisms can be seen as a crossed morphism of groups\/ $\varphi\colon G\to\Aut(N)$, where the action is given by conjugation, i.e., $\sigma(x)(\theta)=\varphi(x)\circ\theta\circ\varphi(x)^{-1}$ for\/ $g\in G$ and\/ $\theta\in\Aut(N)$.
+\end{prop}
+
+\begin{proof} Given $x\in G$ and $a\in N$ let $x\cdot a$ denote the action of $G$ on $N$ via automorphisms, i.e., $x\cdot ab = (x\cdot a)(x\cdot b)$. Now define
+\begin{align*}
+    \varphi\colon G&\to\Aut(N)\\
+    x&\mapsto (a\mapsto x\cdot a)
+\end{align*}
+Then
+\begin{align*}
+    \varphi(xy)(a) = xy\cdot a
+        = x\cdot(y\cdot a).
+\end{align*}
+On the other hand
+\begin{align*}
+    \varphi(x)\circ\sigma(x)(\varphi(y))(a) &=
+        \varphi(x)\circ(\varphi(x)\circ\varphi(y)\circ\varphi(x)^{-1})(a)\\
+        &= \varphi(x)(\varphi(x)(\varphi(y)(b))) &&;\ b=\varphi(x)^{-1}(a)\\
+        &= \varphi(x)(\varphi(x)(y\cdot b)))\\
+        &= x\cdot(x\cdot(y\cdot b))\\
+        &= 
+\end{align*}
+\fi
+
+\begin{lem}\label{crossed-morphism-props}
+    Let\/ $G$ and\/ $N$ be groups, and suppose that\/ $G$ acts via automorphisms on\/ $N$. Let\/ $\varphi: G \rightarrow N$ be a crossed morphism with kernel\/ $K$. The following then hold:
+    \begin{enumerate}[\rm a)]
+    \item $\varphi(1) = 1$.
+    \item $K$ is a subgroup of\/ $G$.
+    \item $\varphi(x^{-1})\sigma(x^{-1})(\varphi(x))=1$.
+    \item If\/ $x, y \in G$, then\/ $\varphi(x) = \varphi(y)$ if, and only if, $xK = yK$.
+    \item $|G : K| = |\varphi(G)|$.
+    \end{enumerate}
+\end{lem}
+
+\begin{proof}${}$
+\begin{enumerate}[\rm a)]
+    \item $\varphi(1)=\varphi(1\cdot 1)
+        =\varphi(1)\sigma(1)(\varphi(1))
+        =\varphi(1)\id_N(\varphi(1))
+        =\varphi(1)\varphi(1)$.
+
+    \item Take $x,y\in K$. Then $\varphi(xy)
+        =\varphi(x)\sigma(x)(\varphi(y))
+        =1\cdot\sigma(x)(1)=1\cdot1=1$.
+
+    \item $\varphi(x^{-1})\sigma(x^{-1})(\varphi(x))
+        = \varphi(x^{-1}x)=\varphi(1)=1$.
+
+    \item If $\varphi(x)=\varphi(y)$, then $x^{-1}y\in K$ because
+        \begin{align*}
+            \varphi(x^{-1}y) &= \varphi(x^{-1})\sigma(x^{-1})(\varphi(y))\\
+                &= \varphi(x^{-1})\sigma(x^{-1})(\varphi(x))\\
+                &= 1    &&\text{; part c)}.
+        \end{align*}
+        Conversely, if $x^{-1}y\in K$ then
+        $$
+            \varphi(x^{-1})\sigma(x^{-1})(\varphi(x)) \stackrel{c)}= 1
+                = \varphi(x^{-1}y)
+                = \varphi(x^{-1})\sigma(x^{-1})(\varphi(y)),
+        $$
+        which implies $\varphi(x)=\varphi(y)$ because $\sigma(x^{-1})$ is mono (auto).
+
+    \item Define in $G$ the relation $x\sim y\iff\varphi(x)=\varphi(y)$. By part d), this relation is equivalent to $xK=yK$. Since $K$ is a subgroup by part~b), we deduce that $|G/{\sim}|=|G:K|$. On the other hand, $\varphi$ induces a map $\bar\varphi\colon G/{\sim}\to N$ (the astriction of $\varphi$), which has the same image as $\varphi$ and is injective. Thus $|\varphi(G)|=|\bar\varphi(G/{\sim})|=|G/{\sim}|=|G:K|$.
+\end{enumerate}
+\end{proof}
+
+\begin{defn}
+    Let\/ $G$ be a group and\/ $H$ a subgroup. A subset\/ $T$ of\/ $G$ is a \textsl{traversal} for\/ $H$ if\/ $|T\cap xH|=1$ for all\/ $x\in G$. In other words, $T$ includes exactly one representative of every left coset of\/ $H$ in\/~$G$ {\rm[cf.~Exercise~\ref{exercise-1.1.2}]}. The set of all traversals for\/ $H$ is denoted by\/~$\mathbf T_H$.
+\end{defn}
+
+\begin{ntn}\label{traversal-sigma}
+    Let\/ $N$ be abelian and normal in the finite group\/ $G$. Given two traversals\/ $S$ and\/ $T$ for\/ $N$, let\/ $\sigma_{ST}\colon S\to T$ the only bijection that, for every\/ $s\in S$, selects the only representative in\/ $T$ of the class\/ $\bar s$ of $s$ in\/~$G/N$. Then
+    $$
+        d(S,T)=\prod_{s\in S}s\sigma_{ST}(s)^{-1}.
+    $$
+\end{ntn}
+
+\begin{rem}
+    Since every term $s\sigma_{ST}(s)^{-1}$ belongs in $N$ and $N$ is abelian, there is no ambiguity in the notation above.
+\end{rem}
+
+\begin{lem}\label{d-identities}
+    Let\/ $N$ be an abelian and normal in a finite group\/ $G$, and let\/ $S$, $T$ and\/ $U$ be traversals for\/ $N$. Then using the notation defined above, the following hold:
+    \begin{enumerate}[\rm a)]
+        \item $d(S, T)d(T, U) = d(S, U)$.
+        \item $xS\in\mathbf T_N$ for all\/ $x\in G$.
+        \item $d(xS, xT) = d(S, T)^x$ for all\/ $x \in G$.
+        \item $d(S, y^{-1}S) = y^{|G:N|}$ for all\/ $y \in N$.
+    \end{enumerate}
+\end{lem}
+
+\begin{proof}${}$
+\begin{enumerate}[\rm a)]
+    \item Since $\sigma_{SU}=\sigma_{TU}\circ\sigma_{ST}$, given $s\in S$, we have
+    $$
+        s\sigma_{ST}(s)^{-1}\sigma_{ST}(s)\sigma_{TU}(\sigma_{ST}(s))^{-1} = s\sigma_{SU}(s)^{-1},
+    $$
+    which implies the desired equality.
+
+    \item Given $x,w\in G$ and $s\in S$, we have
+    $$
+        |xS\cap wN|=|S\cap x^{-1}wN|=1.
+    $$
+
+    \item Take $x\in G$. Given $s\in S$, it is $\sigma_{xS,xT}(xs)=x\sigma_{ST}(s)$. Then
+    $$
+        xs\sigma_{xS,xT}(xs)^{-1} = xs\sigma_{ST}(s)^{-1}x^{-1} = (s\sigma_{ST}(s)^{-1})^x
+    $$
+    and the equality follows.
+
+    \item Take $y\in N$ and $s\in S$. Then $\sigma_{S,yS}(s)=ys$ and so
+    $$
+        s\sigma_{S,y^{-1}S}(s)^{-1}=s(y^{-1}s)^{-1}=ss^{-1}y=y,
+    $$
+    which renders evident the conclusion.
+\end{enumerate}
+\end{proof}
+
+For an introduction to solvable groups see Definition~\ref{solvable-defn} 
+
+\begin{rem}
+    If\/ $\varphi\colon G\to H$ is an epimorphism of arbitrary groups then\/ $\varphi(G')=H'$ and, inductively, $\varphi\big(G^{(r)}\big) = H^{(r)}$ for all\/ $r>0$.
+\end{rem}
+
+\medskip
+Recall that an abelian $p$-group is elementary abelian if all its elements satisfy the equation $x^p=1$.
+
+\begin{lem}\label{solvable-minimal-normal}
+    Let\/ $M$ be a solvable minimal normal subgroup of an arbitrary group\/ $G$. Then\/ $M$ is abelian, and if\/ $M$ has some element of finite order (for instance, if $M$ is finite), it is an elementary abelian\/ $p$-group for some prime\/ $p$.
+\end{lem}
+
+\begin{proof} Since minimal normal subgroups are nontrivial, we know that $M\ne\gen1$  [cf.~Definition~\ref{socle-defn}]. Then, the solvability of $M$ implies $M'\varsubsetneq M$ [cf.~Proposition~\ref{solvable-equals-finite-derivatives}]. Since $M'\normal G$ because $M'\ch M\normal_m G$, we deduce that $M'=1$, i.e., $M$ is abelian.
+
+If there exists some element of finite order, there must exist an element $y$ of order $p$ for some prime $p$. Consider the set $M_p=\set{x\in M\mid x^p=1}$, which is actually a subgroup because $M$ is abelian. It is also nontrivial because $y\in M_p$. Moreover $M_p$ is clearly characteristic in $M$. Hence, $\gen1\varsubsetneq M_p\ch M\normal_m G$ and so $M=M_p$, elementary abelian.  \end{proof}
+
+
+\begin{thm}\label{schur-zassenhaus-thm}{\rm [Schur-Zassenhaus]}
+    Let\/ $N\normal G$, where\/ $G$ is a finite group, and assume that\/ $|N|\perp|G:N|$. Then\/ $N$ is complemented in\/ $G$. Moreover, if\/ $N$ or $G/N$ is solvable, all its complements are conjugate.
+\end{thm}
+
+\begin{proof} The proof is divided in four cases
+
+    \textbf{Abelian case.} Here we assume that $N$ is abelian. Let $\mathbf T_N$ be the set of traversals for $N$ in $G$. Fix $T\in\mathbf T_N$ and define
+    \begin{align*}
+        \theta\colon G&\to N\\
+        x&\mapsto d(T,xT).
+    \end{align*}
+    We claim that $\theta$ is a crossed morphism with respect to the conjugation of $G$ on $N$. Indeed, according to Lemma~\ref{d-identities}. Indeed,
+    \begin{align*}
+        \theta(xy) &= d(T,xyT)\\
+            &= d(T,xT)d(xT,xyT) &&\text{; part (a)}\\
+            &= d(T,xT)d(T,yT)^x &&\text{; part (c)}\\
+            &= \theta(x)\sigma_x(\theta(y)).
+    \end{align*}    
+    Since $\theta(y^{-1})=y^{|G:N|}$ for $y\in N$ (part (d) of said lemma) and $|G:N|\perp|N|$, $\theta$ is a retraction with section $y\mapsto y^{-k}$, where $k$ is the inverse of $|G:N|$ in $\Z_{|N|}$,
+    $$
+        y\mapsto y^{-k}\mapsto\theta(y^{-k})=(y^k)^{|G:N|}= y^{1+q|N|}=y.
+    $$
+    In particular, $\theta(N)=N$. Consequently, $\theta(G)=N$. By Lemma~\ref{crossed-morphism-props} it follows that $K=\ker(\theta)$ is a subgroup that satisfies $|G:K|=|\theta(G)|=|N|$, i.e., $|K|=|G:N|$. Thus, $|K|\perp|N|$ and so we have $K\cap N=\gen1$. Moreover, $KN=G$, i.e., $K$ is a complement for~$N$.
+    
+    Take any other complement $H$ of $N$. We have to prove that $H$ and $K$ are conjugate. Since $H\cap N=\gen1$, two different elements in $H$ have different classes in $G/N$, i.e., $|H\cap xN|\le1$ for all $x\in G$. And since $|H|=|G/N|$, equality must be attained everywhere. It follows that $H\in\mathbf T_N$.
+    
+    Put $z=d(H,T)$. Then $z\in N=\theta(N)$ and so we can pick $y\in N$ satisfying $y^{|G:N|}=\theta(y)=z$. To show that $H^y=K$, by cardinality, it is enough to show that $H^y\subseteq K$, i.e., $\theta(H^y)=\gen1$. But, for $w\in H$, we have
+    \begin{align*}
+        \theta(w^y) &= \theta(ywy^{-1})\\
+            &= \theta(y)\theta(wy^{-1})^y\\
+            &= z\theta(wy^{-1})   &&\text{; $N$ abelian}\\
+            &= z\theta(w)\theta(y^{-1})^w\\
+            &= z\theta(w)\big(y^{-|G:N|}\big)^w\\
+            &= z\theta(w)(z^{-1})^w &&\text{; }y^{|G:N|}=z\\
+            &= (z^w)^{-1}d(H,T)d(T,wT)  &&\text{; $N$ abelian}\\
+            &= (z^w)^{-1}d(H,wT)    &&\text{; Lem.~\ref{d-identities}}\\
+            &= (z^w)^{-1}d(wH,wT)   &&\text{; }w\in H\\
+            &= (z^w)^{-1}d(H,T)^w    &&\text{; Lem.~\ref{d-identities}}\\
+            &= (z^w)^{-1}z^w\\
+            &= 1,
+    \end{align*}
+    as desired.
+
+    \textbf{General case.} Here we prove that $N$ has at least one complement. Afterwards we will see the question about conjugate complements.
+    
+    The proof works by induction on $|G|$. First suppose that $G=NK$ for some proper subgroup $K$ of $G$. Since $|K:K\cap N|=|G:N|\perp|N|$, we obtain $|K:K\cap N|\perp|K\cap N|$. Moreover, $K\cap N\normal K$ and so the induction hypothesis implies that $K\cap N$ has a complement $H$. Then $|H|=|K:K\cap N|=|G:N|$. It follows that $H\cap N=\gen1$ because $|H|\perp|N|$ and that $NH=G$ because $|NH|=|G|$.
+    
+    Now we have to consider the case where such a subgroup $K$ doesn't exist, i.e., $N$ is included in every maximal subgroup of $G$. In other words, $N\subseteq\Phi(G)$, the Frattini subgroup. In particular, $N$ is nilpotent. Also, since the case $N=\gen1$ is trivial, we may assume that $N\ne\gen1$. According to Proposition~\ref{nilpotent-center-series}, $Z=Z(N)$ is nontrivial. Moreover $Z\normal G$ because $Z\ch N\normal G$. We can apply the induction hypothesis to $\bar G=G/Z$ and $\bar N=N/Z$ because $|\bar N|\mid|N|$ with $N\perp|G:N|=|\bar G:\bar N|$ and $\bar N\normal\bar G$. Let $H\supseteq N$ be a subgroup such that $\bar H=H/Z$ is a complement for $\bar N$ in $\bar G$. Since $\bar N\bar H=\bar G$, it follows that $NH=G$, i.e., $H=G$. But $\bar H\cap\bar N=\gen1$ and so $\bar N=\bar G\cap\bar N=\bar H\cap \bar N=\gen1$, which implies that $N=Z$, which leads us back to the abelian case.
+
+    In the following two cases, we will prove that all complements of $N$ are conjugate. Fix two complements $H$ and $K$ for $N$ and suppose they are not conjugate.
+
+    \textbf{Claim 1:} \textit{$H,K\subseteq J\implies J=G$.}
+
+    Suppose, toward a contradiction, that $J\varsubsetneq G$. Note that $J\subseteq(J\cap N)H$ because $G=NH$ and $H\subseteq J$. Since the other inclusion is evident, it follows that $J=(J\cap N)H$. Therefore, $H$ is a complement for $J\cap N$ in $J$. In addition, $|J\cap N|\perp|J:J\cap N|$ because $|J:J\cap N|=|JN:N|\mid|G:N|$ and $|J\cap N|$ divides $|N|$. Also, the solvability of $N$ (resp.~$G/N$) implies the solvability of $J\cap N$ (resp.~$J/J\cap N=JN/N$). But these very same arguments are also valid for $K$ and so the inductive hypothesis on $|G|$ implies that $H$ and $K$ are conjugate in $J$, hence in $G$, which they aren't. Contradiction.
+
+    \textbf{Claim 2:} \textit{$\gen1\ne L\normal G\implies LH=LK=G$.}
+
+    Consider $LH/L$ and $LN/L$ in $G/L$. First observe that $|LH/L|\mid|H|$ and $|LN/L|\mid|N|$ and so $|LH/L|\perp|LN/L|$. In particular $(LH/L)\cap(LN/L)=\gen1$. Moreover, $(LH/L)(LN/L)=LHN/L=G/L$. Thus, $LH/L$ is a complement for $LN/L$ in $G/L$. In addition, the solvability of $N$ (resp.~$G/N$) implies the solvability of $LN/L$ (resp.~$(G/L)/(LN/L)=G/LN=(G/N)/(LN/N)$). Since the same happens for $K$, we can use the induction hypothesis for $G/L$ and deduce that $LH/L$ and $LK/L$ are conjugate in $G/L$. It follows that $LH=LK^x$ for some $x\in G$. By Claim~1 applied to $J=LH$ we deduce that $LH=G$. Thus, $LK^x=G$ too and so $LK=G$, as claimed.
+
+    \medskip
+
+    \textbf{Solvable quotient.} Here we assume that $\bar G=G/N$ is solvable and prove that the complements of $N$ are conjugate. We may further assume that $N\varsubsetneq G$. Let $\bar M=M/N\normal_m\bar G$. Then $\bar M$ is solvable and, by Lemma~\ref{solvable-minimal-normal}, $\bar M$ is a $p$-group for some prime number $p$. Note that $p\perp|N|$ because $p\mid |G:N|$.
+
+    Given that $G=NH$ and $N\subseteq M$, we deduce that $M=N(M\cap H)$. In consequence, $M\cap H$ complements $N$ in $M$. In particular, $|M\cap H|=|M:N|$, which shows that $M\cap H$ is also a $p$-group. Since $p\nmid|M:M\cap H|$ because $|M:M\cap H|=|M|/|M\cap H|=|M|/(|M||N|)=|N|$, $M\cap H$ is a Sylow $p$-group of $M$. Since this is valid for every complement $H$, any other complement $K$ will satisfy $M\cap H=(M\cap K)^z$ for some $z\in M$.
+    
+    Write $L=M\cap H=(M\cap K)^z=M\cap K^z$. Then $L\normal H$ and $L\normal K^z$. Thus, $H, K^z\subseteq N_G(L)$ and Claim~1 above implies that $N_G(L)=G$, i.e., $L\normal G$. Now Claim~2 implies $LH=LK=G$. But $L\subseteq H$ and so $H=G$. Thus $N=\gen1$ and the result follows.
+    
+    
+    \textbf{Solvable normal.} Here we assume that $N$ is solvable and prove that its complements are conjugate. Let $M\subseteq N$ be such that $M\normal_m G$. Then $M$ is solvable and abelian by Lemma~\ref{solvable-minimal-normal}. According to Claim~2, $MH=MK=G$. By cardinality $N=M$, which leads us back to the abelian case.  \end{proof} 
+
+\begin{thm}\label{gaschütz} {\rm[Gaschütz's Theorem]} Let\/ $N$ be an abelian normal subgroup of\/ $G$ and\/ $L$ a subgroup of\/ $G$ such that\/ $N\subseteq L$ and\/ $|N|\perp|G:L|$.
+    \begin{enumerate}[\rm a)]
+    \item Suppose that\/ $N$ has a complement in\/ $L$. Then\/ $N$ has a complement in\/~$G$.
+    \item If\/ $H_0$ and\/ $H_1$ are two complements of\/ $N$ in\/ $G$ with\/ $H_0 \cap L = H_1 \cap L$, then\/ $H_0$ and\/ $H_1$ are conjugate in\/ $G$.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}${}$
+\begin{enumerate}[\rm a)]
+    \item Let $C$ be a complement of $N$ in $L$, i.e., $NC=L$ and $N\cap C=\gen1$. Let $\mathbf T_L$ denote the set of left traversals for $L$ in $G$. Fix $T\in\mathbf T_L$. Then, given a traversal $S\in\mathbf T_L$ and an element $s\in S$, we can write
+    \begin{align}\label{eq.g1}
+        s = \sigma_{ST}(s)y_sc_s,  &&\text{with }y_s\in N,\;c_s\in C.
+    \end{align}
+    Now suppose that $s=t_1y_1c_1=t_2y_2c_2$ are two factorizations of $s$ in $TNC$. Then $t_i=s(y_ic_i)^{-1}$ is the only element of $T\cap sL$ and so $t_1=t_2$. Thus, $y_1c_1=y_2c_2$, which implies $y_1=y_2$ and $c_1=c_2$. This proves that the factorization $s=tyc$ in $TNC$ is determined by $s$, with $t=\sigma_{ST}(s)$. In particular, we can define
+    \begin{align}\label{eq.g2}
+        \theta_{ST}\colon S&\to TN\\
+        s&\mapsto\sigma_{ST}(s)y_s,\nonumber
+    \end{align}
+    which is characterized by the property
+    \begin{equation}\label{eq.g3}
+        s=tyc\in TNC \iff \sigma_{ST}(s)=t,\;\theta_{ST}(s)=ty \text{ and }s=\theta_{ST}(s)c.\tag{\text{$\dag$}}
+    \end{equation}
+    In particular, $\theta_{ST}$ is an injection. We now define\footnote{In our visualization of traversals in the plane, paint in green the coclasses $tN$ for $t\in T$. The elements of $\mathcal G$ are the traversal curves that lay inside the green zone.}
+    $$
+        \mathcal G = \set{S\in\mathbf T_L\mid S\subseteq TN}.
+    $$
+    \textbf{Fact 1:} $\im(\theta_{ST})\in\mathcal G$.
+    
+    {\small
+    \begin{enumerate}
+        \item[$\to$]
+    Given $x\in G$, we have to show that $|\im(\theta_{ST})\cap xL|=1$. Let $s\in S$ be the only element of $xL$. Write $s=xyc\in xNC$. The equation $s=\theta_{ST}(s)c_s$, where $c_s\in C$, implies that
+    $$
+        \theta_{ST}(s)=xycc_s^{-1}\in\im(\theta_{ST})\cap xL,
+    $$
+    which shows that the intersection is not empty. Now suppose that
+    $$
+        \theta_{ST}(s_1)=xy_1c_1\in \im(\theta_{ST})\cap xNC.
+    $$
+    It follows that
+    $$
+        \sigma_{ST}(s_1) = \theta_{ST}(s_1)y_1^{-1}=xy_1c_1y_1^{-1}\in T\cap xL.
+    $$
+    Since $\sigma_{ST}(s)=\theta_{ST}(s)y_s^{-1}\in T\cap xL$, we must have $\sigma_{ST}(s_1)=\sigma_{ST}(s)$. Hence, $s_1=s$ and $\theta_{ST}(s_1)=\theta_{ST}(s)$.
+    \end{enumerate}
+    }
+
+    \textbf{Fact 2:} $SC=\im(\theta_{ST})C$
+    
+    {\small
+    \begin{enumerate}
+        \item[$\to$]
+        Take $s\in S$ and $c\in C$.
+        \begin{description}
+            \item[$\subseteq\colon$] $sc = \theta_{ST}(s)c_sc \in\im(\theta_{ST})C$.
+            \item[$\supseteq\colon$] $\theta_{ST}(s)c = sc_s^{-1}c \in SC$.
+        \end{description}
+    \end{enumerate}
+    }
+    
+    \needspace{3\baselineskip}
+    \textbf{Fact 3:} $S\in\mathcal G\iff \theta_{ST}(s)=s$ for all $s\in S$.
+
+    {\small
+    \begin{enumerate}
+        \item[$\to$]
+        \begin{description}
+            \item[$\Rightarrow)$] Take $s\in S\subseteq TN$. Then, $s=ty$ and $(\ref{eq.g3})$ implies $t=\sigma_{ST}(s)$, $y_s=y$ and $c_s=1$, i.e., $s=\theta_{ST}(s)$.
+            
+            \item[$\Leftarrow)$] Trivial after Fact~1.
+    
+        \end{description}
+    \end{enumerate}
+    }
+
+    \textbf{Fact 4:} $SC=RC$ with $R\in\mathcal G\implies R=\im(\theta_{ST})$
+    
+    {\small
+    \begin{enumerate}
+        \item[$\to$]
+        \begin{description}
+        \item[$\subseteq\colon$] Take $r\in R$. Since $R\subseteq TN$ we can write $r=ty$. Additionally, $r=sc\in SC$. Then $s=tyc^{-1}$ which, according to~$(\ref{eq.g3})$, implies $\theta_{ST}(s)=ty=r$.
+        
+        \item[$\supseteq\colon$] Take $s\in S$. Then, $\theta_{ST}(s)=sc_s^{-1}\in SC=RC$. Thus, $\theta_{ST}(s)=rc$ in~$RC$. Write $r=ty\in TN$. Then, $\theta_{ST}(s)=tyc$ which implies $c=1$ by~$(\ref{eq.g3})$. In consequence, $\theta_{ST}(s)=ty=r\in R$.
+        \end{description}
+    \end{enumerate}
+    }
+
+    \textbf{Fact 5:} $S\in\mathbf T_L\implies \im(\theta_{xS,T})=\im(\theta_{x\im(\theta_{ST}),T})$
+
+
+    {\small
+    \begin{enumerate}
+        \item[$\to$]
+        %Recall from Lemma~\ref{d-identities} that if $S\in\mathbf T_L$ and $x\in G$, then $xS\in\mathbf T_L$.
+        \begin{align*}
+            \im(\theta_{xS,T})C &= xSC  &&\text{; Fact 2}\\
+                &= x\im(\theta_{ST})C   &&\text{; Idem}\\
+                &= \im(\theta_{x\im(\theta_{ST}),T})C   &&\text{; Idem}
+        \end{align*}
+        and the equation follows from Fact~1 and Fact~4.
+    \end{enumerate}
+    }
+
+    \medskip
+    
+    Let's now introduce the following notation. Given $x\in G$ and $S\in\mathbf T_L$ define\footnote{In our visualization the action uses elements of $C$ to displace $xS$ to the green zone.}
+    $$
+        x\ast S = \im(\theta_{xS,T}).
+    $$
+
+    \medskip
+    
+    \needspace{3\baselineskip}
+    \textbf{Fact 6:} $x\ast(y\ast S) = xy\ast S$
+
+    {\small
+        \begin{enumerate}
+        \item[$\to$]
+        \begin{align*}
+                x\ast(y\ast S) &= x\ast\im(\theta_{yS,T})\\
+                    &= \im(\theta_{x\im(\theta_{yS,T}),T})\\
+                    &= \im(\theta_{xyS,T})   &&\text{; Fact 5}\\
+                    &= xy\ast S.
+        \end{align*}
+    \end{enumerate}
+    }
+
+    \textbf{Fact 7:} $y\in N$ and $S\in\mathcal G\implies y\ast S=yS$.
+
+    {\small
+    \begin{enumerate}
+        \item[$\to$]
+        Since $yS\subseteq yTN=yNT=NT=TN$, we see that $yS\in\mathcal G$. Thus
+        $$
+            y\ast S = \im(\theta_{yS,T}) = yS
+        $$
+        by Fact 3.
+        \end{enumerate}
+    }
+    
+    \textbf{Fact 8:} The map $x\mapsto x\ast S$ defines an action of $G$ on $\mathcal G$
+    
+    {\small
+    \begin{enumerate}
+        \item[$\to$]
+        In view of Fact~6 we only need to verify that $1\ast S=S$. But this is a direct consequence of Fact~7 because $1\in N$.
+    \end{enumerate}
+    }
+    
+    \medskip
+    
+    Given $S,R\in\mathcal G$, let's introduce the relation
+    \begin{align*}
+        s\simeq r&\iff sr^{-1}\in N    &&(s\in S,\;r\in R)
+    \end{align*}
+    
+    \medskip
+    
+    \textbf{Fact 9:} Given $S, R\in\mathcal G$, we have
+        \begin{align*}
+            s\simeq r&\iff\sigma_{ST}(s)=\sigma_{RT}(r)\iff\sigma_{SR}(s)=r &&(s\in S,\;r\in R)
+        \end{align*}
+    {\small
+    \begin{enumerate}
+        \item[$\to$]
+        Put $s=t_sy_s$ and $r=t_ry_r$. Then
+        $$
+            sr^{-1} = t_sy_sy_r^{-1}t_r^{-1} = (y_sy_r^{-1})^{t_s}t_st_r^{-1}.
+        $$
+        Therefore, $s\simeq r\iff t_st_r^{-1}\in N\iff t_s\in Nt_r=t_rN\iff t_s=t_r$. Hence, the first equivalence. For the second observe that $s\in rN\iff s\in L$ because of the unique decomposition~$(\ref{eq.g3})$.
+    \end{enumerate}
+    }
+
+    \medskip
+    
+    Given $S,R\in\mathcal G$, we introduce
+    $$
+        d(S,R) = \prod_{s\in S}s\sigma_{SR}(s)^{-1},
+    $$
+    where the product is well-defined by Fact~9 because $N$ is abelian.\footnote{With an additive notation $d$ would correspond to the sum (or integral) of all local differences between $S$ and $R$ at every coclass.} We extend the definition of $d$ to $\mathbf T_L\times\mathbf T_L$ as\footnote{In the general case, we first displace $S$ and $R$ to the green zone, and then integrate the differences.}
+    $$
+        d(S,R) = d(1\ast S,1\ast R)
+            = d(\im(\theta_{ST}),\im(\theta_{RT})).
+    $$
+
+    \textbf{Fact~10:} Given $S,R\in\mathbf T_L$ and $x\in G$, we have 
+    $$
+        d(xS,xR) = d(x\ast(1\ast S),x\ast(1\ast R))
+    $$
+    {\small
+    \begin{enumerate}
+        \item[$\to$]
+        \begin{align*}
+            d(xS,xR) &= d(\im(\theta_{xS,T}),\im(\theta_{xR,T}))
+                    &&\text{; def.~of $d$}\\
+                &= d(x\ast S,x\ast R)
+                    &&\text{; def.~of `$\ast$'}\\
+                &= d(x\ast(1\ast S),x\ast(1\ast R))
+                    &&\text{; Fact 8)}
+        \end{align*}
+    \end{enumerate}
+    }
+
+    \medskip
+    
+    \needspace{3\baselineskip}
+    We will next prove the following properties\footnote{Observe how the interpretation of $d$ as an integral matches the properties.}, where $S,R,Q\in\mathbf T_L$:
+    \begin{enumerate}[i)]
+        \item $d(R,S)^{-1} = d(S,R)$
+        \item $d(S,R)d(R,Q) = d(S,Q)$
+        \item $d(yS,R) = y^{|G:L|}d(S,R)$, $y\in N$
+        \item $d(xS,xR) = d(S,R)^x$, $x\in G$
+        \item The map $\alpha\colon N\to N$ defined as $\alpha(y)=y^{-|G:L|}$ is an automorphism and $d(yS,R) = 1$ for $y = \alpha^{-1}(d(S,R))$
+        \item If $y\in N$ and $d(S,R)=d(yS,R) = 1$, then $y = 1$
+    \end{enumerate}
+    {\small
+    \textsc{Proof}
+    \begin{enumerate}[i)]
+        \item Trivial.
+
+        \item Firstly assume that $S,R,Q\in\mathcal G$.
+        
+        If $sr^{-1}\in N$ and $rq^{-1}\in N$, then $sq^{-1}=(sr^{-1})(rq^{-1})\in N$.
+            
+        If $s\simeq q$, by Fact~9 we can write $s=ty_s$ and $q=ty_q$. Take $r=\sigma_{RT}^{-1}(t)$. Then $\sigma_{RT}(r)=t$ and so $s\simeq q\simeq r$ by Fact~9.
+
+        For the general case,
+        $$
+            d(S,R)d(R,Q)=d(1\ast S,1\ast R)d(1\ast R,1\ast Q)
+                = d(1\ast S,1\ast Q) = d(S,Q).
+        $$
+
+        \item Take $y\in N$. Assume first that $S,R\in\mathcal G$. Then
+        $$
+            yS \subseteq yTN = NyT= NT= TN,
+        $$
+        i.e., $yS\in\mathcal G$. Thus,
+        $$
+            d(yS,R)=\prod_{ys\in S} ys\sigma_{SR}(ys)^{-1}
+                = y^{|S|}\prod_{s\in S}s\sigma_{SR}(s)^{-1},
+        $$
+        where the second equality holds because, by Fact~9, $\sigma_{SR}(ys)=\sigma_{SR}(s)$. The conclusion follows since $|S|=|G:L|$.
+
+        For the general case observe that, by Fact~7,
+        $$
+            y\im(\theta_{ST})=\im(\theta_{yS,T})
+        $$
+        Thus,
+        \begin{align*}
+            d(yS,R) &= d(y\im(\theta_{ST}),\im(\theta_{RT}))\\
+                &= y^{|G:L|}d(\im(\theta_{ST}),\im(\theta_{RT}))
+                    &&\text{; prev.~case}\\
+                &= y^{|G:L|}d(S,R).
+        \end{align*}
+
+        \item Take $x\in G$. Given $S,R\in\mathbf T_L$, according to Fact~10, we have,
+        $$
+            d(xS,xR) = d(x\ast(1\ast S),x\ast(1\ast R))
+                = d(x(1\ast S),x(1\ast R)),
+        $$
+        which takes us to the case $S,R\in\mathcal G$. Fix $s\in S$. Then $xs=\theta_{xS,T}(xs)c_{xs}$. Similarly, $xr=\theta_{sR,T}(xr)c_{xr}$. Then
+        $$
+            \theta_{xS,T}(xs)\theta_{xR,T}(xr)^{-1}
+                = \sigma_{xS,T}(xs)y_{xs}y_{xr}^{-1}\sigma_{xR,T}(xr)^{-1}.
+        $$
+        Add the condition $xs\simeq xr$. Since $N\normal G$ this implies $s\simeq r$. By Fact~9, we get $s=ty_s$ and $r=ty_r$ for some $t\in T$. If $\tau$ is the common value of $\sigma_{xS,T}(xs)$ and $\sigma_{xR,T}(xr)$, we have,
+        $$
+            xty_s= xs =\tau y_{xs}c_{xs}\quad\text{and}
+                \quad xty_r = xr = \tau y_{xr}c_{xr},
+        $$
+        hence,
+        \begin{align*}
+            \theta_{xS,T}(xs)\theta_{xR,T}(xr)^{-1}
+                &=\tau y_{xs}(\tau y_{xr})^{-1}\\
+                &= xty_sc_{xs}^{-1}c_{xr}y_r^{-1}t^{-1}x^{-1}\\
+                &= (y_sc_{xs}^{-1}c_{xr}y_r^{-1})^{xt}.
+        \end{align*}
+        It follows that $c_{xs}^{-1}c_{xr}\in N\cap C=\gen1$. Therefore,
+        \begin{align*}
+            \theta_{xS,T}(xs)\theta_{xR,T}(xr)^{-1}
+                &=\tau y_{xs}(\tau y_xr)^{-1}\\
+                &= xsc_{xs}^{-1}c_{xr}r^{-1}x^{-1}\\
+                &= (sr^{-1})^x.
+        \end{align*}
+        The conclusion is now a direct consequence of the definition.
+        
+        \item The map is a morphism because $N$ is abelian. It is an automorphism because $|G:L|\perp|N|$. For $y=\alpha^{-1}(d(S,R))$ we have
+        $$
+            d(yS,R) = y^{|G:L|}d(S,R)
+                = \alpha(y)^{-1}d(S,R)
+                =d(S,R)^{-1}d(S,R)=1.
+        $$
+
+        \item If $d(S,R)=d(yS,R)=1$ then
+        $$
+            1 = d(yS,R) = y^{|G:L|}d(S,R) = y^{|G:L|} = \alpha(y^{-1}).
+        $$
+    \end{enumerate}
+    }
+    \medskip
+    Let's now introduce the relation `$\sim$' in $\mathbf T_L$ defined by\footnote{This equivalence corresponds to the idea of total balance in that local differences between both traversals cancel out in the sum.}
+    \begin{equation}\label{eq.g.rel}
+        S\sim R\iff d(S,R)=1,
+    \end{equation}
+    which is clearly reflexive and then an equivalence as shown by properties~i) and~ii). Put $\widebar{\mathbf T}_L=\mathbf T_L/{\sim}$ and let $\varphi\colon\mathbf T_L\to\widebar{\mathbf T}_L$ be the projection onto the quotient. Note that Property~iv) implies that
+    $$
+        S\sim R\implies \varphi(xS) = \varphi(xR).
+    $$
+    Then $x\cdot\varphi(S)=\varphi(xS)$ defines an action of $G$ on~$\widebar{\mathbf T}_L$. Moreover, since Fact~10) implies
+    $$
+        d(xS,x\ast S) = 1,
+    $$
+    the natural inclusion $\widebar{\mathcal G}=\mathcal G/{\sim}\hookrightarrow\widebar{\mathbf T}_L$ is onto. In other words, $\im(\varphi)=\widebar{\mathcal G}$ and so $G$ acts on $\widebar{\mathcal G}$. In particular, $\varphi(xS)=\varphi(x\ast S)$.
+    
+    According to~v) if $\alpha(y)=d(S,R)$ then $y\cdot\varphi(S)=\varphi(R)$. In particular, $N$ acts transitively on $\widebar{\mathcal G}$. Moreover, every $N$-stabilizer is trivial:
+    \begin{equation}\label{eq.gstab}
+        N_{\varphi(S)} = \set{y\in N\mid \varphi(yS)=\varphi(S)}=\gen1
+            \tag{\text{$\ddagger$}}
+    \end{equation}
+    because
+    $$
+        \varphi(yS)=\varphi(S)\iff d(yS,S)=1\stackrel{vi)}\implies y=1.
+    $$
+    We can now invoke the Frattini Argument $(\ref{frattini-argument-2})$ to conclude that $G_{\varphi(S)}$ is a complement of $N$ in $G$.
+
+    \item Let's first observe that, if $H$ is a complement of $N$ in $G$ then, according to the Dedekind Identity~$(\ref{dedekind})$, $L\cap H$ is a complement of $N$ in $L$. 
+
+    Let $S$ be a traversal for $L\cap H$ in $H$. Given $x\in G$, write it as $x=hy$. Then
+    $$
+        S\cap xL = S\cap hyL = S\cap hL = S\cap h(L\cap H)
+    $$
+    because $S\subseteq H$. In particular, $|S\cap xL|=1$ and so $S$ is a traversal for~$L$ in~$G$.\footnote{Of course, $|S|=|H:L\cap H|=|HL:L|=|HK:L|=|G:L|$.}
+    
+    Take $H_0$ and $H_1$ as the theorem statement and put
+    $$
+        C=L\cap H_0=L\cap H_1.
+    $$
+    Then $C$ is a complement of $N$ in $L$.
+    
+    Fix a traversal $T$ for $C$ in $H_0$ and define, as in part~a)
+    $$
+        \mathcal G = \set{S\in\mathbf T_L\mid S\subseteq TN}.
+    $$
+    As shown above, $T$ is a traversal for $L$ in $G$.
+    
+    Define
+    $$
+        T_1 = TN\cap H_1.
+    $$
+    Given $w\in H_1$ we have
+    $$
+        T_1\cap wC = TN\cap H_1\cap wC = TN\cap wC.
+    $$
+    But $|TN\cap wC|=|T\cap wL|$ because
+    $$
+        ty=wc \iff t=wcy^{-1}\iff t\in T\cap wL
+    $$
+    and the decomposition $w=tyc^{-1}$ is unique. It follows that $T_1$ is a traversal for $C$ in $H_1$, hence a traversal for $L$ in $G$. Since $T_1\subseteq TN$, we deduce that $T_1\in\mathcal G$.
+
+    \medskip
+
+    \needspace{3\baselineskip}
+    \textbf{Fact 11:} $S\in\mathbf T_L$, $S\subseteq H_0\implies\im(\theta_{ST})=T$
+
+    {\small
+    \begin{enumerate}
+        \item[$\to$] Take $s\in S$. Write $s=t_sy_sc_s$ with $t_s\in T$. Then $y_s=t_s^{-1}sc_s^{-1}\in H_0$, which implies $y_s=1$. Thus $\theta_{ST}(s) = t_s\in T$. In consequence, $\im(\theta_{ST})\subseteq T$. Equality is attained because both sets have the same cardinality.
+    \end{enumerate}
+    }
+
+    \textbf{Fact 12:} $R\in\mathbf T_L$, $R\subseteq H_1\implies\im(\theta_{RT})=T_1$
+
+    {\small
+    \begin{enumerate}
+        \item[$\to$] Take $r\in R$ and write it as $r=\tau u$ with $\tau\in T_1\subseteq H_1$ and $u\in L$. Then $u=\tau^{-1}r\in L\cap H_1=C$. Since $T_1\subseteq TN$, we get $\theta_{RT}(r)=\tau\in T_1$. Thus, $\im(\theta_{RT})=T_1$.
+    \end{enumerate}
+    }
+
+    \medskip
+    
+    The projection $\varphi\colon \mathbf T_L\to \widebar{\mathcal G}$ induces the action of $G$ on $\widebar{\mathcal G}$
+    $$
+        x\cdot\varphi(S) = \varphi(xS) = \varphi(x\ast S).
+    $$
+    
+    Applying Fact~11 to $S=xT$ for $x\in H_0$, we get $x\cdot\varphi(T)=\varphi(T)$, i.e., $x\in G_{\varphi(T)}$. In consequence $H_0\subseteq G_{\varphi(T)}$.
+
+    Similarly, Fact~12 applied to $R=x_1T_1$ for $x_1\in H_1$ implies $H_1\subseteq G_{\varphi(T_1)}$.
+
+    Taking into account that $N$ (an therefore $G$) acts transitively on $\widebar{\mathcal G}$ and that $N_{\varphi(T)}=\gen1$ $(\ref{eq.gstab})$, the Fundamental Counting Principle implies
+    $$
+        |\widebar{\mathcal G}|=|\mathcal O_{\varphi(T)}|=|N:N_{\varphi(T)}|=|N|=|G:H_0|.
+    $$
+    In addition,
+    $$
+        |\widebar{\mathcal G}| = |\mathcal O_{\varphi(T)}|=|G:G_\varphi(T)|.
+    $$
+    Hence $H_0=G_{\varphi(T)}$. Invoking again the transitivity of $N$ on $\widebar{\mathcal G}$, we can pick $y\in N$ such that
+    $$
+        y\cdot\varphi(T)=\varphi(T_1).
+    $$
+    Then Lemma~\ref{stabilizer-conjugate} implies that
+    $$
+        H_1\subseteq G_{\varphi(T_1)} = G_{y\cdot\varphi(T)} = G_{\varphi(T)}^y = H_0^y
+    $$
+    and equality is attained because $|H_1|=|H_0|$.
+\end{enumerate}
+\end{proof}
+
+\subsection{Problems B}
+
+\begin{probl}\label{problem-3.B.1}
+    Show that a maximal subgroup of a finite solvable group must have prime power index.
+    
+    \textrm{\rm Hint. Look at a minimal normal subgroup and work by induction.}
+\end{probl}
+
+\begin{solution} Let $G$ be a finite solvable group and $M$ maximal in $G$. Let $N\normal_mG$. If $N\subseteq M$, then $|G:M|=|G/N:M/N|$. Since $M/N$ is maximal in $G/N$, by induction on $|G|$ we deduce that $|G/N:M/N|$ is a prime power. Therefore, we may assume that no minimal normal subgroup of $G$ is included in $M$, i.e., $G=MN$ for all $N\normal_mG$. Pick any such $N$. By Lemma~\ref{solvable-minimal-normal}, $N$ is an elementary abelian $p$-group. Put $|N|=p^d$. Then, $|M\cap N|=p^c$ for some $c\le d$. It follows that
+$$
+    |G:M|=|G|/|M|=|MN|/|M|=|N|/|M\cap N|=p^{d-c}.
+$$
+ \end{solution}
+
+\begin{probl}
+    Suppose\/ $\gen1 = N_0\normal N_1 \normal \cdots \normal N_r = G$, where the quotients\/ $N_i / N_{i-1}$ are abelian for\/ $1\le i\le r$. Show that\/ $G$ is solvable. (Note that we are not assuming that the subgroups\/ $N_i$ are normal in\/ $G$.)
+\end{probl}
+
+\begin{solution} This is nothing but Corollary~\ref{solvable-equivalence}.  \end{solution}
+
+\begin{probl}
+    Let\/ $G$ be finite and let\/ $\gen1 = N_0\normal N_1\normal \dots\normal N_r = G$, where the quotients\/ $N_i/N_{i-1}$ are simple for\/ $1\le i\le r$. Show that\/ $G$ is solvable if, and only if, these quotients all have prime order.
+
+    \textrm{\rm\textbf{Note.} Recall that a subnormal series such as $(N_i)_{0\le i\le r}$, where the factors are simple, is a composition series for $G$, and note that if $G$ is finite, such a series necessarily exists. Although $G$ may have several different composition series, the Jordan-H\"older theorem asserts that the quotients $N_i/N_{i-1}$ are uniquely determined by $G$ (except for the order in which they occur). This problem says that solvable finite groups are exactly the groups for which every composition factor has prime order.}
+\end{probl}
+
+\begin{solution} 
+
+Assume that every quotient $N_i/N_{i-1}$, has prime order~$p_i$ (which implies that it's indeed simple). In particular, $Z(N_i/N_{i-1})\ne\gen1$ by Corollary~\ref{p-groups-have-center}. Then $N_i/N_{i-1}=Z(N_i/N_{i-1})$, which is abelian. Hence $G$ is solvable.
+
+Conversely, let $G$ be solvable. According to Proposition~\ref{solvable-ses}, $N_i/N_{i-1}$ is solvable. Then $(N_i/N_{i-1})'\varsubsetneq N_i/N_{i-1}$ by Proposition~\ref{solvable-equals-finite-derivatives}. Since derived groups are characteristic, by simplicity we have $(N_i/N_{i-1})'=\gen1$, i.e., $N_i/N_{i-1}$ abelian.  \end{solution}
+
+Regarding the note observe that, in the finite case, we can always extend the sequence of relative normal groups to a maximal one where the quotients $N_i/N_{i-1}$ are simple. The reason is that if the sequence is not maximal at $i$, there must exist $N_{i-1}\subgroup N\subgroup N_i$ with $\gen1\ne N/N_{i-1}\normal N_i/N_{i-1}$. But in that case we would clearly have $N_{i-1}\normal N\normal N_i$, with $N/N_{i-1}$ and $N_i/N$ abelian because $N/N_{i-1}$ is would be a subgroup of $N_i/N_{i-1}$ and $N_i/N$ the image of the projection $N_i/N_{i-1}\to (N_i/N_{i-1})/(N/N_{i-1})$.
+
+\textbf{Definitions.} Two composition series
+\begin{equation}\label{eq9}
+    \gen1=N_0\normal N_1\normal\cdots\normal N_r=G\quad\text{and}\quad
+    \gen1=M_0\normal M_1\normal\cdots\normal M_s=G
+\end{equation}
+are \textsl{equivalent} if $r=s$ and there exists $\sigma\in S_r$ such that
+$$
+    N_i/N_{i-1}\cong M_{\sigma(i)}/M_{\sigma(i)-1}
+$$
+for all $1\le i\le r$.
+
+\textbf{Example.} $\gen0\normal Z_3\times\set 0\normal\Z_3\times\Z_5$ and $\gen0\normal\gen0\times\Z_5\normal\Z_3\times\Z_5$ are equivalent maximal composition series.
+
+\medskip
+
+\textbf{Butterfly Lemma} [Zassenhaus] \textit{Let\/ $H$ sand\/ $K$ be subgroups of a group\/ $G$, and let\/ $\check H\normal H$ and\/ $\check K\normal K$ be subgroups. Then
+\begin{enumerate}[\rm a)]
+    \item $(H\cap\check K)\check H\normal (H\cap K)\check H$ and\/
+    $(H\cap K)\check K\normal(\check H\cap K)\check K$, and
+    \item
+    $\displaystyle
+    \frac{(H\cap K){\check H}}{(H\cap {\check K}){\check H}} \cong \frac{(H\cap K){\check K}}{(\check H\cap K){\check K}}.
+    $
+\end{enumerate}
+}
+\needspace{2\baselineskip}
+\begin{proof} {[See this \href{https://math.stackexchange.com/q/3857104/269050}{MSE Q\&A}]}
+\begin{enumerate}[\rm a)]
+    \item Take $z\in H\cap K$ and $\zeta\in\check H$. Then
+    \begin{align*}
+        ((H\cap\check K)\check H)^{z\zeta}
+            &= (H^\zeta\cap{\check K}^\zeta)^z{\check H}^z\\
+            &= (H\cap{\check K}^\zeta)^z\check H\\
+            &= z(H\cap{\check K}^\zeta)z^{-1}\check H\\
+            &= z(H\cap{\check K}^\zeta)\check H\\
+            &= z\check H(H\cap{\check K}^\zeta)\\
+            &= \check H(H\cap{\check K}^\zeta)\\
+            &= (H\cap\check K)\check H.
+    \end{align*}
+    The second part follows from this one by symmetry.
+    
+    \item Consider the map
+    \begin{align*}
+        \phi\colon(H\cap K)\check H&\to\frac{H\cap K}{(H\cap\check K)(\check H\cap K)}\\
+        zy&\mapsto\bar z,
+    \end{align*}
+    where $z\in H\cap K$, $y\in\check H$ and $\bar z$ denotes the class of $z$ in the quotient. Note that $\phi$ is well defined because, with obvious notations, 
+    $$
+        z_1y_1=z_2y_2
+            \implies z_2^{-1}z_1\in \check H\cap H\cap K
+                =\check H\cap K
+            \implies\bar z_1=\bar z_2.
+    $$
+    We claim that $\phi$ is a morphism. To see this, first note that $\phi(1)=1$. Second,
+    $$
+        (z_1y_1)(z_2y_2)=z_1(y_1z_2)y_2=z_1(z_2y_3)y_2=(z_1z_2)(y_3y_2),
+    $$
+    where $y_1z_2=z_2y_3$ by the normality of $\check H$ in $H$. Then
+    $$
+        (z_1y_1)(z_2y_2)\stackrel{\phi}{\mapsto}\bar z_1\bar z_2,
+    $$
+    proving the claim.
+
+    Clearly $\phi$ is an epimorphism. Let's compute its kernel
+    \begin{align*}
+        \phi(zy) = 1 &\iff z\in (H\cap\check K)(\check H\cap K)\\
+            &\iff zy=z_1y_1y,
+                \text{ with }z_1\in H\cap\check K
+                \text{ and }y_1\in\check H\cap K\\
+            &\iff zy\in(H\cap\check K)\check H.
+    \end{align*}
+    In consequence, $\phi$ induces an isomorphism
+    $$
+         \frac{(H\cap K){\check H}}{(H\cap {\check K}){\check H}}
+            \cong \frac{H\cap K}{(H\cap\check K)(\check H\cap K)}.
+    $$
+    The result is a direct consequence of the symmetry between $H$ and $K$ in the RHS of the equation above.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\textbf{Remark.} \textit{As discussed on \href{https://math.stackexchange.com/a/4450392/269050}{MSE}, one can interpret the\/ {\rm Butterfly lemma} as identifying the maximal common subquotient of\/ $H/\check{H}$ and\/ $K/\check{K}$. To be more precise, $(H \cap K)\check{H}/\check{H}$ represents the subgroup within\/ $H/\check{H}$ containing the classes of elements in\/ $K$. Similarly, $(H \cap K)\check{K}/\check{K}$ represents the subgroup within\/ $K/\check{K}$ containing the classes of elements in\/ $H$. To eliminate the disparity between these two quotients, we divide each of them by the subgroup identified with the identity in the other. Therefore, we need to further divide the former by\/ $H \cap \check{K}$ and the latter by $\check{H} \cap K$. By taking these steps, we find ourselves converging from two different paths onto the common maximal subquotient.}
+
+\medskip
+
+\textbf{Theorem} [Jordan-H\"older] \textit{Any two composition series for a group\/ $G$ are equivalent.}
+
+\begin{proof} Take two maximal composition series for $G$ like the ones in~$(\ref{eq9})$. For $1\le i\le r$ consider
+$$
+    \gen1=N_i\cap M_0\normal\cdots\normal N_i\cap M_s=N_i.
+$$
+Note that
+$$
+    N_{i-1}=(N_i\cap M_0)N_{i-1}\normal
+        \cdots\normal(N_i\cap M_s)N_{i-1}=N_i,
+$$
+i.e., that
+$$
+    (N_i\cap M_{j-1})N_{i-1}\normal (N_i\cap M_j)N_{i-1}
+$$
+for $1\le j\le s$, as stated in part a) of the Butterfly Lemma.
+
+Given that the series was maximal, for every $1\le i\le r$ there exists a unique $1\le j\le s$ such that
+\begin{equation}\label{eq9.1}
+    N_{i-1} = (N_i\cap M_{j-1})N_{i-1}\quad\text{and}\quad
+        N_i = (N_i\cap M_j)N_{i-1}.
+\end{equation}
+To make it clearer, the induced map $i\mapsto j$ is well-defined because $N_{i-1}\ne N_i$ and for any other index $j$ both RHS of $(\ref{eq9.1})$ are equal. In other words, for every $i$ there is one, and only one, $j$ such that
+$$
+    \frac{N_{i-1}(N_i\cap M_j)}{N_{i-1}(N_i\cap M_{j-1})}
+$$
+is nontrivial. In fact, the nontrivial quotient equals $N_i/N_{i-1}$. On the other hand, part~b) of the Butterfly lemma implies that the quotient is isomorphic to
+\begin{equation}\label{eq11}
+    \frac{M_{j-1}(M_j\cap N_i)}{M_{j-1}(M_j\cap N_{i-1})}.
+\end{equation}
+Therefore, to complete the proof, we have to show that the symmetric refinement of the $M$-composition series by means of the $N$- one assigns to $j$ the very same index~$i$, because that would imply that $(\ref{eq11})$ equals $M_j/M_{j-1}$. Fortunately the reason is simple: since $(\ref{eq11})$ is isomorphic to $N_i/N_{i-1}$, it isn't trivial, and this is precisely what defines the mapping $j\mapsto i$.  \end{proof}
+
+\begin{probl}\label{problem-3.B.4}
+    Let\/ $N\normal G$, with\/ $|N|\perp|G:N|$ and\/ $K \subgroup G$, with\/ $|K|\mid|G:N|$. Assume that either\/ $N$ or\/ $K$ is solvable. Show that\/ $K$ is contained in some complement\/ $H$ for\/ $N$ in\/ $G$.
+
+    \textrm{\rm Hint [l.c.]: Compute orders using $H(KN)=G$.}
+\end{probl}
+
+\textit{Solution} {[Found in \href{https://math.stackexchange.com/a/3084/269050}{MSE}]} Consider the group $J=KN$. Note that $K$ is a conjugate for $N$ in $J$. By Theorem~\ref{schur-zassenhaus-thm} all other complements are $J$-conjugates of $K$. Now take a complement $H$ for $N$ in $G$. We have
+$$
+    |G| = |HJ|=\frac{|H||K||N|}{|H\cap J|}\implies |H\cap J|=|K|.
+$$
+It follows that $H\cap J$ is a complement for $N$ in $J$. By hypothesis $N$ or $J/N\cong K$ is solvable and therefore $K=(H\cap J)^x\subseteq H^x$.  \end{solution}
+
+\begin{probl}
+    Suppose that\/ $P \in \Syl_p(G)$ and that\/ $P \subseteq Z(G)$. Show that the set\/ $X$ of elements of\/ $G$ with order not divisible by\/ $p$ is a subgroup of\/ $G$, and that\/ $G = X \times P$.
+\end{probl}
+
+\begin{solution} Firstly observe that $P$ is abelian, and hence solvable. Secondly, $P$ is normal and therefore it is the only Sylow $p$-group. Thirdly, $|P|\perp|G:P|$ by the definition of Sylow group. Let $H$ be a complement for $P$ in $G$. Since $H\cap P=\gen1$, we see that $H\subseteq X$. On the other hand, given $x\in X$, we can write $x=yz$ with $y\in H$ and $z\in P$. Put $d=\ord(x)$. The identity $1=x^d=y^dz^d$, which holds because $z\leftrightarrow y$, and the uniqueness of factorization (Proposition~\ref{split-element}) imply that $d\mid\ord(z)$ (and $d\mid\ord(y)$), which may only happen if $z=1$, i.e., if $x=y\in H$. It follows that $X=H$ is a subgroup of $G$. Finally, the equality $G=X\times P$ is a consequence of the fact that $X^\zeta\subseteq X$ for $\zeta\in G$ (immediately derived from the definition of $X$) and Proposition~\ref{normal-complement}.  \end{solution}
+
+
+\begin{probl}
+    Let\/ $N\normal G$ and\/ $x \in G$, suppose that its class\/ $\bar x$ in~$G/N$ has order\/~$d$, and put $\pi=\spec(d)$.
+    \begin{enumerate}[\rm a)]
+        \item Show that there exists\/ $y \in G$, with $\bar y=\bar x$ and\/ $\spec\ord(y)\subseteq\pi$.
+        \item If\/ $d\perp|N|$, show that the element\/ $y$ of part\/ {\rm(a)} must have order\/~$d$.
+        \item Now assume that\/ $\bar x$ is conjugate to its inverse in\/ $G/N$ and that\/ $d\perp|N|$. Let\/ $y$ be as in\/ {\rm (a)}. Show that\/ $y$ is conjugate to its inverse in\/ $G$.
+    \end{enumerate}
+    \textrm{\rm Hint. For part (a), find a cyclic\/ $\pi$-subgroup\/ $C$ such that\/ $CN = \gen xN$. For part~(c), let\/ $w \in G$, where\/ $\bar x^{\bar w} = \bar x^{-1}$. Observe that\/ $w$ normalizes $\gen yN$. Consider the subgroup $\gen y^w$.}
+\end{probl}
+
+\begin{solution} Let $J$ denote the subgroup $\gen xN$.
+
+\begin{enumerate}[\rm a)]
+    \item Put $n=\ord(x)$. Then $d\mid n$. Write $n=qd^*$ where $q\perp d$ and $\spec d^*=\pi$. Note that $d\mid d^*$. Define $y=x^q$. Pick $s,t\in\Z$ such that
+    \begin{equation}\label{eq12}
+        1 = sq + td^*.
+    \end{equation}
+    It follows that $x=y^s(x^{d^*})^t\in\gen yN$ because $d\mid d^*$. Therefore, $J\subseteq\gen yN\subseteq J$. Moreover,
+    $$
+        \ord(y) = \ord(x^q) = d^*,
+    $$
+    which implies that $\spec\ord(y)=\pi$. Using the lemma of Problem~\ref{problem-3.A.3}, we get
+    $$
+        \ord(\bar y)=\ord(\bar x^q)=\ord(\bar x)/\gcd(\ord(\bar x),q)
+            =d/\gcd(d,q)=d,
+    $$
+    because $q\perp d$, and
+    $$
+        \ord(y^s)= \ord(y)/\gcd(\ord(y),s)=d^*,
+    $$
+    because $d^*\perp s$ by $(\ref{eq12})$. To conclude this part we only have to replace $y$ with~$y^s$.
+    
+    \item Let $C$ be a complement for $N$ in $J$ [cf.~Theorem~\ref{schur-zassenhaus-thm}]. Write $x=yz$ for some $y\in C$ and some $z\in N$. Using that $N\normal J$, we inductively deduce that $x^k=y^kz_k$, for $k\in\N$, where $z_k\in N$. Then $\ord(y)\mid d$ because $y^d\in C\cap N=\gen1$ and $d\mid\ord(y)$ because $x^{\ord(y)}\in N$.
+
+    \item By hypothesis, we can pick $w\in G$ such that $\bar x^{\bar w}=\bar x^{-1}$, i.e., $x^w=x^{-1}z$ for some $z\in N$. As suggested in the hint, observe that
+    $$
+        J^w = \gen{x^w}N^w = \gen{x^{-1}z}N =\gen{x^{-1}}N= J
+    $$
+    because, given $k\in\Z$, $(x^{-1}z)^k=x^{-k}z_k$ for some $z_k\in N$, as mentioned in part~b). Since $J=\gen yN$, the hint's claim is verified. On the other hand, the fact that $J/N\cong\gen y$, which is abelian and hence solvable, implies that $\gen y^w$ is a conjugate of $\gen y$ in $J$. This means that there exists $\zeta\in N$ such that $\gen y^w=\gen y^\zeta$. Therefore, $y^w=(y^\zeta)^s$ for some (unit) $s$ in $\Z_d$. It follows that
+    $$
+        \bar y^s=(\bar y^{\bar\zeta})^s=\bar y^{\bar w}=\bar x^{\bar w}=\bar x^{-1}=\bar y^{-1}.
+    $$
+    Using that $\ord(\bar y)=d$ we deduce that $s=-1$ in $\Z_d$. But
+    $$
+        \ord(y^\zeta)=\ord(y)=d
+    $$
+    and so $y^w=(y^\zeta)^s=(y^\zeta)^{-1}$, which implies, $y^wy^\zeta=1$. Hence,
+    $$
+        y^{\zeta^{-1}w}y= (y^w)^{\zeta^{-1}}y=(y^wy^\zeta)^{\zeta^{-1}}=1^{\zeta^{-1}}=1,
+    $$
+    as desired.
+\end{enumerate}
+\end{solution}
+
+
+\begin{probl}\label{problem-3.B.7}
+    A group\/ $G$ is \textsl{supersolvable} if there exist normal subgroups\/ $N_i$ with
+    $$
+        1 = N_0 \subseteq N_1 \subseteq \cdots \subseteq N_r = G,
+    $$
+    and where each quotient\/ $N_i / N_{i-1}$ is cyclic for\/ $1\le i\le r$. Clearly, supersolvable groups are solvable, and it is routine to check that subgroups and quotient groups of supersolvable groups are supersolvable. Suppose now that\/ $G$ is finite and supersolvable.
+    \begin{enumerate}[\rm a)]
+        \item Show that the order of every minimal normal subgroup of\/ $G$ is prime.
+        \item Show that the index of every maximal subgroup of\/ $G$ is prime.
+    \end{enumerate}
+    \textrm{\rm Hint. For (b), look at a minimal normal subgroup and work by induction.}
+\end{probl}
+
+\begin{solution} Let's start by verifying that supersolvability is a property inherited by subgroups and quotients. First, if $H\subgroup G$, then $N_i\cap H\normal H$ and, since 
+$$
+    1\to N_i\cap H/N_{i-1}\cap H \to N_i/N_{i-1}
+$$
+is exact, the first quotient is cyclic because the second one is. Second, if $N\normal G$, then $N_iN\normal G$ and
+$$
+    N_i/N_{i-1}\to N_iN/N_{i-1}N\to1
+$$
+is exact, which implies that the second quotient is cyclic. Moreover,
+$$
+    1\to N_{i-1}N/N \to N_iN/N
+$$
+is exact too because $N_iN/N=N_i/N_i\cap N$.
+
+\begin{enumerate}[\rm a)]
+    \item Let $M\normal_m G$. Let $i$ be the smallest index such that $N_i\cap M\ne\gen1$. Note that $i>0$. Since the intersection is normal and $M$ is minimal normal, we have $N_i\cap M=M$, i.e., $M\subseteq N_i$. Moreover, $N_{i-1}\cap M=\gen1$. Therefore, $M=N_i\cap M=N_i\cap M/N_{i-1}\cap M$ is cyclic. Since any Sylow subgroup or $M$ is characteristic in $M$, it is normal in $G$, and so $|M|=p^e$ for some prime $p$ and some integer $e>0$. Let $y$ be a generator or $M$. Then $z=y^q$, where $q=p^{e-1}$, generates the only subgroup of $M$ whose order is $p$ [cf.~Corollary~\ref{cyclic-subgroups}]. In particular, $\gen z\ch M\normal G$, and so $\gen z\normal G$. Therefore $\gen z=M$. As a result, $|M|=\gen z=p$.
+
+    \item Take a maximal subgroup $L$ of $G$. Suppose that there exists $M\normal_mG$ such that $M\not\subseteq L$. Then $G=ML$. By part~a), $|M|=p$ for some prime $p$. Therefore, $|G|=p|L|/|M\cap L|=p|L|$ because $|M\cap L|$ is a proper divisor of $p$. Thus, $|G:L|=p$ and we are done. Let's now consider the case where every minimal normal subgroup of $G$ is included in $L$. In particular, we can pick $M\normal_mG$ such that $M\subseteq N_1$. As we saw above, $G/M$ is supersolvable. Moreover, $L/M$ is maximal in $G/M$ and so, by induction on $|G|$, we may deduce that $|G/M:L/M|=p$ for some prime number $p$. The conclusion is now evident because $|G:L|=|G/M:L/M|$.
+\end{enumerate}
+\end{solution}
+
+\begin{probl}\label{problem-3.B.8}
+    Let\/ $G$ be finite, and assume that every maximal subgroup of\/ $G$ has prime index. Show that\/ $G$ is solvable. Show also that\/ $G$ has a normal Sylow\/ $p$-subgroup, where\/ $p$ is the largest prime divisor of\/ $|G|$, and that\/ $G$ has a normal\/ $q$-complement, where\/ $q$ is the smallest prime divisor of\/ $|G|$.
+
+    \textrm{\rm\textbf{Note.} In fact, $G$ must be supersolvable, but this theorem of B.~Huppert is much harder to prove. Recall that a \textsl{$q$-complement} in a group $G$ is a subgroup with $q$-power index and having order not divisible by $q$. In other words, it is a subgroup whose index is the order of a Sylow $q$-subgroup.}
+\end{probl}
+
+\begin{solution} Let's say that a group $H$ is \textsl{good\/} if all its maximal subgroups have prime index. We will show that $G$ good $\implies$ $G$ solvable by induction on $|G|$. 
+
+Suppose that there exists $\gen1\ne N\normal G$. Then $G/N$ is good because its maximal subgroups have the form $M/N$ for some maximal $M$ in $G$ including $N$, and $|G/N:M/N|=|G:M|$. By the inductive hypothesis, $G/N$ would be solvable in this case. Therefore, by Proposition~\ref{solvable-ses}, to prove that $G$ is solvable it is enough to show that there is at least one solvable nontrivial $N\normal G$.
+
+By Problem~\ref{problem-1.C.7}, if $p=\max\spec|G|$, then $\Syl_p(G)=\set P$ and $P\normal G$. By Problem~\ref{problem-1.D.6}, $P$ is good. If $P\varsubsetneq G$, we are done after invoking the induction hypothesis. Otherwise, $G=P$ is a $p$-group. Then, by Corollary~\ref{p-groups-have-center}, $Z(G)$ is nontrivial. Moreover, it is normal and abelian, hence solvable, as desired.
+
+Let now $q=\min\spec|G|$. Pick $Q\in\Syl_q(G)$. If $Q=G$, then $\gen1$ is a $q$-complement and we are done. So we may assume that $q\ne p$. Since $G/P$ is good and $q=\min\spec|G/P|$, by induction on $|G|$ we may infer that $G/P$ has a normal $q$-complement, say $H/P$ for some subgroup $H\supseteq P$. Since $|QP/P|=|Q|$ because $Q\cap P=\gen1$, we see that $QP/P\in\Syl_q(G/P)$. Therefore,
+$$
+    |G:H|=|G/P:H/P|=|QP/P|=|Q|,
+$$
+i.e., $H$ is a $q$-complement in $G$. To verify $H\normal G$ take $x\in G$ and consider $H^x$. Since $H/P\normal G/P$, we get $H^x\subseteq HP=H$ because $P\subseteq H$ (see also Corollary~\ref{normal-quotient-implies-normal}).  \end{solution}
+
+\begin{probl}
+    Let\/ $G$ be finite and supersolvable. If\/ $n$ is a divisor of\/~$|G|$, show that\/ $G$ has a subgroup of order\/ $n$.
+    
+    \textrm{\rm Hint. Examine a minimal normal subgroup and apply induction.}
+\end{probl}
+
+\begin{solution} Take a sequence of normal groups
+$$
+    \gen1=N_0\subseteq N_1\subseteq\cdots\subseteq N_r=G
+$$
+such that $N_i/N_{i-1}$ is cyclic. Pick $M\subseteq N_1$ be minimal normal. By Problem~\ref{problem-3.B.7}, $|M|=p$ is prime.
+
+If $p\mid n$, by induction on $|G|$ me may assume that $G/M$ has a subgroup $H/M$ of order $n/p$. In consequence,
+$$
+    |G:H|=|G/M:H/M|=(|G|/p)/(n/p)=|G|/n,
+$$
+i.e., $|H|=n$.
+
+If $p\perp n$, then $n\mid |G|/p=|G/M|$ and the inductive hypothesis implies that $G/M$ has a subgroup $H/M$ of order $n$. Since $M\normal H$ and $|M|=p\perp n=|H:M|$, we may invoke Schur-Zassenhaus~Theorem~\ref{schur-zassenhaus-thm} and take a complement $K$ for $M$ in $H$. Then $H=KM$ and $K\cap M=\gen1$. It follows that $|K|=|H/M|=n$, as desired.  \end{solution}
+
+
+\begin{probl}
+    Let\/ $G$ be finite and supersolvable, and suppose that\/ $p$ is the largest prime divisor of\/ $|G|$. Show that\/ $G$ has a normal Sylow\/ $p$-subgroup.
+
+    \textrm{\rm Hint. Examine a minimal normal subgroup and apply induction.}
+\end{probl}
+
+\begin{solution} By Problem~\ref{problem-3.B.7} the index of every maximal subgroup of $G$ is prime. Then the conclusion follows from Problem~\ref{problem-3.B.8}.  \end{solution}
+
+\begin{probl}
+    Let\/ $\Phi(G)$ be the Frattini subgroup of the finite group\/ $G$. Show that every prime divisor of\/ $|\Phi(G)|$ also divides\/ $|G:\Phi(G)|$.
+\end{probl}
+
+\begin{solution} Suppose that $p\in\spec|\Phi(G)|$ satisfies $p\perp|G:\Phi(G)|$. Then the equation $|G|=|G:\Phi(G)||\Phi(G)|$ implies that $\Syl_p(\Phi(G))=\Syl_p(G)$ (recall that in any group, the intersection of Sylow with normal is Sylow). Since $\Phi(G)$ is nilpotent, it follows that $P=O_p(\Phi(G))$ is a normal Sylow $p$-group of $G$. Let $H$ be a complement for $P$ in $G$. Then $HP=G$ and $H\cap P=\gen1$. In particular, $H\Phi(G)=G$, i.e., $H=G$. Then $P=\gen1$, which is impossible.  \end{solution}
+
+\begin{probl}\label{problem-3.B.12}
+    Let\/ $G$ be solvable and $M$ a maximal subgroup of\/ $G$ with $\Core_G(M)=\gen1$. Show that given\/ $H \subseteq M$, there exists a subgroup of\/ $G$ whose index is\/ $|M : H|$.
+\end{probl}
+
+\begin{solution} Take $\gen1\ne N\normal G$. Since $\Core_G(M)=\gen1$, $N\not\subseteq M$. Then $NM=G$. Therefore, for $K=NH$, we have
+$$
+    |G:K|=|NM:NH|=\frac{|N||M|}{|N\cap M|}\frac{|N\cap H|}{|N||H|}
+        =\frac{|M:H|}{|N\cap M:N\cap H|},
+$$
+i.e.,
+$$
+    |G:K||N\cap M:N\cap H|=|M:H|
+$$
+and it suffices to find $N$ such that $N\cap M=\gen1$. If, in addition, we pick $N\normal_mG$, then $N$ is abelian (actually, an elementary abelian $p$-group, according to Lemma~\ref{solvable-minimal-normal}). We claim that $N\cap M\normal G$. To see this, use that $G=NM$, and observe that $N\cap M\normal N$ because $N$ is abelian and $N\cap M\normal M$ because $N$ is normal. It follows that $N\cap M\subseteq\Core_G(M)=\gen1$.  \end{solution}
+
+
+\begin{probl}
+    Show that every finite group contains a unique largest solvable normal subgroup.
+\end{probl}
+
+\begin{solution} Let $M$ be maximal among the solvable normal subgroups of $G$. Such a maximal exists because $\gen1$ is normal solvable and $G$ is finite.
+
+Now take $N$ solvable. Since $MN/N=M/M\cap N$ is a quotient of $M$, it is also solvable by Proposition~\ref{solvable-subgroups-and-quotients}. Thus, $MN$ is solvable by Proposition~\ref{solvable-ses}. And since $M\subseteq MN\normal G$, we conclude that $M=MN$, i.e., $N\subseteq M$. 
+
+In sum, the largest solvable normal subgroup is nothing but the product of all normal solvable subgroups of $G$. \end{solution}
+
+\begin{probl}
+    Let\/ $F = F(G)$, where\/ $G$ is finite, and let\/ $C = C_G(F)$. Show that\/ $Z(F)$ is the unique largest solvable normal subgroup of\/ $C$.
+
+    \textrm{\rm Hint. Problem~\ref{problem-1.D.19} is relevant.}
+    
+    \textrm{\rm\textbf{Note.} If $G$ is solvable, it follows that $C = Z(F)$. This shows that for solvable groups, $C_G(F(G))\subseteq F(G)$.}
+\end{probl}
+
+\begin{solution} 
+Let $L\normal C$ be solvable and let's show that $L\subseteq Z(F)$. Since $L\leftrightarrow F$, it is enough to verify that $L\subseteq F$ or, equivalently, that $\bar L=L/L\cap F$ is trivial. Suppose otherwise. Note that $\bar L\normal\bar C=C/C\cap F$ and $\bar L$ is solvable. According to Proposition~\ref{solvable-equals-finite-derivatives}, there exists an integer $r$ such that $A=\bar L^{(r-1)}\ne\gen1$ and $A'=\bar L^{(r)}=\gen1$. But $A\ch\bar L\normal\bar C$ because derived groups are characteristic and `$\ch$' is a transitive relation [cf.~Remark~\ref{characteristic-transitivity}]. Since $A'=\gen1$, $A$ is abelian and normal in $\bar C$. This contradicts Problem~\ref{problem-1.D.19}, which proves that $\bar C$ has no nontrivial abelian normal subgroup.
+
+The first part of the note is trivial because $C$ is solvable. The second part is immediate because it means $Z(F)\subseteq F$.  \end{solution}
+
+\begin{probl}
+    {\rm[Berkovich]} Let\/ $G$ be solvable, and let\/ $M\varsubsetneq G$ be a proper subgroup having the smallest possible index in\/ $G$. Show that\/ $M\normal G$.
+
+    \textrm{\rm Hint [l.c.]: At some point you will need to consider the conjugation action of $M$ on an appropriate normal subgroup of $G$.}
+\end{probl}
+
+\begin{solution} {[Derived from this \href{https://math.stackexchange.com/a/1383208/269050}{MSE} answer]} Since the smallest possible index corresponds to the greatest possible order, $M$ is maximal.
+
+Let $C=\Core_G(M)$. If $C\ne\langle1\rangle$, induction on $|G|$ implies that $M/C\triangleleft G/C$ because $|G/C:M/C|=|G:M|$ is the smallest possible index in $G/C$. Hence, $M\triangleleft G$ and we are done.
+
+Now suppose, for a contradiction, that $C=\langle1\rangle$. Consider a minimal normal subgroup $N$ of $G$. We have: {\small(1)}~$N\cap M\triangleleft N$ because $N$ is (elementary) abelian, and {\small(2)}~$N\cap M\triangleleft M$ because $N\triangleleft G$. In consequence, $N\cap M\triangleleft NM=G$. Hence, $N\cap M=1$ and $|N|=|G:M|$.
+
+Consider the action of $M$ on $N$ by conjugation. By the fundamental counting principle, given $y\in N$ we have
+$$
+    |{\cal O}_y| = |M:M_y|.
+$$
+Since ${\cal O}_1=\{1\}$ we deduce that $|{\cal O}_y|\le |N|-1$ because orbits are disjoint subsets of $N$. According to Problem~\ref{problem-3.B.12}, there exists $K$ with $|G:K|=|M:M_y|$. Then,
+$$
+    |G:K| = |M:M_y| = |{\cal O}_y| \le |N|-1 = |G:M|=1,
+$$
+which, as anticipated, contradicts the hypothesis on $|G:M|$ when $y\ne1$.  \end{solution}
+
+\subsection{Exercises - Kurzweil \& Stellmacher - \S 3.3}
+
+\begin{exr}
+    Let\/ $N$ be an abelian minimal normal subgroup of\/ $G$. Then\/ $N$ has a complement in\/ $G$ if, and only if, $N \not\subseteq\Phi(G)$.
+\end{exr}
+
+\begin{solution} The \textit{only if\/} part is trivial and only requires $N\ne\gen1$ to hold because $NH=G\implies H=G$ whenever $N\subseteq\Phi(G)$ [cf.~Proposition~\ref{frattini}].
+
+For the \textit{if\/} part pick a maximal $M$ such that $N\not\subseteq M$. Then $N\cap M\normal N$ because $N$ is abelian and $N\cap M\normal M$ because $N\normal G$. It follows that $N\cap M\normal NM=G$. Since $N\cap M\ne N$ we must have $N\cap M=\gen1$.
+
+\textbf{Note:} The solution proves a stronger statement, namely, that every maximal subgroup not containing $N$ is a complement of $N$.  \end{solution}
+
+\begin{exr}
+    Let\/ $N$ be abelian normal in\/ $G$ with\/ $N\cap\Phi(G)=\gen1$. Then\/ $N$ has a complement in\/ $G$.
+\end{exr}
+
+\begin{solution} We may assume that $N\ne\gen1$. Pick a maximal subgroup $M$ with $N\not\subseteq M$. It follows that $|N\cap M|<|N|$. Since $N$ is abelian, $N\cap M\normal NM=G$. Moreover, $N\cap M\cap\Phi(G)=\gen1$ and so induction on $|N|$ implies that $N\cap M$ has a complement $H$, i.e., $G=(N\cap M)H$ with $N\cap M\cap H=\gen1$. If $H\not\subseteq M$, we would have
+\begin{align}
+    |G| &= |N\cap M||H|\nonumber\\
+        &= \frac{|N||M|}{|G|}|H|\label{eq3.3.2}
+    \intertext{and}
+    |N(M\cap H)| &= |N||M\cap H|\nonumber\\
+        &= |N|\frac{|M||H|}{|G|}    &&;\ MH= G\nonumber\\
+        &= |G|  &&;\ \rm by\ (\ref{eq3.3.2})\nonumber
+\end{align}
+which implies that $M\cap H$ is a complement of $N$.
+
+If $H\subseteq M$ then $N\cap H=\gen1$. Additionally,
+$$
+    NH\supseteq (N\cap M)H = G
+$$
+and so $H$ is a complement of $N$.  \end{solution}
+
+\begin{exr}
+    Let\/ $N_1, N_2$ be normal subgroups of\/ $G$. If\/ $N_i$ has a complement\/ $H_i$ in\/ $G$ for\/ $i = 1, 2$ such that\/ $N_2 \subseteq H_1$, then\/ $N_1N_2$ has a complement in $G$.
+\end{exr}
+
+\begin{solution} Consider $H=H_1\cap H_2$. Given $y_i\in N_i$ for $i=1,2$ with $y_1y_2=z\in H$ we have
+\begin{align*}
+    y_1y_2 = z &\implies y_1=zy_2^{-1}\in H_1\cap N_1=\gen1\\
+        &\implies y_1=1\\
+        &\implies y_2=z\in N_2\cap H_2=\gen1,
+\end{align*}
+i.e., $N_1N_2\cap H=\gen1$. To see that $N_1N_2H=G$, take $x\in G$ and write $x=y_1z_1$ with $y_1\in N_1$ and $z_1\in H_1$. We can further decompose $z_1=y_2z$ for $y_2\in N_2$ and $z\in H_2$. Therefore,
+$$
+    x = y_1z_1 = y_1y_2z
+$$
+and $z=y_2^{-1}z_1\in H_1\cap H_2=H$.  \end{solution}
+
+
+\begin{exr}
+    Let\/ $p \in \spec|G|$ and\/ let $A$ be an elementary abelian normal\/ $p$-subgroup of\/ $G$ such that
+    $$
+        A = \gen{A\cap Z(P)\mid P\in\Syl_p(G)}.
+    $$
+    Then\/ $A=[A,G]C_A(G)$.
+\end{exr}
+
+\begin{solution}
+\begin{description}
+    \item[$\mbf\supseteq:$] Trivial.
+    \item[$\mbf\subseteq:$] {[Brought from~\href{https://math.stackexchange.com/a/1525723/269050}{MSE}]} First observe that both $[A,G]$ and $C_A(G)$ are normal in $G$. We claim that the hypotheses translate to $G_0=A\rtimes G/A$. To verify this, first apply Proposition~\ref{normal-abelian-to-semidirect} and get a bijection
+    \begin{align*}
+        \Syl_p(G) &\to \Syl_p(G_0)\\
+        P&\mapsto A_0P_0,
+    \end{align*}
+    where the notation is the same of that proposition. Second, $A_0$ is clearly elementary abelian. Moreover, since $a^{\bar x}=a^x$ for $a\in A$ and $x\in G$, we can express the hypothesis using the action of $G/A$ on $A$. Indeed,
+    \begin{align*}
+        A\cap Z(P) &= \set{a\in\mid a^{\bar x}=a,\;\bar x\in P/A}\\
+        [a,x] &= aa^{\bar x},\;\text{for }a\in A,\,\bar x\in P/A\\
+        C_A(G) &= \set{a\in A\mid a^{\bar x}=a,\;\text{for }\bar x\in P/A}.
+    \end{align*}
+    Since the action translates into conjugation in $G_0$, we may assume that $G=G_0$ and that $A$ has a complement $H$ in $G$.
+    
+    Take $Q\in\Syl_p(G)$ and $b\in A\cap Z(Q)$. The equation $b=[b,x]b^x$, shows that $b\in[A,G](A\cap Z(Q^x))$, i.e.,
+    $$
+        A\cap Z(Q)\subseteq[A,G](A\cap Z(Q^x))\quad\text{; for }x\in G.
+    $$
+    Fix $P\in\Syl_p(G)$. Given $a\in A$, by hypothesis, we can write
+    $$
+        a = b_1\cdots b_m
+    $$
+    with $b_i\in A\cap Z(Q_i)\subseteq[A,G](A\cap Z(P))$. It follows that
+    $$
+        a = c_1z_1\cdots c_mz_m,
+    $$
+    with $c_i\in[A,G]$ and $z_i\in A\cap Z(P)$ for $1\le i\le m$. Thus,
+    $$
+        a = c_1\cdots c_mz_1\cdots z_m\in[A,G](A\cap Z(P)),
+    $$
+    i.e., $A\subseteq[A,G](A\cap Z(P))$ for $P\in\Syl_p(G)$. Since the other inclusion is clear, we obtain
+    $$
+        A = [A,G]B,
+    $$
+    where $B=A\cap Z(P)$.
+    
+    Take $D\subgroup B$ maximal satisfying $[A,G]\cap D=\gen1$. Then $A=[A,G]D$. Otherwise, there would exist $a\in A\setminus[A,G]D$. Pick $da^i\in D\gen a\cap[A,G]\setminus\set1$ with $i\perp p$. Since $da^i\in[A,G]$, we get $a^i\in[A,G]D$, which implies $a\in[A,G]D$.
+
+    Write $P=AQ$, where $Q\in\Syl_p(H)$. Now $DQ\subseteq P$ and $D\normal P$ because $D\subseteq B\subseteq Z(P)$, which is abelian. It follows that $DQ$ is a group. Suppose further that $zq\in [A,G]\cap DQ$. Then $q\in Q\cap A=\gen1$. And since $[A,G]DQ=AQ=P$, we see that $DQ$ is a complement of $[A,G]$ in~$P$. Since $[A,G]\subseteq A$, we can apply Gasch\"urz's Theorem~\ref{gaschütz} and infer the existence of a complement $K$ for $[A,G]$ in~$G$. Let $L=A\cap K$. Take $w\in L$ and $k\in K$. Then $[w,k]\in[A,G]$. It is also in $K$ because $w\in L\subseteq K$. Hence, $[w,k]=1$ and $L\leftrightarrow K$. Since $L\leftrightarrow [A,G]\subseteq A$, we obtain $L\leftrightarrow G$, i.e., $L\subseteq C_A(G)$. In conclusion, from $G=[A,G]K$ it follows that
+    $$
+        A=[A,G]L\subseteq [A,G]C_A(G),
+    $$
+    as desired.
+\end{description}
+\end{solution}
+
+
+\section{Hall Theorems}
+Recall from Problem~\ref{problem-1.B.5} that if $\pi$ is a set of prime numbers, a $\pi$-group is a finite group $H$ with $\spec|H|\subseteq\pi$. If $H\subgroup G$ we say that it is a Hall $\pi$-subgroup if $H$ is a $\pi$-group and $|G:H|\perp\pi$. The set of Hall $\pi$-subgroups of $G$ will be denoted by $\Hall_\pi(G)$.
+
+\begin{thm}{\rm[Hall-E]}\label{hall-e}
+    Let\/ $G$ be a finite group and $\pi$ a set of primes. If\/ $G$ is solvable, it has a Hall\/ $\pi$-subgroup.
+\end{thm}
+
+\begin{proof} By induction on $|G|$, the case $|G|=1$ is trivial. If $|G|>1$, let $M\normal_mG$. Since $G/M$ is solvable the inductive hypothesis implies the existence of a Hall $\pi$-subgroup $H/M\subgroup G/M$. By definition, $\spec|H:M|\subseteq\pi$ and $|G:H|\perp\pi$.
+
+By Proposition~\ref{solvable-minimal-normal} we know that $M$ is a $p$-group. If $p\in\pi$, then $H$ is a $\pi$-group and therefore a Hall $\pi$-group. If $p\notin\pi$, then $|M|\perp|H:M|$ and the Schur-Zassenhaus Theorem~\ref{schur-zassenhaus-thm} implies the existence of a complement $K$ for $M$ in~$H$. Thus,
+$$
+    |G:K|=|G:H||H:K|=|G:H||M|\perp\pi.
+$$
+The conclusion follows because $|K|=|H:M|$ and so
+$$
+    \spec|K|=\spec|H:M|\subseteq\pi,
+$$
+which shows that $K\in\Hall_\pi(G)$.  \end{proof}
+
+
+\begin{thm}\label{hall-c}{\rm[Hall-C]}
+    Suppose that\/ $G$ is a finite solvable group and $\pi$ a set of primes. Then all Hall\/ $\pi$-subgroups of\/ $G$ are conjugate.
+\end{thm}
+
+\begin{proof} By induction on $|G|$, the case $|G|=1$ being trivial, we may assume that $|G|>1$. Let $H$ and $K$ be two Hall $\pi$-subgroups of $G$. Pick $M\normal_mG$ and recall that $M$ is a $p$-group. Since $HM/M$ and $KM/M$ are Hall $\pi$-subgroups of $G/M$, the induction hypothesis implies that they are conjugate in the quotient. It follows that $KM=(HM)^x$ for some $x\in G$.
+
+If $p\in\pi$, we must have $|HM|=|H|$ because $p\perp|G:H|$. Hence $HM=H$ and similarly $KM=K$, which implies that $K=H^x$ for some $x\in G$.
+
+If $p\notin\pi$, then $K$ is a complement for $M$ in $KM$. Since the same holds for $H^x$, and $M\in\Hall_{\pi}(HM)$, Theorem~\ref{schur-zassenhaus-thm} implies that $K$ and $H^x$ must be conjugates in $KM=H^xM$, hence conjugates in~$G$.  \end{proof}
+
+\begin{defn}
+    Let\/ $G$ be a group. If\/ $p$ is a prime, a \textsl{$p$-complement} in\/ $G$ is a Hall\/ $\set p'$-subgroup of\/ $G$, where\/ $\set p'$ denotes the set of all primes except\/~$p$. 
+\end{defn}
+
+\subsection{Problems C}
+
+\begin{probl}\label{problem-3.C.1}
+    Let\/ $R\subseteq G$ be a\/ $\pi$-subgroup, where\/ $\pi$ is a set of primes, and\/ $G$ is solvable and finite. Show that\/ $R$ is contained in some Hall\/ $\pi$-subgroup of\/~$G$.
+
+    \textrm{\rm Hint: Use Problem~\ref{problem-3.B.4}}.
+    
+    \textrm{\rm\textbf{Note:} This is known as the Hall-D Theorem}.
+\end{probl}
+
+\begin{solution} The hypothesis implies that $\spec|R|\subseteq\pi$. Pick $M\normal_mG$. Since $G$ is solvable, $M$ is $p$-group. Moreover, $RM/M$ is $\pi$-group. Now induction on $|G|$ implies the existence of a subgroup $H\supseteq M$ such that $H/M\in\Hall_\pi(G/M)$ and $RM/M\subseteq(H/M)^{\bar x}$ for some $\bar x\in G/M$. Since $(H/M)^{\bar x}=H^x/M$ for any representative $x$ of $\bar x$, we get $RM\subseteq H$.
+
+Note that $|G:H|=|G/M:H/M|\perp\pi$. If $p\in\pi$, then $H$ is a $\pi$-group because $|H|=|H/M||M|$, hence a Hall $\pi$-group and we are done. If $p\notin\pi$, given that $|M|\perp|H:M|$, by Problem~\ref{problem-3.B.4}, there exists a complement $K$ for $M$ in $H$ such that $R\subseteq K$. This complement is a Hall $\pi$-subgroup of $G$ because $|G:K|=|G:H||H:K|=|G:H||M|\perp\pi$ and $|K|\mid|H|$.  \end{solution}
+
+\begin{probl}
+    Let\/ $\pi$ be a set of primes and\/ $\pi'$ its complement in the set of all primes. Suppose that\/ $G$ has a\/ $p$-complement\/ $H_p$ for each prime\/ $p \in\pi$. Show that\/ $\bigcap_{p\in\pi}H_p$
+    is a Hall\/ $\pi'$-subgroup of\/ $G$.
+\end{probl}
+
+\begin{solution} Although not clarified in the problem statement, we will assume that $G$ is finite. After replacing $\pi$ with $\pi\cap\spec|G|$, we may also assume that $\pi$ is finite.
+
+For every $p\in\pi$, let $e_p$ be the exponent of the maximum power of $p$ dividing $|G|$. The hypothesis translates into $|G:H_p|=p^{e_p}$ and, of course, $p\perp|H_p|$. We can write
+$$
+    |G|=m\prod_{p\in\pi}p^{e_p},
+$$
+where $\spec m\subseteq\pi'$ and $m\mid|H_p|$ for all $p\in\pi$ or, more precisely,
+$$
+    |H_p| = m\prod_{q\in\pi\setminus\set p}q^{e_q}=\frac{|G|}{p^{e_p}}.
+$$
+Let $\pi=\set{p_1,\dots,p_n}$ be an enumeration of $\pi$. We claim that, for $1\le k\le n$, the following equation holds
+$$
+    \Big|\bigcap_{i=1}^k H_{p_i}\Big| = \frac{|G|}{\prod_{i=1}^kp_i^{e_{p_i}}}.
+$$
+Since the claim holds for $k=1$ by hypothesis, it is enough to suppose it valid for $k<n$ and prove it for $k+1$. We have,
+\begin{equation}\label{eq16}
+    |G|\ge \Big|\Big(\bigcap_{i=1}^kH_{p_i}\Big)H_{p_{k+1}}\Big|
+        = |G|\frac{|G|}{\prod_{i=1}^{k+1}p_i^{e_{p_i}}\Big|\bigcap_{i=1}^{k+1}H_{p_i}\Big|}
+        \ge |G|,
+\end{equation}
+where the last inequality derives from the fact both factors in the denominator divide $|G|$ and
+$$
+    \Big|\bigcap_{i=1}^{k+1}H_{p_i}\Big| \perp\set{p_1,\dots,p_{k+1}}.
+$$
+The claim is now clear. As a result
+$$
+    \Big|\bigcap_{p\in\pi}H_p\Big| = m.    
+$$
+Put $H=\bigcap_{p\in\pi}H_p$. The equation above implies that $H$ is a $\pi'$-group. It also implies that
+\begin{equation}\label{eq17}
+    |G:H|=\prod_{p\in\pi}p^{e_p}.
+\end{equation}
+In particular, $\spec|G:H|\subseteq\pi$ or, equivalently, $|G:H|\perp\pi'$, as desired.  \end{solution}
+
+\begin{probl}
+    A \textsl{Sylow system} in a group\/ $G$ is a set\/ $S$ of Sylow subgroups of\/ $G$, one chosen from\/ $\Syl_p(G)$ for each prime divisor\/ $p$ of\/ $|G|$, such that\/ $PQ = QP$ for all\/ $P,Q \in S$.
+    \begin{enumerate}[\rm a)]
+    \item Show that if\/ $G$ has a Sylow system, then it has a Hall\/ $\pi$-subgroup for every set\/ $\pi$ of primes.
+    \item If\/ $G$ is solvable, prove that it has a Sylow system.
+    \end{enumerate}
+    \textrm{\rm Hint: For (b), choose a $p$-complement $H_p$ in $G$ for each prime divisor of $|G|$, and consider intersections of all but one of these $p$-complements.}
+\end{probl}
+
+\begin{solution}
+
+\begin{enumerate}[\rm a)]
+    \item Put $\pi=\set{p_1,\dots,p_n}$. For $1\le i\le n$ pick $P_i\in S\cap\Syl_{p_i}(G)$. We claim that $\prod_{i=1}^kP_i$ is a subgroup of $G$ for $1\le k\le n$. To see this assume that the claim holds for $k<n$ and let's prove that it holds for $k+1$. Applying $k$ times the equation $P_iP_{k+1}=P_{k+1}P_i$, we have
+    $$
+        \Big(\prod_{i=1}^kP_i\Big)P_{k+1}
+            = \Big(\prod_{i=1}^jP_i\Big)P_{k+1}\Big(\prod_{i=j+1}^kP_i\Big),
+    $$
+    for every $1\le j\le k$. The claim is now clear. Since $p_i\perp p_j$ for $i\ne j$, we obtain $P_i\cap P_j=\gen1$. Inductively, this leads to
+    $$
+        \Big|\prod_{i=1}^nP_i\Big| = \prod_{i=1}^np_i^{e_i},
+    $$
+    where $p_i^{e_i}=|P_i|$. As a result, $\prod_{i=1}^nP_i$ is a Hall $\pi$-subgroup of $G$.
+
+    \item Following the hint, for $p\in\spec|G|$, let $H_p$ be a $p$-complement in $G$. Since a $p$-complement is precisely a Hall $\set p'$-subgroup, $\set p'=\spec|G|\setminus\set p$, the existence of $H_p$ is guaranteed by the Hall-E Theorem~\ref{hall-e}. For every $p\in\spec|G|$ consider
+    $$
+        J_p = \bigcap_{r\ne p}H_r,
+    $$
+    where $q$ runs on $\set p'=\spec|G|\setminus\set p$. By the previous problem applied to $\pi=\set p'$, $J_p$ is a Hall $\set p$-subgroup, i.e., a Sylow $p$-subgroup of~$G$.
+
+    It remains to be seen that $J_pJ_q$ is a group whenever $p,q\in\spec|G|$. Of course, we can restrict ourselves to the case $p\ne q$. Take $x_p\in J_p$ and $y_q\in J_q$ and let's see that $x_py_q\in J_qJ_p$. 
+    
+    By equation $(\ref{eq16})$ we have
+    $$
+        J_qH_q=\Big(\bigcap_{r\ne q}H_r\Big)H_q = G.
+    $$
+    Therefore, we can write $x_py_q=yx$ with $y\in J_q$ and $x\in H_q$. Since $x_p$, $y_q$ and $y\in H_r$ for $r\ne p,q$, we deduce that $x\in H_r$ too. Then $x\in J_p$ and we are done.
+\end{enumerate}
+\end{solution}
+
+\begin{probl}
+    Let\/ $M$ be a minimal normal subgroup in a finite solvable group\/ $G$, and assume that\/ $M = C_G(M)$. Show that\/ $G$ splits over\/ $M$, and that all complements for\/ $M$ in\/ $G$ are conjugate.
+
+    \textrm{\rm Hint: Let $L/M$ be minimal normal in $G/M$, and note that $L/M$ is a $q$-group for some prime $q$. Show that $q$ does not divide $|M|$, and consider a Sylow $q$-subgroup of $L$.}
+\end{probl}
+
+\begin{solution} {[See also \href{https://math.stackexchange.com/a/617987/269050}{MSE}]} Firstly observe that $M$ is an elementary abelian $p$-group. Secondly, since $G/M$ is solvable because $G$ is solvable, if $L/M\normal_mG/M$, then $L\normal G$ and $L/M$ is an elementary abelian $q$-group for some prime~$q$.
+
+Since $(L/M)'=\gen1$, we deduce that $L'\subseteq M$. Since $L'\ch L\normal G$, we get $L'=\gen1$ or $L'=M$. In the former case $L$ is abelian, which implies $L\subseteq C_G(M)=M$; impossible. Thus, the latter case stands. 
+
+Put $|M|=p^e$. We claim that $q\nmid|M|$. Suppose for a contradiction that it does. Then $q=p$.
+
+Since $|L|=|L:M||M|$, we see that $L$ is a $p$-group.
+
+By Corollary~\ref{p-groups-have-center}, $Z(L)\ne\gen1$. It follows that $\gen1\ne Z(L)\subseteq C_G(M)=M$. Since $Z(L)\ch L\normal G$, we deduce that $Z(L)=M$.
+
+By Lemma~\ref{subgroup-of-index-p}, there exists $M\normal K\normal L$ with $|K:M|=p$, i.e., $K/M$ is cyclic of order $p$. Pick $\omega\in K\setminus M$. Then its class $\bar\omega$ is a generator of $K/M$.
+
+Take $x,y\in K$. We can write $\bar x=\bar\omega^i$ and $\bar y=\bar\omega^j$, where the bar stands for class in $G/M$. There exist $a,b\in M$ such that $x=\omega^ia$ and $y=\omega^jb$. Moreover, given that $a,b\in M=Z(L)$, we have $a,b\leftrightarrow\omega$. In consequence,
+$$
+    xy=\omega^ia\omega^jb=\omega^jb\omega^ia=yx,
+$$
+i.e., $K$ is abelian. In particular, $K\subseteq C_G(M)=M$, which is impossible. Our claim that $q\nmid|M|$ is now proven.
+
+Back to the hint, pick $Q\in\Syl_q(L)$. If $|L/M|=q^d$, then
+$$
+    |L| = |M||L:M| = |M|q^d.
+$$
+It follows that $|Q|=q^d$ and so $L=MQ$ (with $M\cap Q$ trivial). Put $N=N_G(Q)$. The Frattini Argument ($\ref{frattini-argument}$) gives us
+$$
+    G=NL=NMQ= NQM= NM.
+$$
+Since $M$ is normal and abelian, both $N$ and $M$ normalize $N\cap M$. In consequence, $N\cap M\normal NM=G$ and we must have $N\cap M=\gen1$ or $M$. The latter case is impossible:
+\begin{align*}
+    M \subseteq N &\implies N=NM=G\\
+        &\implies Q\normal G\\
+        &\implies Q\leftrightarrow M\\
+        &\implies Q\subseteq C_G(M)=M\\
+        &\to\leftarrow
+\end{align*}
+Hence, $N\cap M=\gen1$ and so $N$ is a complement of~$M$. 
+
+It remains to be seen that any complement of $M$ is a conjugate of $N$. Let $N_1$ be another complement of $M$. Consider the commutative diagram
+$$
+    \begin{tikzcd}
+        Q \arrow[d, hook] &[0.2in] L \arrow[d, hook]
+            & Q_1=\theta_1\circ\theta^{-1}(Q) \arrow[d, hook] \\
+        N=N_G(Q)
+            & G \arrow[d, "\varphi"'] \arrow[r, "\phi_1"] \arrow[l, "\phi"']
+            & N_1\\
+            & G/M \arrow[ru, "\theta_1"'] \arrow[lu, "\theta"]
+    \end{tikzcd}
+$$
+where $\theta$ and $\theta_1$ are the isomorphisms given by both splits of $G$ on $M$, i.e., $\phi(zy)=y$ and $\phi_1(zy_1)=y_1$ for $z\in M$, $y\in N$ and $y_1\in N_1$. In particular, the inclusions $\iota\colon N\to G$ and $\iota_1\colon N_1\to G$ are, respectively, sections of $\phi$ and $\phi_1$.
+
+Since $\theta_1\circ\theta^{-1}$ is an isomorphism, we deduce that $Q_1\normal N_1$, i.e., $N_1\subseteq N_G(Q_1)$. Take $x\in G$ satisfying $Q_1^x=Q_1$. Write $x=zy_1$ with $z\in M$ and $y_1\in N_1$. Then
+\begin{align*}
+    Q_1 &= Q_1^x\\
+        &= (Q_1^{y_1})^z    &&;\ Q_1\normal N_1\\
+        &= Q_1^z.
+\end{align*}
+Thus, $z\in N_G(Q_1)\cap M$. But $N_G(Q_1)\normal N_G(Q_1)M=G$. Suppose that $z\ne1$. By minimality, $M\subseteq N_G(Q_1)$. Hence, $Q_1\normal N_G(Q_1)=G$. Then, $M\leftrightarrow Q_1$ and so $Q_1\subseteq C_G(M)=M$, which is impossible because $M\cap Q_1\subseteq M\cap N_1=\gen1$. Thus, $z=1$ and $x=y_1\in N_1$. In consequence, $N_G(Q_1)=N_1$.
+
+Take $w_1\in Q_1$. Write $w_1=\theta_1\circ\theta^{-1}(w)$ with $w\in Q$. A walk along the previous diagram gives
+$$
+    \begin{tikzcd}
+        w \arrow[d, hook]
+            &
+            & w_1 \arrow[d, hook] \\
+        w
+            & {w,w_1} \arrow[d, maps to] \arrow[r, maps to] \arrow[l, maps to]
+            & w_1\\
+            & \varphi(w)=\varphi(w_1) \arrow[ru, maps to] \arrow[lu, maps to]
+            &                    
+    \end{tikzcd}
+$$
+Then, $w_1=zw$ for some $z\in M$. Thus, $w_1\in MQ=L$. It follows that $Q_1\subseteq L$. Thus, $Q_1\in\Syl_q(L)$ and so it's an $L$-conjugate, say $Q^x$, of $Q$. As a result,
+$$
+    N_1 = N_G(Q_1) = N_G(Q^x) = N_G(Q)^x = N^x
+$$
+ \end{solution}
+
+\begin{probl}
+    Let\/ $H$ be a maximal subgroup of\/ $G$, where\/ $G$ is solvable, and assume that\/ $\Core_G(H) = \gen1$. Show that\/ $G$ has a unique minimal normal subgroup\/ $M$, that\/ $H$ complements\/ $M$, and that\/ $M = C_G(M)$. Deduce that if\/ $K$ is also maximal in\/ $G$ with trivial core, then\/ $H$ and\/ $K$ are conjugate in\/ $G$.
+\end{probl}
+
+\begin{solution} Take $M\normal_mG$. Since $\Core_G(H)=\gen1$, we cannot have $M\subseteq H$. Thus, $G=MH$. Since $M$ is (elementary) abelian and normal, both $M$ and $H$ normalize $M\cap H$. Thus $M\cap H\normal MH=G$. It follows that $M\cap H=\gen1$ or $M$. But $M\not\subseteq H$ because $H\ne G$ and so $M\cap H=\gen1$, i.e., $H$ is a complement of~$M$.
+
+Put $H_0=H\cap C_G(M)$. Since $M\leftrightarrow H_0$ we see that $M$ normalizes $H_0$. If $a\in H_0$ and $h\in H$, then $a^h\leftrightarrow M^h=M$, i.e., $a^h\in C_G(M)$. Hence, $a^h\in H_0$. It follows that $H$ normalizes $H_0$. Then $H_0\normal MH=G$. Therefore, $H\cap C_G(M)=H_0=\gen1$ and so $M=C_G(M)$ since both complement $H$.
+
+
+Suppose that $N\ne M$ is another normal minimal. Then $N\cap M=\gen1$ and so $[N,M]\subseteq N\cap M=\gen1$, i.e., $N\leftrightarrow M$. Therefore, $N\subseteq C_G(M)=M$. Contradiction. Then $M$ is unique, i.e., $\Nm=\set M$.
+
+Let $K$ be another maximal with trivial core. The argument above shows that $K$ complements $M$. By the previous problem, $K$ is a conjugate of $H$.  \end{solution}
+
+\begin{probl}
+    Let\/ $G$ be finite and solvable. Suppose that\/ $x, y, z \in G$ have orders that are pairwise relatively prime. If\/ $xyz = 1$, show that\/ $x=y=z=1$.
+
+    \textrm{\rm\textbf{Hint.} Work by induction on the derived length of $G$.}
+\end{probl}
+
+\begin{solution} Let $n$, $m$ and $r$ denote the orders of $x$, $y$ and $z$. 
+
+If $G$ is abelian,
+$$
+    1=(xyz)^n = x^ny^nz^n = y^nz^n.
+$$
+Then $\ord(y^n)=\ord(z^n)$. By Lemma~\ref{order-properties},
+$$
+    \ord(y)=\ord(y^n)=\ord(z^n)=\ord(z),
+$$
+which can only happen if $\ord(y)=\ord(z)=1$, i.e., if $y=z=1$.
+
+Let $\bar G=G/G'$. Take $a\in G$ and denote by $\bar a$ its class in $\bar G$. If $\bar n=\ord(\bar a)$, then $\bar n\mid n$ because $\bar a^n=1$. It follows that $\bar x$, $\bar y$ and $\bar z$ have coprime orders. The abelian case implies $\bar x=\bar y=\bar z=1$, i.e., $x,y,z\in G'$. Now, induction on the derived length of $G$ implies $x=y=z=1$.
+
+\end{solution}

@@ -1,0 +1,1627 @@
+\chapter{Preliminaries}
+\section{Basic Definitions}
+\setcounter{subsection}{1}
+
+Let's recall that the \textsl{order} of a group $G$, denoted by $\abs G$, is the cardinality of the underlying set $G$. If $\omega\in G$ is an element of the group, the \textsl{order} of\/ $\omega$, denoted $\ord(\omega)$, is the smallest natural $n$ such that $\omega^n=1$, the identity of the group, or~$\infty$ when such an $n$ doesn't exist. We will generally use the multiplicative notation with `$\cdot$' denoting the group operation. A subgroup is a nonempty subset $H\subseteq G$ satisfying $H\cdot H\subseteq H$ and that forms a group under the same operation restricted to it. In such a case we will occasionally write $H\subgroup G$.
+
+\begin{rems}${}$
+    \begin{enumerate}[\rm i)]
+        \item If $n=\ord(\omega) < \infty$, then\/ $\omega^m=1\iff n\mid m$. In particular, 
+        $$
+            \omega^s=\omega^t\iff s\equiv t\mod n.
+        $$
+        In the case $n=\infty$, this only happens when $s=t$.
+    
+        \item For all $\omega\in G$, $\ord(\omega)\le \abs G$.
+    \end{enumerate}
+\end{rems}
+
+\medskip
+
+If $X$ and $Y$ are subsets of $G$, their \textsl{product} is
+$$
+    XY =\set{xy\mid x\in X,\; y\in Y}.
+$$
+
+\begin{lem}\label{group-commutativity}
+    Let $H$ and $K$ be subgroups of $G$. Then $HK$ is a subgroup if, and only if, $HK=KH$.
+\end{lem}
+
+\begin{proof}
+
+For the \textit{only if\/} part, take $y\in K$ and $x \in H$. The identity
+$$
+    (xy)^{-1} = y^{-1}x^{-1}
+$$
+shows that the inverses of elements in $HK$ belong in $KH$. Since $HK$ is a group, every element of it is an inverse of an element of $HK$, hence an element of~$KH$. On the other hand, the same equation shows that every element in $KH$, namely $y^{-1}x^{-1}$, is in $HK$ because it is the inverse of an element in such subgroup.
+
+For the \textit{if\/} part, take $x_1,\, x_2\in H$ and $y_1,\, y_2\in K$. Since
+$$
+    (x_1y_1)(x_2y_2) = x_1(y_1x_2)y_2
+$$
+and $HK=KH$, there must exist $x\in H$ and $y\in K$ such that
+$$
+    (x_1y_1)(x_2y_2) = x_1(xy)y_2 = (x_1x)(y_2y) \in HK.
+$$
+Thus $HK$ is closed under the group operation. For the inverse note that
+$$
+    (x_1y_1)^{-1} = y_1^{-1}x_1^{-1},
+$$
+which must be of the form $xy$ for appropriate $x\in H$ and $y\in K$.
+
+To complete the proof observe that $1=1\cdot1\in HK$. \end{proof}
+
+\begin{defns} {\rm[Symmetric group]}
+    If $X$ is a nonempty set, the \textsl{symmetric group} $\Sym(X)$ is the set of all \textsl{permutations} of $X$, i.e., all bijections from $X$ to $X$ with the composition operation. When $X=\nset n$, the symmetric group is denoted by $S_n$. A \textsl{transposition} in $\Sym(X)$ is a permutation that interchanges two elements.
+\end{defns}
+
+\begin{lem}\label{sign-of-permutation}
+    If $X$ is finite, every permutation is a product of transpositions. The parity of the number of transpositions is uniquely determined by the permutation.
+\end{lem}
+
+\begin{proof} Let $\sigma$ be a permutation. Pick $x\in X$. If $\sigma(x)=x$, then $\sigma$ induces a permutation $\bar\sigma$ in $X\setminus\set x$. It follows by induction in the cardinality of $X$ that $\bar\sigma$, and hence $\sigma$, is a product of transpositions. If $y=\sigma(x)\ne x$, let $\tau$ be the transposition that interchanges $x$ with $y$. Then $x$ is a fixed point of $\tau\sigma$. Again, the inductive hypothesis implies that $\tau\sigma$ is a product of transpositions. Then $\sigma=\tau(\tau\sigma)$ is a product of transpositions.
+
+For the second claim it is enough to consider the case $X=\nset n$. Let $x_1,
+\dots,x_n$ be $n$ indeterminates and define the polynomial
+$$
+    \Delta = \prod_{1\le i<j\le n}(x_i-x_j).
+$$
+Given $\sigma\in S_n$ let's introduce
+$$
+    \Delta_\sigma = \prod_{1\le i<j\le n}(x_{\sigma(i)}-x_{\sigma(j)}).
+$$
+Clearly $\Delta_\sigma = \pm\Delta$. Moreover, if $\tau$ is a transposition then
+\begin{equation}\label{eq1}
+    \Delta_\tau = -\Delta.
+\end{equation}
+To see this we can rename the indexes and assume that $\tau(1)=2$. In this case
+$$
+    \Delta = (x_1-x_2)\prod_{2<k}(x_1-x_k)\prod_{2<h}(x_2-x_h)
+        \cdot\delta(x_3,\dots,x_n),
+$$
+where $\delta$ includes the possible change of sign incurred by re-indexing. Thus,
+$$
+    \Delta_\tau = (x_2-x_1)\prod_{2<k}(x_2-x_k)\prod_{2<h}(x_1-x_h)
+        \cdot\delta(x_3,\dots,x_n),
+$$
+which implies $(\ref{eq1})$.
+
+After renaming indexes as dictated by $\sigma$, equation $(\ref{eq1})$ can be rewritten as
+$$
+    \Delta_{\tau\sigma} = - \Delta_\sigma.
+$$
+Now the conclusion follows from the first part and the fact that $\Delta_{\id}=\Delta$.  \end{proof}
+
+\medskip
+
+\begin{rem}
+    Here is another proof of the fact that the number of transpositions is uniquely determined:
+    \begin{quote}\small
+        Recall that an \textsl{inversion} is a pair $(i,j)$ such that $i<j$ and $\sigma(i)>\sigma(j)$.
+    
+        Note that a transposition adds $\pm1$ to the count of inversions occurring in~$\sigma$.
+        
+        Now consider the elements that are sandwiched by the two elements of a transposition. Each one lies completely above, completely below, or in between the two transposed elements.
+    
+        An element that is either completely above or completely below contributes nothing to the inversion count when the transposition is applied. Elements in-between contribute $2$.
+        
+        As the transposition adds $\pm1$ and all others adds $0\pmod2$, a transposition changes the parity of the number of inversions.
+    \end{quote}
+\end{rem}
+
+\begin{rem}\label{rem:cycle-decomposition-and-sign}
+    Every cyclic permutation of length $k$ can be decomposed as a product of $k$ transpositions:
+    $$
+        (a_1,\dots,a_k)=(a_1,a_2)\cdots(a_1,a_k).
+    $$
+    In particular, the sign of a cycle of length $k$ is $(-1)^{k-1}$.
+\end{rem}
+
+
+{\bf Alternating group.} The lemma allows us to define the \textsl{sign} morphism
+\begin{align*}
+    \sg\colon\Sym(X)&\to\Z_2,
+\end{align*}
+which is a group epimorphism. In particular, its kernel $\Alt(X)$ is a (normal) subgroup of $\Sym(X)$ of order $n!/2$ that receives the name of \textsl{alternating group} on $X$. The alternating group on $\nset n$ is denoted by~$A_n$.
+
+\begin{xmpl} Consider the alternate group $A_4$.
+\begin{enumerate}[$\mbf\rightarrowtriangle$]
+    \item It has $4!/2=12$ elements
+    
+    \item  Its cyclic elements of order $3$ are:
+        \begin{align*}
+            (123),\;(132),\;
+            (124),\;(142),\;
+            (143),\;(134),\;
+            (423),\;(432).
+        \end{align*}
+        Their number is indeed $8$ because $\binom43(3-1)!=8$.
+    
+    \item Every $3$-cycle is a square
+    
+    {\rm Indeed, if $\omega$ is a $3$-cycle, then $1=\omega^3$ and $\omega=\omega^4=(\omega^2)^2$.}
+
+    \item $A_4$ has no subgroup of order $6$
+    
+    {\rm Suppose otherwise. Let $H$ be such a subgroup. Take $\nu\in A_4\setminus H$. Then $A_4=H\cup \nu H$. Since $\nu^2\in\nu H\implies\nu\in H$, we must have $\nu^2\in H$. Therefore every square in $A_4$ would be an element of $H$. But this is impossible because there are eight $3$-cycles.}
+\end{enumerate}
+\end{xmpl}
+
+\begin{lem}\label{HK-cardinality}
+    Let $H$ and $K$ be finite subgroups of a group $G$. Then
+    $$
+        \abs{HK} = \abs H \abs K / \abs{H\cap K}.
+    $$
+\end{lem}
+\begin{proof} Consider the function
+\begin{align*}
+    \mu\colon H\times K&\to HK\\
+    (x,y)&\mapsto xy
+\end{align*}
+Put $I=H\cap K$, which is a subgroup of $H$, $K$ and $G$. Take $z\in HK$. To prove the lemma it is enough to show that $|\mu^{-1}(z)|=\abs{I}$.
+
+Fix $(x,y)\in\mu^{-1}(z)$. Given $\omega\in I$, the pair $(x\omega^{-1},\omega y)\in H\times K$. Thus,
+$$
+    \set{(x\omega^{-1},\omega y)\mid\omega\in I}\subseteq\mu^{-1}(z).
+$$
+Since $\omega\mapsto(x\omega^{-1},\omega y)$ is injective, we get $\abs I\le|\mu^{-1}(z)|$. To see the other inclusion take $(a,b)\in\mu^{-1}(z)$. Then $ab=z=xy$. So, $\omega=by^{-1}$ is an element of $K$ and
+$$
+    \omega = by^{-1} = a^{-1}zy^{-1} = a^{-1}x,
+$$
+which is also an element of $H$ that satisfies $(x\omega^{-1},\omega y)=(a,b)$.
+
+\end{proof}
+
+\begin{ntns}
+    If $n\in\Z$, $\spec(n)$ will denote the set of prime factors of $n$. If $\pi$ is a set of primes, $n\perp\pi$ will indicate that $\spec(n)\cap\pi=\emptyset$. If $\hat\pi$ is another set of primes, $\hat\pi\perp\pi$ will mean that $n\perp\pi$ for all $n\in\hat\pi$.
+\end{ntns}
+
+\begin{prop}\label{pi-product}
+    Let $G$ be a finite group and $H$ and $K$ subgroups such that $HK$ is a subgroup. Then $\spec\abs{HK}\subseteq\spec\abs H\cup\spec\abs K$.
+\end{prop}
+
+\begin{proof} This is a direct consequence of Lemma \ref{HK-cardinality}.  
+
+\end{proof}
+
+\begin{defns} Let $G$ be a group.
+    \begin{enumerate}[\rm i)]
+        \item If\/ $X$ is a subset of\/ $G$, the \textsl{group generated by $X$}, denoted $\gen X$, is the intersection of all subgroups of $G$ including $X$. For $X=\set{x}$ we simply write~$\gen x$. Note that $\gen x=\set{x^k\mid k\in\Z}$.
+        \item A \textsl{cyclic subgroup} is a group of the form $\gen\omega$ for some $\omega\in G$.
+        \item A \textsl{maximal subgroup} of\/ $G$ is a proper subgroup not contained in any other proper subgroup.
+        \item If\/ $G$ is finite, its \textsl{Frattini subgroup} $\Phi(G)$ is the intersection of all maximal subgroups of~$G$.
+    \end{enumerate}
+\end{defns}
+
+\medskip
+
+
+\textbf{Observation.} Given three subgroups $H$, $K$ and $J$ it always happens that
+$$
+    (H\cap J)(K\cap J)\subseteq HK\cap J.
+$$
+Illustrated
+$$
+    \begin{tikzcd}[column sep=tiny]
+        HK\arrow[rd, no head]&&J\arrow[ld, no head]\\
+        & HK\cap J\\
+        & (H\cap J)(K\cap J)\arrow[u, no head, black!60!red]\\
+        H\cap J\arrow[ru, no head]&& K\cap J \arrow[lu, no head]
+    \end{tikzcd}
+$$
+Then the question arises: is equality attained? Generally speaking, the answer is no. To see an example consider $S_3=\set{1, \tau, \rho, \rho^2, \tau\rho,\rho\tau}$ with $H=\gen\tau$, $K=\gen{\tau\rho}$ and $J=\gen\rho$. Then
+$$
+    HK = \set{1,\tau,\tau\rho,\rho},\quad HK\cap J=\set{1,\rho}
+        \quad\textrm{and}\quad H\cap J=K\cap J=\set{1}.
+$$
+However, equality is attained when~$H$ or $K$ is included~in $J$:
+
+\begin{prop}{\rm[Dedekind]}\label{dedekind}
+    Let $H$, $K$ and $\hat K$ be subgroups of the same group with $K\subseteq \hat K$. Then
+    $$
+        HK\cap \hat K= (H\cap \hat K)K,
+    $$
+    i.e.,
+    $$
+        \begin{tikzcd}[column sep=tiny]
+            HK\arrow[rd, no head]&&\hat K\arrow[ld, no head]\\
+            & HK\cap \hat K\\
+            & (H\cap \hat K)K\arrow[u, no head, equal, black!60!green]\\
+            H\cap \hat K\arrow[ru, no head] && K \arrow[lu, no head]\arrow[uuu, no head]
+        \end{tikzcd}
+    $$
+\end{prop}
+
+\begin{proof} As observed above, it is enough to show that $HK\cap \hat K\subseteq (H\cap \hat K)K$. Let $x\in H$ and $y\in K$ be such that $xy=\omega\in \hat K$. Then
+$$
+    x=\omega y^{-1}\in \hat KK\subseteq \hat K\hat K\subseteq \hat K
+$$
+and the inclusion holds. \end{proof}
+
+\medskip
+
+\textbf{Direct Diamond.} Given two subgroups $H$ and $K$ of a group $G$, the \textsl{direct diamond} is a diagram with $HK$ and $H\cap K$ respectively at the top and bottom nodes:
+$$
+\begin{tikzcd}[column sep=tiny, row sep=large]
+    &HK \arrow[ld, no head] \arrow[rd, no head]\\
+    H\arrow[rd, no head]&&K \arrow[ld, no head]\\
+    &H\cap K                 
+\end{tikzcd}
+$$
+
+\begin{cor}
+    Let $G$ be a group, $H$ and $K$ subgroups such that $HK$ is a group. Put $I=H\cap K$ and define
+    $$
+        {\cal X} = \set{X \mid H\subseteq X\subseteq HK}
+        \quad{\rm and}\quad
+        {\cal Y} = \set{Y\mid I\subseteq Y\subseteq K}
+    $$
+    where elements $X$ and $Y$ are required to be subgroups of\/ $G$.
+    Then the map
+    \begin{align*}
+        \theta\colon&{\cal X}\to{\cal Y}\\
+        X&\mapsto X\cap K
+    \end{align*}
+    is injective and
+    \begin{equation}\label{eq1.1}
+        \im(\theta) = \set{Z \in {\cal Y} \mid ZH=HZ}.
+    \end{equation}
+\end{cor}
+
+\begin{proof} Fix $X$ and $Y=\theta(X)$ and consider the diagram
+$$
+    \begin{tikzcd}[column sep=0.5cm]
+            &&HK
+                \arrow[rd,no head]
+                \arrow[ld,no head]\\
+            &X
+                \arrow[ld,no head]
+                \arrow[rd,"\theta",dashed,maps to]
+            &&K
+                \arrow[ld,no head]\\
+        H
+                \arrow[rd,no head]
+            &&Y
+                \arrow[ld,no head]\\
+            &I
+\end{tikzcd}
+$$
+First observe that $XK=HK$, which is clear because
+$$
+    HK\subseteq XK \subseteq HKK\subseteq HK.
+$$
+And since $Y=K\cap X$ by definition, the upper diagram is a direct diamond. The lower diagram is a direct diamond too because:
+$$
+    I \subseteq Y\cap H\subseteq K\cap H= I
+$$
+and, by Lemma~\ref{dedekind}, since $H\subseteq X$, we can distribute intersection with $X$ and get
+\begin{equation}\label{eq2}
+    X = HK\cap X = (H\cap X)(K\cap X) = HY.
+\end{equation}
+Equation $(\ref{eq2})$ also implies that we can recover $X$ as $H\theta(X)$, which shows the injectivity of~$\theta$.
+
+The lower direct diamond and Lemma~\ref{group-commutativity} imply that inclusion $\subseteq$ holds in~$(\ref{eq1.1})$. For the other inclusion, take $Z\in{\cal Y}$ such that $ZH$ is a subgroup (Lemma~\ref{group-commutativity}). Define $X'=ZH$. Then $X'\in{\cal X}$ because
+$$
+    H \subseteq ZH = X' \subseteq KH.
+$$
+Since $Z\subseteq K$ we can use Lemma~\ref{dedekind} to distribute intersection with $K$ to get
+$$
+    \theta(X')= X'\cap K = ZH\cap K = (Z\cap K)(H\cap K) = ZI = Z
+$$
+as desired.  \end{proof}
+
+\needspace{2\baselineskip}
+\begin{prop}\label{frattini} Let\/ $G$ be a finite group.
+    \begin{enumerate}[\rm a)]
+        \item If $\gen X\varsubsetneq G$, then $\gen{X\cup\Phi(G)}\varsubsetneq G$.
+        \item If\/ $y\in G$ verifies $\gen X\varsubsetneq G\Rightarrow\gen{X\cup\set y}\varsubsetneq G$ for all $X$, then $y\in\Phi(G)$.
+        \item If $G=\Phi(G)H$, then $G=H$.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}${}$
+\begin{enumerate}[\rm a)]
+    \item Since $G$ is finite, there exists $M$ maximal such that $\gen X\subseteq M$. Then $X\cup\Phi(G)\subseteq M$ and therefore $\gen{X\cup\Phi(G)}\subseteq M\varsubsetneq G$.
+    \item Let $M$ be maximal. We have to show that $y\in M$. By hypothesis,
+    $$
+        M\subseteq\gen{M\cup\set y}\varsubsetneq G.
+    $$
+    But this implies that $M=\gen{M\cup\set y}$, i.e., $y\in M$.
+    \item Since $G=\Phi(G)H=\gen{H\cup\Phi(G)}$, we can use the contrapositive of part a) and get $G=\gen H= H$.
+\end{enumerate}
+ \end{proof}
+
+\begin{rem}\label{non-generators}
+    The second part of the proposition allows us to designate the elements of\/ $\Phi(G)$ as \textsl{non-generators}. In fact, that part can be re-stated as:
+    $$
+        G=\gen X\cup\set y\implies G=\gen X,
+    $$
+    i.e., Frattini elements can be removed from any set of generators without altering the ability of the remaining set to generate\/~$G$.
+\end{rem}
+
+\begin{prop}{\rm[Cyclic groups.]}
+    Let\/ $G=\gen x$ be a cyclic group and $H\subseteq G$ a nontrivial subgroup. Then $H=\gen{x^m}$ for $m=\min\set{n>0\mid x^n\in H}$.
+\end{prop}
+
+\begin{proof} Choose an element $y$ in $H\setminus\set1$. Since all elements of $G$ are powers of $x$, there exists an integer $k\ne0$ such that $y=x^k$. If necessary, we can replace $y$ with $y^{-1}$ to ensure that $k>0$. Let $m$ be the smallest natural number such that $x^m\in H$. Then for every element $x^n\in H$, we must have $m\mid n$ (otherwise the remainder would send $x$ to $H$). In other words, $H=\gen{x^m}$, as desired.\footnote{For a more conceptual proof consider the epimorphism $n\mapsto x^n$ from $\Z$ onto $G$ and observe that $\Z$ is a principal domain.}  \end{proof} 
+
+\begin{cor}\label{cyclic-subgroups}
+     Let $G = \gen x$ be a finite cyclic group of order $n$, and for each positive divisor $d$ of $n$, let $G_d = \gen{x^{n/d}}$. Then $G_d$ is the unique subgroup of $G$ having order $d$, and the subgroups $G_d$ are all the subgroups of $G$.
+\end{cor}
+
+\begin{proof} Take a nontrivial subgroup $H$ and put $d=\abs H$. By the proposition, $H=\gen{x^m}$, where $m$ is the smallest natural number that sends $x$ into $H$. Since $x^n=1\in H$, we deduce that $m\mid n$. Put $d=n/m$. Then $m=n/d$ and $H=G_d$. If $H$ is trivial, then $H=G_n$. So, in either case $H$ is a $G_d$.
+
+It remains to be seen that $\abs{G_d}=d$. But $(x^{n/d})^e=1$ implies $(n/d)e\ge n$, i.e., $e\ge d$. In consequence, $(x^{n/d})^e\ne1$ for $0< e < d$ and so all these powers are pairwise different and never~$1$. Since $G_d$ consists of the powers of $x^{n/d}$, we deduce that its order is exactly~$d$.  \end{proof}
+
+\begin{defn}\label{right-index}
+    If\/ $H$ is a subgroup of a group $G$, a \textsl{right} \textsl{coset} of $H$ is a set $Hx=\set{yx\mid y\in H}$, where $x\in G$. The number of right cosets, which may be infinite, is the \textsl{index} of\/ $H$ in $G$, as is denoted by $\abs{G:H}$.
+\end{defn}
+
+\begin{rem}
+    $\abs{G:H}=1\iff H=G$ and\/ $\abs{G:H}=\abs G\iff H=\gen1$.
+\end{rem}
+
+\begin{thm}\label{lagrange} {\rm[Langrange]}
+    Let $H$ be a subgroup of an arbitrary group $G$. The following then hold:
+    \begin{enumerate}[\rm a)]
+    \item If\/ $y \in Hx$, then $Hy = Hx$.
+    \item Distinct right cosets of\/ $H$ in\/ $G$ are disjoint.
+    \item All right cosets of\/ $H$ in $G$ have cardinality equal to $|H|$.
+    \item If\/ $|G|$ is finite, then $|H|$ divides $|G|$ and $\abs G/\abs H = \abs{G:H}$.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}${}$
+
+\begin{enumerate}[\rm a)]
+    \item Put $y=zx$ with $z\in H$. Given $\omega\in H$ we have $\omega y = (\omega z)x\in Hx$ and $\omega x = (\omega z^{-1})y\in Hy$.
+
+    \item Take $z\in Hx\cap Hy$. According to a) we have $Hz=Hx$ and $Hz=Hy$.
+
+    \item $y\mapsto yx$ is a bijection between $H$ and $Hx$.
+
+    \item By b) $G$ admits a partition of right cosets, and they are equipotent by~c).
+\end{enumerate}
+ \end{proof}
+
+\begin{rem}\label{left-index}
+    The theorem, when applied to $G^{\rm op}$, i.e., the set $G$ with the opposite operation, automatically implies that conclusions\/ {\rm a)}, {\rm b)} and ${\rm c)}$ also hold for left cosets. In particular, the number of left cosets equals the index as defined above. 
+\end{rem}
+
+\begin{ntn}
+    If\/ $H$ is a subgroup of the group\/ $G$, then\/ $\lco GH$ will denote the set of left cosets of\/ $H$ in\/~$G$.
+\end{ntn}
+
+\begin{cor}\label{ord(x)-divides-|G|}
+    Let $G$ be a finite group. If $x \in G$ then $\ord(x)$ divides~$|G|$.
+\end{cor}
+
+\begin{proof} Apply part d) of the theorem to $H=\gen x$.  \end{proof}
+
+\begin{xmpl}
+    Every group of order\/ $9$ is abelian.
+\end{xmpl}
+
+\begin{proof} {[cf.~Corollary~\ref{p-squared-is-abelian}]} If the group is cyclic, it is abelian. Otherwise their non-unity elements have order $3$. Let $x$ be one of them and $y\notin\gen x$. If $xy=yx$, we are done. Otherwise $yx\in\set{xy^2, x^2y,x^2y^2}$.
+\begin{enumerate}[$\to$]
+    \item If $yx=xy^2$, then $x=yxy$ and
+    $$
+        x^2y^2=(yxy)(yxy)y^2= y(xy^2)x=y(yx)x=y^2x^2,
+    $$
+    i.e., $x^{-1}\leftrightarrow y^{-1}$, i.e., $x\leftrightarrow y$.
+    
+    \item If $yx=x^2y$, then $x^2=yxy$ and
+    $$
+        x^2y^2= (yxy)(yxy)y^2= yxy^2x=x^2yy^2x=1,
+    $$
+    i.e., $x^{-1}=y$, i.e., $x\leftrightarrow y$.
+
+    \item If $yx=x^2y^2$, then $yx=x^{-1}y^{-1}=(yx)^{-1}$, which is impossible because a group of order $9$ cannot contain elements of order $2$.
+\end{enumerate}
+\end{proof}
+
+
+\begin{defn}
+    The \textsl{exponent} of a finite group is the least common multiple of the orders of its elements.
+\end{defn}
+
+\begin{rem}
+     By the corollary, for\/ $G$ finite, the exponent of\/ $G$ divides $|G|$.
+\end{rem}
+
+\begin{cor}\label{group-index-product}
+    Let $H \subseteq K \subseteq G$, where $G$ is a finite group and\/ $H$ and\/ $K$ are subgroups. Then 
+    $$
+        \abs{G:H} = \abs{G:K}\abs{K:H}.
+    $$
+\end{cor}
+\begin{proof} Write $\abs{G:H}=\abs G/\abs H$ etc. and use part d) of the theorem.  \end{proof}
+
+\begin{cor}\label{index-of-preimage}
+    Let $\varphi\colon G\to H$ be a group epimorphism where $G$ and $H$ are finite. If\/ $K\subseteq H$ is a subgroup, then $\abs{G:\varphi^{-1}(K)}=\abs{H:K}$.
+\end{cor}
+
+\begin{proof} Put $n=\abs{H:K}$. Since $\varphi$ is onto, there is a partition of $H$ with $n$ cosets $\varphi(x_1)K,\;\dots,\varphi(x_n)K$. We claim that $x_1\varphi^{-1}(K),\;\dots,x_n\varphi^{-1}(K)$ is a partition of~$G$.
+
+Firstly, these cosets are disjoint because their images under $\varphi$ are.
+
+Secondly, they cover $G$. Indeed, given $x\in G$, there exist $i$ and $z\in K$ such that $\varphi(x)=\varphi(x_i)z$. Then $\varphi(x)=\varphi(x_iy)$ for some $y\in G$ such that $z=\varphi(y)$. Thus, $x=x_i(x_i^{-1}x)\in x_i\varphi^{-1}(K)$ because 
+$$
+    \varphi(x_i^{-1}x) =\varphi(x_i^{-1})\varphi(x)
+        =\varphi(x_i^{-1})\varphi(x_iy)
+        =\varphi(x_i^{-1}x_iy)
+        =\varphi(y)=z\in K.
+$$
+ \end{proof}
+
+\begin{rem}\label{rem:bijective-coclasses}
+    A more conceptual proof of the corollary can be done when $K$ is normal in $H$ because, in that case, we have the commutative diagram
+    \small
+    $$
+        \begin{tikzcd}
+            &G\arrow[r,"\varphi"]\arrow[d]&H\arrow[r]\arrow[d]&1\\
+            1\arrow[r]&G/\varphi^{-1}(K)\arrow[r]\arrow[d]
+                &H/K\arrow[r]\arrow[d]&1\\
+                &1&1
+        \end{tikzcd}
+    $$
+    \normalsize
+    is an exact commutative diagram. However, this approach is more general. To see this, let $X$ and $Y$ be sets and $\equiv$ an equivalence relation in $Y$. Then,
+    \begin{enumerate}[-]
+        \item According to the universal property of the quotient in $\cat{Set}$, if $\equiv_X$ is an equivalence relation in $X$, for every function $\varphi\colon X\to Y$ that satisfies $x\equiv_X z\implies\varphi(x)\equiv\varphi(z)$ there exists a unique $\bar\varphi\colon X/{\equiv_X}\to Y/{\equiv}$ such that
+        $$
+            \begin{tikzcd}
+                X
+                        \arrow[r,"\varphi"]
+                        \arrow[d]
+                    &Y
+                        \arrow[d]\\
+                X/{\equiv_X}
+                        \arrow[r,"\bar\varphi"]
+                    &Y/{\equiv}
+            \end{tikzcd}
+        $$
+        commutes.
+        \item If $\varphi$ is surjective, then $\bar\varphi$ is surjective.
+        \item Define the equivalence relation $\equiv_\varphi$ in $X$ as $x\equiv_\varphi z\iff\varphi(x)=\varphi(z)$. Then, $\bar \varphi\colon X/{\equiv_\varphi}\to Y/{\equiv}$ is an injection. Indeed,
+        $$
+            \bar\varphi(\bar x)=\bar\varphi(\bar z)\iff\varphi(x)\equiv\varphi(z)
+                \iff x\equiv_\varphi y
+                \iff \bar x=\bar z.
+        $$
+        \item In particular, $\varphi$ is surjective $\implies\bar\varphi$ is bijective.
+        \item In the case of groups, the quotient $\lco HK$ defined by the coclasses of $K$ in $H$ is given by $y_1\equiv y_2\iff y_1K=y_2K$, whose preimage in $G$ corresponds to $x_1\equiv_\varphi x_2\iff \varphi(x_1)K=\varphi(x_2)K$, i.e., $x_1\varphi^{-1}(K)=x_2\varphi^{-1}(K)$ because $\varphi$ is an epimorphism:
+        \begin{align*}
+            \varphi(x_1)=\varphi(x_2)K &\implies \varphi(x_1)=\varphi(x_2)\varphi(x)
+                    =\varphi(x_2x)
+                    &&;\ x\in\varphi^{-1}(K)\\
+                &\implies (x_2x)^{-1}x_1\in\ker\varphi\subseteq\varphi^{-1}(K)\\
+                &\implies x_1\in x_2x\varphi^{-1}(K)=x_2\varphi^{-1}(K),
+        \end{align*}
+        and
+        \begin{align*}
+            x_1\in x_2\varphi^{-1}(K)
+                &\iff x_1=x_2x&&;\ \varphi(x)\in K\\
+                &\implies \varphi(x_1)=\varphi(x_2)\varphi(x)\in\varphi(x_2)K. 
+        \end{align*}
+        In other words, we have a commutative diagram of sets
+        \begin{equation}\label{diag:isomorphic-coclasses}
+            \begin{tikzcd}
+                G
+                        \arrow[r,"\varphi"]
+                        \arrow[d]
+                    &H
+                        \arrow[d]\\
+                \lco G{\varphi^{-1}(K)}
+                        \arrow[r,"\bar\varphi"]
+                    &\lco HK
+            \end{tikzcd}
+        \end{equation}
+        where $\bar\varphi$ is a bijection.
+    \end{enumerate}
+\end{rem}
+
+\begin{cor}\label{index-inequality}
+    Let $H$ and $K$ be subgroups of a finite group $G$. Then
+    $$
+        |K:H \cap K| \le |G:H|
+    $$
+    with equality attained if, and only if, $HK = G$.
+\end{cor}
+
+\begin{proof} By Lemma~\ref{HK-cardinality}
+$$
+    \abs G\ge\abs{HK}=\abs H\abs K/\abs{H\cap K}
+$$
+with equality attained if, and only if, $HK=G$. Then
+$$
+    \abs{K:H\cap K} = \abs K/\abs{H\cap K} \le \abs G/\abs H = \abs{G:H}
+$$
+with equality attained if, and only if, $HK=G$.  \end{proof}
+
+\begin{cor}\label{coprime-indexes}
+    Let $H$ and $K$ be subgroups of a finite group $G$, and suppose that $|G:H|$ and $|G:K|$ are relatively prime. Then $HK = G$.
+\end{cor}
+
+\begin{proof} By Corollary~\ref{group-index-product}, both $|G:H|$ and $|G:K|$ divide $\abs{G:H\cap K}$. Therefore $|G:H||G:K|$ divides $\abs{G:H\cap K}$. In particular,
+$$
+    |G:H||G:K|\le\abs{G:H\cap K}.
+$$
+Then
+$$
+    \abs G^2/(\abs H\abs K) = \abs{G:H}\abs{G:K}\le\abs{G:H\cap K}=\abs G/\abs{H\cap K}
+$$
+and so
+$$
+    \abs G\le \abs H\abs K/\abs{H\cap K}=\abs{HK}.
+$$
+ \end{proof}
+
+\begin{lem}
+    Let $H = \gen x$ and $K = \gen y$ be cyclic groups of the same finite order $n$, and let $\phi\colon H\to K$ be defined by $\phi(x^i) = y^i$ for all integers $i$. Then~$\phi$ is a well-defined isomorphism from $H$ onto $K$.
+\end{lem}
+
+\begin{proof} The map and its inverse are well defined because
+$$
+    x^i=x^j\iff i\equiv j\mod n\iff y^i\equiv y^j.
+$$
+Moreover
+$$
+    \phi(x^ix^j)=\phi(x^{i+j})=y^{i+j}=y^iy^j=\phi(x^i)\phi(x^j).
+$$
+ \end{proof}
+
+\medskip
+
+Recall that Euler's \textsl{totient} function, denoted by $\varphi(n)$, is the function that gives the number of positive integers less than $n$ that are relatively prime to $n$, i.e.,
+$$
+    \varphi(n) = \abs{\set{ k \in\nset n \mid k\perp n}}.
+$$
+
+\begin{thm}\label{thm:totient-sum}
+    $\sum_{d\mid n}\varphi(d)=n$.
+\end{thm}
+
+\begin{proof}
+    Take $d\mid n$. Consider the set
+    $$
+        E_d=\set{1\le k\le n\mid \gcd(k,n)=d}.
+    $$
+    Note that
+    $$
+        k\in E_d\iff
+            d\mid k,\ k/d\le n/d \text{ and } k/d\perp n/d.
+    $$
+    In particular, $|E_d|=\varphi(n/d)$. Clearly, $(E_d)_{d\mid n}$ is a partition of $\nset n$. It follows that $(E_{n/d})_{d\mid n}$ is the same partition (in different order), with $|E_{n/d}|=\varphi(d)$. Hence,
+    $$
+        n = \sum_{d\mid n}|E_{n/d}|=\sum_{d\mid n}\varphi(d).
+    $$
+\end{proof}
+
+\begin{cor}\label{cor:condition-for-cyclic-group}
+    Let\/ $G$ be a group of\/ $n$ elements. If\/ $|\set{x\in G\mid x^d=1}|\le d$ for every\/ $d\mid n$, then\/ $G$ is cyclic.
+\end{cor}
+
+\begin{proof} \citep{59911}
+
+    Fix $d\mid n$ and put $G_d=\set{x\in G\mid \ord(x)=d}$. Suppose that $G_d\ne\emptyset$. Pick $y\in G_d$. Then $|\gen y|=d$ and $\gen y\subseteq\set{x\mid x^d=1}$, which has $d$ elements at most. It follows that $\gen y=\set{x\mid x^d=1}$ and so $G_d$ is the set of generators of $\gen y$. In consequence, $|G_d|=\varphi(d)$. Then,
+    \begin{align*}
+        n &= |G|\\
+            &= \sum_{d\mid n}|G_d|\\
+            &\le \sum_{d\mid n}\varphi(d)\\
+            &= n    &&\text{; Thm.~\ref{thm:totient-sum}}
+    \end{align*}
+    and equality is attained, i.e., $|G_d|=\varphi(d)$ for all $d\mid n$. In particular $G_n\ne\emptyset$, which shows that $G$ is cyclic.
+\end{proof}
+
+\begin{cor}\label{cor:multiplicative-subgroup-of-field-is-cyclic}
+    Every finite subgroup of the multiplicative group of a field is cyclic.
+\end{cor}
+
+\begin{ntn}
+    If\/ $G$ is a group  $\Aut(G)$ denotes its \textsl{group of automorphisms}.
+\end{ntn}
+
+\begin{xmpl}\label{xmpl:Aut(Q,+)}
+    $\Aut(\Q,+)=\set{\eta_a\colon x\mapsto ax\mid a\in\Q\setminus\set0}$.
+
+    Take $\phi\in\Aut(\Q,+)$ and put $a=\phi(1)$. Then the equation $\phi(x+y)=\phi(x)+\phi(y)$ implies $\phi(nx)=n\phi(x)$. In particular, $\phi(n)=an$ for $n\in\N$. Moreover, from $\phi(-x)=-\phi(x)$ we get $\phi(n)=an$ for $n\in\Z$. It follows that $n\phi(1/n)=\phi(1)=a$, i.e., $\phi(1/n)=a/n$. In consequence, $\phi(q)=aq$ for $q\in\Q$, i.e., $\phi=\eta_a$ and so $\Aut(\Q,+)=(Q^*,\,\cdot\,)$.
+\end{xmpl}
+
+
+\begin{lem}
+    Let $G$ be a cyclic group. Then $\Aut(G)$ is abelian, and if\/ $G$ is finite, then $|\Aut(G)| = \varphi(|G|)$, where $\varphi$ is Euler's totient function.
+\end{lem}
+
+\begin{proof} Put $G=\gen x$. If\/ $\sigma\in{\rm Aut}(G)$, then there exists $k\ne0$ such that
+$$
+    \sigma(x)=x^k.
+$$
+Let $\eta$ be another automorphism. If $\eta(x)=x^h$, then $\sigma\eta(x)=x^{hk}=\eta\sigma(x)$, i.e., $\sigma\eta=\eta\sigma$.
+
+In the case $G$ finite, with $\abs G=n$, we must have $k\perp n$, otherwise $\abs{\sigma(G)} < n$. Since we can also assume $1<k<n$ the results follows because
+$$
+    \sigma=\eta \iff k\equiv h\mod n.
+$$
+ \end{proof}
+
+
+\needspace{2\baselineskip}
+\begin{defns}${}$
+    \begin{enumerate}[\rm i)]
+        \item     The \textsl{center} of a group $G$, denoted $Z(G)$, is the set of all elements that commute with every element in~$G$. It is easy to see that $Z(G)$ is a subgroup of~$G$.
+
+        \item A subgroup $H$ is \textsl{characteristic} if $\sigma(H)\subseteq H$ for all $\sigma\in\Aut(G)$. In such a case we will write $H \ch G$.
+        
+        \item Given elements $x$ and\/ $\omega$ in a group $G$, the \textsl{conjugate} of $x$ w.r.t.\ $\omega$ is $x^\omega=\omega x\omega^{-1}$. Note that $(xy)^\omega=x^\omega y^\omega$, i.e., $\sigma_\omega\colon x\mapsto x^\omega\in\Aut(G)$.
+
+        \item An \textsl{inner} automorphism is a map of the form $\sigma_\omega\colon x\mapsto x^\omega$. The set of all inner automorphisms of\/ $G$ is denoted by\/ $\Inn(G)$. Given that $(x^\omega)^\eta=x^{\eta\omega}$, we see that\/ $\sigma_\eta\circ\sigma_\omega=\sigma_{\eta\omega}$, i.e., $\Inn(G)$ is a subgroup of $\Aut(G)$.
+
+        \item If $X\subseteq G$ is a subset, the \textsl{conjugate} of\/ $X$ w.r.t.\ $\omega$, denoted $X^\omega$, is the image of\/ $X$ under the inner automorphism $\sigma_\omega\colon x\mapsto x^\omega$.
+
+        \item A subgroup $N\subseteq G$ is \textsl{normal} if it is mapped to itself by all inner automorphisms of\/ $G$, i.e., $N^\omega\subseteq N$ for all $\omega\in $G. In such a case we write $N\normal G$.
+        
+        Note that, in this case, $N^{\omega^{-1}}\subseteq N$ too. Therefore $N=\big(N^{\omega^{-1}}\big)^\omega\subseteq N^\omega$, i.e., $N^\omega=N$.
+
+        \item If $H\subseteq G$ is a subgroup, its \textsl{normalizer} is
+        $$
+            N_G(H) = \set{x\in G\mid H^x=H}.
+        $$
+    \end{enumerate}
+\end{defns}
+
+\begin{rem}\label{characteristic-transitivity}
+    If\/ $H\ch G$ and\/ $\sigma\in\Aut(G)$, then there exists\/ $\sigma_H\in\Aut(H)$ such that\/ $\sigma_H\subseteq\sigma$ because $\sigma(H)\subseteq H$ and\/ $\sigma^{-1}(H)\subseteq H$. In particular, the characteristic relation `$\ch$' is transitive, i.e.,
+    $$
+        K\ch H\ch G\implies K\ch G.
+    $$
+    \textrm{\rm Indeed. If $\sigma\in\Aut(G)$, we can first define $\sigma_H\in\Aut(H)$, with $\sigma_H\subseteq\sigma$, and then $\sigma_K\in\Aut(K)$, with $\sigma_K\subseteq\sigma_H$.}
+\end{rem}
+
+\begin{rem}\label{product-is-subgroup-condition}
+    Let\/ $H$ and $K$ be subgroups of\/ $G$. The identity $xy=yx^{y^{-1}}$ shows that
+    $$
+        K\subseteq N_G(H)\implies HK=KH.
+    $$
+\end{rem}
+
+\begin{rem}\label{abelian-normal}
+    If\/ $A$ is an abelian and normal subgroup of\/ $G$, given\/ $H\subgroup G$, we have\/ $A\cap H\normal AH$.
+
+    \textrm{\rm Indeed: $A\cap H\normal A$ because $A$ is abelian and $A\cap H\normal H$ because $A$ is normal.}
+\end{rem}
+
+\needspace{2\baselineskip}
+\begin{prop}\label{normal-closure} Let $G$ be a group.
+    \begin{enumerate}[\rm a)]
+        \item Let $X$ be a subset of\/ $G$ and\/ $H=\gen X$. If $\sigma\colon G\to G$ is an automorphism such that $\sigma(X)=X$, then $\sigma(H)=H$. In particular, if\/ $X^\omega=X$ for all $\omega\in G$, $H$ is normal.
+
+        \item Let $x\in G$ and let $\gen x^*$ denote the subgroup generated by $\set{x^\omega\mid\omega\in G}$. Then $\gen x^*$ is normal.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}${}$
+\begin{enumerate}[\rm a)]
+    \item Take $y\in H$. There exist $x_1,\dots,x_n\in X$ such that
+    $$
+        y=x_1\cdots x_n.
+    $$
+    Then
+    $$
+        \sigma(y) = \sigma(x_1)\cdots\sigma(x_n)\in\gen{\sigma(X)}=\gen X=H.
+    $$
+
+    \item Apply part a) for $X=\set{x^\omega\mid\omega\in G}$. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{lem}\label{normal-transitivity}
+    If $C\ch N$ and $N\normal G$, then $C\normal G$.
+\end{lem}
+
+\begin{proof} Take $y\in C$ and $\omega\in G$. Then $\sigma\colon x\mapsto x^\omega$ satisfies $\sigma(N)=N$. In particular, the restriction $\sigma_N\colon N\to N$, with $\sigma_N\subseteq\sigma$, belongs to $\Aut(N)$. Since $C$ is characteristic in~$N$ we obtain $\sigma_N(C)\subseteq C$. Thus, $y^\omega=\sigma_N(y)\in C$.  \end{proof}
+
+\begin{lem}
+    Let $H$ be a subgroup of\/ $G$. Then $N_G(H)$ is the largest subgroup $K$ of\/ $G$ such that $H\normal K$.
+\end{lem}
+
+\begin{proof} Firstly observe that given $\eta,\tau\in N_G(H)$, $H^{\eta\tau}=(H^\eta)^\tau=H^\tau=H$, and $N_G(H)$ is indeed a subgroup of $G$.
+
+Clearly, $H\subseteq N_G(H)$ and $H\normal N_G(H)$. Moreover, if $H\normal K$, every element of $K$ belongs to $N_G(H)$, i.e., $K\subseteq N_G(H)$.
+\end{proof}
+
+
+\begin{cor}\label{product-by-normal}
+    Let $X$ be a subset of\/ $G$ and\/ $N\normal G$. Then $NX=XN
+    $. In particular, if $X$ is a subgroup of\/ $G$, $XN$ is a also subgroup.
+\end{cor}
+
+\begin{proof} The equality $NX=XN$ follows from the equation $yx=xy^{x^{-1}}$. If $X$ is a group then $(XN)(XN)=XXNN=XN$.
+ \end{proof}
+
+\begin{prop} Let\/ $H$ be a subgroup of a group\/ $G$. Then the following are equivalent:
+    \begin{enumerate}[\rm a)]
+    \item $H \normal G$.
+    \item $Hx = xH$ for all $x \in G$.
+    \item Every right coset of\/ $H$ in $G$ is a left coset of $H$.
+    \item Every left coset of\/ $H$ in $G$ is a right coset of $H$.
+    \item $(xH)(yH) = xyH$ for all $x,y \in G$.
+    \item The set of left cosets of\/ $H$ in\/ $G$ is closed under multiplication.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}${}$
+
+\begin{enumerate}[\rm a)]
+    \item $\Rightarrow$ b) Trivial because $xHx^{-1}=H$.
+    \item $\Rightarrow$ c) Trivial.
+    \item $\Rightarrow$ d) Trivial.
+    \item $\Rightarrow$ e) $(xH)(yH)=(xH)(Hy') = xHy' = xyH$.
+    \item $\Rightarrow$ f) Trivial.
+    \item $\Rightarrow$ a) Take $\omega\in G$. Then $\omega H\omega^{-1}H=\zeta H$ for some $\zeta\in G$. In particular, $1=\omega\omega^{-1}\in\zeta H$, i.e., $\zeta\in H$. Hence, $H^\omega H=\omega H\omega^{-1}H=H$, which implies that $H^\omega=H$.
+\end{enumerate}
+ \end{proof}
+
+\begin{cor}
+    Let\/ $N\normal G$. Then the set\/ $\lco GN$ of left cosets has a natural group structure, denoted by\/ $G/N$, which makes the projection\/ $\pi\colon G\to G/N$ a quotient in the category of groups.
+\end{cor}
+
+\begin{proof} This is a direct consequence of part e).  \end{proof}
+
+
+\begin{rem}
+    If $\sigma\colon G\to H$ is a morphism of groups, then $\ker(\sigma)$ is normal in $G$. Corollary~\ref{normal-quotient-implies-normal} shows that the converse is also true.
+\end{rem}
+
+\begin{prop}\label{image-of-normalizer}
+    If $\varphi\colon G\to \bar G$ is an epimorphism of groups (not necessarily finite) then, for every subgroup $H$ such that $\ker(\varphi)\subseteq H$, we have
+    $$
+        \varphi(N_{G}(H))=N_{\bar G}(\varphi(H)).
+    $$
+    In particular, the image of a normal subgroup is normal.
+\end{prop}
+
+\begin{proof}${}$
+\begin{enumerate}
+    \item[$\subseteq$:] $x\in N_{G}(H)\Leftrightarrow H^x=H\Rightarrow\varphi(H)^{\varphi(x)}=\varphi(H)\Rightarrow\varphi(x)\in N_{\bar G}(\varphi(H))$.
+    \item[$\supseteq$:] $\varphi(x)\in N_{\bar G}(\varphi(H))\Rightarrow\varphi(H^x)=
+    \varphi(H)\Rightarrow H^x=H$. Indeed,
+    \begin{enumerate}
+        \item[$\subseteq$:] given $y\in H$ we can pick $z\in H$ such that $\varphi(y^x)=\varphi(z)$. Then $y^xz^{-1}\in \ker(\varphi)\subseteq H$ and so $y^x\in H$.
+        \item[$\supseteq$:] From what we just saw $H^{x^{-1}}\subseteq H$, then $H\subseteq H^x$.
+    \end{enumerate}
+\end{enumerate}
+\end{proof}
+
+\begin{cor}\label{normal-quotient-implies-normal}
+    Let\/ $N\normal G$ and $N\subgroup H\subgroup G$. If\/ $H/N\normal G/N$, then\/ $H\normal G$.
+\end{cor}
+
+\begin{proof} Consider the natural projection $\varphi\colon G\to G/N$. Since $\ker(\varphi)=N\subseteq H$, by the proposition we have
+$$
+    N_G(H)/N=\varphi(N_G(H))=N_{G/N}(H/N)=G/N
+$$
+because $N\subseteq H\subseteq N_G(H)$. Therefore, $N_G(H)=G$.  \end{proof}
+
+\begin{rem}\label{biunivocal-normal-quotient}
+    Given\/ $N\normal G$, the mapping\/ $H\mapsto H/N$ defines a bi-univocal correspondence between the subgroups of\/ $G$ that contain\/ $N$ and the subgroups of\/~$G/N$.
+\end{rem}
+
+\begin{prop}\label{intersect-abelian-normal-get-normal}
+    Let\/ $G$ be a group, $A\normal G$ abelian and\/ $H$ a subgroup of $G$ with $AH=G$. Then\/ $A\cap H\normal G$.
+\end{prop}
+
+\begin{proof} Fix $a\in A\cap H$. If $b\in A$, then $a^b=a\in A\cap H$. If $y\in H$, then $a^y$ is in $H$ because $a\in H$ and is in $A$ because $A$ is normal.  \end{proof}
+
+\begin{ntn}
+    Given two elements $x$ and $y$ in a group $G$, we will write $x\comm y$ to indicate that\/ $xy=yx$.
+\end{ntn}
+
+\begin{defn}
+    If $X$ is a subset of a group $G$, the \textsl{centralizer} of\/ $X$ in\/~$G$ is given by
+    $$
+        C_G(X) = \set{z\in G\mid z\comm x \textrm{\rm\ for all }x\in X}.
+    $$
+    Note that $C_G(X)$ is a subgroup.
+\end{defn}
+
+\begin{cor}
+    Let $H$ be a subgroup of a group $G$. Put $N = N_G(H)$ and\/ $C = C_G(H)$. Then\/ $C=C_N(H)$ and\/ $C \normal N$ with $N/C$ isomorphic to a subgroup of $\Aut(H)$.
+\end{cor}
+
+\begin{proof}
+
+Clearly, $C_N(H)\subseteq C$. To see that $C\subseteq N$ we have to take $z\in C$ and show that $H^z=H$. But given $y\in H$ it holds that $y^z=zyz^{-1}=y$ because $z\comm y$.
+
+Introduce the map
+\begin{align*}
+    \sigma\colon N&\to\Aut(H)\\
+    \omega&\mapsto\sigma_\omega\colon y\mapsto y^\omega,
+\end{align*}
+which is well-defined because $N=N_G(H)$. Given $\omega,\nu\in N$, for every $y\in H$ we have
+$$
+    \sigma_{\omega\nu}(y)
+        =y^{\omega\nu}=(y^\nu)^\omega = \sigma_\omega\sigma_\nu(y).
+$$
+Therefore, $\sigma$ is a morphism from $N$ to $\Aut(H)$. The kernel of $\sigma$ is
+$$
+    \ker(\sigma) = \set{\omega\in N\mid y^\omega = y\textrm{\rm\ for all }y\in H}
+        = C_N(H) = C
+$$
+and so $\sigma$ induces an isomorphism from $N/C$ onto $\im(\sigma)\subgroup\Aut(H)$.  \end{proof}
+
+
+\begin{cor}
+    If\/ $H$ is cyclic then $N_G(H)/C_G(H)$ is abelian. 
+\end{cor}
+
+\begin{proof} This is trivial because $\Aut(H)$ is abelian.  \end{proof}
+
+\begin{prop}\label{prod-quotient}
+    Let\/ $N$ and\/ $H$ be subgroups of\/ $G$. If $N \normal G$, then $N\normal NH$, $H \cap N \normal H$ and $NH/N \cong H/(H \cap N)$.
+\end{prop}
+
+\begin{proof} Firstly recall from Corollary~\ref{product-by-normal} that $HN$ is a subgroup of $G$. Secondly, since $N\normal G$, it is trivially normal in $NH$. Now consider the following diagram
+$$
+    \begin{tikzcd}
+        H \arrow[r, "\iota", hook]\arrow[rd,"\varphi|_H", swap]
+        & NH \arrow[d, "\varphi"]\\
+        & NH/N
+    \end{tikzcd}
+$$
+Clearly $\ker(\varphi|_H)=\ker(\varphi)\cap H= H\cap N$. Since $\varphi|_H$ is a morphism, we deduce that $H\cap N\normal H$. It remains to be seen that $\varphi|_H$ is onto. But given $x\in N$ and $y\in H$, we have $\varphi(xy) = \varphi(x)\varphi(y) = \varphi(y) = \varphi|_H(y)$.  \end{proof}
+
+
+\begin{prop}\label{quotient-preserves-normal}
+    Let $N\normal G$ and let $\bar H$ be a subgroup of\/ $\bar G=G/N$. If $\varphi\colon G\to\bar G$ is the projection onto the quotient, then $\bar H\normal\bar G$ if, and only if, $\varphi^{-1}(\bar H)\normal G$. Moreover, in that case,
+    $$
+        \bar G/\bar H\cong G/\varphi^{-1}(\bar H).
+    $$
+\end{prop}
+
+\begin{proof}
+    This is a corollary of Remark~\ref{rem:bijective-coclasses} because, in diagram~\eqref{diag:isomorphic-coclasses}, either both vertical projections are morphisms of groups, or neither is.
+\end{proof}
+
+\begin{defns}{\rm[Commutator]}
+    The \textsl{commutator} of two elements $a$ and $b$ in a group\/ $G$ is the product 
+    $$
+        [a,b] = aba^{-1}b^{-1}.
+    $$
+        
+    The \textsl{derived} group or \textsl{commutator subgroup} of\/ $G$, denoted by\/ $G'$ or $[G,G]$, is the subgroup of $G$ generated by all commutators of elements of\/ $G$:
+    $$
+        G' = \gen{[a,b] \mid a,b \in G}.
+    $$
+    If $X,Y$ are subsets of $G$, their \textsl{commutator} is
+    $$
+        [X,Y] = \gen{[x,y] \mid x\in X,\; y\in Y}.
+    $$
+\end{defns}
+
+\begin{rem}
+    Given that, in general, the product of two commutators is not a commutator, the groups\/ $G'$ and\/ $[X,Y]$ need to be defined as \textsl{generated\/} by commutators. However, as we will see next, the commutators of\/ $S_n$ can indeed be exactly characterized.
+\end{rem}
+
+%\newpage
+
+\begin{lem}
+    Two elements in the permutation group $S_n$ have the same cycle structure if, and only if, they are conjugate.
+\end{lem}
+
+\begin{proof} The \textit{if\/} part is trivial because the conjugate of a cycle is a cycle of the same length. For the \textit{only if\/} part suppose that $\alpha$ and $\beta$ have the same cycle structure, say 
+$$
+    1<r_1\le\dots\le r_m,
+$$
+where $r_i$ is the common length of the $i$th cycle of $\alpha$ and $\beta$. Write
+\begin{align*}
+    \alpha &= (a^1_1,\dots,a^1_{r_1})\cdots(a^m_1,\dots,a^m_{r_m})\\
+    \beta &= (b^1_1,\dots,b^1_{r_1})\cdots(b^m_1,\dots,b^m_{r_m})
+\end{align*}
+and define $\sigma\in S_n$ by $\sigma(a^i_j)=b^i_j$.
+
+For $1\le j\le r$ introduce the cyclic increment
+$$
+    j\oplus_r1=j-1\pmod r+1.
+$$
+Given $1\le i\le m$ and $1\le j\le r_i$, we have
+$$
+    \begin{tikzcd}
+        a^i_j
+                \arrow[r,"\alpha",mapsto]
+                \arrow[d,"\sigma"',mapsto]
+            &a^i_{j\oplus_{r_i}1}
+                \arrow[d,"\sigma",mapsto]\\
+        b^i_j
+                \arrow[r,"\beta",mapsto]
+            &b^i_{j\oplus_{r_i}1},
+    \end{tikzcd}
+$$
+which shows that $\beta\sigma=\sigma\alpha$, i.e., $\beta=\alpha^\sigma$.
+\end{proof}
+
+\begin{rem}
+    Note that two conjugate permutations\/ $\alpha$ and\/ $\beta$ can always be conjugated by means of a permutation whose support is included in the union of the supports of\/ $\alpha$ and\/ $\beta$.
+\end{rem}
+
+\begin{lem}
+    An element of\/ $S_n$ is a commutator if, and only if, it is the product of two permutations with the same cycle structure.
+\end{lem}
+
+\begin{proof} The \textit{only if\/} part is trivial because $[\alpha,\beta]=\beta^\alpha\beta^{-1}$, which is the product of two permutations with the same cyclic structure. For the \textit{if\/} part, suppose that $\alpha$ and $\beta$ share the same cycle structure. Then $\alpha^{-1}$ and $\beta$ have also the same structure. By the previous lemma, there exists $\sigma$ such that $\beta=(\alpha^{-1})^\sigma$. Therefore, 
+$$
+    \alpha\beta = \alpha\sigma\alpha^{-1}\sigma^{-1}=[\alpha,\sigma].
+$$
+\end{proof}
+
+\begin{rem}
+    If two commutators\/ $[\alpha_1,\beta_1]$ and\/ $[\alpha_2,\beta_2]$ of permutations in\/ $S_n$ have disjoint supports, their product is the commutator\/ $[\alpha_1\alpha_2,\beta_1\beta_2]$.
+\end{rem}
+
+
+\begin{thm}
+    Every element in the alternating group\/ $A_n$ is a commutator in\/~$S_n$.
+\end{thm}
+
+\begin{proof} {[\href{https://math.stackexchange.com/a/4825323/269050}{Brought from MSE}]} Every element of $A_n$ has a disjoint cycle decomposition that consists of cycles of odd length, and an even number of cycles of even length [cf.~Remark~\ref{rem:cycle-decomposition-and-sign}]. So the result will follow if we show that cycles of odd length and products of two disjoint cycles of even length are commutators of elements whose support is contained in the support of the cycles.
+
+For a cycle of odd length, write
+$$
+    (a_1,\dots,a_{2k+1}) = (a_1,\ldots,a_{k+1})(a_{k+1},\ldots,a_{2k+1}),
+$$
+a product of two cycles of length $k+1$, hence a commutator by the previous lemma.
+
+For a disjoint product of two cycles of even length,
+$$
+    (a_1,\dots,a_{2i})(a_{2i+1},\dots,a_{2i+2j}),\quad j\ge i,
+$$
+express it as
+$$
+    (a_1,\dots,a_{2i},a_{2i+1},\dots,a_{i+j+1})(a_{2i},a_{i+j+1},a_{i+j+2},\dots,a_{2i+2j}),
+$$
+which is a product of two cycles of length $i+j+1$, hence a commutator.
+
+\end{proof}
+
+\begin{defns}${}$
+    \begin{enumerate}[\rm-]
+        \item Let\/ $L$ and $G$ be groups and\/ $\sigma\colon L\to\Aut(G)$ a morphism. A subgroup\/ $H$ of\/ $G$ is called \textsl{$L$-invariant} if\/ $\sigma(x)(H)=H$ for every\/ $x\in L$.
+        
+        When\/ $L$ is a subgroup of\/ $G$ and\/ $\sigma$ isn't explicitly mentioned, conjugation is understood.
+
+        \item Let\/ $\phi\colon G_1\to G_2$ be a morphism and assume that\/ $L$ is a group that acts on both\/ $G_1$ and\/ $G_2$. Then\/ $\phi$ is an\/ \textsl{$L$-morphism} if
+        $$
+            \phi(y\cdot x) = y\cdot \phi(x)\quad\text{\rm for all }x\in G,\, y\in L.
+        $$
+    \end{enumerate}
+\end{defns}
+
+\begin{rems}\label{derived-group}${}$
+    \begin{enumerate}[\rm i)]
+        \item The derived group is a normal subgroup of\/ $G$. It is also a characteristic subgroup.
+
+        \item More generally, the equation $[a,b]^x=[a^x,b^x]$ implies that $N'\normal G$ when $N\normal G$.
+
+        \item The derived group is the smallest normal subgroup\/ $N$ such that\/ $G/N$ is abelian.
+
+        \item $G'=\bigcap\cal A$, where ${\cal A}=\set{N\normal G\mid G/N \text{ \rm is abelian}}$.
+    \end{enumerate}
+\end{rems}
+
+\begin{prop}
+    If\/ $G'\subgroup H\subgroup G$, then\/ $H\normal G$.
+\end{prop}
+
+\begin{proof} Since $G/G'$ is abelian, $H/G'\normal G/G'$. By Corollary~\ref{normal-quotient-implies-normal}, $H\normal G$.
+
+\end{proof}
+
+\begin{prop}\label{commutator-props}${}$ Let\/ $G$ be a group and\/ $x,y,z$ elements in\/ $G$. Then
+    \begin{enumerate}[\rm a)]
+        \item $[zx,y] = [x,y]^z[z,y]$
+        \item $[x,zy] = [x,z][x,y]^z$
+        \item If\/ $X,Y$ are subgroups of\/ $G$ then\/ $[X,Y] \subseteq Y \iff Y \text{\rm\ is }X$-invariant.
+        \item If\/ $N,M\normal G$ then\/ $[N,M]\subseteq N\cap M\normal G$.
+        \item If\/ $X,Y$ are subgroups of\/ $G$ then\/ $[X,Y]\normal\gen{X,Y}$.
+        \item If\/ $(X_i)_{1\le i\le n}$ and\/ $(Y_i)_{1\le i\le m}$ are sequences of normal subgroups of\/ $G$ then
+        $$
+            \Big[\prod_{i=1}^nX_i,\prod_{j=1}^mY_j\Big]=\prod_{i,j}[X_i,Y_j].
+        $$
+    \end{enumerate}
+\end{prop}
+
+\needspace{2\baselineskip}
+\begin{proof}${}$
+\begin{enumerate}[\rm a)]
+    \item 
+    \begin{align*}
+        [zx,y] &= zxyx^{-1}z^{-1}y^{-1}\\
+            &= zxyx^{-1}(y^{-1}y)z^{-1}y^{-1}\\
+            &= zxyx^{-1}y^{-1}(z^{-1}z)yz^{-1}y^{-1}\\
+            &= [x,y]^z[z,y].
+    \end{align*}
+
+    \item
+    \begin{align*}
+        [x,zy] &= xzyx^{-1}y^{-1}z^{-1}\\
+            &= xz(x^{-1}z^{-1}zx)yx^{-1}y^{-1}z^{-1}\\
+            &= [x,z]zxyx^{-1}y^{-1}z^{-1}\\
+            &= [x,z][x,y]^z.
+    \end{align*}
+
+    \item Take $x\in X$ and $y\in Y$. The equation $[x,y]=xyx^{-1}y^{-1}=y^xy^{-1}$ shows that $[x,y]\in Y$ if, and only if, $y^x\in Y$, hence the conclusion.
+
+    \item It follows from part c) because, in the case of normal subgroups, $N$ is $M$-invariant and $M$ is $N$-invariant.
+    
+    \item Take $x\in X$ and $y\in Y$. Given $z\in G$, by parts a) and b) we have
+    $$
+        [x,y]^z=[zx,y][z,y]^{-1}\quad\text{and}\quad [x,y]^z=[x,z]^{-1}][x,zy].
+    $$
+    Therefore, if $z\in X$, the first equation shows that $[x,y]^z\in [X,Y]$ and if $z\in Y$, the second that $[x,y]\in[X,Y]$.
+
+    \item Let's first show that, for any $Y\normal G$ we have
+    $$
+        \Big[\prod_{i=1}^nX_i,Y\Big]=\prod_{i=1}^n[X_i,Y].
+    $$
+    The case $n=1$ is trivial. For $n=2$ we have to show that
+    \begin{equation}\label{eq.f}
+        [X_1X_2,Y] = [X_1,Y][X_2,Y].
+    \end{equation}
+
+    With obvious notations
+    \begin{align*}
+        [x_1x_2,y] &= [x_2,y]^{x_1}[x_1,y]    &&\text{; part a)}\\
+            &\in [X_2,Y]^{x_1}[X_1,Y]\\
+            &= [X_2,Y][X_1,Y]    &&\text{; part d)}\\
+            &= [X_1,Y][X_2,Y]    &&\text{; part d).}
+    \end{align*}
+    For $n+1$ put $X=\prod_{i=1}^nX_i$. Then
+    \begin{align*}
+        \Big[\prod_{i=1}^{n+1}X_i, Y\Big]
+            &= [XX_{n+1},Y]\\
+            &= [X,Y][X_{n+1},Y] &&\text{; equation }(\ref{eq.f})\\
+            &= \prod_{1\le i\le n+1}[X_i,Y].
+    \end{align*}
+    The result follows similarly by induction on $m$ using part b) instead of~a).
+\end{enumerate}
+\end{proof}
+
+\paragraph{Products.}
+    Given a sequence $(G_i)_{1\le i\le r}$ of groups, their product
+    $$
+        G=G_1\times\cdots\times G_r
+    $$
+    has a natural group structure, given by the componentwise operation, that allows for injections $\iota_{G_i}\colon G_i\to G$ and projections $\pi_{G_i}\colon G\to G_i$ to be group morphisms. This group is known as the \textsl{direct external product} of the~$G_i$.
+
+    Let\/ $G_i^*$ denote the image of\/ $\iota_{G_i}$. Then, $G=G_1^*\cdots G_r^* $ and every element $x$ of\/~$G$ can be written in a unique way as a product $x_1\cdots x_r$, with $x_i\in G_i^*$. Note however that the uniqueness depends on the order because $G_i\comm G_j=\gen1$, i.e., their elements commute whenever $i\ne j$. Additionally, $G_i^*\cap G_j^*=\gen1$.
+
+    It follows that $G_i^*\subseteq C_G(G_j^*)\subseteq N_G(G_j^*)$ for all $i\ne j$. In consequence, we can express $G$ as the product $G=G_1^*\cdots G_r^*\subseteq N_G(G_i)$, which means that $G_i^*\normal G$ for all~$i$.
+
+
+\begin{defn}
+    Given a group $G$ and normal subgroups $N_1,\dots,N_r$, we say that $G$ is the \textsl{(internal) direct product} of the $N_i$ when every element $x\in G$ admits a unique representation of the form $x=x_1\cdots x_r$, with $x_i\in N_i$ for all $i$.
+\end{defn}
+
+\begin{thm}\label{direct-product}
+    Let $N_1,\dots,N_r$ be normal subgroups of a group $G$. Then the map
+    \begin{align*}
+        \psi\colon N_1\times\cdots\times N_r&\to G\\
+        (x_1,\dots,x_r)&\mapsto x_1\cdots x_r.
+    \end{align*}
+    is a monomorphism if, and only if,
+    \begin{equation}\label{eq5}
+        (N_1\cdots N_{k-1})\cap N_k=\gen1\quad\textrm{\rm for all }1<k\le r.  
+    \end{equation}
+\end{thm}
+
+
+\needspace{2\baselineskip}
+\begin{proof} 
+
+For the \textit{if\/} part we have to show that $\psi$ is a morphism of groups and that $\psi$ is injective.
+
+To begin with, let's prove that $N_i\comm N_j$ whenever $i\ne j$. Consider two elements $x_i\in N_i$ and $x_j\in N_j$. Since the groups are normal,
+$$
+    y_j=x_ix_jx_i^{-1}\in N_j\quad\textrm{and}\quad y_i=x_jx_i^{-1}x_j^{-1}\in N_i.
+$$
+Hence, $y_jx_j^{-1}=x_iy_i\in N_i\cap N_j=\gen1$. In particular, $y_j=x_j$ and so $x_i\comm x_j$. It is now clear that $\psi$ is a morphism.
+
+It remains to be seen that $\psi$ is mono. Suppose that $x_1\cdots x_k=1$ for some $k\le r$ with $x_k\ne1$. Then $x_1\cdots x_{k-1}=x_k^{-1}$, in contradiction with $(\ref{eq5})$.
+
+The \textit{only if\/} part is trivial.  \end{proof}
+
+\begin{lem}\label{order-properties}
+    Let\/ $G$ be a group and\/ $a$ and\/ $b$ elements in\/ $G$ such that $a\leftrightarrow b$. The following properties hold true
+    \begin{enumerate}[\rm a)]
+        \item $m\perp\ord(a)\implies\ord(a^m)=\ord(a)$.
+        \item $\ord(a^m)=\ord(a)/\gcd(\ord(a),m)$.
+        \item $m\mid\ord(a)\implies\ord(a^m)=\ord(a)/m$.
+        \item $\ord(a)\perp\ord(b)\implies\ord(ab)=\ord(a)\ord(b)$.
+        \item If\/ $G$ is abelian and finite and $a$ has maximum order, then\/ $\ord(b)\mid\ord(a)$ for all\/ $b\in G$.
+    \end{enumerate}
+\end{lem}
+
+\begin{proof}${}$
+\begin{enumerate}[\rm a)]
+    \item Put $r=\ord(a^m)$. Clearly, $r\mid\ord(a)$. Moreover, $\ord(a)\mid mr$ and so $\ord(a)\mid r$.
+    
+    \item Put $n=\ord(a)$, $d=\gcd(n,m)$. Given $r\in\Z$, we have
+    $$
+        (a^m)^r=1\iff n\mid mr\iff (n/d)\mid (m/d)r
+            \iff (n/d)\mid r.
+    $$
+    
+    \item Immediate after part b).
+
+    \item \textsc{proof~1:} Put $n=\ord(a)$, $m=\ord(b)$ and $r=\ord(ab)$. From $a^rb^r=1$ we deduce $b^{rn}=1$. Then $m\mid rn$ and so $m\mid r$. By part a)
+    $$
+        \ord((ab)^m)=\ord(a^m)=n.
+    $$
+    By part c), $n=\ord((ab)^m)=r/m$ because $m\mid r$.
+
+    \textsc{proof~2:} $\gen{a,b}$ is abelian and $\gen a\cap\gen b=\gen1$. Therefore,
+    \begin{equation}\label{eq.56}
+        \gen{a,b}=\gen a\times\gen b.
+    \end{equation}
+    It follows that $|\gen{a,b}|=nm$. The morphism
+    \begin{align*}
+        \gen{ab}&\to\gen{a,b}/\gen a\\
+        (ab)^i&\mapsto \bar b^i
+    \end{align*}
+    is epi. In particular, $|\gen{a,b}/\gen a|\mid|\gen{ab}|$. But $\gen{a,b}/\gen a\cong\gen b$ by $(\ref{eq.56})$ and so $m\mid|\ord(ab)$. For the same reason, $n\mid\ord(ab)$. And since $n\perp m$, we get $nm\mid\ord(ab)$. Given that $\gen{ab}\subgroup\gen{a,b}=\gen a\times\gen b$, we arrive at the conclusion.
+    
+    \item Let $n=\ord(a)$ be the maximum order. Suppose that $m=\ord(b)\nmid n$. Then, it must exist a prime $p$ whose exponent $d$ in $m$ is greater than the exponent $e$ of $p$ in $n$. In other words,
+    $$
+        n=p^eq,\; m=p^dr,\; d>e,\; p\perp qr.
+    $$
+    Therefore, using the previous parts we obtain
+    $$
+        \ord\big(b^ra^{p^e}\big)=p^dq> p^eq=n,
+    $$
+    contrary to the definition of $n$.
+\end{enumerate}
+\end{proof}
+
+\begin{prop}
+    Let\/ $F$ be a finite field. Then the multiplicative group $F^*$ is cyclic.\footnote{For a more general statement see Corollary~\ref{cor:multiplicative-subgroup-of-field-is-cyclic}.}
+\end{prop}
+
+\begin{prop}
+    This is a direct consequence of the previous corollary.
+\end{prop}
+
+\begin{proof} Let $n$ be the maximum order attained in $F^*$. Write $d=|F^*|$. We have to show that $n=d$. The last part of the previous lemma means that every element in $F^*$ is a root of the polynomial $f(x)=x^n-1$. Thus, $f$ has $d$ roots in $F^*$. Therefore, $n=\deg(f)\ge d$. The conclusion follows because $n\mid d$.  \end{proof}
+
+
+\begin{prop}\label{map-to-quotient-product}
+    Let\/ $N_1, \dots, N_n$ be normal subgroups of\/ $G$. Then the mapping
+    \begin{align*}
+        \varphi\colon G &\to G/N_1 \times \cdots \times G/N_n\\
+        g &\mapsto (\bar g_1, \dots, \bar g_n)
+    \end{align*}
+    is a morphism with\/ $\ker\varphi =\bigcap_{i=1}^n N_i$. In particular, $G/\bigcap_{i=1}^n N_i$ is isomorphic to a subgroup of\/ $G/N_1 \times\cdots\times G/N_n$.
+\end{prop}
+
+\begin{proof} This is a direct consequence of the definitions.  \end{proof}
+
+\begin{prop}\label{product-center-and-maximal}
+    Let\/ $G=N_1\cdots N_r$ be a direct product, then
+    \begin{enumerate}[\rm a)]
+        \item  $Z(G)=Z(N_1)\cdots Z(N_r)$ is direct.
+        \item $G'=N_1'\cdots N_r'$ is direct. Moreover, with obvious notations
+        \begin{equation}\label{eq:commutator-distribution}
+            [x_1\cdots x_r,y_1\cdots y_r]=[x_1,y_1]\cdots[x_r,y_r].
+        \end{equation}
+        \item If\/ $N\normal G$ the following is a short exact sequence
+        $$
+            1\to N\to G\stackrel{\varphi}{\to} N_1/(N\cap N_1)\cdots N_r/(N\cap N_r)\to1
+        $$
+        \item If\/ $N_i\ch G$ for all\/ $1\le i\le r$, then
+        \begin{align*}
+            \Phi\colon\Aut(G) &\to \Aut(N_1)\times\cdots\times\Aut(N_r)\\
+            \phi&\mapsto(\phi_{N_1},\dots,\phi_{N_r})
+        \end{align*}
+        where $\phi_{N_i}\subseteq\phi$, is an isomorphism with inverse
+        \begin{align*}
+            \Psi\colon\Aut(N_1)\times\cdots\times\Aut(N_r)&\to\Aut(N)\\
+            (\phi_1,\dots,\phi_r)&\mapsto\big(x_1\cdots x_r\mapsto
+                \phi_1(x_1)\cdots\phi_r(x_r)\big)
+        \end{align*}
+        \item If\/ $M_i$ is maximal in\/ $N_i$ then 
+        $$
+            M = N_1\cdots M_i\cdots N_r
+        $$
+        is maximal in\/ $G$.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}${}$
+\begin{enumerate}[\rm a)]
+    \item This follows from the fact that $N_i\leftrightarrow N_j$ for $i\ne j$.
+
+    \item First observe that $N_i'\normal G$ because $N_i'\ch N_i\normal G$. Therefore, $N'_i\normal G'$. Clearly $N'_i\leftrightarrow N'_j$ for all $i\ne j$. To prove \eqref{eq:commutator-distribution} it suffices to use induction on $j\le r$ to show that
+    $$
+        [x_1\cdots x_r,y_1\cdots y_j] = [x_1,y_1]\cdots[x_r,y_j].
+    $$
+    For $j=1$ the result is trivial. For $j=2$ we have to show that
+    \begin{equation}\label{eq.b}
+        [x_1x_2,y_1y_2]=[x_1,x_2][y_1,y_2].
+    \end{equation}
+    But
+    \begin{align*}
+        [x_1x_2,y_1y_2] &= x_1x_2y_1y_2x_2^{-1}x_1^{-1}y_2^{-1}y_1^{-1}\\
+            &= x_1y_1x_2y_2x_2^{-1}y_2^{-2}x_1^{-1}y_1^{-1}\\
+            &= x_1y_1[x_2,y_2]x_1^{-1}y_1^{-1}\\
+            &= x_1y_1x_1^{-1}y_1^{-1}[x_2,y_2]
+                &&;\ [x_2,y_2]\in N_2\\
+            &= [x_1,y_1][x_2,y_2].
+    \end{align*}
+    For $j+1$ put $x=x_1\cdots x_j$ and $y=y_1\cdots y_j$. Then
+    \begin{align*}
+        [x_1\cdots x_{j+1},y_1\cdots y_{j+1}]
+            &= [xx_{j+1},yy_{j+1}]\\
+            &= [x,y][x_{j_1},y_{j+1}]   &&;\ \text{see below}\\
+            &= [x_1,y_1]\cdots[x_j,y_j][x_{j+1},y_{j+1}]   &&;\ \text{induction}
+    \end{align*}
+    where equality in the second line follows from $(\ref{eq.b})$ applied to $NN_{j+1}$ with $N=N_1\cdots N_j$.
+
+    \item Note that $N_i/(N\cap N_i)\normal G/N$ by Proposition~\ref{quotient-preserves-normal} applied to $G\to G/N$. Second, given $i\ne j$, $N_i/(N\cap N_i)\leftrightarrow N_j/(N\cap N_j)$ because $N_i\leftrightarrow N_j$. Thus, the codomain of $\varphi$, and hence $\varphi$, are well-defined. Finally, the equation $\varphi(y_1\cdots y_r)=\varphi(y_1)\cdots\varphi(y_r)$ shows that the sequence is exact.
+
+    \item Every element $(\phi_1,\dots,\phi_r)\in\Aut(N_1)\times\cdots\times\Aut(N_r)$ defines a function
+    \begin{align*}
+        \mbf\phi\colon G&\to G\\
+        x_1\cdots x_r&\mapsto\phi_1(x_1)\cdots\phi_r(x_r),
+    \end{align*}
+    which is an element of $\Aut(G)$ because
+    \begin{align*}
+        \mbf\phi(x_1\cdots x_r\cdot y_1\cdots y_r)
+            &= \mbf\phi(x_1y_1\cdots x_ry_r)\\
+            &= \phi_1(x_1y_1)\cdots\phi_r(x_ry_r)\\
+            &= \phi_1(x_1)\phi_1(y_1)\cdots\phi_r(x_r)\phi_r(y_r)\\
+            &= \phi_1(x_1)\cdots\phi_r(x_r)\cdot\phi_1(y_1)\cdots\phi_r(y_r)\\
+            &= \mbf\phi(x_1\cdots x_r)\cdot\mbf\phi(y_1\cdots y_r).
+    \end{align*}
+    Since $\mbf\phi_{N_i}\colon N_i\to N_i$, defined by $\mbf\phi_{N_i}\subseteq\mbf\phi$, satisfies $\mbf\phi_{N_i}=\phi_i$, we conclude that $\Phi\circ\Psi(\phi_1,\dots,\phi_r)=(\phi_1,\dots,\phi_r)$. As for the other composition
+    \begin{align*}
+        \Psi\circ\Phi(\phi)(x_1\cdots x_r) &= \Psi(\phi_{N_1},\dots,\phi_{N_r})(x_1\cdots x_r)\\
+            &= \phi_{N_1}(x_1)\cdots\phi_{N_r}(x_r)\\
+            &= \phi(x_1)\cdots\phi(x_r)\\
+            &= \phi(x_1\cdots x_r).
+    \end{align*}
+    It remains to be seen that $\Phi$ is a morphism of groups. But this is a direct consequence of the fact that the maps $\Aut(G)\to\Aut(N_i)$, given by restriction and coastriction, clearly are.
+
+    \item Take $x=x_1\cdots x_r\in G\setminus M$. Then $x_i\notin M_i$. Therefore, $\gen{M_i\cup\set{x_i}}=N_i$ and so $\gen{M,\set x}=G$ because $N_j\subseteq M$ for all $j\ne i$ and so $N_j\subseteq\gen{M\cup\set{x}}$ for all $j$.
+\end{enumerate}
+\end{proof}
+
+\begin{rem}
+    The reciprocal of part e) is not true. For instance, in $\Z_2\oplus\Z_2$ the subgroup $\gen{(1,1)}$ is maximal, while the only maximal subgroup of $\Z_2$ is $\gen0$.
+\end{rem}
+
+\begin{prop}\label{quotient-of-products}
+    Let\/ $G=G_1\cdots G_n$ be a direct product. If\/ $N\normal G$ is the direct product\/ $N=N_1\cdots N_n$, where\/ $N_i=N\cap G_i$, then
+    \begin{align*}
+        \phi\colon G&\to G_1/N_1\times\cdots\times G_n/N_n\\
+            (x_1,\dots,x_n)&\mapsto (\bar x_1,\dots,\bar x_n),
+    \end{align*}
+    where\/ $\bar x_i$ denotes the class of\/ $x_i$ in\/ $G_i/N_i$, is an epimorphism with $\ker\phi= N$.
+\end{prop}
+
+\begin{proof} Since the quotient projections $G_i\to G_i/N_i$ are epi, it's clear that $\phi$ is epi. Moreover,
+$$
+    \phi(x_1,\dots,x_n)=1\iff x_i\in N\cap G_i
+        \iff (x_1,\dots,x_n)\in N.
+$$
+ \end{proof}
+
+\subsection{Exercises - Kurzweil \& Stellmacher - \S 1.1}
+
+\begin{exr}
+    Let\/ $H$, $K$ and\/ $L$ be finite subgroups of a group\/ $G$. If\/ $H\subseteq K$, then\/ $|K:H|\ge|L\cap K: L\cap H|$.
+\end{exr}
+
+\begin{solution}
+\begin{align*}
+    |L\cap K: L\cap H| &= \frac{|L\cap K|}{|L\cap H|}\\
+        &= \frac{\cancel{|L|}|K|}{|LK|}\frac{|LH|}{\cancel{|L|}|H|}\\
+        &= \frac{|K:H|}{|LK:LH|}\\
+        &\le |K:H|
+\end{align*}
+because $|LK:LH|\ge1$.
+\end{solution}
+
+\begin{exr}\label{exercise-1.1.2}
+    Let\/ $H \subgroup K$ be subgroups of\/ $G$. If\/ $\set{y_1, \dots, y_m}$ is a traversal for\/ $H$ in\/ $K$, and\/ $\set{x_1, \dots, x_n}$ is a traversal for\/ $K$ in\/ $G$, then\/ $\set{x_iy_j}_{1\le i\le n}^{1\le j\le m}$ is a traversal for\/ $H$ in\/ $G$.
+
+    \textrm{\rm\textbf{Note.} A \textsl{traversal\/} of a subgroup $L$ in $G$ is a subset of $G$ that contains exactly one element of each left coset of $L$.}
+\end{exr}
+
+\begin{solution}
+    First observe that, by definition, $m=|K:H|$ and $n=|G:K|$. Therefore, $nm=|G:K||K:H|=|G:H|$. Given $i$ and $j$, we have $y_j\in yH$ for some $y\in K$ and $x_i\in xK$ for some $x\in G$. Then $x_iy_j\in xKyH=zH$ for some $z\in G$. Now suppose that $x_{i'}y_{j'}\in zH$. Then $x_i,x_{i'}\in zHK=zK$, which implies $i=i'$. In consequence, $y_j,y_{j'}\in x_i^{-1}zH$. In particular, $x_i^{-1}z\in KH=K$ and so $y_j,y_{j'}$ are in the same coclass of $H$ in $K$, i.e., $j=j'$.
+\end{solution}
+
+\begin{exr}
+    If\/ $H$ and\/ $K$ are subgroups of\/ $G$, then
+    $$
+        |G:H\cap K|\le|G:H||G:K|.
+    $$
+\end{exr}
+
+\begin{solution}
+$$
+    |G:H\cap K| = \frac{|G|}{|H||K|}|HK| \le \frac{|G||G|}{|H||K|}=|G:H||G:K|.
+$$
+ \end{solution}
+
+\begin{exr}\label{exercise-1.1.4}
+    Let\/ $H$ and\/ $K$ be subgroups of\/ $G$. Then\/ $H\cup K\subgroup G$ if, and only if,\/ $H\subseteq K$ or\/ $K\subseteq H$. 
+\end{exr}
+
+\begin{solution} Since the \textit{if\/} part is trivial, we only need to prove the \textit{only if\/} one. Assume that $H\cup K$ is a subgroup and suppose there exists $y\in H\setminus K$. Take $x\in K$. Then $xy\in H\cup K$. But $xy\notin K$ because that would imply $y\in K$. Thus, $xy\in H$, which implies $x\in H$. Since $x$ was arbitrarily taken, $K\subseteq H$.
+\end{solution}
+
+\begin{exr}\label{exercise-1.1.5}
+    Let\/ $H$ be a subgroup of\/ $G$. If\/ $G=HH^\omega$ for some\/ $\omega\in G$, then\/ $H=G$.
+\end{exr}
+
+\begin{solution} By hypothesis, $\omega^{-1}=yz^\omega$ for some $y,z\in H$. Then $1=y\omega z$, which implies $\omega\in H$. Finally, $G=HH^\omega=HH=H$.
+\end{solution}
+
+\begin{exr}
+    Let\/ $|G|$ be a prime. Then\/ $\gen1$ and\/ $G$ are the only subgroups of\/~$G$.
+\end{exr}
+
+\begin{solution} If $H$ is a subgroup of $G$, then $|H|\mid|G|$ and so $|H|$ is $1$ or $|G|$.  \end{solution}
+
+\begin{exr}\label{exercise-1.1.7}
+    A group\/ $G$ has even order if, and only if, the number of involutions in\/ $G$ is odd.
+
+    \textrm{\rm\textbf{Note.} An \textsl{involution\/} is an element of order~$2$.}
+\end{exr}
+
+\begin{solution} Define the equivalence relation `$\sim$' in $G^*=G\setminus\set1$ as
+$$
+    x\sim y\iff\ord(x)=\ord(y).
+$$
+Let $\gamma_n$ be the class in $G^*\!/{\sim}$ of elements with order $n$. If $x\in\gamma_n$, then $x^{-1}\in\gamma_n$ too. In the case $n\ne2$, we also have $x\ne x^{-1}$, which implies that $\gamma_n$ has an even number of elements. Then, the disjoint union
+$$
+    G^* = \gamma_2\cup\bigcup_{n\ne2}\gamma_n
+$$
+shows that the cardinality of $\gamma_2$ is odd if, and only if, the cardinality of $G$ is even.  \end{solution}
+
+\begin{exr}
+    If\/ $y^2=1$ for all\/ $y\in G$, then\/ $G$ is abelian.
+\end{exr}
+
+\begin{solution} Take $x,y\in G$. We have
+$$
+    1 = (xy)^2 = xyxy.
+$$
+Then,
+$$
+    xy = x1y = x(xyxy)y = x^2yxy^2 = yx.
+$$
+ \end{solution}
+
+\begin{exr}
+    Let\/ $|G|=4$. Then\/ $G$ is abelian and contains a subgroup of order\/ $2$.
+\end{exr}
+
+\begin{solution} The conclusion is trivial if $G$ is cyclic because, in that case, $G$ is isomorphic to $\Z_4$ and $\gen2$ has order~$2$. If $G$ is not cyclic, every nontrivial element has order~$2$ and $G$ is abelian by the previous exercise. Therefore, if $x\ne1$ we must have $|\gen x|=2$.  \end{solution}
+
+\begin{exr}\label{exercise-1.2.10}
+    If\/ $G$ contains exactly one maximal subgroup, then\/ $G$ is cyclic.
+\end{exr}
+
+\begin{solution}
+    By hypothesis $\Phi(G)=M$. Pick $x\in G\setminus M$. Then $\gen{\Phi(G),x}=G$, and the result is a direct consequence of Proposition~\ref{frattini}.
+\end{solution}
+
+\begin{exr}\label{exercise-1.1.11}
+    Suppose that\/ $H\neq\gen1$ and\/ $H\cap H^x=\gen1$ for all\/ $x\in G\setminus H$. Then
+    $$
+        \Big|\bigcup_{x\in G}H^x\Big| \ge |G|/2 + 1.
+    $$
+\end{exr}
+
+\begin{solution} Take $x,y\in G$. Then,
+$$
+    H^x\cap H^y = H^x\cap\big(H^{x^{-1}y}\big)^x = \big(H\cap H^{x^{-1}y}\big)^x = \begin{cases}
+        \gen1   &\text{if }xH\ne yH,\\
+        H^x   &\text{otherwise}.
+    \end{cases}
+$$
+Therefore, if $T$ is a traversal for $H$ [cf.~Exercise~\ref{exercise-1.1.2}], we have
+$$
+    \bigcup_{t\in T}H^t = \bigcup_{x\in G}H^x,
+$$
+with $H^t\cap H^s=\set1$ for $s\ne t\in T$. Therefore
+\begin{align*}
+     \Big|\bigcup_{x\in G}H^x\Big| &= \Big|\bigcup_{t\in T}H^t\Big|\\
+        &= |T|(|H|-1)+1\\
+        &= |G:H||H|-|G:H|+1\\
+        &= |G|-|G:H|+1\\
+        &= |G| - |G|/|H| + 1\\
+        &\ge |G| - |G|/2 + 1    &&; |H|\ge2\\
+        &= |G|/2 + 1.
+\end{align*}
+ \end{solution}
+
+\begin{exr}\label{exercise-1.1.12}
+    If\/ $H$ is a proper subgroup of\/ $G$, then
+    $$
+        G\ne\bigcup_{x\in G}H^x.
+    $$
+\end{exr}
+
+\begin{solution} Suppose, toward a contradiction, that $G$ equals the union. Given $x,y\in G$ we have
+$$
+    H^x=H^y\iff H^{x^{-1}y}=H,
+$$
+which is clearly the case when $x^{-1}y\in H$, i.e., when $xH=yH$. Therefore, if $T$ is a traversal for $H$, after removing these obvious redundancies, we obtain
+$$
+    G = \bigcup_{t\in T}H^t.
+$$
+Furthermore,
+$$
+    \bigcup_{t\in T}H^t = \Big(\bigcup_{t\in T}H^t\setminus\set1\Big)\cup\set1
+$$
+Then,
+\begin{align*}
+    |G| &= \Big|\bigcup_{t\in T}H^t\setminus\set1\Big|+1\\
+        &\le \sum_{t\in T}|H^t\setminus\set1|+1\\
+        &= |T|(|H|-1) + 1\\
+        &= |G:H||H|-|G:H| + 1\\
+        &= |G| - |G:H| + 1,
+\end{align*}
+which implies $|G:H|\le1$. Thus $|G:H|=1$ and $H=G$, in contradiction with the hypothesis.  \end{solution}
+
+
+\begin{exr}\label{exercise-1.1.13}
+    Let\/ $\set{H^x\mid x\in G} = \set{H_1,\dots, H_n}$. Then
+    $$
+        \gen{H_1,\dots,H_n} = H_1\cdots H_n.
+    $$
+\end{exr}
+
+\begin{solution} {[See this \href{https://math.stackexchange.com/q/4781892/269050}{MSE} question]} For $i=1,\dots, n$ put $H_i=H^{x_i}$. Take $x\in H_i$ and $y\in H_j$ with $i>j$. Re-write $xy$ as
+$$
+    xy=yx^{y^{-1}}.
+$$
+There exists $k$ such that
+$$
+    x^{y^{-1}}\in(H^{x_i})^{y^{-1}}=H^{y^{-1}x_i}=H_k
+$$
+and we can re-write $xy$ as an element of $H_jH_k$. If $j\le k$, then $xy\in H_jH_k$ for some $j<k$ (if $k=j$ replace $k$ with $k+1$ or $j$ with $j-1$). If $j>k$, repeat the same procedure for $H_j$ and $H_k$ in the roles of $H_i$ and $H_j$. Since $j<i$, the first index decreases at each iteration, until it becomes smaller than the second. In sum, we have proven the following
+
+\textbf{Claim.} \textit{Given $z\in H_iH_j$ with $i>j$, there exist $j_T<i_T$ such that $z\in H_{j_T}H_{i_T}$.}
+
+Now, if we have $z\in H_{\sigma(1)}\cdots H_{\sigma(m)}$, where $\sigma\colon\nset m\to\nset n$, we can write $z=z_{\sigma(1)}\cdots z_{\sigma(m)}$ and apply the claim to $z_{\sigma(i)}z_{\sigma(i+1)}\in H_{\sigma(i)}H_{\sigma(i+1)}$ every time that $\sigma(i)>\sigma(i+1)$, until we end up re-writing $z$ as an element of $H_1\cdots H_n$. As a result, $\gen{H_1,\dots,H_n}\subseteq H_1\cdots H_n$.  \end{solution}
+
+
+\subsection{Exercises - Kurzweil \& Stellmacher - \S 1.2}
+
+\begin{exr}\label{exr:index-2-is-normal}
+    Every subgroup of index\/ $2$ is normal.
+\end{exr}
+
+\begin{solution} {[cf.~Lemma~\ref{index-2-is-normal}]} Let $H$ be a subgroup of a group $G$ with $|G:H|=2$. Pick $\omega\in G$ satisfying $G=H\cup \omega H$. Note that $\omega^2H=H$, i.e., $\omega^2\in H$. Define
+\begin{align*}
+    \varphi\colon G&\to\Z_2\\
+    x &\mapsto  \begin{cases}
+        0   &\textrm{if }x\in H,\\
+        1   &\textrm{if }x\in\omega H.
+    \end{cases}
+\end{align*}
+Given $x,y\in G$, there are $4$ possibilities: $x,y\in H$, $x,y\in\omega H$, $x\in\omega H$, $y\in H$ and $x\in H$, $y\in\omega H$, which we can summarize as
+$$
+    \begin{array}{c|cc}
+        \varphi(xy) & H & \omega H \\
+        \hline
+        H & 0 & 1 \\
+        \omega H & 1 & 0
+    \end{array}
+$$
+In fact, $xy\in\omega H$ when $x\in H$ and $y\in\omega H$, as otherwise $xy\in H$, which is not possible since it would imply that $y$ belongs to $H$. Then, $\varphi$ is a morphism and $H=\ker(\varphi)$ is normal.  \end{solution}
+
+\begin{exr}
+    Show that there are exactly two nonisomorphic groups of order\/~$4$ and compute their group tables.
+\end{exr}
+
+\begin{solution} If the group is cyclic, it is $\Z_4$. Otherwise it has a subgroup $H$ of order $2$, which is necessarily (isomorphic to) $\Z_2$. Moreover, $H$ has index~$2$ and it is normal by the previous exercise. The quotient $G/H$ is $\Z_2$ too. Take $H=\gen y$ and $z\in G$ with $\gen{\bar z}=G/H$. Define
+\begin{align*}
+    \varphi\colon\Z_2\oplus\Z_2&\to G\\
+    (0,0)&\mapsto 1,\\
+    (1,0)&\mapsto y,\\
+    (0,1)&\mapsto z,\\
+    (1,1)&\mapsto yz.
+\end{align*}
+Then $\varphi$ is a morphism. It is actually an isomorphism because $|G|=4$ implies that $\varphi$ is bijective.  \end{solution}
+
+\begin{exr}
+    Let\/ $N$ be a normal subgroup of\/ $G$ and\/ $|G : N| = 4$.
+    \begin{enumerate}[\rm a)]
+        \item $G$ contains a normal subgroup of index\/ $2$.
+        \item If\/ $G/N$ is not cyclic, then there exist three proper normal subgroups\/ $H$, $K$, and\/ $L$ of\/ $G$ such that\/ $G=H\cup K\cup L$.
+    \end{enumerate}
+\end{exr}
+
+\begin{solution}${}$
+\begin{enumerate}[\rm a)]
+    \item Since $|G/N|=|G:N|=4$, from the previous exercise we deduce that $G/N$ has a subgroup, say $H/N$, of index $2$. It follows that
+    $$
+        |G:H|=|G/N:H/N|=2.
+    $$
+
+    \item If $G/N$ is not cyclic, as shown in the previous exercise, it is isomorphic to $\Z_2\oplus\Z_2$. Let $H$ and $K$ be the subgroups of $G$ containing $N$ that respectively correspond to $\Z_2\oplus 0$ and $0\oplus\Z_2$. Then both $H,K\normal G$ because $\bar H,\bar K\normal G/N$. Let $L/N$ be the subgroup if $G/N$ that maps onto $\gen{(1,1)}$. Since $\Z_2\oplus\Z_2=\bar H\cup\bar K\cup\bar L$, we deduce that $G=H\cup K\cup L$. Indeed. The union clearly includes $N$. Take $x\in G\setminus N$. If $\bar x\in\bar H$, then $x=yz$ for some $y\in H$ and $z\in N\subseteq H$, which implies that $x\in H$. The other two cases, namely $\bar x\in K$ and $\bar x\in L$, are similar.
+\end{enumerate}
+\end{solution}
+
+\begin{exr}\label{exr:simple-group-mention}
+    Let\/ $G$ be simple, $|G| \ne 2$, and\/ $\phi\colon G\to H$ a morphism. If\/ $H$ contains a normal subgroup\/ $N$ of index\/ $2$, then\/ $\phi(G) \subseteq N$.
+
+    \textrm{\rm\textbf{Note.} A group is \textsl{simple\/} when it has no normal subgroup other than $\gen1$ and itself.}
+\end{exr}
+
+\begin{solution} Let $\varphi\colon H\to H/N$ be the canonical projection onto the quotient. Consider the composition $\varphi\circ\phi$. Since $G$ is simple $\varphi\circ\phi$ is trivial or mono. In the former case, $\phi(G)\subseteq N$, as wanted. In the latter, the composition would be an isomorphism, which contradicts the fact that $|G|\ne2$.  \end{solution}
+
+\begin{exr}
+    Let\/ $\omega \in G$, $C = \set{\omega^\zeta \mid\zeta\in G}$, and\/ $H_1, H_2\subgroup G$. Suppose that
+    $$
+        \gen C = G\quad\text{\rm and}\quad C \subseteq H_1 \cup H_2.
+    $$
+    Then either\/ $H_1 = G$ or\/ $H_2 = G$.
+
+    \textrm{\rm Hint [l.c.]: Define $C_1=C\setminus H_2$ and show that $C_1=\emptyset$ or $\gen{C_1}\normal G$.}
+\end{exr}
+
+\begin{solution} {[See this \href{https://math.stackexchange.com/a/1107676/269050}{MSE thread}]} If $C\subseteq H_2$ then $G=H_2$ and we are done. So, we may assume that $C_1=C\setminus H_2$ is not empty. Let $N=N_G\gen{C_1}$.
+
+\textsc{claim:} $H_2\subseteq N$.
+
+\textsc{proof:} $y\in H_2,\;x=\omega^\xi\in C_1\implies x^y\notin H_2\implies x^y=\omega^{y\xi}\in C\setminus H_2=C_1$.
+
+The claim implies that $C\subseteq C_1\cup H_2 \subseteq N$. Hence, $N=G$, i.e., $\gen{C_1}\normal G$.
+
+Pick $x=\omega^\xi\in C_1$. Given $z=\omega^\zeta\in C$, we have
+$$
+    z = \omega^\zeta 
+        = (\omega^\xi)^{\zeta\xi^{-1}}
+        = x^{\zeta\xi^{-1}}
+        \in \gen{C_1}^{\zeta\xi^{-1}}=\gen{C_1} \subseteq H_1,
+$$
+which proves that $C\subseteq H_1$. Then $H_1=G$.  \end{solution}
+
+\begin{exr}
+    Let\/ $G \ne\gen1$ be a finite group. Suppose that every proper subgroup of\/ $G$ is abelian. Then\/ $G$ contains a nontrivial abelian normal subgroup.
+
+    \textrm{\rm Hint [l.c.]: First observe that every pair of maximal subgroups of $G$ intersect trivially. Then use Exercises~\ref{exercise-1.1.11} and \ref{exercise-1.1.12}.}
+\end{exr}
+
+\begin{solution} {[See this \href{https://math.stackexchange.com/q/1395012/269050}{MSE thread}]} 
+
+Given that $Z(G)$ is normal, we may assume that $Z(G)=\gen1$.
+
+\textsc{claim:} Any two maximal subgroups of $G$ intersect trivially.
+
+\textsc{proof:}
+    Let $M$ and $L$ two different maximal subgroups of $G$. By hypothesis, $M$ and $L$ are abelian. Therefore, if $z\in M\cap L$, we have $z\leftrightarrow M$ and $z\leftrightarrow L$. Since $G=\gen{M,L}$, it follows that $z\leftrightarrow G$, i.e., $z\in Z(G)=\gen1$. \boxed{}
+
+%\medskip
+
+Pick a maximal subgroup $M$ of $G$. According to Exercise~\ref{exercise-1.1.11} we have
+$$
+    \Big|\bigcup_{x\in G}(M^x\setminus\set1)\Big|\ge |G|/2.
+$$
+By Exercise~\ref{exercise-1.1.12}, there is some element $z$ in the complement of the previous union. Let $L$ be a maximal subgroup containing $z$. By the claim $M^x\cap L^y=\gen1$ for any pair $x,y\in G$. Therefore,
+\begin{align*}
+    |G| &\ge \Big|\bigcup_{x\in G}M^x\cup\bigcup_{y\in G}L^y\Big|\\
+        &= \Big|\bigcup_{x\in G}(M^x\setminus\set1)\cup
+            \bigcup_{y\in G}(L^y\setminus\set1)\cup\set1\Big|\\
+        &= |G|/2+|G|/2+1, 
+\end{align*}
+which is impossible.
+
+\end{solution}
+
+

@@ -1,0 +1,1595 @@
+\chapter{Left Braces}
+\section{The Yang-Baxter Equation}
+\setcounter{subsection}{1}
+
+Recall that $\Sym(X)$ denotes the group of bijections from $X$ to~$X$. Fix $n\ge2$. Let $\pi_k\colon X^n\to X$ denote the $k$th projection. Given a bijection $R=(\alpha,\beta)$ in $\Sym(X\times X)$ and two indexes $1\le i\ne j\le n$, define $R^{ij}\in\Sym(X^n)$ as
+$$
+    \pi_k\circ R^{ij} = \begin{cases}
+        \alpha\circ(\pi_i,\pi_j)    &\text{if }k=i,\\
+        \beta\circ(\pi_i,\pi_j)     &\text{if }k=j,\\
+        \pi_k   &\text{if }k\ne i,j.
+    \end{cases}
+$$
+Unless stated otherwise, in what follows we will assume that $n=3$.
+
+For $(i,j)$ with $i<j$, let $\pi_{ij}\colon X^3\to X^2$ be the $(i,j)$th projection. Then
+\begin{align}\label{eq:R^ij-i<j}
+    R^{12} &= (\alpha\pi_{12},\beta\pi_{12},\pi_3)\nonumber\\
+    R^{13} &= (\alpha\pi_{13},\pi_2,\beta\pi_{13})\\
+    R^{23} &= (\pi_1,\alpha\pi_{23},\beta\pi_{23})\nonumber
+\end{align}
+
+%\break
+
+\begin{defn}
+    We say that\/ $R\in\Sym(X\times X)$ is a solution to the \textsl{quantum Yang-Baxter equation} if it satisfies
+    \begin{equation}\label{eq:qybe}
+        R^{12}R^{13}R^{23} = R^{23}R^{13}R^{12}.\tag{\textsc{qybe}} 
+    \end{equation}
+\end{defn}
+
+Let $\tau\colon X\times X\to X\times X$ be the so called \textsl{flip}, i.e., $\tau(x,y)=(y,x)$.
+
+
+\begin{prop}
+    Let\/ $R\in\Sym(X\times X)$. Then\/ $r=\tau\circ R$ satisfies
+    \begin{equation}\label{eq:ybe}
+        r^{12}r^{23}r^{12} = r^{23}r^{12}r^{23}
+    \end{equation}
+    if, and only if\/ $R$ is a solution to the quantum Yang-Baxter equation\/~$(\ref{eq:qybe})$.
+\end{prop}
+
+\begin{proof}
+    \begin{align*}
+        R^{12}R^{13}R^{23} &= (\alpha\pi_{1,2},\beta\pi_{12},\pi_3)
+                (\alpha\pi_{13},\pi_2,\beta\pi_{13})
+                (\pi_1,\alpha\pi_{23},\beta\pi_{23})\\
+            &= (\alpha\pi_{1,2},\beta\pi_{12},\pi_3)
+                (\alpha(\pi_1,\beta\pi_{23})
+                ,\alpha\pi_{23}
+                ,\beta(\pi_1,\beta\pi_{23}))\\
+            &= (\alpha(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23})
+                ,\beta(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23})
+                ,\beta(\pi_1,\beta\pi_{23})),\\
+        R^{23}R^{13}R^{12} &= (\pi_1,\alpha\pi_{23},\beta\pi_{23})
+                (\alpha\pi_{13},\pi_2,\beta\pi_{13})
+                (\alpha\pi_{12},\beta\pi_{12},\pi_3)\\
+            &= (\pi_1,\alpha\pi_{23},\beta\pi_{23})
+                (\alpha(\alpha\pi_{12},\pi_3)
+                ,\beta\pi_{12}
+                ,\beta(\alpha\pi_{12},\pi_3))\\
+            &= (\alpha(\alpha\pi_{12},\pi_3)
+                ,\alpha(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))
+                ,\beta(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))).
+    \end{align*}
+    Therefore, $(\ref{eq:qybe})$ is equivalent to
+    \begin{align}\label{eq:qybe-no-flip}
+        \alpha(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23})
+            &= \alpha(\alpha\pi_{12},\pi_3)\nonumber\\
+        \beta(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23})
+            &= \alpha(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))\\
+        \beta(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))
+            &= \beta(\pi_1,\beta\pi_{23}).\nonumber
+    \end{align}
+    On the other hand, since $\tau R=(\beta,\alpha)$, we can apply $(\ref{eq:R^ij-i<j})$ and get
+    \begin{align*}
+        r^{12} &= (\beta\pi_{12},\alpha\pi_{12},\pi_3)\\
+        %r^{13} &= (\beta\pi_{13},\pi_2,\alpha\pi_{13})\\
+        r^{23} &= (\pi_1,\beta\pi_{23},\alpha\pi_{23}).
+    \end{align*}
+    Then
+    \begin{align*}
+        r^{12}r^{23}r^{12} &= (\beta\pi_{12},\alpha\pi_{12},\pi_3)
+                (\pi_1,\beta\pi_{23},\alpha\pi_{23})
+                (\beta\pi_{12},\alpha\pi_{12},\pi_3)\\
+            &= (\beta\pi_{12},\alpha\pi_{12},\pi_3)
+                (\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3)
+                ,\alpha(\alpha\pi_{12},\pi_3))\\
+            &= (\beta(\beta\pi_{12}
+                ,\beta(\alpha\pi_{12},\pi_3))
+                ,\alpha(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))
+                ,\alpha(\alpha\pi_{12},\pi_3)),\\
+        r^{23}r^{12}r^{23} &= (\pi_1,\beta\pi_{23},\alpha\pi_{23})
+                (\beta\pi_{12},\alpha\pi_{12},\pi_3)
+                (\pi_1,\beta\pi_{23},\alpha\pi_{23})\\
+            &= (\pi_1,\beta\pi_{23},\alpha\pi_{23})
+                (\beta(\pi_1,\beta\pi_{23})
+                ,\alpha(\pi_1,\beta\pi_{23})
+                ,\alpha\pi_{23})\\
+            &= (\beta(\pi_1,\beta\pi_{23})
+                ,\beta(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23})
+                ,\alpha(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23}))
+    \end{align*}
+    Hence, $(\ref{eq:ybe})$ is equivalent to
+    \begin{align}\label{eq:qybe-with-flip}
+        \beta(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))
+            &= \beta(\pi_1,\beta\pi_{23})\nonumber\\
+        \alpha(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))
+            &= \beta(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23})\\
+        \alpha(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23})
+            &= \alpha(\alpha\pi_{12},\pi_3).\nonumber
+    \end{align}
+    The conclusion is now clear because $(\ref{eq:qybe-no-flip})$ and $(\ref{eq:qybe-with-flip})$ are the same.
+\end{proof}
+
+\begin{rem}
+    The main advantage of \eqref{eq:ybe}, when compared to \eqref{eq:qybe}, is that since the former makes no use of $R^{13}$, one can rewrite it as
+    \begin{equation}\label{eq:simpler-ybe}
+        (r\times\id)({\id}\times r)(r\times\id)
+            = ({\id}\times r)(r\times\id)({\id}\times r),
+            \tag{\textsc{ybe}}
+    \end{equation}
+    which doesn't require \eqref{eq:R^ij-i<j}.
+\end{rem}
+
+\begin{defns}
+    Let $r=(f,g)\in\Sym(X\times X)$. Then $r$ is \textsl{nondegenerate} if both $f(x,\,\cdot\,)$ and $g(\,\cdot\,,x)$ belong in $\Sym(X)$ for all $x\in X$, as illustrated here
+    {\small
+    $$
+        \begin{tikzcd}
+            x
+                    \arrow[d,mapsto]
+                &X
+                    \arrow[rr,"{g(\,\cdot\,,y)}"]
+                    \arrow[d,"\iota_y"']
+                &&X
+                &y\\
+            {(x,y)}
+            &X\times X
+                    \arrow[rr,"r"]
+                &&X\times X
+                    \arrow[d,"\pi_1"]
+                    \arrow[u,"\pi_2"']
+                &{(x,y)}
+                    \arrow[u,mapsto]
+                    \arrow[d,mapsto]\\
+                    y\arrow[u,mapsto]
+                &X
+                    \arrow[rr,"{f(x,\,\cdot\,)}"']
+                    \arrow[u,"\jmath_x"]
+                &&X
+                &x
+        \end{tikzcd}
+    $$}
+\end{defns}
+
+\begin{rem}
+    Clearly the identity map satisfies \eqref{eq:simpler-ybe}. However, it is degenerate because $\id(x,y)=(x,y)$ and so $f(x,\,\cdot\,)=x$, which is not bijective but constant.
+\end{rem}
+    
+\begin{xmpls}${}$
+    \begin{enumerate}[\rm a)]
+        \item The swap $r(x,y)=(y,x)$ because $f(x,\,\cdot\,)=g(\,\cdot\,,x)=\id$ for all $x\in X$ and it is a solution of \eqref{eq:simpler-ybe} because
+    $$
+    \begin{matrix}
+        (x,y,z)&\stackrel{r\times\id}\longmapsto&(y,x,z)
+            &\stackrel{\id\times r}\longmapsto&(y,z,x)
+            &\stackrel{r\times\id}\longmapsto&(z,y,x),\\\\
+        (x,y,z)&\stackrel{\id\times r}\longmapsto&(x,z,y)
+            &\stackrel{r\times\id}\longmapsto&(z,x,y)
+            &\stackrel{\id\times r}\longmapsto&(z,y,x).        
+    \end{matrix}
+    $$
+
+    \item A nondegenerate solution when $X=\nset n$ is
+    $$
+        r(x,y)=(n+1-y, n+1-x),
+    $$
+    which is clearly nondegenerate and
+    {\small
+    $$
+        \begin{matrix}
+        (x,y,z)\stackrel{r\times\id}\longmapsto(n+1-y,n+1-x,z)
+            \stackrel{\id\times r}\longmapsto(n+1-y,n+1-z,x)
+            \stackrel{r\times\id}\longmapsto(z,y,x),\\\\
+        (x,y,z)\stackrel{\id\times r}\longmapsto(x,n+1-z,n+1-y)
+            \stackrel{r\times\id}\longmapsto(z,n+1-x,n+1-y)
+            \stackrel{\id\times r}\longmapsto(z,y,x).
+        \end{matrix}
+    $$
+    }
+
+    \item More generally, let $\alpha,\beta\in\Sym(X)$ and define
+    $$
+        r(x,y) = (\alpha(y),\beta(x)).
+    $$
+    Then $r$ satisfies \eqref{eq:simpler-ybe} if, and only if, $\alpha\beta=\beta\alpha$. Indeed,
+    {\small
+    $$
+        \begin{matrix}
+        (x,y,z)\stackrel{r\times\id}
+            \longmapsto(\alpha(y),\beta(x),z)
+            \stackrel{\id\times r}
+            \longmapsto(\alpha(y),\alpha(z),\beta^2(x))
+            \stackrel{r\times\id}
+            \longmapsto(\alpha^2(z),\beta\alpha(y),\beta^2(x)),\\\\
+        (x,y,z)\stackrel{\id\times r}
+            \longmapsto(x,\alpha(z),\beta(y))
+            \stackrel{r\times\id}
+            \longmapsto(\alpha^2(z),\beta(x),\beta(y))
+            \stackrel{\id\times r}
+            \longmapsto(\alpha^2(z),\alpha\beta(y),\beta^2(x)).
+        \end{matrix}
+    $$}
+    \end{enumerate}
+\end{xmpls}
+
+\begin{xmpl}
+    Consider the case $X=\set{1,2}$. Then $\Sym(X\times X)=4!=24$. A simple computer program can analyze the $24$ permutations.
+
+    In what follows we display the solutions under the following color convention:
+    \begin{enumerate}[-]
+        \item $\textcolor{gray}{(i\; j)}$ means $r(i,j)=(i,j)$.
+        \item $\textcolor{teal}{(i\; j)}$ means $r(j,i)=(i,j)$.
+        \item $\textcolor{orange}{(i\; j)}$ means $r(i,j)$ is disjoint from $(i,j)$.
+        \item $\textcolor{blue}{(i\; j)}$ means none of the above.
+    \end{enumerate}
+
+    In the tables the first row represents the identity and is there as a reference. Rows below the horizontal line are the images of the first row under each of the solutions. For instance, the first nondegenerate solution twists pairs $(1,2)$ and $(2,1)$ and fixes $(1,1)$ and $(2,2)$. Note that the identity is the only degenerate solution in this case.
+    
+    Degenerate solutions
+    $$
+    	\begin{tabular}{c}
+    		\textcolor{gray}{(1 1) (1 2) (2 1) (2 2)}\\
+    		\hline\\[-3mm]
+    		\textcolor{gray}{(1 1)} \textcolor{gray}{(1 2)}
+                \textcolor{gray}{(2 1)} \textcolor{gray}{(2 2)}
+    	\end{tabular}
+    $$
+    Nondegenerate
+    $$
+    	\begin{tabular}{c}
+    		\textcolor{gray}{(1 1) (1 2) (2 1) (2 2)}\\
+    		\hline\\[-3mm]
+    		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{teal}{(1 2)} \textcolor{gray}{(2 2)}\\
+    		\textcolor{blue}{(1 2)} \textcolor{blue}{(2 2)} \textcolor{blue}{(1 1)} \textcolor{blue}{(2 1)}\\
+    		\textcolor{blue}{(2 1)} \textcolor{blue}{(1 1)} \textcolor{blue}{(2 2)} \textcolor{blue}{(1 2)}\\
+    		\textcolor{orange}{(2 2)} \textcolor{gray}{(1 2)} \textcolor{gray}{(2 1)} \textcolor{orange}{(1 1)}
+    	\end{tabular}
+    $$
+\end{xmpl}
+
+\begin{xmpl}${}$
+Similar to the previous example, but for $X=\set{1,2,3}$. Note that $\Sym(X\times X)=9!$, so the program has to analyze $362,880$ permutations.
+
+Degenerate solutions
+$$
+	\begin{tabular}{c}
+		\textcolor{gray}{(1 1) (1 2) (1 3) (2 1) (2 2) (2 3) (3 1) (3 2) (3 3)}\\
+		\hline\\[-3mm]
+		\textcolor{gray}{(1 1)} \textcolor{gray}{(1 2)} \textcolor{gray}{(1 3)} \textcolor{gray}{(2 1)} \textcolor{gray}{(2 2)} \textcolor{gray}{(2 3)} \textcolor{gray}{(3 1)} \textcolor{gray}{(3 2)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{gray}{(1 2)} \textcolor{teal}{(3 1)} \textcolor{gray}{(2 1)} \textcolor{gray}{(2 2)} \textcolor{teal}{(3 2)} \textcolor{teal}{(1 3)} \textcolor{teal}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{gray}{(1 2)} \textcolor{orange}{(3 2)} \textcolor{gray}{(2 1)} \textcolor{gray}{(2 2)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 3)} \textcolor{orange}{(1 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{gray}{(1 3)} \textcolor{teal}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(3 2)} \textcolor{gray}{(3 1)} \textcolor{teal}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{teal}{(3 1)} \textcolor{teal}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{gray}{(2 3)} \textcolor{teal}{(1 3)} \textcolor{gray}{(3 2)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(2 3)} \textcolor{gray}{(1 3)} \textcolor{orange}{(3 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(1 2)} \textcolor{gray}{(3 1)} \textcolor{orange}{(2 1)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(1 3)} \textcolor{gray}{(2 2)} \textcolor{gray}{(2 3)} \textcolor{orange}{(1 2)} \textcolor{gray}{(3 2)} \textcolor{gray}{(3 3)}
+	\end{tabular}
+$$
+\pagebreak
+
+Nondegenerate
+\small
+$$
+	\begin{tabular}{c}
+		\textcolor{gray}{(1 1) (1 2) (1 3) (2 1) (2 2) (2 3) (3 1) (3 2) (3 3)}\\
+		\hline\\[-3mm]
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{teal}{(3 1)} \textcolor{teal}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(3 2)} \textcolor{teal}{(1 3)} \textcolor{teal}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{orange}{(3 1)} \textcolor{teal}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(3 2)} \textcolor{teal}{(2 3)} \textcolor{teal}{(1 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{teal}{(3 1)} \textcolor{teal}{(1 2)} \textcolor{blue}{(2 3)} \textcolor{blue}{(3 3)} \textcolor{teal}{(1 3)} \textcolor{blue}{(2 2)} \textcolor{blue}{(3 2)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{teal}{(3 1)} \textcolor{teal}{(1 2)} \textcolor{blue}{(3 2)} \textcolor{blue}{(2 2)} \textcolor{teal}{(1 3)} \textcolor{blue}{(3 3)} \textcolor{blue}{(2 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{teal}{(3 1)} \textcolor{teal}{(1 2)} \textcolor{orange}{(3 3)} \textcolor{gray}{(2 3)} \textcolor{teal}{(1 3)} \textcolor{gray}{(3 2)} \textcolor{orange}{(2 2)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(3 1)} \textcolor{teal}{(1 3)} \textcolor{gray}{(2 2)} \textcolor{teal}{(3 2)} \textcolor{teal}{(1 2)} \textcolor{teal}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(3 1)} \textcolor{teal}{(1 3)} \textcolor{blue}{(2 3)} \textcolor{blue}{(3 3)} \textcolor{teal}{(1 2)} \textcolor{blue}{(2 2)} \textcolor{blue}{(3 2)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(3 1)} \textcolor{teal}{(1 3)} \textcolor{blue}{(3 2)} \textcolor{blue}{(2 2)} \textcolor{teal}{(1 2)} \textcolor{blue}{(3 3)} \textcolor{blue}{(2 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(3 1)} \textcolor{teal}{(1 3)} \textcolor{orange}{(3 3)} \textcolor{gray}{(2 3)} \textcolor{teal}{(1 2)} \textcolor{gray}{(3 2)} \textcolor{orange}{(2 2)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(2 1)} \textcolor{teal}{(3 1)} \textcolor{teal}{(3 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(1 2)} \textcolor{teal}{(1 3)} \textcolor{orange}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(3 3)} \textcolor{teal}{(1 3)} \textcolor{gray}{(2 3)} \textcolor{orange}{(2 2)} \textcolor{gray}{(3 2)} \textcolor{teal}{(1 2)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{teal}{(3 2)} \textcolor{teal}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(3 1)} \textcolor{orange}{(1 3)} \textcolor{orange}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{orange}{(3 2)} \textcolor{teal}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 3)} \textcolor{orange}{(1 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(2 3)} \textcolor{teal}{(3 1)} \textcolor{orange}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(3 2)} \textcolor{teal}{(1 3)} \textcolor{teal}{(2 1)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(2 3)} \textcolor{teal}{(3 1)} \textcolor{orange}{(3 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(1 2)} \textcolor{teal}{(1 3)} \textcolor{orange}{(2 1)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(2 3)} \textcolor{orange}{(3 2)} \textcolor{orange}{(1 3)} \textcolor{gray}{(2 2)} \textcolor{orange}{(3 1)} \textcolor{orange}{(1 2)} \textcolor{orange}{(2 1)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(3 1)} \textcolor{teal}{(2 1)} \textcolor{orange}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(3 2)} \textcolor{orange}{(1 3)} \textcolor{teal}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(3 1)} \textcolor{teal}{(2 1)} \textcolor{orange}{(1 2)} \textcolor{blue}{(2 3)} \textcolor{blue}{(3 3)} \textcolor{orange}{(1 3)} \textcolor{blue}{(2 2)} \textcolor{blue}{(3 2)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(3 1)} \textcolor{teal}{(2 1)} \textcolor{orange}{(1 2)} \textcolor{blue}{(3 2)} \textcolor{blue}{(2 2)} \textcolor{orange}{(1 3)} \textcolor{blue}{(3 3)} \textcolor{blue}{(2 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{teal}{(3 1)} \textcolor{teal}{(2 1)} \textcolor{orange}{(1 2)} \textcolor{orange}{(3 3)} \textcolor{gray}{(2 3)} \textcolor{orange}{(1 3)} \textcolor{gray}{(3 2)} \textcolor{orange}{(2 2)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(1 3)} \textcolor{gray}{(2 2)} \textcolor{teal}{(3 2)} \textcolor{orange}{(1 2)} \textcolor{teal}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(1 3)} \textcolor{blue}{(2 3)} \textcolor{blue}{(3 3)} \textcolor{orange}{(1 2)} \textcolor{blue}{(2 2)} \textcolor{blue}{(3 2)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(1 3)} \textcolor{blue}{(3 2)} \textcolor{blue}{(2 2)} \textcolor{orange}{(1 2)} \textcolor{blue}{(3 3)} \textcolor{blue}{(2 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(1 3)} \textcolor{orange}{(3 3)} \textcolor{gray}{(2 3)} \textcolor{orange}{(1 2)} \textcolor{gray}{(3 2)} \textcolor{orange}{(2 2)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(3 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(1 2)} \textcolor{orange}{(2 3)} \textcolor{orange}{(1 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{gray}{(1 1)} \textcolor{orange}{(3 3)} \textcolor{orange}{(2 2)} \textcolor{orange}{(1 2)} \textcolor{teal}{(3 1)} \textcolor{gray}{(2 3)} \textcolor{orange}{(1 3)} \textcolor{gray}{(3 2)} \textcolor{teal}{(2 1)}\\
+		\textcolor{blue}{(1 2)} \textcolor{blue}{(2 2)} \textcolor{teal}{(3 1)} \textcolor{blue}{(1 1)} \textcolor{blue}{(2 1)} \textcolor{teal}{(3 2)} \textcolor{teal}{(1 3)} \textcolor{teal}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{blue}{(1 2)} \textcolor{blue}{(2 2)} \textcolor{orange}{(3 1)} \textcolor{blue}{(1 1)} \textcolor{blue}{(2 1)} \textcolor{orange}{(3 2)} \textcolor{teal}{(2 3)} \textcolor{teal}{(1 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{blue}{(1 2)} \textcolor{blue}{(2 2)} \textcolor{teal}{(3 2)} \textcolor{blue}{(1 1)} \textcolor{blue}{(2 1)} \textcolor{teal}{(3 1)} \textcolor{orange}{(1 3)} \textcolor{orange}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{blue}{(1 2)} \textcolor{blue}{(2 2)} \textcolor{orange}{(3 2)} \textcolor{blue}{(1 1)} \textcolor{blue}{(2 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 3)} \textcolor{orange}{(1 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{blue}{(1 2)} \textcolor{blue}{(2 2)} \textcolor{orange}{(3 2)} \textcolor{orange}{(1 3)} \textcolor{blue}{(2 3)} \textcolor{blue}{(3 3)} \textcolor{blue}{(1 1)} \textcolor{orange}{(2 1)} \textcolor{blue}{(3 1)}\\
+		\textcolor{blue}{(1 3)} \textcolor{teal}{(2 1)} \textcolor{blue}{(3 3)} \textcolor{teal}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(3 2)} \textcolor{blue}{(1 1)} \textcolor{teal}{(2 3)} \textcolor{blue}{(3 1)}\\
+		\textcolor{blue}{(1 3)} \textcolor{orange}{(2 1)} \textcolor{blue}{(3 3)} \textcolor{teal}{(3 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(1 2)} \textcolor{blue}{(1 1)} \textcolor{orange}{(2 3)} \textcolor{blue}{(3 1)}\\
+		\textcolor{blue}{(1 3)} \textcolor{orange}{(2 3)} \textcolor{blue}{(3 3)} \textcolor{blue}{(1 1)} \textcolor{blue}{(2 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(1 2)} \textcolor{blue}{(2 2)} \textcolor{blue}{(3 2)}\\
+		\textcolor{blue}{(1 3)} \textcolor{teal}{(2 3)} \textcolor{blue}{(3 3)} \textcolor{orange}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(3 2)} \textcolor{blue}{(1 1)} \textcolor{teal}{(2 1)} \textcolor{blue}{(3 1)}\\
+		\textcolor{blue}{(1 3)} \textcolor{orange}{(2 3)} \textcolor{blue}{(3 3)} \textcolor{orange}{(3 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(1 2)} \textcolor{blue}{(1 1)} \textcolor{orange}{(2 1)} \textcolor{blue}{(3 1)}\\
+		\textcolor{blue}{(2 1)} \textcolor{blue}{(1 1)} \textcolor{teal}{(3 1)} \textcolor{blue}{(2 2)} \textcolor{blue}{(1 2)} \textcolor{teal}{(3 2)} \textcolor{teal}{(1 3)} \textcolor{teal}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{blue}{(2 1)} \textcolor{blue}{(1 1)} \textcolor{orange}{(3 1)} \textcolor{blue}{(2 2)} \textcolor{blue}{(1 2)} \textcolor{orange}{(3 2)} \textcolor{teal}{(2 3)} \textcolor{teal}{(1 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{blue}{(2 1)} \textcolor{blue}{(1 1)} \textcolor{teal}{(3 2)} \textcolor{blue}{(2 2)} \textcolor{blue}{(1 2)} \textcolor{teal}{(3 1)} \textcolor{orange}{(1 3)} \textcolor{orange}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{blue}{(2 1)} \textcolor{blue}{(1 1)} \textcolor{orange}{(3 2)} \textcolor{blue}{(2 2)} \textcolor{blue}{(1 2)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 3)} \textcolor{orange}{(1 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{blue}{(2 1)} \textcolor{orange}{(3 1)} \textcolor{blue}{(1 1)} \textcolor{blue}{(2 2)} \textcolor{blue}{(3 2)} \textcolor{orange}{(1 2)} \textcolor{orange}{(2 3)} \textcolor{blue}{(3 3)} \textcolor{blue}{(1 3)}\\
+		\textcolor{orange}{(2 2)} \textcolor{gray}{(1 2)} \textcolor{teal}{(3 1)} \textcolor{gray}{(2 1)} \textcolor{orange}{(1 1)} \textcolor{teal}{(3 2)} \textcolor{teal}{(1 3)} \textcolor{teal}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{orange}{(2 2)} \textcolor{gray}{(1 2)} \textcolor{orange}{(3 1)} \textcolor{gray}{(2 1)} \textcolor{orange}{(1 1)} \textcolor{orange}{(3 2)} \textcolor{teal}{(2 3)} \textcolor{teal}{(1 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{orange}{(2 2)} \textcolor{gray}{(1 2)} \textcolor{orange}{(3 2)} \textcolor{orange}{(1 3)} \textcolor{orange}{(3 3)} \textcolor{gray}{(2 3)} \textcolor{gray}{(3 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(1 1)}\\
+		\textcolor{orange}{(2 2)} \textcolor{gray}{(1 2)} \textcolor{teal}{(3 2)} \textcolor{gray}{(2 1)} \textcolor{orange}{(1 1)} \textcolor{teal}{(3 1)} \textcolor{orange}{(1 3)} \textcolor{orange}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{orange}{(2 2)} \textcolor{gray}{(1 2)} \textcolor{orange}{(3 2)} \textcolor{gray}{(2 1)} \textcolor{orange}{(1 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(2 3)} \textcolor{orange}{(1 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{orange}{(2 2)} \textcolor{orange}{(3 1)} \textcolor{gray}{(1 3)} \textcolor{gray}{(2 1)} \textcolor{orange}{(3 3)} \textcolor{orange}{(1 2)} \textcolor{orange}{(2 3)} \textcolor{gray}{(3 2)} \textcolor{orange}{(1 1)}\\
+		\textcolor{orange}{(2 2)} \textcolor{blue}{(3 2)} \textcolor{blue}{(1 2)} \textcolor{blue}{(2 3)} \textcolor{orange}{(3 3)} \textcolor{blue}{(1 3)} \textcolor{blue}{(2 1)} \textcolor{blue}{(3 1)} \textcolor{orange}{(1 1)}\\
+		\textcolor{teal}{(2 3)} \textcolor{gray}{(1 2)} \textcolor{orange}{(3 1)} \textcolor{gray}{(2 1)} \textcolor{teal}{(1 3)} \textcolor{orange}{(3 2)} \textcolor{orange}{(2 2)} \textcolor{orange}{(1 1)} \textcolor{gray}{(3 3)}\\
+		\textcolor{teal}{(2 3)} \textcolor{orange}{(3 3)} \textcolor{gray}{(1 3)} \textcolor{orange}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(3 2)} \textcolor{gray}{(3 1)} \textcolor{orange}{(1 1)} \textcolor{teal}{(2 1)}\\
+		\textcolor{orange}{(2 3)} \textcolor{orange}{(3 3)} \textcolor{gray}{(1 3)} \textcolor{gray}{(2 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(1 1)} \textcolor{orange}{(2 2)} \textcolor{gray}{(3 2)} \textcolor{orange}{(1 2)}
+      \end{tabular}
+$$
+$$
+    \begin{tabular}{c}
+		\textcolor{blue}{(3 1)} \textcolor{blue}{(1 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(3 2)} \textcolor{blue}{(1 2)} \textcolor{blue}{(2 2)} \textcolor{blue}{(3 3)} \textcolor{orange}{(1 3)} \textcolor{blue}{(2 3)}\\
+		\textcolor{blue}{(3 1)} \textcolor{teal}{(2 1)} \textcolor{blue}{(1 1)} \textcolor{teal}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(3 2)} \textcolor{blue}{(3 3)} \textcolor{teal}{(2 3)} \textcolor{blue}{(1 3)}\\
+		\textcolor{blue}{(3 1)} \textcolor{orange}{(2 1)} \textcolor{blue}{(1 1)} \textcolor{teal}{(3 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(1 2)} \textcolor{blue}{(3 3)} \textcolor{orange}{(2 3)} \textcolor{blue}{(1 3)}\\
+		\textcolor{blue}{(3 1)} \textcolor{teal}{(2 3)} \textcolor{blue}{(1 1)} \textcolor{orange}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(3 2)} \textcolor{blue}{(3 3)} \textcolor{teal}{(2 1)} \textcolor{blue}{(1 3)}\\
+		\textcolor{blue}{(3 1)} \textcolor{orange}{(2 3)} \textcolor{blue}{(1 1)} \textcolor{orange}{(3 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(1 2)} \textcolor{blue}{(3 3)} \textcolor{orange}{(2 1)} \textcolor{blue}{(1 3)}\\
+		\textcolor{teal}{(3 2)} \textcolor{gray}{(1 2)} \textcolor{orange}{(2 2)} \textcolor{gray}{(2 1)} \textcolor{teal}{(3 1)} \textcolor{orange}{(1 1)} \textcolor{orange}{(1 3)} \textcolor{orange}{(2 3)} \textcolor{gray}{(3 3)}\\
+		\textcolor{orange}{(3 2)} \textcolor{gray}{(1 2)} \textcolor{orange}{(2 2)} \textcolor{orange}{(3 3)} \textcolor{orange}{(1 3)} \textcolor{gray}{(2 3)} \textcolor{gray}{(3 1)} \textcolor{orange}{(1 1)} \textcolor{orange}{(2 1)}\\
+		\textcolor{teal}{(3 2)} \textcolor{orange}{(2 1)} \textcolor{gray}{(1 3)} \textcolor{orange}{(3 3)} \textcolor{gray}{(2 2)} \textcolor{orange}{(1 1)} \textcolor{gray}{(3 1)} \textcolor{orange}{(2 3)} \textcolor{teal}{(1 2)}\\
+		\textcolor{orange}{(3 3)} \textcolor{gray}{(1 2)} \textcolor{orange}{(2 1)} \textcolor{orange}{(3 2)} \textcolor{orange}{(1 1)} \textcolor{gray}{(2 3)} \textcolor{gray}{(3 1)} \textcolor{orange}{(1 3)} \textcolor{orange}{(2 2)}\\
+		\textcolor{orange}{(3 3)} \textcolor{blue}{(1 3)} \textcolor{blue}{(2 3)} \textcolor{blue}{(3 1)} \textcolor{orange}{(1 1)} \textcolor{blue}{(2 1)} \textcolor{blue}{(3 2)} \textcolor{blue}{(1 2)} \textcolor{orange}{(2 2)}\\
+		\textcolor{orange}{(3 3)} \textcolor{teal}{(2 1)} \textcolor{gray}{(1 3)} \textcolor{teal}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(3 2)} \textcolor{gray}{(3 1)} \textcolor{teal}{(2 3)} \textcolor{orange}{(1 1)}\\
+		\textcolor{orange}{(3 3)} \textcolor{orange}{(2 1)} \textcolor{gray}{(1 3)} \textcolor{teal}{(3 2)} \textcolor{gray}{(2 2)} \textcolor{teal}{(1 2)} \textcolor{gray}{(3 1)} \textcolor{orange}{(2 3)} \textcolor{orange}{(1 1)}\\
+		\textcolor{orange}{(3 3)} \textcolor{teal}{(2 3)} \textcolor{gray}{(1 3)} \textcolor{orange}{(1 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(3 2)} \textcolor{gray}{(3 1)} \textcolor{teal}{(2 1)} \textcolor{orange}{(1 1)}\\
+		\textcolor{orange}{(3 3)} \textcolor{orange}{(2 3)} \textcolor{gray}{(1 3)} \textcolor{gray}{(2 1)} \textcolor{orange}{(1 1)} \textcolor{orange}{(3 1)} \textcolor{orange}{(1 2)} \textcolor{gray}{(3 2)} \textcolor{orange}{(2 2)}\\
+		\textcolor{orange}{(3 3)} \textcolor{orange}{(2 3)} \textcolor{gray}{(1 3)} \textcolor{orange}{(3 2)} \textcolor{gray}{(2 2)} \textcolor{orange}{(1 2)} \textcolor{gray}{(3 1)} \textcolor{orange}{(2 1)} \textcolor{orange}{(1 1)}
+	\end{tabular}
+$$
+\normalsize
+\medskip
+\end{xmpl}
+
+\begin{xmpl}
+    For $X=\Z_n$ define
+    $$
+    \begin{matrix}
+        \begin{aligned}
+            \ell\colon X\times X&\to\Z_{n^2}\\
+            (i,j)&\mapsto ni+j
+        \end{aligned}
+        &
+        \qquad
+        &
+        \begin{aligned}
+            \ell^{-1}\colon\Z_{n^2}&\to X\times X\\
+            k&\mapsto (\lfloor k/n\rfloor,k\,\op{mod}\,n).
+        \end{aligned}
+    \end{matrix}
+    $$
+    Then define the isomorphism
+    \begin{align*}
+        \Sym(X\times X)&\to\Sym(\Z_{n^2})\\
+        r&\mapsto\ell r\ell^{-1}
+    \end{align*}
+    and the action
+    \begin{align*}
+        \Sym(\Z_{n^2})\times\Sym(X\times X)&\to\Sym(X\times X)\\
+            (\sigma,r)&\mapsto\ell^{-1}\sigma\ell r
+    \end{align*}
+    illustrated here
+    $$
+        \begin{tikzcd}[row sep=huge]
+        X\times X
+                \arrow[r,"\ell"]
+                \arrow[d,"r"',dotted]
+                \arrow[d,
+                "\sigma\cdot r\,=\,\ell^{-1}\sigma\ell r"',
+                    bend right=49]
+            &\Z_{n^2}
+                \arrow[d,bend left=49,"\sigma r^\ell"]
+                \arrow[d,dotted,"r^\ell"]\\
+        X\times X
+                \arrow[r,"\ell"']
+            &\Z_{n^2}
+        \end{tikzcd}
+    $$
+    Suppose that $r$ solves \eqref{eq:simpler-ybe} and let's see what can we say about $\sigma\cdot r$ for $\sigma\in\Sym(\Z_{n^2})$.
+
+    Write $r(a,b)=(i,j)$. Then
+    \begin{align*}
+        \sigma\cdot r(a,b) &= \ell^{-1}\sigma\ell(i,j)\\
+            &= \ell^{-1}\sigma(ni+j)\\
+            &= (\lfloor\sigma(ni+j)/n\rfloor,\sigma(ni+j)\,\op{mod}\,n)
+    \end{align*}
+    Thus, for $r(b,c)=(h,k)$,
+    \begin{align*}
+        \sigma\cdot r\times\id(a,b,c)
+            &= (\lfloor\sigma(ni+j)/n\rfloor
+                ,\sigma(ni+j)\,\op{mod}\,n
+                ,c).\\
+        {\id}\times\sigma\cdot r(a,b,c)
+            &=(a
+                ,\lfloor\sigma(nh+k)/n\rfloor
+                ,\sigma(nh+k)\,\op{mod}\,n).
+    \end{align*}
+\end{xmpl}
+
+\paragraph{Structure and Permutation Groups.} Given $X$ and $r=(f,g)$ as above, the \textsl{structure group} $G(X,r)$ is the group presented by $X$ with relators
+$$
+     x\cdot y=f(x,y)g(x,y)
+$$
+for $x,y\in X$, i.e.,
+$$
+    G(X,r) = \gen{X\mid x\cdot y=f(x,y)g(x,y);\,x,y\in X}.
+$$
+When $r$ is nondegenerate, its \textsl{permutation group} $\mathcal G(X,r)$ is the subgroup of $\Sym(X)$ generated by $f(x,\,\cdot\,)$ for $x\in X$, i.e.,
+$$
+    \mathcal G(X,r) = \gen{f(x,\,\cdot\,)\in\Sym(X)\mid x\in X}.
+$$
+
+\section{Left Braces and Skew Left Braces}
+
+\begin{defn}
+    A \textsl{left brace} is a set\/ $B$ with two operations\/ `$+$' and\/ `$\,\cdot\,$' such that\/ $(B, +)$ is an abelian group,\/ $(B,\,\cdot\,)$ is a group, and
+    \begin{equation}\label{eq:LB-distribution}
+        a\cdot (b + c) + a = a\cdot b + a\cdot c
+    \end{equation}
+    for all\/ $a, b, c \in B$. We call\/ $(B, +)$ the \textsl{additive} group and\/ $(B, \,\cdot\,)$ the \textsl{multiplicative} group of the left brace.
+\end{defn}
+
+\begin{rem}
+    If\/ $(G,+)$ is a group, given\/ $x\in G$, as observed in Remark~\ref{rem:translated-group}, we can define the \textsl{translation} of\/ $G$ by\/ $x$ as the group\/ $(G,+_x)$ where
+    $$
+        a +_x b = a - x + b
+    $$
+    for\/ $a,b\in G$. In the case where the group is abelian, we have
+    $$
+        (a +_x b) +_y c = a +_x (b +_y c) = (a +_y b) +_x c.
+    $$
+    Using translations, equation $(\ref{eq:LB-distribution})$ can be written as
+    $$
+        a\cdot (b+c)= a\cdot b +_a a\cdot c.
+    $$
+\end{rem}
+
+\begin{defn}
+    A \textsl{two-sided brace} is a left brace\/ $B$ that also is a right brace, in other words, a left brace\/ $B$ such that
+    $$
+        (a + b)\cdot c = a\cdot c +_c b\cdot c,
+    $$
+    for all\/ $a, b, c \in B$.
+\end{defn}
+
+A generalization of the above happens when the abelian hypothesis is dismissed.
+
+\begin{defn}
+      A \textsl{skew left brace} (\textsl{SLB} for short) is a set\/ $B$ with two operations\/ `$\skw$' and\/ `$\,\cdot\,$' such that\/ $(B,\skw)$ and\/ $(B,\,\cdot\,)$ are groups, and
+    \begin{equation}\label{eq:SLB-distribution}
+        a\cdot (b\skw c) = a\cdot b\skw a^\skw\skw a\cdot c,
+    \end{equation}
+    where\/ $a^\skw$ denotes the inverse of\/ $a$ in\/ $(B,\skw)$ and the RHS assumes the precedence of\/ `$\cdot$' over `$\skw$'. We will refer to `$\,\cdot\,$' as the \textsl{multiplication\/} and to `$\skw$' as the \textsl{star} of the skew left brace.
+\end{defn}
+
+\begin{rem}
+    Recall from\/ \textrm{\rm Remark~\ref{rem:translated-group}} that, for any element $x$ in a group $G$, the operation
+    $$
+        a\cdot_x b = ax^{-1}b
+    $$
+    turns $(G,\cdot_x)$ into a group, where $x$ serves as the identity and the inverse of~$a$ is~$xa^{-1}x$.
+
+    With this notation $(\ref{eq:SLB-distribution})$ can be written as
+    \begin{equation}\label{eq:skew-left-brace-translated}
+        a(b\skw c) = ab\skw_a ac,
+    \end{equation}
+    where, as usual, the symbol `$\cdot$' has been omitted. In particular,
+    $$
+        a\skw1=1(a\skw1) = a\skw_11= a,
+    $$
+    which shows that $1=1_{\skw}$.
+\end{rem}
+
+\begin{rem}
+    Every group is a skew left brace with $a\skw b=ab$.
+\end{rem}
+
+\needspace{2\baselineskip}
+\begin{xmpls}\label{xmpls:SLB}${}$
+\begin{enumerate}[\rm a)]
+    \item If $n$ is even define the following in operation in $\Z_n$
+    $$
+        a\skw b = (-1)^ba + b.
+    $$
+    The operation is well-defined because $b$ and $b'$ have the same parity when they are equal in $\Z_n$.
+    \begin{enumerate}[-]
+        \item \textit{associativity:}
+            \begin{align*}
+                (a\skw b)\skw c &= (-1)^c(a\skw b)+c\\
+                    &= (-1)^c((-1)^ba+b)+c\\
+                    &= (-1)^{b+c}a + (-1)^cb + c.\\
+                a\skw(b\skw c) &= (-1)^{b\skw c}a+(b\skw c)\\
+                    &= (-1)^{(-1)^cb+c}a + (-1)^cb+c.
+            \end{align*}
+            Equality holds because $b$ and $-b=n-b$ are of the same parity.
+        \item \textit{identity:} $a\skw0=0\skw a=a$.
+
+        \item \textit{inverse:}
+            \begin{align*}
+                a\skw(-1)^{a+1}a &= 
+                    \begin{cases}
+                        \hphantom-a\skw(-a)=(-1)^{-a}a-a=0
+                            &\text{if }a\text{ even},\\
+                        \hphantom-a\skw a= (-1)^aa+a =0
+                            &\text{if }a \text{ odd}.
+                    \end{cases}\\
+            \intertext{therefore,}
+                (-1)^{a+1}a\skw a &=
+                    \begin{cases}
+                        -a\skw a = 0    &\text{if $a$ even},\\
+                        \hphantom-a\skw a = 0    &\text{if $a$ odd.}
+                    \end{cases}
+            \end{align*}
+        \item \textit{distributivity:}
+            \begin{align*}
+                a+(b\skw c) &= a+(-1)^cb + c\\
+                (a+b)\skw a^\skw\skw(a+c)
+                    &= \begin{cases}
+                        (a+b)\skw(-a)\skw(a+c)  &\text{if $a$ even},\\
+                        (a+b)\skw a\skw(a+c)    &\text{if $a$ odd}
+                    \end{cases}\\
+                    &= \begin{cases}
+                        (a+b-a)\skw(a+c)    &\text{if $a$ even},\\
+                        (-a-b+a)\skw(a+c)   &\text{if $a$ odd}
+                    \end{cases}\\
+                    &= \begin{cases}
+                        (-1)^cb+a+c     &\text{if $a$ even},\\
+                        (-1)^{c+1}(-b)+a+c  &\text{if $a$ odd}
+                    \end{cases}\\
+                    &= (-1)^cb + a + c.
+            \end{align*}
+    \end{enumerate}
+    Let $B$ denote this group. The involutions of $B$ are the odd elements of $\Z_n$. The even elements belong to the cyclic group $\gen2$.
+
+    \textbf{Note:} Incidentally, $(\Z_n,\skw)$ is nothing but the dihedral group with $n$ elements. The cyclic group of index~$2$ being $\gen 2$ [cf.~Definition~\ref{def:dihedral-group}]. In fact, this subgroup is generated by $2$ both in $(\Z_n,+)$ and $(\Z_n,\skw)$ because induction on $i$ shows that
+    $$
+        2^{\skw(i+1)} = 2^{\skw i}\skw 2 = 2i + 2 = 2(i+1),
+    $$
+    i.e.,
+    $$
+        \gen2_\skw = \gen2_+.
+    $$
+
+    \item Let $(G,\,\cdot\,)$ be the nonabelian group of order~$21$. As we have seen in Example~\ref{example:group-of-order-21}, this is isomorphic to $\Z_7\rtimes Z_3$, where the action of $\Z_3$ on $\Aut(\Z_7)$ is given by the map $1\mapsto\eta_2$, where $\eta_2$ is the homothecy of ratio~$2$. Define, in the underlying set, the following operation
+    $$
+        (\sigma^i\tau^j)\circ(\sigma^h\tau^k)
+            = \sigma^{i+4^jh}\tau^{j+k}.
+    $$
+    \needspace{2\baselineskip}
+    \textbf{Claim 1:} $(G,\circ)$ is a group.
+    \begin{enumerate}[-]
+        \item \textit{associativity:}
+            \begin{align*}
+                ((\sigma^i\tau^j)\circ(\sigma^h\tau^k))
+                        \circ(\sigma^n\tau^m)
+                    &= (\sigma^{i+4^jh}\tau^{j+k})\circ(\sigma^n\tau^m)\\
+                    &= \sigma^{i+4^jh+4^{j+k}n}\tau^{j+k+m}.\\
+                (\sigma^i\tau^j)\circ((\sigma^h\tau^k)
+                        \circ(\sigma^n\tau^m))
+                    &= (\sigma^i\tau^j)\circ(\sigma^{h+4^kn}\tau^{k+m})\\
+                    &= \sigma^{i+4^j(h+4^kn)}\tau^{j+k+m}.
+            \end{align*}
+        \item \textit{identity:}
+            \begin{align*}
+                (\sigma^i\tau^j)\circ1 &= \sigma^{i+4^00}\tau^{j+0}\\
+                    &= \sigma^i\tau^j.\\
+                1\circ(\sigma^h\tau^k) &= \sigma^{0+4^0h}\tau^{0+k}\\
+                    &= \sigma^h\tau^k.
+            \end{align*}
+        \item \textit{inverse:}
+            \begin{align*}
+                (\sigma^i\tau^j)\circ(\sigma^{2^j(7-i)}\tau^{3-j})
+                    &= \sigma^{i+4^j2^j(7-i)}\tau^3\\
+                    &= \sigma^i(\sigma^{8^j})^{7-i}\\
+                    &= \sigma^i\sigma^{7-i} &&;\ \sigma^{8^j}=\sigma\\
+                    &= 1.\\
+                (\sigma^{2^j(7-i)}\tau^{3-j})\circ(\sigma^i\tau^j)
+                    &= \sigma^{2^j(7-i)+4^{3-j}i}\tau^{3-j+j}\\
+                    &= \sigma^{(4^{3-j}-2^j)i}\\
+                    &= \begin{cases}
+                        \sigma^{4^3-1}   &\text{if }j=0,\\
+                        \sigma^{4^2-2}  &\text{if }j=1,\\
+                        \sigma^{4-4}    &\text{if }j=2
+                    \end{cases}\\
+                    &= 1.
+            \end{align*}
+    \end{enumerate}
+    \textbf{Claim 2:} $(G,\,\cdot\,,\circ)$ is a skew left brace with multiplication `$\circ$' and star product~`$\,\cdot\,$'.
+    
+    First observe that $\sigma^2\tau=\tau\sigma$ implies
+    \begin{equation}\label{eq:sigma-tau-21}
+        \tau^k\sigma^e=\sigma^{2^ke}\tau^k.
+    \end{equation}
+    Then,
+    \begin{align*}
+        a\circ(bc) &= (\sigma^i\tau^j)
+                \circ((\sigma^h\tau^k)(\sigma^n\tau^m))\\
+            &= (\sigma^i\tau^j)\circ(\sigma^h\tau^k\sigma^n\tau^m)\\
+            &= (\sigma^i\tau^j)\circ(\sigma^{h+2^kn}\tau^{k+m})
+                    &&;\ \eqref{eq:sigma-tau-21}\\
+            &= \sigma^{i+4^j(h+2^kn)}\tau^{j+k+m}
+    \end{align*}
+    and
+    \begin{align*}
+        (a\circ b)a^{-1}(a\circ c) &=
+        ((\sigma^i\tau^j)\circ(\sigma^h\tau^k))(\sigma^i\tau^j)^{-1}
+            ((\sigma^i\tau^j)\circ(\sigma^n\tau^m))\\
+            &= \sigma^{i+4^jh}\tau^{j+k}\tau^{-j}\sigma^{-i}\sigma^{i+4^jn}
+                \tau^{j+m}\\
+            &= \sigma^{i+4^jh}\tau^k\sigma^{4^jn}\tau^{j+m}\\
+            &= \sigma^{i+4^jh}\sigma^{2^k4^jn}\tau^{k+j+m}
+                    &&;\ \eqref{eq:sigma-tau-21}.
+    \end{align*}
+
+    \textbf{Note.} Incidentally, given that there is only one nonabelian group of $21$ elements, the two operations must be isomorphic. Indeed, the map
+    \begin{align*}
+        \phi\colon (G,\circ)&\to(G,\,\cdot\,)\\
+            \sigma^i\tau^j&\mapsto\sigma^i\tau^{2j}
+    \end{align*}
+    is the isomorphism in question:
+    \begin{align*}
+        \phi((\sigma^i\tau^j)\circ(\sigma^h\tau^k))
+            &= \phi(\sigma^{i+4^jh}\tau^{h+k})\\
+            &= \sigma^{i+4^jh}\tau^{2(h+k)}.\\
+        \phi(\sigma^i\tau^j)\phi(\sigma^h\tau^k)
+            &=\sigma^i\tau^{2j}\sigma^h\tau^{2k}\\
+            &= \sigma^{i+2^{2j}h}\tau^{2h+2k}.
+    \end{align*}
+    Moreover, as a set function $\phi^2=\id_G$.
+    
+    Then $(\sigma^i\tau^{2j})^{-1}=\phi((\sigma^i\tau^j)^\circ)$, i.e.,
+    \begin{align*}
+        \sigma^{4^{3-j}(7-i)}\tau^{6-2j}
+            &= \sigma^{2^{6-2j}(7-i)}\tau^{6-2j}\\
+            &= (\sigma^i\tau^j)^{-1}\\
+            &= \phi((\sigma^i\tau^j)^\circ)\\
+            &= \phi(\sigma^{2^j(7-i)}\tau^{3-j})\\
+            &= \sigma^{2^j(7-i)}\tau^{6-2j}.
+    \end{align*}
+    In particular,
+    \begin{equation}\label{eq:G21-equation}
+        \sigma^{4^{3-j}}=\sigma^{2^j}.
+    \end{equation}
+\end{enumerate}
+\end{xmpls}
+
+\begin{lem}\label{lem:ybe-lambda}
+    Let\/ $(G,\,\cdot\,)$ and\/ $(G,\skw)$ be two group structures on the same underlying set. For\/ $a\in G$ define the map
+    \begin{align}\label{map:lambda}
+        \lambda_a\colon G&\to G\\
+        x&\mapsto a^\skw\skw ax.\nonumber
+    \end{align}
+    \needspace{2\baselineskip}
+    Then
+    \begin{enumerate}[\rm a)]
+        \item $\lambda_a\in\Sym(G)$ for all\/ $a\in G$.
+        \item $\lambda_a\in\Aut(G,\,\skw\,)\iff (G,\,\cdot\,,\,\skw\,)$ is a skew left brace.
+        \item If\/ $(G,\,\cdot\,,\,\skw\,)$ is a skew left brace, the map\/ $\lambda\colon(G,\,\cdot\,)\to\Aut(G,\,\skw\,)$ defined by\/ $a\mapsto\lambda_a$ is a morphism of groups.
+    \end{enumerate}
+\end{lem}
+
+\needspace{3\baselineskip}
+\begin{proof}${}$
+    \begin{enumerate}[\rm a)]
+        \item Put $y=a^\skw\skw ax$. Then $a\skw y= ax$ and $x=a^{-1}(a\skw y)$.
+        \item The equivalence is clear because $\lambda_a(x)\skw \lambda_a(y)=a^\skw\skw ax\skw a^\skw\skw ay$ and $\lambda_a(x\skw y)= a^\skw\skw a(x\skw y)$. 
+        
+        \item
+        \begin{enumerate}[-]
+            \item \textit{$\lambda_a$ is morphism:}
+                \begin{align*}
+                    \lambda_a(x\skw y) &= a^\skw\skw a(x\skw y)\\
+                        &= a^\skw\skw(ax\skw a^\skw\skw ay)\\
+                        &= (a^\skw\skw ax)\skw(a^\skw\skw ay)\\
+                        &= \lambda_a(x)\skw\lambda_a(y).
+                \end{align*}
+            \item \textit{morphism:} $\lambda_a\circ\lambda_b=\lambda_{ab}$
+                \begin{align*}
+                    ab\skw\lambda_a\circ\lambda_b(x) &=
+                            ab\skw a^\skw\skw a(b^\skw\skw bx)\\
+                        &= ab\skw_a ab^\skw\skw_aabx\\
+                        &= a(b\skw b^\skw)\skw_aabx\\
+                        &= a\skw_aabx   &&;\ 1_{\skw}=1.\\
+                        &= abx\\
+                    ab\skw\lambda_{ab}(x) &= ab\skw (ab)^\skw\skw abx\\
+                        &= abx.
+                \end{align*}
+            \item \textit{identity:} $\lambda_1(x)= 1^\skw\skw1x= x$, i.e., $\lambda_1=\id$.
+            \item \textit{bijection:} $\lambda_a\circ\lambda_{a^{-1}}=\lambda_{aa^{-1}}=\lambda_1=\id$.
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\begin{rem}
+    In the case where `$\skw$' is commutative and denoted additively, we have
+    $$
+        \lambda_a(x) = ax - a.
+    $$
+\end{rem}
+
+\needspace{2\baselineskip}
+\begin{rems}${}$
+    \begin{enumerate}[-]
+        \item Definition \eqref{map:lambda} is usually written as
+        \begin{equation}\label{eq:lambda}
+            ab = a\skw\lambda_a(b),
+        \end{equation}
+        which shows how `$\cdot$' can be recovered from `$\skw$'. Note that this equation is reminiscent of the operation of the semidirect product of groups. In fact, according to part~c) of the previous lemma, the product in $(G,\,\skw\,)\rtimes(G,\,\cdot\,)$ is given by
+        $$
+            (a,b)(c,d) = (a\skw\lambda_c(b), bd)
+                = (a\skw c^\skw\skw cb, bd).
+        $$
+        \item Since $\lambda_a^{-1}=\lambda_{a^{-1}}$, equation $\eqref{eq:lambda}$ can be rewritten as
+        \begin{equation}\label{eq:lambda-inverse}
+            a\lambda_{a^{-1}}(b) = a\skw b
+        \end{equation}
+        in particular,
+        \begin{equation}\label{eq:lambda-inverse-of-cdot}
+            (a\skw b)^{-1} = \lambda_{a^{-1}}(b)^{-1}a^{-1}
+        \end{equation}
+    \end{enumerate}
+\end{rems}
+
+\needspace{2\baselineskip}
+\begin{xmpls}\label{xmpls:lambda}${}$
+    \begin{enumerate}[\rm a)]
+        \item If `$\skw$' and `$\cdot$' are the same, then $\lambda_a=\id$, i.e., $\lambda$ is trivial. 
+        
+        Conversely, if $\lambda_a=\id$, then
+        $$
+            a\skw x = a\skw\lambda_a(x)
+                = a\skw a^\skw\skw ax
+                = a\skw_a ax
+                = ax.
+        $$
+        In particular, $\lambda$ is trivial if, and only if, both group structures are the same.
+
+        \item In the case of Example~\ref{xmpls:SLB}~a), where
+        $$
+            a\skw b = (-1)^ba + b
+        $$
+        in $\Z_{2n}$, we have
+        \begin{align*}
+            \lambda_a(x) &= a^*\skw ax\\
+                &= (-1)^{a+1}a\skw ax\\
+                &= (-1)^{ax}(-1)^{a+1}a + ax\\
+                &= (-1)^{a(x+1)+1}a+ax\\
+                &= \begin{cases}
+                    a(x-1)  &\text{if $a$ even},\\
+                    a(x+1) &\text{if $a$ odd, $x$ even},\\
+                    a(x-1) &\text{if $a$ odd, $x$ odd}
+                \end{cases}\\
+                &= \begin{cases}
+                    a(x+1) &\text{if $a$ odd, $x$ even},\\
+                    a(x-1) &\text{otherwise}.
+                \end{cases}
+        \end{align*}
+
+        \item In part~b) of the same example we have
+        \begin{align*}
+            \lambda_{\sigma^n\tau^m}(x)
+                &=\lambda_{\sigma^n\tau^m}(\sigma^i\tau^j)\\
+                &= (\sigma^{2^{3-m}(7-n)}\tau^{3-m})
+                    ((\sigma^n\tau^m)\circ(\sigma^i\tau^j))\\
+                &=  \sigma^{2^{3-m}(7-n)}\tau^{3-m}
+                    \sigma^{n+4^mi}\tau^{m+j}\\
+                &= \sigma^{2^{3-m}(7-n)}\sigma^{2^{3-m}
+                    (n+4^mi)}\tau^j\\
+                &= \sigma^{4^m4^mi}\tau^j
+                    &&;\ \eqref{eq:G21-equation}\\
+                &= \sigma^{2^mi}\tau^j.
+                    &&;\ \sigma^{16^m}=\sigma^{2^m}
+        \end{align*}
+        In sum,
+        \begin{equation}\label{eq:lambda-21}
+            \lambda_{\sigma^n\tau^m}(\sigma^i\tau^j)
+                = \sigma^{2^mi}\tau^j.
+        \end{equation}
+    \end{enumerate}
+\end{xmpls}
+
+\begin{lem}\label{lem:ybe-gamma}
+    Let $B$ be a skew left brace. For $b\in B$ the map
+    \begin{align*}
+        \gamma_b\colon B&\to B\\
+        x&\mapsto \lambda^{-1}_{\lambda_x(b)}((xb)^\skw\skw x\skw(xb)).
+    \end{align*}
+    verifies
+    \begin{enumerate}[\rm a)]
+        \item If $y=\lambda_x(b)$,
+            \begin{align}
+                \gamma_b(x) &= \lambda^{-1}_y(y^\skw\skw x\skw y)
+                        \label{eq:gamma-alt-1}\\
+                    &= (b^{-1}(x^{-1}\skw b))^{-1}
+                        \label{eq:gamma-alt-2}\\
+                    &= (b^{-1}x^{-1}\skw(b^{-1})^\skw)^{-1}.
+                        \label{eq:gamma-alt-3}
+            \end{align}
+
+            \item $\gamma\colon(B,\,\cdot\,)^{\op{op}}\to\Sym(B)$ is a morphism of groups. In particular, the map $b\mapsto\gamma_b^{-1}$ is a morphism from $(B,\,\cdot\,)$ to $\Sym(B)$.
+    \end{enumerate}
+\end{lem}
+
+\needspace{2\baselineskip}
+\begin{proof}${}$
+    \begin{enumerate}[\rm a)]
+        \item For $\eqref{eq:gamma-alt-1}$ put $y=\lambda_x(b)$. Then
+            \begin{align*}
+                \lambda_y^{-1}(y^\skw\skw x\skw y)
+                    &= \lambda_y^{-1}((x^\skw\skw xb)^\skw
+                        \skw x\skw x^\skw\skw xb)\\
+                    &= \lambda_y^{-1}((xb)^\skw\skw x\skw xb)\\
+                    &= \gamma_b(x).
+            \end{align*}
+    Given that $v = \lambda_y(u) = y^\skw\skw (yu)$ implies $y\skw v = yu$,
+    we obtain
+    \begin{equation}\label{eq:lambda-inverse-2}
+        \lambda_y^{-1}(v) = u = y^{-1}(y\skw v).
+    \end{equation}
+    Therefore,
+    \begin{align*}
+        \gamma_b(x) &= \lambda_y^{-1}(y^\skw\skw x\skw y)
+                &&;\ \eqref{eq:gamma-alt-1}\\
+            &= y^{-1}(y\skw y^\skw\skw x\skw y)
+                &&;\ \eqref{eq:lambda-inverse-2}\\
+            &= y^{-1}(x\skw y)\\
+            &= y^{-1}(x\skw \lambda_x(b))\\
+            &= y^{-1}(xb)\\
+            &= (b^{-1}x^{-1}\lambda_x(b))^{-1}\\
+            &= (b^{-1}x^{-1}(x^\skw\skw xb))^{-1}\\
+            &= (b^{-1}(x^{-1}(x^\skw\skw xb)))^{-1}\\
+            &= (b^{-1}(x^{-1}x^\skw\skw(x^{-1})^\skw\skw b))^{-1}\\
+            &= (b^{-1}(x^{-1}(x^\skw\skw x)\star b)^{-1}\\
+            &= (b^{-1}(x^{-1}\skw b))^{-1},
+    \end{align*}
+    proving $\eqref{eq:gamma-alt-2}$. Equation~\eqref{eq:gamma-alt-3} is now clear.
+
+    \item 
+        \begin{enumerate}[-]
+            \item \textit{morphism:}
+                \begin{align*}
+                    \gamma_{ab}(x)
+                        &= (b^{-1}a^{-1}x^{-1}\skw(b^{-1}a^{-1})^\skw)^{-1}
+                            &&;\ \eqref{eq:gamma-alt-3}\\
+                        &= (b^{-1}a^{-1}x^{-1}\skw(b^{-1}
+                            \skw\lambda_{b^{-1}}(a^{-1}))^\skw)^{-1}
+                            &&;\ \text{def.~}\lambda\\
+                        &= (b^{-1}a^{-1}x^{-1}\skw\lambda_{b^{-1}}((a^{-1})^\skw)
+                            \skw(b^{-1})^\skw)^{-1}.\\
+                    \gamma_b\circ\gamma_a(x)
+                        &= \gamma_b((a^{-1}x^{-1}
+                            \skw(a^{-1})^\skw)^{-1})
+                            &&;\ \eqref{eq:gamma-alt-3}\\
+                        &= (b^{-1}(a^{-1}x^{-1}\skw(a^{-1})^\skw)
+                            \skw(b^{-1})^\skw)^{-1}\\
+                        &= (b^{-1}a^{-1}x^{-1}\skw(b^{-1})^\skw
+                            \skw b^{-1}(a^{-1})^\skw
+                            \skw(b^{-1})^\skw)^{-1}.\\
+                        &= (b^{-1}a^{-1}x^{-1}\skw\lambda_{b^{-1}}((a^{-1})^\skw)
+                            \skw(b^{-1})^\skw)^{-1}.
+                \end{align*}
+            
+            %%%%%%%%%%%%%%%%%%
+            \newbool{show} % Define the boolean variable
+            \setbool{show}{false} 
+            \ifbool{show}{
+            \item \textit{$\gamma_b$ is morphism:}
+                \begin{align*}
+                    \gamma_b(x\skw y)
+                        &= (b^{-1}(x\skw y)^{-1}\skw(b^{-1})^\skw)^{-1}
+                            &&;\ \eqref{eq:gamma-alt-3}\\
+                        &= (b^{-1}\lambda_{x^{-1}}(y)^{-1}x^{-1}
+                            \skw(b^{-1})^\skw)^{-1}\\
+                        &= ((x\lambda_{x^{-1}}(y)b)^{-1}
+                            \skw(b^{-1})^\skw)^{-1}.\\
+                    \gamma_b(x)\skw\lambda_b(y)
+                        &= (b^{-1}x^{-1}\skw(b^{-1})^\skw)^{-1}
+                            (b^{-1}y^{-1}\skw(b^{-1})^\skw)^{-1}
+                            &&;\ \eqref{eq:gamma-alt-3}\\
+                        &= \big((b^{-1}y^{-1}\skw(b^{-1})^\skw)
+                            (b^{-1}x^{-1}\skw(b^{-1})^\skw)\big)^{-1}\\
+                        &= 
+                \end{align*}
+            }{}
+            %%%%%%%%%%%%%%%%%%%
+                
+                \item \textit{bijection:}
+                    Since $\gamma_1(x) = x$, i.e., $\gamma_1=\id$, part~a) implies that
+                    $$
+                        \gamma_{b^{-1}}\circ\gamma_b=\id
+                            =\gamma_b\circ\gamma_{b^{-1}}.
+                    $$
+                    Thus $\gamma_{b^{-1}}=\gamma_b^{-1}$.
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\needspace{2\baselineskip}
+\begin{xmpls}${}$
+    \begin{enumerate}[\rm a)]
+        \item If the skew left brace is trivial, namely $(G,\,\cdot\,,\,\cdot\,)$, then $\gamma_b$ is the conjugation by $b^{-1}$ because, in that case, $\lambda\colon G\to\Aut(G)$ is trivial:
+        $$
+            \gamma_b(x) = b^{-1}xb.
+        $$
+
+        \item In the case of Example~\ref{xmpls:SLB}~a), where
+        $$
+            a\skw b = (-1)^ba + b,
+        $$
+        from expression $\eqref{eq:gamma-alt-2}$ in additive notation we get
+        \begin{align*}
+            \gamma_b(x) &= -(-b+(-x\skw b))\\
+                &= b-((-1)^b(-x)+b)\\
+                &= (-1)^bx.
+        \end{align*}
+
+        \item In the case of Example~\ref{xmpls:SLB}~b), where $G=\Z_7\rtimes Z_3$, the multiplication is
+        $$
+            \sigma^i\tau^j\circ\sigma^h\tau^k=\sigma^{i+4^jh}\tau^{j+k}
+        $$
+        and the star operation the natural in the semidirect product. By \eqref{eq:gamma-alt-2} we have
+        \begin{align*}
+        \gamma_{\sigma^h\tau^k}(\sigma^i\tau^j)
+            &= \gamma_b(x)\\
+            &= (b^\circ\circ(x^\circ b))^\circ\\
+            &= (x^\circ b)^\circ\circ b\\
+            &= (\sigma^{2^j(7-i)}\tau^{3-j}\sigma^h\tau^k)^\circ
+                \circ\sigma^h\tau^k\\
+            &= (\sigma^{2^j(7-i)+2^{3-j}h}\tau^{3+k-j})^\circ
+                \circ\sigma^h\tau^k\\
+            &= \sigma^{2^{3+k-j}(2^j7-2^j(7-i)+ 2^{3-j}7-2^{3-j}h)}
+                \tau^{3+j-k}\circ\sigma^h\tau^k\\
+            &= \sigma^{2^{3+k-j}(2^ji+2^{3-j}(7-h))}
+                \tau^{3-(k-j)}\circ\sigma^h\tau^k\\
+            &= \sigma^{2^{3+k-j}(2^ji+2^{3-j}(7-h))+4^{3-(k-j)}h}\tau^j\\
+            &= \sigma^{2^{3+k-j}(2^ji+2^{3-j}(7-h))+2^{3+k-j}h}\tau^j
+                &&;\ \eqref{eq:G21-equation}\\
+            &= \sigma^{2^{3+k-j}(2^ji+2^{3-j}(7-h)+h)}\tau^j\\
+            &= \sigma^{2^k(i+4^{3-j}(7-h)+2^{3-j}h)}\tau^j\\
+            &= \sigma^{2^k(i+2^j(7-h)+4^jh)}\tau^j
+                &&;\ \eqref{eq:G21-equation}.
+    \end{align*}
+    In sum,
+    \begin{equation}\label{eq:gamma-21}
+        \gamma_{\sigma^h\tau^k}(\sigma^i\tau^j)
+            = \sigma^{2^k(i+2^j(7-h)+4^jh)}\tau^j
+    \end{equation}
+\end{enumerate}
+\end{xmpls}
+
+\begin{lem}\label{lem:ybe-theta}
+    Let\/ $(G,\,\cdot\,,\skw)$ be a skew left brace and let\/ $(G,\skw)\rtimes(G,\,\cdot\,)$ be the semidirect product associated with the action\/ $\lambda$ defined in \textrm{\rm Lemma~\ref{lem:ybe-lambda}}. Then the map
+    \begin{align*}
+        \Theta\colon(G,\skw)\rtimes(G,\,\cdot\,)&\to\Aut(G,\skw)\\
+        (a,b)&\mapsto\Theta_{(a,b)},
+    \end{align*}
+    where
+    \begin{align*}
+        \Theta_{(a,b)}\colon(G,\skw)&\to(G,\skw)\\
+        x&\mapsto a\skw\lambda_b(x)\skw a^\skw,
+    \end{align*}
+    is a morphism of groups.
+\end{lem}
+
+\begin{proof}
+    First observe that, $\Theta_{(a,b)}$ is indeed an automorphism because both $\lambda_b$ and the conjugation by $a$ are automorphisms and
+    $$
+        \Theta_{(a,b)}=\sigma_a^\skw\circ\lambda_b,
+    $$
+    where $\sigma_a^\skw\colon(G,\skw)\to(G,\skw)$ is the conjugation.
+
+    Next, recall that the operation in the semidirect product associated with $\lambda$ is given by
+    $$
+        (a,b)(c,d) = (a\skw\lambda_b(c),bd).
+    $$
+    Now, using the properties of Lemma~\ref{lem:ybe-lambda}, we get
+    \begin{align*}
+        \Theta_{(a,b)(c,d)}(x) &= \Theta_{(a\skw\lambda_b(c),bd)}(x)\\
+            &= a\skw\lambda_b(c)\skw\lambda_{bd}(x)
+                \skw\lambda_b(c^\skw)\skw a^\skw\\
+            &= a\skw\lambda_b(c)\skw\lambda_b(\lambda_d(x))
+                \skw\lambda_b(c^\skw)\skw a^\skw\\
+            &= \Theta_{(a,b)}(c\skw\lambda_d(x)\skw c^\skw)\\
+            &= \Theta_{(a,b)}(\Theta_{(c,d)}(x))\\
+            &= \Theta_{(a,b)}\circ\Theta_{(c,d)}(x).
+    \end{align*}
+\end{proof}
+
+\begin{xmpls}\label{xmpls:Theta}${}$
+    \begin{enumerate}[\rm a)]
+        \item If `$\skw$' and `$\,\cdot\,$' are the same then $\lambda$ is trivial and $\Theta_{(a,b)}$ is the conjugation~$\sigma_a$.
+
+        \item In the case of Example~\ref{xmpls:SLB}~a), where
+        $$
+            a\skw b = (-1)^ba + b,
+        $$
+        we know from Example~\ref{xmpls:lambda} that
+        $$
+            \lambda_b(x) = \begin{cases}
+                    b(x+1) &\text{if $b$ odd, $x$ even},\\
+                    b(x-1) &\text{otherwise}.
+                \end{cases}
+        $$
+        Therefore,
+        \begin{align*}
+            \Theta_{(a,b)}(x) &= a\skw\lambda_b(x)\skw a^\skw\\
+                &= a\skw\lambda_b(x)\skw(-1)^{a+1}a\\
+                &= \begin{cases}
+                    \mathrlap{a\skw b(x+1)\skw(-1)^{a+1}a}
+                    \hphantom{-------------}
+                        &b\text{ odd, }x\text{ even};\\
+                    a\skw b(x-1)\skw(-1)^{a+1}a
+                        &\text{otherwise}
+                \end{cases}\\
+                &= \begin{cases}
+                    \mathrlap{a\skw(-1)^ab(x+1) + (-1)^{a+1}a}
+                    \hphantom{-------------}
+                        &b\text{ odd, }x\text{ even};\\
+                    a\skw(-1)^ab(x-1) + (-1)^{a+1}a
+                        &\text{otherwise}
+                \end{cases}\\
+                &= \begin{cases}
+                    \mathrlap{b(x+1) - 2a}
+                    \hphantom{-------------}
+                        &\text{$a$ even, $b(x+1)$ odd;}\\
+                    2a - b(x+1)
+                        &\text{$a$ odd, $b(x+1)$ odd;}\\
+                    b(x-1)
+                        &\text{$a$ even, $b(x+1)$ even;}\\
+                    b(1-x)
+                        &\text{$a$ odd, $b(x+1)$ even}
+                \end{cases}
+        \end{align*}
+
+        \item In the case of Example~\ref{xmpls:SLB}~b), where the SLB is $(\Z_7\rtimes\Z_3,\,\cdot\,,\circ)$, we have
+        \begin{align*}
+            \Theta_{(\sigma^h\tau^k,\sigma^n\tau^m)}(\sigma^i\tau^j)
+                &= \sigma^h\tau^k\lambda_{\sigma^n\tau^m}(\sigma^i\tau^j)
+                    \sigma^{2^{3-k}(7-h)}\tau^{3-k}\\
+                &= \sigma^h\tau^k
+                    \sigma^{2^mi}\tau^j
+                    \sigma^{2^{3-k}(7-h)}\tau^{3-k}
+                    &&;\ \eqref{eq:lambda-21}\\
+                &= \sigma^{h+2^k2^mi}\tau^{j+k}\sigma^{2^{3-k}(7-h)}
+                    \tau^{3-k}\\
+                &= \sigma^{h+2^{k+m}i+2^{j+k}2^{3-k}(7-h)}\tau^{j+k+3-k}\\
+                &= \sigma^{h+2^{k+m}i+2^j(7-h)}\tau^j.
+        \end{align*}
+    \end{enumerate}
+\end{xmpls}
+
+\subsubsection*{Ideals and Left Ideals}
+
+\begin{defn}
+    Let $(B,\,\cdot\,,\,\skw\,)$ be a SLB. A subset $I\subseteq B$ is an \textsl{ideal\/} if
+    \begin{enumerate}[-]
+        \item $I\normal(B,\skw)$,
+        \item $I\normal(B,\,\cdot\,)$ and
+        \item $\lambda_b(I)\subseteq I$ for all $b\in B$.
+    \end{enumerate}
+\end{defn}
+
+\begin{rem}
+    The intersection of a family of ideals is an ideal.
+\end{rem}
+
+\begin{xmpls}${}$
+    \begin{enumerate}[\rm a)]
+        \item The ideals of a trivial SLB $(G,\,\cdot\,,\,\cdot\,)$ are the normal subgroups.
+
+        \item In the case of Example~\ref{xmpls:SLB}~a), where the star operation is
+        $$
+            a\skw b = (-1)^ba+b,
+        $$
+        the cyclic subgroup $C=\set{0,2,4,\dots,n}\subseteq\Z_n$ is normal for both operations:
+        \begin{align*}
+            a\skw2k\skw a^\skw
+                &= a\skw2k\skw(-1)^{a+1}a\\
+                &= a\skw(-1)^a2k+(-1)^{a+1}a\\
+                &= (-1)^aa+(-1)^a2k+(-1)^{a+1}a\\
+                &=(-1)^a2k\in C.
+        \end{align*}
+        However, $C$ is not an ideal. In fact, according to Example~\ref{xmpls:lambda}~b)
+        $$
+            \lambda_b(2k) = \begin{cases}
+                b(2k+1)     &\text{$b$ odd},\\
+                b(2k-1)     &\text{$b$ even},
+            \end{cases}
+        $$
+        which is not in $C$ when $b$ is odd.
+
+        \item In the case of Example~\ref{xmpls:SLB}~b), where the star operation is `$\,\cdot\,$' and the multiplicative operation is
+        $$
+            (\sigma^i\tau^j)\circ(\sigma^h\tau^k)
+                = \sigma^{i+4^jh}\tau^{j+k}.
+        $$
+        The subgroup $\Z_7\subseteq\Z_7\rtimes\Z_3$ is normal for both operations, where they agree. Moreover, according to \eqref{eq:lambda-21}, we have
+        \begin{align*}
+            \lambda_{\sigma^n\tau^m}(\sigma^i)=\sigma^i,
+        \end{align*}
+        which implies that $\Z_7$ is an ideal.
+    \end{enumerate}
+\end{xmpls}
+
+\begin{defn}
+    Let $(B,\,\cdot\,,\,\skw\,)$ be a SLB. A subset $L\subseteq B$ is a \textsl{left ideal\/} if
+    \begin{enumerate}[-]
+        \item $L\subgroup(B,\skw)$ and
+        \item $\lambda_b(L)\subseteq L$ for all $b\in B$.
+    \end{enumerate}
+\end{defn}
+
+\begin{rem}
+    The intersection of a family of left ideals is a left ideal.
+\end{rem}
+
+\begin{rem}
+    Every left ideal $L$ of $(B,\,\cdot\,,\,\skw\,)$ is a subbrace (i.e., a sub-skew left brace) because
+    $$
+        \lambda_b(y) = b^\skw\skw(b\cdot y)
+            \implies b\cdot y = b\skw\lambda_b(y)
+    $$
+    and
+    $$
+        \lambda_{b^{-1}}(b) = (b^{-1})^\skw\skw1
+            \implies b^{-1} = \lambda_{b^{-1}}(b)^\skw.
+    $$
+\end{rem}
+
+\subsubsection*{Morphisms and Quotients}
+
+\begin{defn}
+    A \textsl{morphism} in the category of skew left braces is a map that becomes a morphism of the underlying multiplicative and star groups.
+\end{defn}
+
+\begin{prop}
+    Let\/ $(B,\,\cdot\,,\,\skw\,)$ be a SLB and\/ $I$ an ideal. The \textsl{quotient\/}\/ $B/I$ is the skew left brace\/ $(B/I,\,\cdot_I\,,\,\skw_I\,)$ where\/ $B/I$ is the underlying set defined by any of the quotients\/ $(B,\skw)/I$ or\/ $(B,\,\cdot\,)/I$, the star product `$\,\skw_I\!$' is induced by the group\/ $(B,\skw)/I$, and the multiplication `${\,\cdot_I}\!$' by\/ $(B,\,\cdot\,)/I$.
+\end{prop}
+
+\begin{proof}
+    First note that the equation $b\skw\lambda_b(x)=b\cdot x$ implies that $b\skw I=b\cdot I$ for all $b\in B$ because $\lambda_b$ is bijective. In consequence, the underlying sets of $(B,\skw)/I$ and $(B,\,\cdot\,)/I$ are the same. Since these inherit the operations of the respective groups, in order to verify that $(B/I,\,\cdot_I\,,\,,\skw_I\,)$ is a SLB, we only need to verify the distributive property. Let $\varphi\colon B\to B/I$ the set mapping defined by the projection onto the quotient. Then
+    \begin{align*}
+        \varphi(a)\cdot_I(\varphi(b)\skw_I\varphi(c))
+            &= \varphi(a)\cdot_I\varphi(b\skw c)\\
+            &= \varphi(a\cdot(b\skw c))\\
+            &= \varphi(ab\skw a^\skw\skw ac)\\
+            &= \varphi(ab)\skw_I\varphi(a)^{\skw_I}\skw_I\varphi(ac)\\
+            &= \varphi(a)\varphi(b)\skw_I\varphi(a)^{\skw_I}
+                \skw_I\varphi(a)\varphi(c).
+    \end{align*}
+    Since both $\varphi\colon(B,\skw)\to(B/I,\skw_I)$ and $\varphi\colon(B,\,\cdot\,)\to(B/I,\,\cdot_I\,)$ are morphisms of groups,
+    the universal property of the quotient follows immediately.
+\end{proof}
+
+\begin{prop}
+    The kernel of a morphism of skew left braces is an ideal in the domain.
+\end{prop}
+
+\begin{proof}
+    Let $f\colon(B,\,\cdot\,,\,\skw\,)\to(B',\,\cdot'\,,\,\skw'\,)$ be a morphism. First note that $\ker(f)$ is well-defined because $1_{\skw'}=1_{\cdot'}$. Given that $\ker(f)$ is both a normal subgroup of $(B,\skw)$ and $(B,\,\cdot\,)$, the conclusion follows. 
+\end{proof}
+
+\subsubsection*{Socles}
+
+\begin{defn}
+    Let $(B,\,\cdot\,,\,\skw\,)$ be a skew left brace. The \textsl{socle\/} of $B$ is
+    $$
+        \Soc(B) = \set{b\in B\mid \lambda_b=\id\text{ and }
+            b\in Z(B,\,\skw\,)}.
+    $$
+\end{defn}
+
+\begin{thm}
+    Let\/ $(B,\,\cdot\,,\,\skw\,)$ be a skew left brace. Then
+    \begin{enumerate}[\rm a)]
+        \item $b\in\ker(\lambda)\iff b\skw x=bx$ for all\/ $x\in B$.
+        \item $\Soc(B)$ is the kernel of
+            \begin{align*}
+                \varphi\colon(B,\,\cdot\,)
+                    &\to\Aut(B,\skw)\times\Sym(B,\,\skw\,)\\
+                b
+                    &\mapsto(\lambda_b,\gamma_b^{-1}).
+            \end{align*}
+        \item $\Soc(B)$ is (also) the kernel of
+            \begin{align*}
+                \Phi\colon(B,\,\cdot\,)&\to\Aut(B,\skw)\times\Aut(B,\skw)\\
+                    b&\mapsto(\lambda_b,h_b),
+            \end{align*}
+            where\/ $h_b(x)=\Theta_{(b,b)}(x)=b\skw\lambda_b(x)\skw b^\skw$.
+        \item $\Soc(B)$ is an ideal.
+        \item $\Soc(B)\subseteq Z(B,\skw)$.
+        \item If\/ $b\in B$ and\/ $y\in\Soc(B)$ then\/ $\lambda_b(y)= y^b$.
+        \item $\Soc(B)$ is a trivial subbrace.
+        \item $(\Soc(B),\,\cdot\,)$ is abelian.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}${}$
+    \begin{enumerate}[\rm a)]
+        \item Observe that
+        \begin{align*}
+            b\in\ker(\lambda)
+                &\iff b^\skw\skw bx=x\text{ for all }x\in B
+                    \nonumber\\
+                &\iff bx = b\skw x\text{ for all }x\in B. 
+        \end{align*}
+
+        \item %Recall from Lemma~\ref{lem:ybe-lambda} that $\lambda\colon(G,\,\cdot\,)\to(B,\skw)$ is a morphism and from Lemma~\ref{lem:ybe-gamma} that $\gamma_b(x) = (b^{-1}x^{-1}\skw(b^{-1})^\skw)^{-1}$.
+        
+        Firstly observe that $b\mapsto\gamma_b^{-1}$ is a morphism because, according to Lemma \ref{lem:ybe-gamma}, $\gamma\colon(B,\,\cdot\,)^{\op{op}}\to\Sym(B)$ is a morphism and $\gamma_b^{-1}=\gamma_{b^{-1}}$. Thus, $\varphi$ is a morphism of groupa and
+        \begin{align*}
+            b \in\ker\varphi
+                &\iff bx=b\skw x
+                    \text{ and }
+                    x=bx\skw b^\skw
+                    \text{ for all }x\in B\\
+                &\iff bx = b\skw x
+                    \text{ and }
+                    x\skw b = b\skw x
+                    \text{ for all }x\in B\\
+                &\iff \lambda_b=\id
+                    \text{ and }
+                    b\in Z(B,\,\skw\,)\\
+                &\iff b\in\Soc(B).
+        \end{align*}
+
+        \item This is a direct consequence of the definitions.
+
+        \item This is immediate from part c)
+
+        \item Trivial from the definition.
+
+        \item Since $\Soc(B)$ is an ideal, $byb^{-1}\in\Soc(B)$. Therefore, by part~a), we have $byb^{-1}\skw b=byb^{-1}b=by$ and so $\lambda_b(y)=b^\skw\skw by=b^\skw\skw byb^{-1}\skw b$. But part~e) implies that $byb^{-1}\in Z(B,\skw)$ and so $\lambda_b(y) = byb^{-1}=y^b$.
+
+        \item This is a direct consequence of part~a).
+
+        \item This follows from parts e) and g).
+    \end{enumerate}
+\end{proof}
+
+
+\begin{defn}\label{def:1-cocycle}
+    Let $\sigma\colon G\to\Aut(N)$ be a morphism. Recall from Definition~\ref{def:crossed-morphism} that a crossed morphism is a map $\varphi\colon G\to N$ satisfying
+    $$
+        \varphi(xy)=\varphi(x)\sigma(x)(\varphi(y)).
+    $$
+    In the context of Skew Left Braces, crossed morphisms are known as \textsl{$1$-cocycles} with respect to~$\sigma$.
+\end{defn}
+
+\begin{ntn}
+    Let\/ $(G,\,\cdot\,)$ and\/ $(N,\,\cdot\,)$ be groups and\/ $\sigma\colon G\to\Aut(N)$ an action of\/ $G$ on\/ $N$. Then\/ $Z^1(G,\sigma)$ denotes the set of\/ $1$-cocycles with respect to\/~$\sigma$, and\/ $\op{SLB}(G,\,\cdot\,)$ the set of operations {\rm `$\skw$'} defined in\/ $G$ such that\/ $(G,\,\cdot\,,\,\skw\,)$ is a skew left brace.
+\end{ntn}
+
+\begin{thm}
+    Bijective\/ $1$-coclycles are equivalent to skew left braces. More precisely, the map
+    \begin{align*}
+        Z^1(G,\sigma)&\to\op{SLB}(G,\,\cdot\,)\\
+        \varphi &\mapsto \skw_\varphi,
+    \end{align*}
+    defined by
+    $$
+        x\skw_\varphi y=\varphi^{-1}(\varphi(x)\cdot\varphi(y)).
+    $$
+    is well-defined. Moreover, given a skew left brace structure\/ $(G,\,\cdot\,,\,\skw\,)$ the identity of\/ $G$ is a bijective\/ $1$-cocycle with respect to the action\/ $\lambda\colon(G,\,\cdot\,)\to\Aut(G,\skw)$.
+\end{thm}
+
+\begin{proof}
+    Let $\sigma\colon G\to\Aut(N)$ be a group action. Take $\varphi\in Z^1(G,\sigma)$. Clearly $(G,\skw_\varphi)$ is the unique group structure that makes $\varphi$ a morphism of groups from $(G,\skw_\varphi)$ to $(N,\,\cdot\,)$. Therefore,
+    \begin{align*}
+        \varphi(a(b\skw_\varphi c))
+            &= \varphi(a)\sigma(a)(\varphi(b\skw_\varphi c))\\
+            &= \varphi(a)\sigma(a)(\varphi(b)\varphi(c))\\
+            &= \varphi(a)\sigma(a)(\varphi(b))\sigma(a)(\varphi(c)).\\
+        \varphi(ab\skw_\varphi a^{\skw_\varphi}\skw_\varphi ac)
+            &= \varphi(ab)\varphi(a)^{-1}\varphi(ac)\\
+            &= \varphi(a)\sigma(a)(\varphi(b))
+                \cancel{\varphi(a)^{-1}}
+                \cancel{\varphi(a)}\sigma(a)(\varphi(c)),
+    \end{align*}
+    which shows that $(G,\,\cdot\,,\,\skw_\varphi)$ is a SLB. Moreover,
+    \begin{align*}
+        \varphi(\lambda_a(x)) &= \varphi(a^{\skw_\varphi}\skw_\varphi ax)\\
+            &= \varphi(a)^{-1}\varphi(ax)\\
+            &= \varphi(a)^{-1}\varphi(a)\sigma(a)(\varphi(x))\\
+            &= \sigma(a)(\varphi(x)),
+    \end{align*}
+    i.e., $\sigma(a) = \varphi\circ\lambda_a\circ\varphi^{-1}=\widehat{\lambda_a}$ [cf.~Remark~\ref{functorial-hat}].
+
+    Conversely, assume that $(G,\,\cdot\,,\,\skw\,)$ is SLB. Consider the action
+    \begin{align*}
+        \lambda\colon(G,\,\cdot\,)&\to\Aut(G,\,\skw\,)\\
+            a&\mapsto\lambda_a.
+    \end{align*}
+    The identity map
+    \begin{align*}
+        \id\colon(G,\,\cdot\,)&\to(G,\,\skw\,)\\
+        x &\mapsto x
+    \end{align*}
+    is a $1$-cocycle because, according to \eqref{eq:lambda}, we have
+    $$
+        \id(ab) = ab = a\skw\lambda_a(b) = \id(a)\skw\lambda_a(\id(b)).
+    $$
+\end{proof}
+
+\begin{defn}
+    The \textsl{holomorph} of a group $G$ is the semidirect product $\Hol(G)=G\rtimes\Aut(G)$ with respect to the identity $\id\colon \Aut(G)\to\Aut(G)$.
+\end{defn}
+
+\begin{rem}
+    In particular, the product in $\Hol(G)$ is given by
+    \begin{equation}\label{eq:hol-product}
+        (x,\varphi)(y,\psi) = (x\varphi(y),\varphi\circ\psi),
+    \end{equation}
+    the identity is $(1,\id_G)$ and the inverse
+    \begin{equation}\label{eq:hol-inverse}
+        (x,\varphi)^{-1} = (\varphi^{-1}(x^{-1}),\varphi^{-1}).
+    \end{equation}
+\end{rem}
+
+\needspace{2\baselineskip}
+\begin{xmpls}${}$
+    \begin{enumerate}[\rm a)]
+        \item $\Hol(\Q,+)=\Q\rtimes(\Q^*,\,\cdot\,)$ with the product
+        $$
+            (x,a)(y,b)=(x+ay,ab),
+        $$
+        as it easily follows from \eqref{eq:hol-product} and the fact that $\Aut(\Q,+)=(\Q^*,\,\cdot\,)$.
+
+        \item To compute $\Hol(\Z_3)$ let's first observe that $\Aut(\Z_3)=C_2$, the multiplicative group of two elements. Indeed, given $\varphi\in\Aut(\Z_3)$, $\varphi(1)$ must be~$1$ or~$2$ and $\varphi(n)=n\varphi(1)$. Thus, $\Hol(\Z_3)=\Z_3\rtimes C_2$, with the operation
+        $$
+            (n,h)(m,k) = (n+hm, hk),
+        $$
+        identity $(0,1)$ and inverse of $(n,h)$
+        $$
+            (-hn,h).
+        $$
+    \end{enumerate}
+\end{xmpls}
+
+\begin{rem}\label{rem:Hol(G)}
+    Every element $(a,\varphi)\in\Hol(G)$ can be seen as an endomorphism of $G$, namely
+    $$
+        (x,\varphi)(\zeta)=x\varphi(\zeta).
+    $$
+    Moreover, this map takes products into compositions:
+    \begin{align*}
+        (x,\varphi)((y,\psi)(\zeta))
+            &= (x,\varphi)(y\psi(\zeta))\\
+            &= x\varphi(y\psi(\zeta))\\
+            &= x\varphi(y)\varphi\circ\psi(\zeta)\\
+            &= (x\varphi(y),\varphi\circ\psi)(\zeta)\\
+            &= (x,\varphi)(y,\psi)(\zeta).
+    \end{align*}
+    Under this interpretation $(1,\id)$ is the identity. Conversely, if $(x,\varphi)$ is the identity, then $1=(x,\varphi)(1)=x\varphi(1)=x$ and $\varphi$ is necessarily the identity. In particular, the inverse map $(x,\varphi)^{-1}$ equals $(\varphi^{-1}(x^{-1}),\varphi^{-1})$, the inverse of $(x,\varphi)$ in $\Hol(G)$. Thus, we have a morphism of groups
+    \begin{align*}
+        \Hol(G)&\to\Aut(G)\\
+        (x,\varphi)&\mapsto x\varphi,
+    \end{align*}
+    which is a retraction because $(1,\varphi)\mapsto\varphi$.
+\end{rem}
+
+\begin{defn}
+    A subgroup $H\subgroup\Hol(G)$ is \textsl{regular} if for any $a\in G$ there exists a unique $(b,\varphi)\in H$ such that $(b,\varphi)(a)=1$, i.e., $b\varphi(a)=1$.
+\end{defn}
+
+\begin{lem}\label{lem:bijective-pi_1|_H}
+    Let\/ $G$ be a group and\/ $H$ a regular subgroup of\/ $\Hol(G)$. Then\/ $\pi_1|_H : H \to G$, $(a,\varphi) \mapsto a$, is bijective.
+\end{lem}
+
+\begin{proof}
+    To see that the map is onto we have to show that, given $a\in G$, there is some $\phi\in\Aut(G)$ such that $(a,\phi)\in H$. By regularity there exists a pair $(b,\phi^{-1})\in H$ such that $b\phi^{-1}(a)=1$. Then
+    $$
+        (a,\phi)=(\phi^{-1}(a^{-1}),\phi^{-1})^{-1}
+            =(b,\phi^{-1})\in H.
+    $$
+    Let's now verify that the map is injective. Suppose that $(a,\phi)$ and $(a,\psi)$ are in~$H$. Put $b=\phi^{-1}(a^{-1})$ and $c=\psi^{-1}(a^{-1})$. Then,
+    $$
+        b\phi^{-1}(a) = 1 = c\psi^{-1}(a),
+    $$
+    with $(b,\phi^{-1}(a))=(a,\phi)^{-1}\in H$ and $(c,\psi^{-1}(a))=(a,\psi)^{-1}\in H$. Hence, $\phi=\psi$ by regularity.
+\end{proof}
+
+\needspace{2\baselineskip}
+\begin{thm}\label{thm:SLB-regular-equivalence}${}$
+    \begin{enumerate}[\rm a)]
+        \item Let\/ $(B,\,\cdot\,,\,\skw\,)$ be a SLB. Then
+        $$
+            H=\set{(b,\lambda_b)\mid b\in B}
+        $$
+        is a regular subgroup of\/ $\Hol(B,\,\skw\,)$.
+
+        \item Let\/ $(G,\,\skw\,)$ be a group, $\pi_1$ and\/ $\pi_2$ the natural projections of\/ $\Hol(G)$\/ onto\/ $G$ and\/ $\Aut(G)$, and\/ $H$ a regular subgroup of\/ $\Hol(G)$. 
+        \begin{enumerate}[\rm i)]
+            \item For $a,b\in G$ define
+            $$
+                a\cdot b = a\skw\pi_2((\pi_1|_H)^{-1}(a))(b).
+            $$
+            Then $(G,\cdot\,)$ is a group isomorphic to\/ $H$ and
+            \item $(G,\,\cdot\,,\,\skw\,)$ is a SLB.
+        \end{enumerate}
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}${}$
+    \begin{enumerate}[\rm a)]
+        \item First note that $H$ is a group because, according to Remark~\ref{rem:Hol(G)},
+        \begin{align*}
+            (1,\id) &= (1,\lambda_1)\in H,\\
+            (a,\lambda_a)^\skw &= (a^\skw,\lambda^{-1}_{a^\skw})\\
+                &= (a^\skw,\lambda_{(a^\skw)^{-1}})\in H
+                \text{ and}\\
+            (a,\lambda_a)(b,\lambda_b)
+                &= (a\skw \lambda_a(b),\lambda_a\lambda_b)\\
+                &= (ab,\lambda_{ab})\in H.
+        \end{align*}
+        To verify that $H$ is regular take $y\in B$ and observe that
+        $$
+            a\skw\lambda_a(y)=ay
+        $$
+        and so $a\skw\lambda_a(y)=1\iff a=y^{-1}$.
+
+        \needspace{2\baselineskip}
+        \item ${}$
+        \begin{enumerate}[\rm i)]
+            \item First observe that, according to Lemma~\ref{lem:bijective-pi_1|_H}, the proposed expression for the product is well-defined. Let's now verify that $(G,\,\cdot\,)$ is a group
+            \begin{enumerate}[-]
+                \item \textit{operation:} Write $(\pi_1|_H)^{-1}(a)=(a,\varphi)\in H$. Then $\varphi(b)\in G$ because $\varphi\in\Aut(G)$. Thus, $a\cdot b = a\skw\varphi(b)\in G$.
+                \item \textit{associativity:} Let $(a\skw\varphi(b),\psi)\in H$ and $(b,\phi)\in H$. Then
+                \begin{align*}
+                    (a\cdot b)\cdot c
+                        &= (a\skw\varphi(b))\cdot c\\
+                        &= a\skw\varphi(b)\skw\psi(c).\\
+                    a\cdot(b\cdot c)
+                        &= a\skw\varphi(b\skw\phi(c))\\
+                        &= a\skw\varphi(b)\skw\varphi\circ\phi(c)
+                \end{align*}
+                and the question reduces to showing that $\psi=\varphi\circ\phi$. Since $\pi_1|_H$ is bijective, this is equivalent to show that $(a\skw\varphi(b),\varphi\circ\phi)\in H$. But
+                $$
+                    (a\skw\varphi(b),\varphi\circ\phi) = (a,\varphi)(b,\phi),
+                $$
+                which belongs in $HH=H$.
+
+                \item \textit{identity:} Let $(a,\varphi)\in H$. Then,
+                $$
+                    a\cdot1=a\skw\varphi(1)=a\skw1=a.
+                $$
+
+                \item \textit{inverse:} Let $(a,\varphi)\in H$. Then
+                $$
+                    a\cdot\varphi^{-1}(a^\skw) = a\skw\varphi(\varphi^{-1}(a^\skw))=a\skw a^\skw=1.
+                $$
+            \end{enumerate}
+            \item We only need to verify equation \eqref{eq:SLB-distribution}. Let $(a,\varphi)\in H$, then
+            \begin{align*}
+                a\cdot(b\skw c) &= a\skw\varphi(b\skw c)\\
+                    &= a\skw\varphi(b)\skw\varphi(c).\\
+                (a\cdot b)\skw a^\skw\skw (a\cdot c)
+                    &= a\skw\varphi(b) \skw
+                        a^\skw\skw a\skw\varphi(c)\\
+                    &= a\skw\varphi(b)\skw\varphi(c).
+            \end{align*}
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\begin{prop}\label{lem:iso-SLB}
+    Let\/ $(G,\skw)$ be a group. Suppose that\/ $\lambda\colon G\to\Aut(G,\,\skw\,)$ satisfies
+    \begin{equation}\label{eq:iso-SLB}
+        \lambda_a\circ\lambda_b = \lambda_{a\skw\lambda_a(b)}
+    \end{equation}
+    for all\/ $a,b\in G$. Then\/ $(G,\,\cdot\,,\,\skw\,)$ is a SLB with the product
+    \begin{equation}\label{eq:cdot-from-lambda}
+        a\cdot b = a\skw\lambda_a(b).
+    \end{equation}
+    If\/ {\rm`$\hat{\,\cdot\,}$'} is defined in the same way using another morphism\/ $\hat\lambda\colon G\to\Aut(G,\,\skw\,)$ that satisfies \eqref{eq:iso-SLB}, then\/ $(G,\,\cdot\,,\,\skw\,)$ and\/ $(G,\,\hat\cdot\,,\skw\,)$ are isomorphic if, and only if, there exists an automorphism\/ $\Gamma\in\Aut(G,\skw)$ such that 
+    \begin{equation}\label{eq:isO-SLB-lambda}
+        \hat\lambda_{\Gamma(a)}=\Gamma\circ\lambda_a\circ\Gamma^{-1}
+    \end{equation}
+    for every\/ $a\in G$.
+\end{prop}
+
+\begin{proof}
+    Let's first verify that $(G,\,\cdot\,)$ is a group
+    \begin{enumerate}[-]
+        \item \textit{associativity:}
+            \begin{align*}
+                (a\cdot b)\cdot c
+                    &= (a\skw\lambda_a(b))\skw\lambda_{a\skw\lambda_a(b)}(c)\\
+                    &= a\skw\lambda_a(b)\skw\lambda_a(\lambda_b(c))
+                        &&;\ \eqref{eq:iso-SLB}\\
+                    &= a\skw\lambda_a(b\skw\lambda_b(c))\\
+                    &= a\skw\lambda_a(b\cdot c)\\
+                    &= a\cdot(b\cdot c).
+            \end{align*}
+
+            \item \textit{identity:}
+            \begin{align*}
+                a\cdot1 &= a\skw\lambda_a(1)\\
+                    &= a\skw1\\
+                    &= a.
+            \end{align*}
+
+            \item \textit{inverse:}
+                \begin{align*}
+                    a\cdot\lambda_a^{-1}(a^\skw)
+                        &= a\skw\lambda_a(\lambda_a^{-1}(a^\skw))\\
+                        &= a\skw a^\skw\\
+                        &= 1.
+                \end{align*}
+    \end{enumerate}
+    Secondly, we have to check equation \eqref{eq:SLB-distribution}
+    \begin{align*}
+        a\cdot(b\skw c)
+            &= a\skw\lambda_a(b\skw c)\\
+            &= a\skw\lambda_a(b)\skw\lambda_a(c)\\
+            &= a\cdot b\skw a^\skw\skw a\skw\lambda_a(c)\\
+            &= a\cdot b\skw a^\skw\skw a\cdot c.
+    \end{align*}
+
+    To prove the second statement take $\hat\lambda_{\Gamma(a)}\colon G\to\Aut(G,\,\skw\,)$ and assume that it satisfies \eqref{eq:iso-SLB}.
+    \begin{description}
+        \item[\rm{\it if\/} part:] Let $\Gamma\in\Aut(G,\,\skw\,)$ be such that \eqref{eq:isO-SLB-lambda} does hold. Then,
+        \begin{align*}
+            \Gamma(a\cdot b) &= \Gamma(a\skw\lambda_a(b))\\
+                &= \Gamma(a)\skw\Gamma(\lambda_a(b))\\
+                &= \Gamma(a)\skw\hat\lambda_{\Gamma(a)}(\Gamma(b))\\
+                &= \Gamma(a)\mathbin{\hat\cdot}\Gamma(b),
+        \end{align*}
+        which shows that $\Gamma\colon(G,\,\cdot\,)\to(G,\,\hat\cdot\,)$ is an isomorphism, hence an SLB isomorphism.
+
+        \item[\rm{\it only if\/}:] Suppose that $\Gamma\colon(G,\,\cdot\,,\,\skw\,)\to(G,\,\hat\cdot\,,\,\skw\,)$ is a SLB isomorphism. Then $\Gamma\in\Aut(G,\,\skw\,)$ and
+        \begin{align*}
+            \Gamma\circ\lambda_a(b) &= \Gamma(a^\skw\skw a\cdot b)
+                    &&\text{; \eqref{eq:cdot-from-lambda} for `$\,\cdot\,$'}\\
+                &= \Gamma(a)^\skw\skw\Gamma(a)\mathbin{\hat\cdot}\Gamma(b)\\
+                &= \hat\lambda_{\Gamma(a)}(\Gamma(b))
+                    &&\text{; \eqref{eq:cdot-from-lambda}
+                        for `$\,\mathbin{\hat\cdot}\,$'}\\
+                &= \hat\lambda_{\Gamma(a)}\circ\Gamma(b),
+        \end{align*}
+        proving \eqref{eq:isO-SLB-lambda} [cf.~Remark~\ref{functorial-hat}].
+    \end{description}    
+\end{proof}
+
+\begin{thm}
+    Let $(G,\,\skw\,)$ be a group. Let
+    $$
+    \mathcal{B}(G) =\set{(G,\,\cdot\,,\,\skw\,)\mid
+        (G,\,\cdot\,,\,\skw\,)\text{\rm\ is a SLB}}
+    $$
+    and
+    $$
+    \mathcal{H}(G)=\set{H\mid H\text {\rm\ is a regular subgroup of } \Hol(G)}.
+    $$    
+    Then the map
+    \begin{align*}
+        h\colon\mathcal{B}(G)&\to\mathcal{H}(G)\\
+       (G,\,\cdot\,,\,\skw\,)&\mapsto\set{(a,\lambda_a)\mid a\in G}
+    \end{align*}
+    is bijective.
+\end{thm}
+
+\begin{proof}
+    The map $h$ is well-defined by part~a) of Theorem~\ref{thm:SLB-regular-equivalence}.
+
+    It is injective because two structures $(G,\,\cdot\,,\,\skw\,)$ and $(G,\,\mathbin{\hat\cdot}\,,\,\skw\,)$ with the same image under $h$ must satisfy
+    $$
+        \lambda_a = \hat\lambda_a
+    $$
+    for all $a\in G$. In particular,
+    $$
+        a\cdot b = a\skw\lambda_a(b) = a\skw\hat\lambda_a(b)
+            = a\mathbin{\hat\cdot}b.
+    $$
+
+    The map is surjective by part~b) of Theorem~\ref{thm:SLB-regular-equivalence}.
+\end{proof}
