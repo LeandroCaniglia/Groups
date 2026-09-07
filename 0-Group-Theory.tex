@@ -1,23 +1,40 @@
-\documentclass{book}
+\documentclass[openany]{book}
 
-\title{Group Theory Notes}
+% --- Metadata ---
 \author{Leandro Caniglia}
 \date{December 2022}
 
-\input preamble
+\input{preamble}
 
 \begin{document}
 
+\begin{titlepage}
+    \centering
+    \vfill % Dynamically balance vertical space at the top
+    
+    % Main Title
+    {\fontsize{33}{40}\selectfont \bfseries Group Theory Notes\par}
+    \vspace{0.6cm}
+    
+    % Subtitle
+    {\fontsize{19}{24}\selectfont Based on {\slshape Finite Group Theory}\\ by {I.} Martin Isaacs\par}
+    \vspace{2.5cm}
+    
+    % Author
+    {\Large Leandro Caniglia\par}
+    \vspace{0.3cm}
+    
+    % Date
+    {\large December 2022\par}
+    
+    \vfill % Pushes the content gracefully into a balanced vertical block
+\end{titlepage}
+\let\cleardoublepage\clearpage
 \frontmatter
-\thispagestyle{empty} % Removes page number from the title page
-\maketitle
-
-\thispagestyle{empty} % Removes page number from the table of contents page
+\phantomsection
+\pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents
-
 \mainmatter
-
-
 \setlength{\parindent}{0pt}
 \include{1-preliminaries}
 \include{2-sylow}
