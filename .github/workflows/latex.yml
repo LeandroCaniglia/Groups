@@ -21,6 +21,9 @@ jobs:
         with:
           root_file: 0-Group-Theory.tex # Change this to the exact name of your main .tex file
 
+      - name: Rename PDF
+        run: mv 0-Group-Theory.pdf Group_Theory_Book.pdf
+
       - name: Commit the generated PDF
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
