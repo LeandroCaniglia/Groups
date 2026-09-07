@@ -2,7 +2,7 @@
 \section{The Yang-Baxter Equation}
 \setcounter{subsection}{1}
 
-Recall that $\Sym(X)$ denotes the group of bijections from $X$ to~$X$. Fix $n\ge2$. Let $\pi_k\colon X^n\to X$ denote the $k$th projection. Given a bijection $R=(\alpha,\beta)$ in $\Sym(X\times X)$ and two indexes $1\le i\ne j\le n$, define $R^{ij}\in\Sym(X^n)$ as
+Recall that $\Sym(X)$ denotes the group of bijections from $X$ to~$X$. Fix $n\ge2$. Let $\pi_k\colon X^n\to X$ denote the $k$th projection. Given a bijection $R=(\alpha,\beta)$ in $\Sym(X\times X)$ and two indices $1\le i\ne j\le n$, define $R^{ij}\in\Sym(X^n)$ as
 $$
     \pi_k\circ R^{ij} = \begin{cases}
         \alpha\circ(\pi_i,\pi_j)    &\text{if }k=i,\\
@@ -16,7 +16,7 @@ For $(i,j)$ with $i<j$, let $\pi_{ij}\colon X^3\to X^2$ be the $(i,j)$th project
 \begin{align}\label{eq:R^ij-i<j}
     R^{12} &= (\alpha\pi_{12},\beta\pi_{12},\pi_3)\nonumber\\
     R^{13} &= (\alpha\pi_{13},\pi_2,\beta\pi_{13})\\
-    R^{23} &= (\pi_1,\alpha\pi_{23},\beta\pi_{23})\nonumber
+    R^{23} &= (\pi_1,\alpha\pi_{23},\beta\pi_{23}).\nonumber
 \end{align}
 
 %\break
@@ -28,7 +28,7 @@ For $(i,j)$ with $i<j$, let $\pi_{ij}\colon X^3\to X^2$ be the $(i,j)$th project
     \end{equation}
 \end{defn}
 
-Let $\tau\colon X\times X\to X\times X$ be the so called \textsl{flip}, i.e., $\tau(x,y)=(y,x)$.
+Let $\tau\colon X\times X\to X\times X$ be the so-called \textsl{flip}, i.e., $\tau(x,y)=(y,x)$.
 
 
 \begin{prop}
@@ -36,12 +36,12 @@ Let $\tau\colon X\times X\to X\times X$ be the so called \textsl{flip}, i.e., $\
     \begin{equation}\label{eq:ybe}
         r^{12}r^{23}r^{12} = r^{23}r^{12}r^{23}
     \end{equation}
-    if, and only if\/ $R$ is a solution to the quantum Yang-Baxter equation\/~$(\ref{eq:qybe})$.
+    if, and only if\/ $R$ is a solution to the quantum Yang-Baxter equation\/~\eqref{eq:qybe}.
 \end{prop}
 
 \begin{proof}
     \begin{align*}
-        R^{12}R^{13}R^{23} &= (\alpha\pi_{1,2},\beta\pi_{12},\pi_3)
+        R^{12}R^{13}R^{23} &= (\alpha\pi_{12},\beta\pi_{12},\pi_3)
                 (\alpha\pi_{13},\pi_2,\beta\pi_{13})
                 (\pi_1,\alpha\pi_{23},\beta\pi_{23})\\
             &= (\alpha\pi_{1,2},\beta\pi_{12},\pi_3)
@@ -62,7 +62,7 @@ Let $\tau\colon X\times X\to X\times X$ be the so called \textsl{flip}, i.e., $\
                 ,\alpha(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))
                 ,\beta(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))).
     \end{align*}
-    Therefore, $(\ref{eq:qybe})$ is equivalent to
+    Therefore, \eqref{eq:qybe} is equivalent to
     \begin{align}\label{eq:qybe-no-flip}
         \alpha(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23})
             &= \alpha(\alpha\pi_{12},\pi_3)\nonumber\\
@@ -71,7 +71,7 @@ Let $\tau\colon X\times X\to X\times X$ be the so called \textsl{flip}, i.e., $\
         \beta(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))
             &= \beta(\pi_1,\beta\pi_{23}).\nonumber
     \end{align}
-    On the other hand, since $\tau R=(\beta,\alpha)$, we can apply $(\ref{eq:R^ij-i<j})$ and get
+    On the other hand, since $\tau R=(\beta,\alpha)$, we can apply \eqref{eq:R^ij-i<j} and get
     \begin{align*}
         r^{12} &= (\beta\pi_{12},\alpha\pi_{12},\pi_3)\\
         %r^{13} &= (\beta\pi_{13},\pi_2,\alpha\pi_{13})\\
@@ -100,7 +100,7 @@ Let $\tau\colon X\times X\to X\times X$ be the so called \textsl{flip}, i.e., $\
                 ,\beta(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23})
                 ,\alpha(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23}))
     \end{align*}
-    Hence, $(\ref{eq:ybe})$ is equivalent to
+    Hence, \eqref{eq:ybe} is equivalent to
     \begin{align}\label{eq:qybe-with-flip}
         \beta(\beta\pi_{12},\beta(\alpha\pi_{12},\pi_3))
             &= \beta(\pi_1,\beta\pi_{23})\nonumber\\
@@ -109,7 +109,7 @@ Let $\tau\colon X\times X\to X\times X$ be the so called \textsl{flip}, i.e., $\
         \alpha(\alpha(\pi_1,\beta\pi_{23}),\alpha\pi_{23})
             &= \alpha(\alpha\pi_{12},\pi_3).\nonumber
     \end{align}
-    The conclusion is now clear because $(\ref{eq:qybe-no-flip})$ and $(\ref{eq:qybe-with-flip})$ are the same.
+    The conclusion is now clear because \eqref{eq:qybe-no-flip} and \eqref{eq:qybe-with-flip} are the same.
 \end{proof}
 
 \begin{rem}
@@ -119,10 +119,10 @@ Let $\tau\colon X\times X\to X\times X$ be the so called \textsl{flip}, i.e., $\
             = ({\id}\times r)(r\times\id)({\id}\times r),
             \tag{\textsc{ybe}}
     \end{equation}
-    which doesn't require \eqref{eq:R^ij-i<j}.
+    which does not require \eqref{eq:R^ij-i<j}.
 \end{rem}
 
-\begin{defns}
+\begin{defn}
     Let $r=(f,g)\in\Sym(X\times X)$. Then $r$ is \textsl{nondegenerate} if both $f(x,\,\cdot\,)$ and $g(\,\cdot\,,x)$ belong in $\Sym(X)$ for all $x\in X$, as illustrated here
     {\small
     $$
@@ -151,14 +151,14 @@ Let $\tau\colon X\times X\to X\times X$ be the so called \textsl{flip}, i.e., $\
                 &x
         \end{tikzcd}
     $$}
-\end{defns}
+\end{defn}
 
 \begin{rem}
     Clearly the identity map satisfies \eqref{eq:simpler-ybe}. However, it is degenerate because $\id(x,y)=(x,y)$ and so $f(x,\,\cdot\,)=x$, which is not bijective but constant.
 \end{rem}
     
 \begin{xmpls}${}$
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item The swap $r(x,y)=(y,x)$ because $f(x,\,\cdot\,)=g(\,\cdot\,,x)=\id$ for all $x\in X$ and it is a solution of \eqref{eq:simpler-ybe} because
     $$
     \begin{matrix}
@@ -171,7 +171,7 @@ Let $\tau\colon X\times X\to X\times X$ be the so called \textsl{flip}, i.e., $\
     \end{matrix}
     $$
 
-    \item A nondegenerate solution when $X=\nset n$ is
+    \item A solution when $X=\nset n$ is
     $$
         r(x,y)=(n+1-y, n+1-x),
     $$
@@ -394,7 +394,7 @@ $$
             &\Z_{n^2}
         \end{tikzcd}
     $$
-    Suppose that $r$ solves \eqref{eq:simpler-ybe} and let's see what can we say about $\sigma\cdot r$ for $\sigma\in\Sym(\Z_{n^2})$.
+    Suppose that $r$ solves~\eqref{eq:simpler-ybe} and let us see what we can say about $\sigma\cdot r$ for $\sigma\in\Sym(\Z_{n^2})$.
 
     Write $r(a,b)=(i,j)$. Then
     \begin{align*}
@@ -415,17 +415,17 @@ $$
     \end{align*}
 \end{xmpl}
 
-\paragraph{Structure and Permutation Groups.} Given $X$ and $r=(f,g)$ as above, the \textsl{structure group} $G(X,r)$ is the group presented by $X$ with relators
+\paragraph{Structure and Permutation Groups.} Given\/ $X$ and\/ $r=(f,g)$ as above, the \textsl{structure group}\/ $G(X,r)$ is the group generated by\/ $X$ subject to the relations
 $$
-     x\cdot y=f(x,y)g(x,y)
+    x\cdot y=f(x,y)g(x,y)
 $$
-for $x,y\in X$, i.e.,
+for\/ $x,y\in X$, i.e.,
 $$
-    G(X,r) = \gen{X\mid x\cdot y=f(x,y)g(x,y);\,x,y\in X}.
+    G(X,r)=\gen{X\mid x\cdot y=f(x,y)g(x,y);\,x,y\in X}.
 $$
-When $r$ is nondegenerate, its \textsl{permutation group} $\mathcal G(X,r)$ is the subgroup of $\Sym(X)$ generated by $f(x,\,\cdot\,)$ for $x\in X$, i.e.,
+When\/ $r$ is nondegenerate, its \textsl{permutation group}\/ $\mathcal G(X,r)$ is the subgroup of\/ $\Sym(X)$ generated by\/ $f(x,\,\cdot\,)$ for\/ $x\in X$, i.e.,
 $$
-    \mathcal G(X,r) = \gen{f(x,\,\cdot\,)\in\Sym(X)\mid x\in X}.
+    \mathcal G(X,r)=\gen{f(x,\,\cdot\,)\in\Sym(X)\mid x\in X}.
 $$
 
 \section{Left Braces and Skew Left Braces}
@@ -447,7 +447,7 @@ $$
     $$
         (a +_x b) +_y c = a +_x (b +_y c) = (a +_y b) +_x c.
     $$
-    Using translations, equation $(\ref{eq:LB-distribution})$ can be written as
+    Using translations, equation \eqref{eq:LB-distribution} can be written as
     $$
         a\cdot (b+c)= a\cdot b +_a a\cdot c.
     $$
@@ -472,13 +472,13 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 \end{defn}
 
 \begin{rem}
-    Recall from\/ \textrm{\rm Remark~\ref{rem:translated-group}} that, for any element $x$ in a group $G$, the operation
+    Recall from Remark~\ref{rem:translated-group} that, for any element $x$ in a group $G$, the operation
     $$
         a\cdot_x b = ax^{-1}b
     $$
     turns $(G,\cdot_x)$ into a group, where $x$ serves as the identity and the inverse of~$a$ is~$xa^{-1}x$.
 
-    With this notation $(\ref{eq:SLB-distribution})$ can be written as
+    With this notation \eqref{eq:SLB-distribution} can be written as
     \begin{equation}\label{eq:skew-left-brace-translated}
         a(b\skw c) = ab\skw_a ac,
     \end{equation}
@@ -495,8 +495,8 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
 \needspace{2\baselineskip}
 \begin{xmpls}\label{xmpls:SLB}${}$
-\begin{enumerate}[\rm a)]
-    \item If $n$ is even define the following in operation in $\Z_n$
+\begin{enumerate}[a),font=\upshape]
+    \item If $n$ is even define the following operation in $\Z_n$
     $$
         a\skw b = (-1)^ba + b.
     $$
@@ -522,7 +522,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
                         \hphantom-a\skw a= (-1)^aa+a =0
                             &\text{if }a \text{ odd}.
                     \end{cases}\\
-            \intertext{therefore,}
+            \intertext{Therefore,}
                 (-1)^{a+1}a\skw a &=
                     \begin{cases}
                         -a\skw a = 0    &\text{if $a$ even},\\
@@ -550,7 +550,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
     \end{enumerate}
     Let $B$ denote this group. The involutions of $B$ are the odd elements of $\Z_n$. The even elements belong to the cyclic group $\gen2$.
 
-    \textbf{Note:} Incidentally, $(\Z_n,\skw)$ is nothing but the dihedral group with $n$ elements. The cyclic group of index~$2$ being $\gen 2$ [cf.~Definition~\ref{def:dihedral-group}]. In fact, this subgroup is generated by $2$ both in $(\Z_n,+)$ and $(\Z_n,\skw)$ because induction on $i$ shows that
+    \textbf{Note:} Incidentally, $(\Z_n,\skw)$ is nothing but the dihedral group with $n$ elements, the cyclic group of index~$2$ being $\gen 2$ [cf.~Definition~\ref{def:dihedral-group}]. In fact, this subgroup is generated by $2$ both in $(\Z_n,+)$ and $(\Z_n,\skw)$ because induction on $i$ shows that
     $$
         2^{\skw(i+1)} = 2^{\skw i}\skw 2 = 2i + 2 = 2(i+1),
     $$
@@ -559,7 +559,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
         \gen2_\skw = \gen2_+.
     $$
 
-    \item Let $(G,\,\cdot\,)$ be the nonabelian group of order~$21$. As we have seen in Example~\ref{example:group-of-order-21}, this is isomorphic to $\Z_7\rtimes Z_3$, where the action of $\Z_3$ on $\Aut(\Z_7)$ is given by the map $1\mapsto\eta_2$, where $\eta_2$ is the homothecy of ratio~$2$. Define, in the underlying set, the following operation
+    \item Let $(G,\,\cdot\,)$ be the nonabelian group of order~$21$. As we have seen in Example~\ref{example:group-of-order-21}, this is isomorphic to $\Z_7\rtimes\Z_3$, where the action of $\Z_3$ on $\Aut(\Z_7)$ is given by the map $1\mapsto\eta_2$, where $\eta_2$ is the homothety of ratio~$2$. Define, in the underlying set, the following operation
     $$
         (\sigma^i\tau^j)\circ(\sigma^h\tau^k)
             = \sigma^{i+4^jh}\tau^{j+k}.
@@ -630,7 +630,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
                     &&;\ \eqref{eq:sigma-tau-21}.
     \end{align*}
 
-    \textbf{Note.} Incidentally, given that there is only one nonabelian group of $21$ elements, the two operations must be isomorphic. Indeed, the map
+    \textbf{Note.} Incidentally, given that there is only one nonabelian group of $21$ elements, the two group structures must be isomorphic. Indeed, the map
     \begin{align*}
         \phi\colon (G,\circ)&\to(G,\,\cdot\,)\\
             \sigma^i\tau^j&\mapsto\sigma^i\tau^{2j}
@@ -642,7 +642,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
             &= \sigma^{i+4^jh}\tau^{2(h+k)}.\\
         \phi(\sigma^i\tau^j)\phi(\sigma^h\tau^k)
             &=\sigma^i\tau^{2j}\sigma^h\tau^{2k}\\
-            &= \sigma^{i+2^{2j}h}\tau^{2h+2k}.
+            &= \sigma^{i+2^{2j}h}\tau^{2j+2k}.
     \end{align*}
     Moreover, as a set function $\phi^2=\id_G$.
     
@@ -670,7 +670,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
     \end{align}
     \needspace{2\baselineskip}
     Then
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item $\lambda_a\in\Sym(G)$ for all\/ $a\in G$.
         \item $\lambda_a\in\Aut(G,\,\skw\,)\iff (G,\,\cdot\,,\,\skw\,)$ is a skew left brace.
         \item If\/ $(G,\,\cdot\,,\,\skw\,)$ is a skew left brace, the map\/ $\lambda\colon(G,\,\cdot\,)\to\Aut(G,\,\skw\,)$ defined by\/ $a\mapsto\lambda_a$ is a morphism of groups.
@@ -679,7 +679,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
 \needspace{3\baselineskip}
 \begin{proof}${}$
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item Put $y=a^\skw\skw ax$. Then $a\skw y= ax$ and $x=a^{-1}(a\skw y)$.
         \item The equivalence is clear because $\lambda_a(x)\skw \lambda_a(y)=a^\skw\skw ax\skw a^\skw\skw ay$ and $\lambda_a(x\skw y)= a^\skw\skw a(x\skw y)$. 
         
@@ -692,7 +692,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
                         &= (a^\skw\skw ax)\skw(a^\skw\skw ay)\\
                         &= \lambda_a(x)\skw\lambda_a(y).
                 \end{align*}
-            \item \textit{morphism:} $\lambda_a\circ\lambda_b=\lambda_{ab}$
+            \item \textit{$\lambda$ is a morphism:} $\lambda_a\circ\lambda_b=\lambda_{ab}$
                 \begin{align*}
                     ab\skw\lambda_a\circ\lambda_b(x) &=
                             ab\skw a^\skw\skw a(b^\skw\skw bx)\\
@@ -719,7 +719,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 \needspace{2\baselineskip}
 \begin{rems}${}$
     \begin{enumerate}[-]
-        \item Definition \eqref{map:lambda} is usually written as
+        \item The map in \eqref{map:lambda} is usually written as
         \begin{equation}\label{eq:lambda}
             ab = a\skw\lambda_a(b),
         \end{equation}
@@ -728,20 +728,20 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
             (a,b)(c,d) = (a\skw\lambda_c(b), bd)
                 = (a\skw c^\skw\skw cb, bd).
         $$
-        \item Since $\lambda_a^{-1}=\lambda_{a^{-1}}$, equation $\eqref{eq:lambda}$ can be rewritten as
+        \item Since $\lambda_a^{-1}=\lambda_{a^{-1}}$, equation \eqref{eq:lambda} can be rewritten as
         \begin{equation}\label{eq:lambda-inverse}
-            a\lambda_{a^{-1}}(b) = a\skw b
+            a\lambda_{a^{-1}}(b) = a\skw b,
         \end{equation}
         in particular,
         \begin{equation}\label{eq:lambda-inverse-of-cdot}
-            (a\skw b)^{-1} = \lambda_{a^{-1}}(b)^{-1}a^{-1}
+            (a\skw b)^{-1} = \lambda_{a^{-1}}(b)^{-1}a^{-1}.
         \end{equation}
     \end{enumerate}
 \end{rems}
 
 \needspace{2\baselineskip}
 \begin{xmpls}\label{xmpls:lambda}${}$
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item If `$\skw$' and `$\cdot$' are the same, then $\lambda_a=\id$, i.e., $\lambda$ is trivial. 
         
         Conversely, if $\lambda_a=\id$, then
@@ -759,7 +759,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
         $$
         in $\Z_{2n}$, we have
         \begin{align*}
-            \lambda_a(x) &= a^*\skw ax\\
+            \lambda_a(x) &= a^\skw\skw ax\\
                 &= (-1)^{a+1}a\skw ax\\
                 &= (-1)^{ax}(-1)^{a+1}a + ax\\
                 &= (-1)^{a(x+1)+1}a+ax\\
@@ -803,8 +803,8 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
         \gamma_b\colon B&\to B\\
         x&\mapsto \lambda^{-1}_{\lambda_x(b)}((xb)^\skw\skw x\skw(xb)).
     \end{align*}
-    verifies
-    \begin{enumerate}[\rm a)]
+    has the following properties:
+    \begin{enumerate}[a),font=\upshape]
         \item If $y=\lambda_x(b)$,
             \begin{align}
                 \gamma_b(x) &= \lambda^{-1}_y(y^\skw\skw x\skw y)
@@ -821,8 +821,8 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
 \needspace{2\baselineskip}
 \begin{proof}${}$
-    \begin{enumerate}[\rm a)]
-        \item For $\eqref{eq:gamma-alt-1}$ put $y=\lambda_x(b)$. Then
+    \begin{enumerate}[a),font=\upshape]
+        \item For \eqref{eq:gamma-alt-1} put $y=\lambda_x(b)$. Then
             \begin{align*}
                 \lambda_y^{-1}(y^\skw\skw x\skw y)
                     &= \lambda_y^{-1}((x^\skw\skw xb)^\skw
@@ -848,10 +848,10 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
             &= (b^{-1}x^{-1}(x^\skw\skw xb))^{-1}\\
             &= (b^{-1}(x^{-1}(x^\skw\skw xb)))^{-1}\\
             &= (b^{-1}(x^{-1}x^\skw\skw(x^{-1})^\skw\skw b))^{-1}\\
-            &= (b^{-1}(x^{-1}(x^\skw\skw x)\star b)^{-1}\\
+            &= (b^{-1}(x^{-1}(x^\skw\skw x)\skw b))^{-1}\\
             &= (b^{-1}(x^{-1}\skw b))^{-1},
     \end{align*}
-    proving $\eqref{eq:gamma-alt-2}$. Equation~\eqref{eq:gamma-alt-3} is now clear.
+    proving \eqref{eq:gamma-alt-2}. Equation~\eqref{eq:gamma-alt-3} is now clear.
 
     \item 
         \begin{enumerate}[-]
@@ -915,7 +915,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
 \needspace{2\baselineskip}
 \begin{xmpls}${}$
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item If the skew left brace is trivial, namely $(G,\,\cdot\,,\,\cdot\,)$, then $\gamma_b$ is the conjugation by $b^{-1}$ because, in that case, $\lambda\colon G\to\Aut(G)$ is trivial:
         $$
             \gamma_b(x) = b^{-1}xb.
@@ -925,14 +925,14 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
         $$
             a\skw b = (-1)^ba + b,
         $$
-        from expression $\eqref{eq:gamma-alt-2}$ in additive notation we get
+        from expression \eqref{eq:gamma-alt-2} in additive notation we get
         \begin{align*}
             \gamma_b(x) &= -(-b+(-x\skw b))\\
                 &= b-((-1)^b(-x)+b)\\
                 &= (-1)^bx.
         \end{align*}
 
-        \item In the case of Example~\ref{xmpls:SLB}~b), where $G=\Z_7\rtimes Z_3$, the multiplication is
+        \item In the case of Example~\ref{xmpls:SLB}~b), where $G=\Z_7\rtimes\Z_3$, the multiplication is
         $$
             \sigma^i\tau^j\circ\sigma^h\tau^k=\sigma^{i+4^jh}\tau^{j+k}
         $$
@@ -967,7 +967,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 \end{xmpls}
 
 \begin{lem}\label{lem:ybe-theta}
-    Let\/ $(G,\,\cdot\,,\skw)$ be a skew left brace and let\/ $(G,\skw)\rtimes(G,\,\cdot\,)$ be the semidirect product associated with the action\/ $\lambda$ defined in \textrm{\rm Lemma~\ref{lem:ybe-lambda}}. Then the map
+    Let\/ $(G,\,\cdot\,,\skw)$ be a skew left brace and let\/ $(G,\skw)\rtimes(G,\,\cdot\,)$ be the semidirect product associated with the action\/ $\lambda$ defined in \text{\upshape Lemma~\ref{lem:ybe-lambda}}. Then the map
     \begin{align*}
         \Theta\colon(G,\skw)\rtimes(G,\,\cdot\,)&\to\Aut(G,\skw)\\
         (a,b)&\mapsto\Theta_{(a,b)},
@@ -981,7 +981,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 \end{lem}
 
 \begin{proof}
-    First observe that, $\Theta_{(a,b)}$ is indeed an automorphism because both $\lambda_b$ and the conjugation by $a$ are automorphisms and
+    First observe that $\Theta_{(a,b)}$ is indeed an automorphism because both $\lambda_b$ and the conjugation by $a$ are automorphisms and
     $$
         \Theta_{(a,b)}=\sigma_a^\skw\circ\lambda_b,
     $$
@@ -1005,7 +1005,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 \end{proof}
 
 \begin{xmpls}\label{xmpls:Theta}${}$
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item If `$\skw$' and `$\,\cdot\,$' are the same then $\lambda$ is trivial and $\Theta_{(a,b)}$ is the conjugation~$\sigma_a$.
 
         \item In the case of Example~\ref{xmpls:SLB}~a), where
@@ -1083,7 +1083,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 \end{rem}
 
 \begin{xmpls}${}$
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item The ideals of a trivial SLB $(G,\,\cdot\,,\,\cdot\,)$ are the normal subgroups.
 
         \item In the case of Example~\ref{xmpls:SLB}~a), where the star operation is
@@ -1152,11 +1152,11 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 \end{defn}
 
 \begin{prop}
-    Let\/ $(B,\,\cdot\,,\,\skw\,)$ be a SLB and\/ $I$ an ideal. The \textsl{quotient\/}\/ $B/I$ is the skew left brace\/ $(B/I,\,\cdot_I\,,\,\skw_I\,)$ where\/ $B/I$ is the underlying set defined by any of the quotients\/ $(B,\skw)/I$ or\/ $(B,\,\cdot\,)/I$, the star product `$\,\skw_I\!$' is induced by the group\/ $(B,\skw)/I$, and the multiplication `${\,\cdot_I}\!$' by\/ $(B,\,\cdot\,)/I$.
+    Let\/ $(B,\,\cdot\,,\,\skw\,)$ be a SLB and\/ $I$ an ideal. The \textsl{quotient\/} $B/I$ is the skew left brace\/ $(B/I,\,\cdot_I\,,\,\skw_I\,)$ where\/ $B/I$ is the underlying set defined by any of the quotients\/ $(B,\skw)/I$ or\/ $(B,\,\cdot\,)/I$, the star product `$\,\skw_I\!$' is induced by the group\/ $(B,\skw)/I$, and the multiplication `${\,\cdot_I}\!$' by\/ $(B,\,\cdot\,)/I$.
 \end{prop}
 
 \begin{proof}
-    First note that the equation $b\skw\lambda_b(x)=b\cdot x$ implies that $b\skw I=b\cdot I$ for all $b\in B$ because $\lambda_b$ is bijective. In consequence, the underlying sets of $(B,\skw)/I$ and $(B,\,\cdot\,)/I$ are the same. Since these inherit the operations of the respective groups, in order to verify that $(B/I,\,\cdot_I\,,\,,\skw_I\,)$ is a SLB, we only need to verify the distributive property. Let $\varphi\colon B\to B/I$ the set mapping defined by the projection onto the quotient. Then
+    First note that the equation $b\skw\lambda_b(x)=b\cdot x$ implies that $b\skw I=b\cdot I$ for all $b\in B$ because $\lambda_b$ is bijective. In consequence, the underlying sets of $(B,\skw)/I$ and $(B,\,\cdot\,)/I$ are the same. Since these inherit the operations of the respective groups, in order to verify that $(B/I,\,\cdot_I\,,\,,\skw_I\,)$ is a SLB, we only need to verify the distributive property. Let $\varphi\colon B\to B/I$ be the set mapping defined by the projection onto the quotient. Then
     \begin{align*}
         \varphi(a)\cdot_I(\varphi(b)\skw_I\varphi(c))
             &= \varphi(a)\cdot_I\varphi(b\skw c)\\
@@ -1190,7 +1190,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
 \begin{thm}
     Let\/ $(B,\,\cdot\,,\,\skw\,)$ be a skew left brace. Then
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item $b\in\ker(\lambda)\iff b\skw x=bx$ for all\/ $x\in B$.
         \item $\Soc(B)$ is the kernel of
             \begin{align*}
@@ -1199,7 +1199,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
                 b
                     &\mapsto(\lambda_b,\gamma_b^{-1}).
             \end{align*}
-        \item $\Soc(B)$ is (also) the kernel of
+        \item $\Soc(B)$ is also the kernel of
             \begin{align*}
                 \Phi\colon(B,\,\cdot\,)&\to\Aut(B,\skw)\times\Aut(B,\skw)\\
                     b&\mapsto(\lambda_b,h_b),
@@ -1214,7 +1214,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 \end{thm}
 
 \begin{proof}${}$
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item Observe that
         \begin{align*}
             b\in\ker(\lambda)
@@ -1225,7 +1225,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
         \item %Recall from Lemma~\ref{lem:ybe-lambda} that $\lambda\colon(G,\,\cdot\,)\to(B,\skw)$ is a morphism and from Lemma~\ref{lem:ybe-gamma} that $\gamma_b(x) = (b^{-1}x^{-1}\skw(b^{-1})^\skw)^{-1}$.
         
-        Firstly observe that $b\mapsto\gamma_b^{-1}$ is a morphism because, according to Lemma \ref{lem:ybe-gamma}, $\gamma\colon(B,\,\cdot\,)^{\op{op}}\to\Sym(B)$ is a morphism and $\gamma_b^{-1}=\gamma_{b^{-1}}$. Thus, $\varphi$ is a morphism of groupa and
+        First, observe that $b\mapsto\gamma_b^{-1}$ is a morphism because, according to Lemma \ref{lem:ybe-gamma}, $\gamma\colon(B,\,\cdot\,)^{\op{op}}\to\Sym(B)$ is a morphism and $\gamma_b^{-1}=\gamma_{b^{-1}}$. Thus, $\varphi$ is a morphism of groups and
         \begin{align*}
             b \in\ker\varphi
                 &\iff bx=b\skw x
@@ -1244,7 +1244,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
         \item This is a direct consequence of the definitions.
 
-        \item This is immediate from part c)
+        \item This is immediate from part c).
 
         \item Trivial from the definition.
 
@@ -1262,15 +1262,15 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
     $$
         \varphi(xy)=\varphi(x)\sigma(x)(\varphi(y)).
     $$
-    In the context of Skew Left Braces, crossed morphisms are known as \textsl{$1$-cocycles} with respect to~$\sigma$.
+    In the context of skew left braces, crossed morphisms are known as \textsl{$1$-cocycles} with respect to~$\sigma$.
 \end{defn}
 
 \begin{ntn}
-    Let\/ $(G,\,\cdot\,)$ and\/ $(N,\,\cdot\,)$ be groups and\/ $\sigma\colon G\to\Aut(N)$ an action of\/ $G$ on\/ $N$. Then\/ $Z^1(G,\sigma)$ denotes the set of\/ $1$-cocycles with respect to\/~$\sigma$, and\/ $\op{SLB}(G,\,\cdot\,)$ the set of operations {\rm `$\skw$'} defined in\/ $G$ such that\/ $(G,\,\cdot\,,\,\skw\,)$ is a skew left brace.
+    Let\/ $(G,\,\cdot\,)$ and\/ $(N,\,\cdot\,)$ be groups and\/ $\sigma\colon G\to\Aut(N)$ an action of\/ $G$ on\/ $N$. Then\/ $Z^1(G,\sigma)$ denotes the set of\/ $1$-cocycles with respect to\/~$\sigma$, and\/ $\op{SLB}(G,\,\cdot\,)$ the set of operations {\upshape `$\skw$'} defined in\/ $G$ such that\/ $(G,\,\cdot\,,\,\skw\,)$ is a skew left brace.
 \end{ntn}
 
 \begin{thm}
-    Bijective\/ $1$-coclycles are equivalent to skew left braces. More precisely, the map
+    Bijective\/ $1$-cocycles are equivalent to skew left braces. More precisely, the map
     \begin{align*}
         Z^1(G,\sigma)&\to\op{SLB}(G,\,\cdot\,)\\
         \varphi &\mapsto \skw_\varphi,
@@ -1279,7 +1279,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
     $$
         x\skw_\varphi y=\varphi^{-1}(\varphi(x)\cdot\varphi(y)).
     $$
-    is well defined. Moreover, given a skew left brace structure\/ $(G,\,\cdot\,,\,\skw\,)$ the identity of\/ $G$ is a bijective\/ $1$-cocycle with respect to the action\/ $\lambda\colon(G,\,\cdot\,)\to\Aut(G,\skw)$.
+    is well defined. Moreover, given a skew left brace structure\/ $(G,\,\cdot\,,\,\skw\,)$, the identity of\/ $G$ is a bijective\/ $1$-cocycle with respect to the action\/ $\lambda\colon(G,\,\cdot\,)\to\Aut(G,\skw)$.
 \end{thm}
 
 \begin{proof}
@@ -1337,7 +1337,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
 \needspace{2\baselineskip}
 \begin{xmpls}${}$
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item $\Hol(\Q,+)=\Q\rtimes(\Q^*,\,\cdot\,)$ with the product
         $$
             (x,a)(y,b)=(x+ay,ab),
@@ -1356,7 +1356,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 \end{xmpls}
 
 \begin{rem}\label{rem:Hol(G)}
-    Every element $(a,\varphi)\in\Hol(G)$ can be seen as an endomorphism of $G$, namely
+    Every element $(x,\varphi)\in\Hol(G)$ can be seen as an endomorphism of $G$, namely
     $$
         (x,\varphi)(\zeta)=x\varphi(\zeta).
     $$
@@ -1386,11 +1386,11 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 \end{lem}
 
 \begin{proof}
-    To see that the map is onto we have to show that, given $a\in G$, there is some $\phi\in\Aut(G)$ such that $(a,\phi)\in H$. By regularity there exists a pair $(b,\phi^{-1})\in H$ such that $b\phi^{-1}(a)=1$. Then
-    $$
-        (a,\phi)=(\phi^{-1}(a^{-1}),\phi^{-1})^{-1}
-            =(b,\phi^{-1})\in H.
-    $$
+     To verify that the map is onto we have to show that, given $a\in G$, there is some $\phi\in\Aut(G)$ such that $(a,\phi)\in H$. By regularity there exists a pair $(b,\phi^{-1})\in H$ such that $b\phi^{-1}(a)=1$. Then
+     $$
+         (a,\phi)=(\phi^{-1}(a^{-1}),\phi^{-1})^{-1}
+                =(b,\phi^{-1})^{-1}\in H.
+     $$
     Let's now verify that the map is injective. Suppose that $(a,\phi)$ and $(a,\psi)$ are in~$H$. Put $b=\phi^{-1}(a^{-1})$ and $c=\psi^{-1}(a^{-1})$. Then,
     $$
         b\phi^{-1}(a) = 1 = c\psi^{-1}(a),
@@ -1400,7 +1400,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
 \needspace{2\baselineskip}
 \begin{thm}\label{thm:SLB-regular-equivalence}${}$
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item Let\/ $(B,\,\cdot\,,\,\skw\,)$ be a SLB. Then
         $$
             H=\set{(b,\lambda_b)\mid b\in B}
@@ -1408,19 +1408,19 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
         is a regular subgroup of\/ $\Hol(B,\,\skw\,)$.
 
         \item Let\/ $(G,\,\skw\,)$ be a group, $\pi_1$ and\/ $\pi_2$ the natural projections of\/ $\Hol(G)$\/ onto\/ $G$ and\/ $\Aut(G)$, and\/ $H$ a regular subgroup of\/ $\Hol(G)$. 
-        \begin{enumerate}[\rm i)]
-            \item For $a,b\in G$ define
-            $$
-                a\cdot b = a\skw\pi_2((\pi_1|_H)^{-1}(a))(b).
-            $$
-            Then $(G,\cdot\,)$ is a group isomorphic to\/ $H$ and
-            \item $(G,\,\cdot\,,\,\skw\,)$ is a SLB.
+        \begin{enumerate}[i),font=\upshape]
+            \item For\/ $a,b\in G$ define
+             $$
+             a\cdot b = a\skw\pi_2((\pi_1|_H)^{-1}(a))(b).
+             $$
+             Then\/ $(G,\cdot\,)$ is a group isomorphic to\/ $H$, and
+             \item $(G,\,\cdot\,,\,\skw\,)$ is a SLB.
         \end{enumerate}
     \end{enumerate}
 \end{thm}
 
 \begin{proof}${}$
-    \begin{enumerate}[\rm a)]
+    \begin{enumerate}[a),font=\upshape]
         \item First note that $H$ is a group because, according to Remark~\ref{rem:Hol(G)},
         \begin{align*}
             (1,\id) &= (1,\lambda_1)\in H,\\
@@ -1439,7 +1439,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
         \needspace{2\baselineskip}
         \item ${}$
-        \begin{enumerate}[\rm i)]
+        \begin{enumerate}[i),font=\upshape]
             \item First observe that, according to Lemma~\ref{lem:bijective-pi_1|_H}, the proposed expression for the product is well defined. Let's now verify that $(G,\,\cdot\,)$ is a group
             \begin{enumerate}[-]
                 \item \textit{operation:} Write $(\pi_1|_H)^{-1}(a)=(a,\varphi)\in H$. Then $\varphi(b)\in G$ because $\varphi\in\Aut(G)$. Thus, $a\cdot b = a\skw\varphi(b)\in G$.
@@ -1490,8 +1490,8 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
     \begin{equation}\label{eq:cdot-from-lambda}
         a\cdot b = a\skw\lambda_a(b).
     \end{equation}
-    If\/ {\rm`$\hat{\,\cdot\,}$'} is defined in the same way using another morphism\/ $\hat\lambda\colon G\to\Aut(G,\,\skw\,)$ that satisfies \eqref{eq:iso-SLB}, then\/ $(G,\,\cdot\,,\,\skw\,)$ and\/ $(G,\,\hat\cdot\,,\skw\,)$ are isomorphic if, and only if, there exists an automorphism\/ $\Gamma\in\Aut(G,\skw)$ such that 
-    \begin{equation}\label{eq:isO-SLB-lambda}
+    If\/ {\upshape`$\hat{\,\cdot\,}$'} is defined in the same way using another morphism\/ $\hat\lambda\colon G\to\Aut(G,\,\skw\,)$ that satisfies \eqref{eq:iso-SLB}, then\/ $(G,\,\cdot\,,\,\skw\,)$ and\/ $(G,\,\hat\cdot\,,\skw\,)$ are isomorphic if, and only if, there exists an automorphism\/ $\Gamma\in\Aut(G,\skw)$ such that 
+    \begin{equation}\label{eq:iso-SLB-lambda}
         \hat\lambda_{\Gamma(a)}=\Gamma\circ\lambda_a\circ\Gamma^{-1}
     \end{equation}
     for every\/ $a\in G$.
@@ -1537,7 +1537,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
 
     To prove the second statement take $\hat\lambda_{\Gamma(a)}\colon G\to\Aut(G,\,\skw\,)$ and assume that it satisfies \eqref{eq:iso-SLB}.
     \begin{description}
-        \item[\rm{\it if\/} part:] Let $\Gamma\in\Aut(G,\,\skw\,)$ be such that \eqref{eq:isO-SLB-lambda} does hold. Then,
+        \item[\normalfont\textit{ if\/} part:] Let $\Gamma\in\Aut(G,\,\skw\,)$ be such that \eqref{eq:iso-SLB-lambda} does hold. Then,
         \begin{align*}
             \Gamma(a\cdot b) &= \Gamma(a\skw\lambda_a(b))\\
                 &= \Gamma(a)\skw\Gamma(\lambda_a(b))\\
@@ -1546,7 +1546,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
         \end{align*}
         which shows that $\Gamma\colon(G,\,\cdot\,)\to(G,\,\hat\cdot\,)$ is an isomorphism, hence an SLB isomorphism.
 
-        \item[\rm{\it only if\/}:] Suppose that $\Gamma\colon(G,\,\cdot\,,\,\skw\,)\to(G,\,\hat\cdot\,,\,\skw\,)$ is a SLB isomorphism. Then $\Gamma\in\Aut(G,\,\skw\,)$ and
+        \item[\normalfont\textit{only if\/}:] Suppose that $\Gamma\colon(G,\,\cdot\,,\,\skw\,)\to(G,\,\hat\cdot\,,\,\skw\,)$ is a SLB isomorphism. Then $\Gamma\in\Aut(G,\,\skw\,)$ and
         \begin{align*}
             \Gamma\circ\lambda_a(b) &= \Gamma(a^\skw\skw a\cdot b)
                     &&\text{; \eqref{eq:cdot-from-lambda} for `$\,\cdot\,$'}\\
@@ -1556,7 +1556,7 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
                         for `$\,\mathbin{\hat\cdot}\,$'}\\
                 &= \hat\lambda_{\Gamma(a)}\circ\Gamma(b),
         \end{align*}
-        proving \eqref{eq:isO-SLB-lambda} [cf.~Remark~\ref{functorial-hat}].
+        proving \eqref{eq:iso-SLB-lambda} [cf.~Remark~\ref{functorial-hat}].
     \end{description}    
 \end{proof}
 
@@ -1564,11 +1564,11 @@ A generalization of the above happens when the abelian hypothesis is dismissed.
     Let $(G,\,\skw\,)$ be a group. Let
     $$
     \mathcal{B}(G) =\set{(G,\,\cdot\,,\,\skw\,)\mid
-        (G,\,\cdot\,,\,\skw\,)\text{\rm\ is a SLB}}
+        (G,\,\cdot\,,\,\skw\,)\text{\upshape\ is a SLB}}
     $$
     and
     $$
-    \mathcal{H}(G)=\set{H\mid H\text {\rm\ is a regular subgroup of } \Hol(G)}.
+    \mathcal{H}(G)=\set{H\mid H\text {\upshape\ is a regular subgroup of } \Hol(G)}.
     $$    
     Then the map
     \begin{align*}

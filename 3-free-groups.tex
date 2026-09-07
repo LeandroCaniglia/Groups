@@ -76,7 +76,7 @@ In this section we give a conceptual proof of the existence of free groups. It i
     \end{quote}
     The tricky point is ``all,'' because that is not a well-defined set.
 
-    Let $\mathcal K$ be the set of cardinal numbers $\kappa\le\max(|X|,\aleph_0)$. For each $\kappa\in\mathcal K$, choose a set $Y_\kappa$ with $|Y_\kappa|=\kappa$. Consider the collection $\mathcal G_\kappa$ of all groups whose underlying set is $Y_\kappa$. According to Lemma~\ref{lem:free-group-lemma3.2}, $\mathcal G_\kappa$ is well defined set. Therefore, the union $\mathcal G$ of all the $\mathcal G_\kappa$ is also a well-defined set.
+    Let $\mathcal K$ be the set of cardinal numbers $\kappa\le\max(|X|,\aleph_0)$. For each $\kappa\in\mathcal K$, choose a set $Y_\kappa$ with $|Y_\kappa|=\kappa$. Consider the collection $\mathcal G_\kappa$ of all groups whose underlying set is $Y_\kappa$. According to Lemma~\ref{lem:free-group-lemma3.2}, $\mathcal G_\kappa$ is a well defined set. Therefore, the union $\mathcal G$ of all the $\mathcal G_\kappa$ is also a well-defined set.
 
     Let $\Gamma$ be the set of all maps $g\colon X\to G$ such that $G\in\mathcal G$ and $g(X)$ generates~$G$. Condition~a) is satisfied by this family.
 
@@ -102,7 +102,7 @@ In this section we give a conceptual proof of the existence of free groups. It i
     \begin{equation}\label{eq:f-factors-g}
         \pi_\gamma\circ\iota_{FG}\circ f= \pi_\gamma\circ g=g_\gamma.
     \end{equation}
-    Let's now verify that $f\colon X\to F$ satisfies the universal property of Theorem~\ref{thm:free-group-universal-property}. Take a map $k\colon X\to K$. We have to show the existence of $\phi\colon F\to K$ such that $\phi\circ f=k$.
+    Let's now verify that $f\colon X\to F$ satisfies the universal property of Definition~\ref{defn:free-group}. Take a map $k\colon X\to K$. We have to show the existence of $\phi\colon F\to K$ such that $\phi\circ f=k$.
     
     Suppose first that $k(X)$ generates $K$. By Proposition~\ref{prop:free-group-prop2} there exists $\gamma\in\Gamma$ and an isomorphism $\psi\colon G_\gamma\to K$ such that the diagram
     $$
@@ -144,7 +144,7 @@ This section is based on the book \textit{Group Theory - Presentations of Groups
 In what follows we will fix a nonempty set $X$, whose elements will be regarded as \textsl{symbols} or letters. In parallel to $X$ we introduce the formal set $X^{-1}$ whose elements are the symbols $x^{-1}$ for $x\in X$. Note that $X\to X^{-1}$ is a bijection given by $x\mapsto x^{-1}$ and that $X\cap X^{-1}=\emptyset$.
 
 \begin{defns}\label{defns:words}
-    A \textsl{word} in\/ $X$ is a finite sequence\/ $x_1^{\zeta_1}\cdots x_n^{\zeta_n}$, where\/ $\zeta_i$ is empty or\/ $-1$. The \textsl{empty} word, i.e., the one with\/ $n=0$, will be denoted by\/~$1$. The number $n$ is the \textsl{length} of $w$ and it is noted $|w|$. If $w$ is a word in $X$, $w(i)$ will denote the symbol $x_i^{\zeta_i}$ in the $i$th position, or the empty symbol if $i\notin\nset{|w|}$. Note that two words $w$ and $v$ are equal when $|w|=|v|$ and $w(i)=v(i)$ for all $1\le i\le|w|$.
+    A \textsl{word} in\/ $X$ is a finite sequence\/ $x_1^{\zeta_1}\cdots x_n^{\zeta_n}$, where\/ $\zeta_i$ is empty or\/ $-1$. The \textsl{empty} word, i.e., the one with\/ $n=0$, will be denoted by\/~$1$. The number $n$ is the \textsl{length} of $w$ and is denoted by $|w|$. If $w$ is a word in $X$, $w(i)$ will denote the symbol $x_i^{\zeta_i}$ in the $i$th position, or the empty symbol if $i\notin\nset{|w|}$. Note that two words $w$ and $v$ are equal when $|w|=|v|$ and $w(i)=v(i)$ for all $1\le i\le|w|$.
 
     The \textsl{product} of two words $v$ and $w$ is defined by concatenation:
     $$
@@ -163,11 +163,11 @@ In what follows we will fix a nonempty set $X$, whose elements will be regarded 
 \end{defns}
 
 \begin{ntn}
-    In what follows we extend $\omega\colon X^*\to F$ as follows
+    In what follows we extend $\omega\colon X\to F$ to a map $\omega\colon X^*\to F$ as follows
     \begin{enumerate}[-]
         \item $\omega(1)=1$ and
         \item $\omega(x_1^{\zeta_1}\cdots x_n^{\zeta_n})
-            =\omega(x_1)^{\zeta_1}\cdots\omega(x_n)^\zeta_n$. 
+            =\omega(x_1)^{\zeta_1}\cdots\omega(x_n)^{\zeta_n}$. 
     \end{enumerate}
     Note that for $w,v\in X^*$ we have $\omega(wv)=\omega(w)\omega(v)$.
 \end{ntn}
@@ -207,7 +207,7 @@ In what follows we will fix a nonempty set $X$, whose elements will be regarded 
 
 
 \begin{ntn}
-    Let\/ $\rho\colon X^*\to X^*$ be the map defined recursively in the length of\/ $w\in X^*$ by
+    Let\/ $\rho\colon X^*\to X^*$ be the map defined recursively on the length of\/ $w\in X^*$ by
     \begin{enumerate}[-]
         \item $\rho(1)=1$
         \item $\rho(x^\zeta)=x^\zeta$ for\/ $\zeta$ empty or\/ $-1$
@@ -241,7 +241,7 @@ In what follows we will fix a nonempty set $X$, whose elements will be regarded 
         \begin{description}
             \item[\rm\underline{\rm$x_n=x,\;\zeta_n\ne\zeta$}:] Here $\rho(w)=\rho(x_1^{\zeta_1}\cdots x_{n-1}^{\zeta_{n-1}})$, which is reduced by the induction hypothesis.
             
-            \item[\rm\underline{$\rho(w)=\rho(v)x^\zeta$}:] In this case $\rho(v)$ in reduced by induction and so it is $\rho(v)x^\zeta$ since this $x_n^{\zeta_n}x^\zeta$ is not a canceling pair.
+            \item[\rm\underline{$\rho(w)=\rho(v)x^\zeta$}:] In this case $\rho(v)$ is reduced by induction, and so is $\rho(v)x^\zeta$ since $x_n^{\zeta_n}x^\zeta$ is not a canceling pair
         \end{description}
 
         \item With the notations of part~a), we have
@@ -270,7 +270,7 @@ In what follows we will fix a nonempty set $X$, whose elements will be regarded 
 
         \item If $w$ is reduced and $|w|>1$ then $w=vx^\zeta$ with $v$ reduced. Therefore, induction on $|w|$ implies that $\rho(w)=\rho(v)x^\zeta=vx^\zeta=w$.
 
-        \item By induction in $|v|$. The case $v=1$ is a direct consequence of parts~a) and~c). If $v=ux^\zeta$ with $u=x_1^{\zeta_1}\cdots x_n^{\zeta_n}$, then
+        \item By induction on $|v|$. The case $v=1$ is a direct consequence of parts~a) and~c). If $v=ux^\zeta$ with $u=x_1^{\zeta_1}\cdots x_n^{\zeta_n}$, then
         \begin{align*}
             \rho(wv) = \rho(wux^{\zeta}) &= 
                 \begin{cases}
@@ -321,7 +321,7 @@ In what follows we will fix a nonempty set $X$, whose elements will be regarded 
     $$
         w\sim v \iff \rho(w)=\rho(v).
     $$
-    The class of\/ $w$ in the quotient\/ $X^*/{\sim}$ will be denoted by\/~$[w]$. Not in particular that $[w]=[\rho(w)]$.
+    The class of\/ $w$ in the quotient\/ $X^*/{\sim}$ will be denoted by\/~$[w]$. Note in particular that $[w]=[\rho(w)]$.
 \end{defn}
 
 \begin{rem}\label{rem:word-problem}
@@ -384,7 +384,7 @@ In what follows we will fix a nonempty set $X$, whose elements will be regarded 
         \alpha^*([w]) = \alpha(x_1)^{\zeta_1}
             \cdots\alpha(x_n)^{\zeta_n},
     $$
-    which is valid by Definition~\ref{defn:similar-words}. It follows that,
+    which is valid by Definition~\ref{defn:similar-words}. It follows that
     \begin{equation}\label{eq:alpha-multiplication}
         v=y_1^{\xi_1}\cdots y_m^{\xi_m}
             \implies
@@ -475,7 +475,7 @@ In what follows we will fix a nonempty set $X$, whose elements will be regarded 
         \Phi(\phi_1+\phi_2)(x)=(\phi_1+\phi_2)(\omega(x))
             = (\Phi(\phi_1)+\Phi(\phi_2))(x).
     $$
-    Since $F_1\cong F_2$ implies $\Hom(F_1,\Z_2)\cong\Hom(F_2,\Z_2)$ as groups, and hence as $\Z_2$-vector spaces, we deduce that $\Z_2^{X_1}$ and $\Z_2^{X_2}$ are isomorphic in that quality. Therefore, $|X_1|=|X_2|$ [cf.~Appendix~\ref{chap:bases}].
+    Since $F_1\cong F_2$ implies $\Hom(F_1,\Z_2)\cong\Hom(F_2,\Z_2)$ as groups, and hence as $\Z_2$-vector spaces, we deduce that $\Z_2^{X_1}$ and $\Z_2^{X_2}$ are isomorphic in that capacity. Therefore, $|X_1|=|X_2|$ [cf.~Appendix~\ref{sec:bases}].
 \end{proof}
 
 The theorem allows us to introduce the following
@@ -655,7 +655,7 @@ where $z_i$ denotes the image of $z_i\in X$ in $F$ and the exponents $e_i$ are i
 \subsection{Exercises - Robinson - \S 2.1}
 
 \begin{exr}
-    Prove that free groups are torsion-free, i.e., all its elements, except the identity, have infinite order.
+    Prove that free groups are torsion-free, i.e., all their elements, except the identity, have infinite order.
 \end{exr}
 
 \begin{solution}
@@ -729,7 +729,7 @@ Theorem~\ref{free-presentation-thm} shows that every group is an image of a free
     
     A \textsl{free presentation} of a group $G$ is an epimorphism $\pi\colon F\to G$, where $F$ is a free group. The elements of $\ker\pi$ are called \textsl{relators} of~$\pi$.
 
-    The \textsl{standard presentation} is the free group $F$ on $G\setminus\set1$, where the morphism $F\to G$ is induced by the inclusion $G\setminus\set1\hookrightarrow G$, as show in the diagram
+    The \textsl{standard presentation} is the free group $F$ on $G\setminus\set1$, where the morphism $F\to G$ is induced by the inclusion $G\setminus\set1\hookrightarrow G$, as shown in the diagram
     $$
         \begin{tikzcd}
             G\setminus\set1
@@ -766,7 +766,7 @@ Theorem~\ref{free-presentation-thm} shows that every group is an image of a free
     \end{equation}
     In such a case, we also say that $z$ is a \textsl{consequence} of~$R$.
     
-    Since $X=\pi(Y)$ generates $G$, we can re-rewrite $(\ref{eq.relator})$ as
+    Since $X=\pi(Y)$ generates $G$, we can rewrite $(\ref{eq.relator})$ as
     \begin{equation}\label{eq.relator=1}
         x_1^{w_1}\cdots x_k^{w_k}=1,
     \end{equation}
@@ -902,7 +902,7 @@ For $1\le i\le n$ let $C_i$ denote the coset $G_{n-1}x_{n-1}\cdots x_i$. Note th
 
 \paragraph{Claim 2:}$|G|\ge n!$
 
-Let $\tau_{1,2},\dots,\tau_{n-1,n}$ be the $n-1$ adjacent permutations of $S_n$. Thus, the universal property of $G$ guaranties the existence of a commutative diagram
+Let $\tau_{1,2},\dots,\tau_{n-1,n}$ be the $n-1$ adjacent permutations of $S_n$. Thus, the universal property of $G$ guarantees the existence of a commutative diagram
 \begin{equation}\label{eq.G=S_n}
     \begin{tikzcd}
         {\set{x_1,\dots,x_{n-1}}}
@@ -925,7 +925,7 @@ This follows from the fact that $\im(\gamma)=S_n$, as shown by Claim~1 and Claim
 \end{proof}
 
 \begin{xmpl}\label{example:group-of-order-21}
-    Let $G$ be a nonabelian group or order $21$. Since $n_7(G)\mid3$ (Remark~\ref{p'-part}) and $n_7(G)\equiv 1\pmod 7$ (Corollary~\ref{p|n_p-1}), we deduce that there is only one subgroup $P$ of order $7$. Therefore $P\normal G$. If $Q\in\Syl_3(G)$, then $G=PQ$. Since $G$ is not abelian and both $P$ and $Q$ are cyclic, $n_3(G)>1$, otherwise $Q$ would be normal and consequently $P\leftrightarrow Q$. Since $n_3(G)\mid 7$, we deduce that $n_3(G)=7$.
+    Let $G$ be a nonabelian group of order $21$. Since $n_7(G)\mid3$ (Remark~\ref{p'-part}) and $n_7(G)\equiv 1\pmod 7$ (Corollary~\ref{p|n_p-1}), we deduce that there is only one subgroup $P$ of order $7$. Therefore $P\normal G$. If $Q\in\Syl_3(G)$, then $G=PQ$. Since $G$ is not abelian and both $P$ and $Q$ are cyclic, $n_3(G)>1$, otherwise $Q$ would be normal and consequently $P\leftrightarrow Q$. Since $n_3(G)\mid 7$, we deduce that $n_3(G)=7$.
 
     Given that $\Aut(\Z_7)$ is cyclic of order $7-1$, it contains $2$ elements of order~$3$, namely $\eta_2\colon x\mapsto 2x$ and $\eta_4\colon x\mapsto4x$, with $\eta_4=\eta_2^{-1}$. Therefore, there are two nontrivial morphisms from $\Z_3$ to $\Aut(\Z_7)$, one is $\phi_1\colon1\mapsto\eta_2$ and the other $\phi_2\colon 1\mapsto\eta_2^{-1}$.
 
@@ -948,9 +948,9 @@ This follows from the fact that $\im(\gamma)=S_n$, as shown by Claim~1 and Claim
             &= (a_1,\tau(b_1))\cdot_{\phi_2}(a_2,\tau(b_2))\\
             &= \Phi(a_1,b_1)\cdot_{\phi_2}\Phi(a_2,b_2),
     \end{align*}
-    i.e., $\Phi$ is a morphism. Hence, an isomorphism. In conclusion, there is only one nonabelian group or order $21$, up to isomorphism [cf.~Lemma~\ref{semidirect-product-uniqueness}].
+    i.e., $\Phi$ is a morphism. Hence, an isomorphism. In conclusion, there is only one nonabelian group of order $21$, up to isomorphism [cf.~Lemma~\ref{semidirect-product-uniqueness}].
 
-    Let now $B$ the group defined with generators and relations
+    Let now $B$ be the group defined with generators and relations
     $$
         B = \gen{\sigma,\tau\mid \sigma^7=\tau^3=1,\,\sigma^2\tau=\tau\sigma}.
     $$
@@ -963,6 +963,6 @@ This follows from the fact that $\im(\gamma)=S_n$, as shown by Claim~1 and Claim
             &= (0+\eta_2(1),1)\\
             &= (2,1).
     \end{align*}
-    By the von Dyck Theorem~\ref{von-dyck-thm}, there is an epimorphism $\pi\colon B\to\Z_7\times\Z_2$ that extends the map $\sigma\mapsto(1,0)$, $\tau\mapsto(0,1)$. Given that the products $\sigma^i\tau^j$ generate a subgroup that is normal in the free group, these products generate $B$. This implies that $\pi$ is a monomorphism because the exponents $i$ and $j$ are univocally determined in $\Z_7\rtimes\Z_3$.
+    By the von Dyck Theorem~\ref{von-dyck-thm}, there is an epimorphism $\pi\colon B\to\Z_7\times\Z_2$ that extends the map $\sigma\mapsto(1,0)$, $\tau\mapsto(0,1)$. Given that the relation $\tau\sigma = \sigma^2\tau$ implies that $\gen{\sigma}$ is normal in $B$, the set of products $\sigma^i\tau^j$ is closed under multiplication and thus forms a subgroup. Since it contains the generators of $B$, these products generate all of $B$. This implies that $\pi$ is a monomorphism because the exponents $i$ and $j$ are univocally determined in $\Z_7\rtimes\Z_3$.
 \end{xmpl}
 
