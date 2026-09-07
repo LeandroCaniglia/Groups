@@ -19,7 +19,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: "0-Group Theory.tex" # Change this to the exact name of your main .tex file
+          root_file: 0-Group-Theory.tex # Change this to the exact name of your main .tex file
 
       - name: Commit the generated PDF
         uses: stefanzweifel/git-auto-commit-action@v5
