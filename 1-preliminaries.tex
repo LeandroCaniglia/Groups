@@ -401,25 +401,32 @@ It remains to be seen that $\abs{G_d}=d$. But $(x^{n/d})^e=1$ implies $(n/d)e\ge
 \begin{proof} Apply part d) of the theorem to $H=\gen x$.  \end{proof}
 
 \begin{xmpl}
-    Every group of order\/ $9$ is abelian.
+    Every group of order $9$ is abelian.
 \end{xmpl}
 
-\begin{proof} {[cf.~Corollary~\ref{p-squared-is-abelian}]} If the group is cyclic, it is abelian. Otherwise, its non-identity elements have order $3$. Let $x$ be one of them and $y\notin\gen x$. If $xy=yx$, we are done. Otherwise $yx\in\set{xy^2, x^2y,x^2y^2}$.
-\begin{enumerate}[$\to$]
-    \item If $yx=xy^2$, then $x=yxy$ and
-    $$
-        x^2y^2= (yxy)(yxy)y^2= yxy^2x=x^2yy^2x=x^2y^3x=x^3=1,
-    $$
-    i.e., $x^{-1}\leftrightarrow y^{-1}$, i.e., $x\leftrightarrow y$.
-    
-    \item If $yx=x^2y$, then $x^2=yxy$ and
-    $$
-        x^2y^2= (yxy)(yxy)y^2= yxy^2x=x^2yy^2x=1,
-    $$
-    i.e., $x^{-1}=y$, i.e., $x\leftrightarrow y$.
+\begin{proof}{[cf.~Corollary~\ref{p-squared-is-abelian}]} 
+    If the group is cyclic, it is abelian. Otherwise, all its non-identity elements have order $3$. Suppose there exist $x,y\in G$ such that $xy\ne yx$.
 
-    \item If $yx=x^2y^2$, then $yx=x^{-1}y^{-1}=(yx)^{-1}$, which is impossible because a group of order $9$ cannot contain elements of order $2$.
-\end{enumerate}
+    Consider the left cosets of $\gen{y}$:
+    $$
+        1\gen{y}=\set{1,y,y^2},\quad
+        x\gen{y}=\set{x,xy,xy^2},\quad
+        x^2\gen{y}=\set{x^2,x^2y,x^2y^2}.
+    $$
+    Since $1\notin x\gen y\cup x^2\gen y$ and $x\notin x^2\gen y$, these three left cosets are pairwise distinct. Therefore, they must be disjoint. Consequently, $G=1\gen{y}\cup x\gen{y}\cup x^2\gen{y}$.
+
+    The element $yx$ must belong to one of these cosets. It is easy to check that $yx \notin \gen{y}$ and $yx \notin \set{x, x^2}$ (as $y \neq 1, x$). Since we also assumed $yx \ne xy$, it follows that $yx\in\set{xy^2,x^2y,x^2y^2}$. However,
+    \begin{enumerate}[$\to$]
+        \item If $yx=xy^2$, then $yxy=x$ and
+        $$
+            x^2y^2 = (yxy)(yxy)y^2 = yxy^2x = y^2x^2.
+        $$
+        Thus $x^{-1}\comm y^{-1}$, which implies $x\comm y$. Contradiction.
+        
+        \item If $yx=x^2y$, the symmetry between $x$ and $y$ yields also a contradiction.
+
+        \item If $yx=x^2y^2$, then $yx=(yx)^{-1}$, which is impossible because no element of $G$ has order $2$.
+    \end{enumerate}
 \end{proof}
 
 
